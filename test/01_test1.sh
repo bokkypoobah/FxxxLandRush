@@ -44,6 +44,7 @@ echo "var bttsFactoryOutput=`solc_0.4.20 --allow-paths . --optimize --pretty-jso
 
 solc_0.4.25 --version | tee -a $TEST1OUTPUT
 echo "var landRushOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $LANDRUSHSOL`;" > $LANDRUSHJS
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$LANDRUSHSOL --verbose | tee -a $TEST1OUTPUT
 
 #echo "var dexzOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $EXCHANGESOL`;" > $EXCHANGEJS
 #echo "var mintableTokenOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $MINTABLETOKENSOL`;" > $MINTABLETOKENJS
