@@ -173,7 +173,7 @@ console.log("RESULT: ---------- " + deployTokens1Message + " ----------");
 var tokenTxs = [];
 var tokens = [];
 for (i = 0; i < numberOfTokens; i++) {
-  tokenTxs[i] = bttsFactory.deployBTTSTokenContract(_tokenSymbols[i], _tokenNames[i], _tokenDecimals[i], _tokenInitialSupplies[i], _tokenMintable[i] == "true", transferable, {from: deployer, gas: 6000000, gasPrice: defaultGasPrice});
+  tokenTxs[i] = bttsFactory.deployBTTSTokenContract(_tokenSymbols[i], _tokenNames[i], _tokenDecimals[i], new BigNumber(_tokenInitialSupplies[i]).shift(_tokenDecimals[i]), _tokenMintable[i] == "true", transferable, {from: deployer, gas: 6000000, gasPrice: defaultGasPrice});
 }
 while (txpool.status.pending > 0) {
 }
