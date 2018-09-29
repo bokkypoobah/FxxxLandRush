@@ -19,9 +19,9 @@ import "Owned.sol";
 
 
 // ----------------------------------------------------------------------------
-// MakerDAO ETH/USD PricefeedSimulator
+// MakerDAO PricefeedSimulator
 // ----------------------------------------------------------------------------
-contract MakerDAOETHUSDPricefeedSimulator is Owned {
+contract MakerDAOPriceFeedSimulator is Owned {
     uint public value;
     bool public hasValue;
 

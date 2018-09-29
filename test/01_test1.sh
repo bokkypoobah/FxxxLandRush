@@ -44,12 +44,8 @@ echo "var bttsFactoryOutput=`solc_0.4.20 --allow-paths . --optimize --pretty-jso
 
 solc_0.4.25 --version | tee -a $TEST1OUTPUT
 echo "var landRushOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $LANDRUSHSOL`;" > $LANDRUSHJS
+echo "var priceFeedOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $PRICEFEEDSOL`;" > $PRICEFEEDJS
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$LANDRUSHSOL --verbose | tee -a $TEST1OUTPUT
-
-#echo "var dexzOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $EXCHANGESOL`;" > $EXCHANGEJS
-#echo "var mintableTokenOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $MINTABLETOKENSOL`;" > $MINTABLETOKENJS
-#../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$EXCHANGESOL --verbose | tee -a $TEST1OUTPUT
-#../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$MINTABLETOKENSOL --verbose | tee -a $TEST1OUTPUT
 
 if [ "$MODE" = "compile" ]; then
   echo "Compiling only"
@@ -59,6 +55,7 @@ fi
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$BTTSFACTORYJS");
 loadScript("$LANDRUSHJS");
+loadScript("$PRICEFEEDJS");
 loadScript("lookups.js");
 loadScript("functions.js");
 
@@ -70,14 +67,18 @@ var bttsFactoryAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTT
 var bttsFactoryBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].bin;
 var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
 var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
+var priceFeedAbi = JSON.parse(priceFeedOutput.contracts["$PRICEFEEDSOL:MakerDAOPriceFeedSimulator"].abi);
+var priceFeedBin = "0x" + priceFeedOutput.contracts["$PRICEFEEDSOL:MakerDAOPriceFeedSimulator"].bin;
 
 // console.log("DATA: bttsLibAbi=" + JSON.stringify(bttsLibAbi));
 // console.log("DATA: bttsLibBin=" + JSON.stringify(bttsLibBin));
 // console.log("DATA: bttsTokenAbi=" + JSON.stringify(bttsTokenAbi));
 // console.log("DATA: bttsFactoryAbi=" + JSON.stringify(bttsFactoryAbi));
 // console.log("DATA: bttsFactoryBin=" + JSON.stringify(bttsFactoryBin));
-console.log("DATA: landRushAbi=" + JSON.stringify(landRushAbi));
-console.log("DATA: landRushBin=" + JSON.stringify(landRushBin));
+// console.log("DATA: landRushAbi=" + JSON.stringify(landRushAbi));
+// console.log("DATA: landRushBin=" + JSON.stringify(landRushBin));
+// console.log("DATA: priceFeedAbi=" + JSON.stringify(priceFeedAbi));
+// console.log("DATA: priceFeedBin=" + JSON.stringify(priceFeedBin));
 
 
 unlockAccounts("$PASSWORD");
