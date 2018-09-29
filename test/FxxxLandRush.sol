@@ -227,6 +227,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         }
     }
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
+        // BK TODO: Time restriction, owner check?, check parcel limit
         require(token == address(gzeToken));
         uint _parcelGze;
         bool hasValue;
@@ -239,6 +240,21 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         bttsToken.mint(from, parcelUsd.mul(parcels), false);
     }
     function () public payable {
+        // BK TODO: Time restriction, owner check?, check parcel limit
+        uint _parcelEth;
+        bool hasValue;
+        (_parcelEth, hasValue) = parcelEth();
+        require(hasValue);
+        uint parcels = msg.value.div(_parcelEth);
+        require(parcels > 0);
+        uint ethToTransfer = parcels.mul(_parcelEth);
+        uint ethToRefund = msg.value.sub(ethToTransfer);
+        if (ethToRefund > 0) {
+            msg.sender.transfer(ethToRefund);
+        }
+        bttsToken.mint(msg.sender, parcelUsd.mul(parcels), false);
+    }
+    function oldEth() public payable {
         require((now >= startDate && now <= endDate) || (msg.sender == owner && msg.value == MIN_CONTRIBUTION_ETH));
         require(contributedEth < capEth());
         require(msg.value >= MIN_CONTRIBUTION_ETH);
