@@ -460,10 +460,22 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
     console.log("RESULT: landRush.bttsToken=" + getShortAddressName(contract.bttsToken()));
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
-    console.log("RESULT: landRush.priceFeed=" + getShortAddressName(contract.priceFeed()));
+    console.log("RESULT: landRush.ethUsdPriceFeed=" + getShortAddressName(contract.ethUsdPriceFeed()));
     console.log("RESULT: landRush.wallet=" + getShortAddressName(contract.wallet()));
     console.log("RESULT: landRush.startDate=" + new Date(contract.startDate() * 1000).toString());
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
+    console.log("RESULT: landRush.gzeEth=" + contract.gzeEth().shift(-18));
+    console.log("RESULT: landRush.parcelUsd=" + contract.parcelUsd().shift(-18));
+    var ethUsd = contract.ethUsd();
+    console.log("RESULT: landRush.ethUsd=" + ethUsd[0].shift(-18) + " " + ethUsd[1]);
+    var gzeUsd = contract.gzeUsd();
+    console.log("RESULT: landRush.gzeUsd=" + gzeUsd[0].shift(-18) + " " + gzeUsd[1]);
+    var parcelEth = contract.parcelEth();
+    console.log("RESULT: landRush.parcelEth=" + parcelEth[0].shift(-18) + " " + parcelEth[1]);
+    var parcelGzeWithoutBonus = contract.parcelGzeWithoutBonus();
+    console.log("RESULT: landRush.parcelGzeWithoutBonus=" + parcelGzeWithoutBonus[0].shift(-18) + " " + parcelGzeWithoutBonus[1]);
+    var parcelGze = contract.parcelGze();
+    console.log("RESULT: landRush.parcelGze=" + parcelGze[0].shift(-18) + " " + parcelGze[1]);
 
     var i;
     var latestBlock = eth.blockNumber;

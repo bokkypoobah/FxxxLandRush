@@ -61,7 +61,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
 
     BTTSTokenInterface public bttsToken;
     BTTSTokenInterface public gzeToken;
-    MakerDAOPriceFeedInterface public priceFeed;
+    MakerDAOPriceFeedInterface public ethUsdPriceFeed;
     uint8 public constant TOKEN_DECIMALS = 18;
 
     address public wallet;
@@ -77,6 +77,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     uint public endDate;
 
     // ETH/USD 9 Dec 2017 11:00 EST => 9 Dec 2017 16:00 UTC => 10 Dec 2017 03:00 AEST => 489.44 from CMC
+    uint public gzeEth;
+    uint public parcelUsd;
+    uint public gzeBonus;
     uint public usdPerKEther = 489440;
     uint public constant USD_CENT_PER_GZE = 35;
     uint public constant CAP_USD = 35000000;
@@ -102,16 +105,20 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event LockedAccountThresholdUsdUpdated(uint oldEthLockedThreshold, uint newEthLockedThreshold);
     event Contributed(address indexed addr, uint ethAmount, uint ethRefund, uint accountEthAmount, uint usdAmount, uint gzeAmount, uint contributedEth, uint contributedUsd, uint generatedGze, bool lockAccount);
 
-    constructor(address _bttsToken, address _gzeToken, address _priceFeed, address _wallet, uint _startDate, uint _endDate) public {
-        require(_bttsToken != 0 && _gzeToken != 0 && _priceFeed != 0 && _wallet != 0);
+    constructor(address _bttsToken, address _gzeToken, address _ethUsdPriceFeed, address _wallet, uint _startDate, uint _endDate, uint _gzeEth, uint _parcelUsd, uint _gzeBonus) public {
+        require(_bttsToken != 0 && _gzeToken != 0 && _ethUsdPriceFeed != 0 && _wallet != 0);
         require(_startDate >= now && _endDate > _startDate);
+        require(_gzeEth > 0 && _parcelUsd > 0);
         initOwned(msg.sender);
         bttsToken = BTTSTokenInterface(_bttsToken);
         gzeToken = BTTSTokenInterface(_gzeToken);
-        priceFeed = MakerDAOPriceFeedInterface(_priceFeed);
+        ethUsdPriceFeed = MakerDAOPriceFeedInterface(_ethUsdPriceFeed);
         wallet = _wallet;
         startDate = _startDate;
         endDate = _endDate;
+        gzeEth = _gzeEth;
+        parcelUsd = _parcelUsd;
+        gzeBonus = _gzeBonus;
     }
     function setWallet(address _wallet) public onlyOwner {
         emit WalletUpdated(wallet, _wallet);
@@ -145,6 +152,42 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(now <= startDate);
         emit LockedAccountThresholdUsdUpdated(lockedAccountThresholdUsd, _lockedAccountThresholdUsd);
         lockedAccountThresholdUsd = _lockedAccountThresholdUsd;
+    }
+
+    function ethUsd() public view returns (uint rate, bool hasValue) {
+        bytes32 value;
+        (value, hasValue) = ethUsdPriceFeed.peek();
+        if (hasValue) {
+            rate = uint(value);
+        }
+    }
+    function gzeUsd() public view returns (uint rate, bool hasValue) {
+        bytes32 value;
+        (value, hasValue) = ethUsdPriceFeed.peek();
+        if (hasValue) {
+            rate = uint(value).mul(gzeEth).div(10**18);
+        }
+    }
+    function parcelEth() public view returns (uint rate, bool hasValue) {
+        uint _ethUsd;
+        (_ethUsd, hasValue) = ethUsd();
+        if (hasValue) {
+            rate = parcelUsd.mul(10**18).div(_ethUsd);
+        }
+    }
+    function parcelGzeWithoutBonus() public view returns (uint rate, bool hasValue) {
+        uint _gzeUsd;
+        (_gzeUsd, hasValue) = gzeUsd();
+        if (hasValue) {
+            rate = parcelUsd.mul(10**18).div(_gzeUsd);
+        }
+    }
+    function parcelGze() public view returns (uint rate, bool hasValue) {
+        uint _parcelGzeWithoutBonus;
+        (_parcelGzeWithoutBonus, hasValue) = parcelGzeWithoutBonus();
+        if (hasValue) {
+            rate = _parcelGzeWithoutBonus.mul(gzeBonus.add(100)).div(100);
+        }
     }
 
     function capEth() public view returns (uint) {

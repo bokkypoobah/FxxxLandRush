@@ -159,7 +159,7 @@ console.log("RESULT: ---------- " + deployPriceFeedMessage + " ----------");
 var priceFeedContract = web3.eth.contract(priceFeedAbi);
 var priceFeedTx = null;
 var priceFeedAddress = null;
-var priceFeed = priceFeedContract.new(new BigNumber($ETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var priceFeed = priceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -198,7 +198,7 @@ var _tokenMintable = "$TOKENMINTABLE".split(":");
 // console.log("RESULT: _tokenDecimals = " + JSON.stringify(_tokenDecimals));
 // console.log("RESULT: _tokenInitialSupplies = " + JSON.stringify(_tokenInitialSupplies));
 // console.log("RESULT: _tokenInitialDistributions = " + JSON.stringify(_tokenInitialDistributions));
-console.log("RESULT: _tokenMintable = " + JSON.stringify(_tokenMintable));
+// console.log("RESULT: _tokenMintable = " + JSON.stringify(_tokenMintable));
 var transferable = true;
 var i;
 // -----------------------------------------------------------------------------
@@ -236,12 +236,14 @@ console.log("RESULT: ");
 var deployLandRushMessage = "Deploy FxxxLandRush";
 var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
 var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
+var initialGzeEth = new BigNumber($INITIALGZEETH).shift(18);
+var initialParcelUsd = new BigNumber($INITIALPARCELUSD).shift(18);
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], priceFeedAddress, wallet, $START_DATE, $END_DATE, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], priceFeedAddress, wallet, $START_DATE, $END_DATE, initialGzeEth, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
