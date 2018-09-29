@@ -61,22 +61,22 @@ loadScript("$LANDRUSHJS");
 loadScript("lookups.js");
 loadScript("functions.js");
 
-exit;
-LANDRUSHSOL=FxxxLandRush.sol
-LANDRUSHJS=FxxxLandRush.js
-
 
 var bttsLibAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].abi);
 var bttsLibBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].bin;
 var bttsTokenAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSToken"].abi);
 var bttsFactoryAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].abi);
 var bttsFactoryBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].bin;
+var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
+var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
 
 // console.log("DATA: bttsLibAbi=" + JSON.stringify(bttsLibAbi));
 // console.log("DATA: bttsLibBin=" + JSON.stringify(bttsLibBin));
 // console.log("DATA: bttsTokenAbi=" + JSON.stringify(bttsTokenAbi));
 // console.log("DATA: bttsFactoryAbi=" + JSON.stringify(bttsFactoryAbi));
 // console.log("DATA: bttsFactoryBin=" + JSON.stringify(bttsFactoryBin));
+console.log("DATA: landRushAbi=" + JSON.stringify(landRushAbi));
+console.log("DATA: landRushBin=" + JSON.stringify(landRushBin));
 
 
 unlockAccounts("$PASSWORD");
@@ -190,7 +190,7 @@ for (i = 0; i < numberOfTokens; i++) {
 }
 printBalances();
 for (i = 0; i < numberOfTokens; i++) {
-  failIfTxStatusError(tokenTxs[i], deployTokens1Message + " - Token ''" + tokens[i].symbol() + "' '" + tokens[i].name() + "'");
+  failIfTxStatusError(tokenTxs[i], deployTokens1Message + " - Token '" + tokens[i].symbol() + "' '" + tokens[i].name() + "'");
 }
 for (i = 0; i < numberOfTokens; i++) {
   printTxData("tokenTx[" + i + "]", tokenTxs[i]);
@@ -200,6 +200,39 @@ for (i = 0; i < numberOfTokens; i++) {
   printTokenContractDetails(i);
   console.log("RESULT: ");
 }
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var deployLandRushMessage = "Deploy FxxxLandRush";
+var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
+var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
+var landRushContract = web3.eth.contract(landRushAbi);
+var landRushTx = null;
+var landRushAddress = null;
+var landRush = landRushContract.new({from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        landRushTx = contract.transactionHash;
+      } else {
+        landRushAddress = contract.address;
+        addAccount(landRushAddress, "FxxxLandRush");
+        // addDexOneExchangeContractAddressAndAbi(dexzAddress, dexzAbi);
+        console.log("DATA: var landRushAddress=\"" + landRushAddress + "\";");
+        console.log("DATA: var landRushAbi=" + JSON.stringify(landRushAbi) + ";");
+        console.log("DATA: var landRush=eth.contract(landRushAbi).at(landRushAddress);");
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(landRushTx, deployLandRushMessage + " - FxxxLandRush");
+printTxData("landRushTx", landRushTx);
 console.log("RESULT: ");
 
 

@@ -9,7 +9,7 @@ pragma solidity ^0.4.25;
 //
 // Enjoy.
 //
-// (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2017. The MIT Licence.
+// (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
 
@@ -27,6 +27,14 @@ contract ERC20Interface {
 
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+}
+
+
+// ----------------------------------------------------------------------------
+// Contracts that can have tokens approved, and then a function executed
+// ----------------------------------------------------------------------------
+contract ApproveAndCallFallBack {
+    function receiveApproval(address from, uint256 tokens, address token, bytes data) public;
 }
 
 
@@ -166,9 +174,9 @@ contract Owned {
 
 
 // ----------------------------------------------------------------------------
-// GazeCoin Crowdsale Contract
+// FxxxLandRush Contract
 // ----------------------------------------------------------------------------
-contract GazeCoinCrowdsale is Owned {
+contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     using SafeMath for uint;
 
     BTTSTokenInterface public bttsToken;
@@ -276,6 +284,9 @@ contract GazeCoinCrowdsale is Owned {
         } else {
             bonusPercent = 0;
         }
+    }
+    function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
+        ERC20Interface(token).transferFrom(from, address(this), tokens);
     }
     function () public payable {
         require((now >= START_DATE && now <= endDate) || (msg.sender == owner && msg.value == MIN_CONTRIBUTION_ETH));

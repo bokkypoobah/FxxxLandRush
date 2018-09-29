@@ -12,7 +12,7 @@ NUMBEROFTOKENS=4
 TOKENSYMBOLS="ABC:DEF:GHI:GZE"
 TOKENNAMES="Abc:Def:Ghi:GazeCoin"
 TOKENDECIMALS="18:18:18:18"
-TOKENINITIALSUPPLIES="0:0:0:0"
+TOKENINITIALSUPPLIES="1000000000000000000000000:1000000000000000000000000:1000000000000000000000000:1000000000000000000000000"
 TOKENINITIALDISTRIBUTION="10000:1000:100:10"
 
 DEPLOYMENTDATA=deploymentData.js
@@ -27,9 +27,9 @@ TEST3RESULTS=test3results.txt
 TEST4OUTPUT=test4output.txt
 TEST4RESULTS=test4results.txt
 
-CURRENTTIME = '1538188111' 'Sat Sep 29 12:28:31 2018'
-START_DATE  = '1538188156' 'Sat Sep 29 12:29:16 2018'
-END_DATE    = '1538188231' 'Sat Sep 29 12:30:31 2018'
+CURRENTTIME = '1538200457' 'Sat Sep 29 15:54:17 2018'
+START_DATE  = '1538200502' 'Sat Sep 29 15:55:02 2018'
+END_DATE    = '1538200577' 'Sat Sep 29 15:56:17 2018'
 --- Differences ../contracts//*.sol *.sol ---
 
 solc, the solidity compiler commandline interface
@@ -40,7 +40,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.8.15-stable-89451f7c/darwin-amd64/go1.10.4
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 18447 (Sat, 29 Sep 2018 12:28:32 AEST)
+at block: 21290 (Sat, 29 Sep 2018 15:54:18 AEST)
  datadir: /Users/bok/Projects/FxxxLandRush/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
@@ -62,5 +62,516 @@ DATA: var user5="0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec";
 DATA: var user6="0xa88a05d2b88283ce84c8325760b72a64591279a2";
 DATA: var feeAccount="0xa99a0ae3354c06b1459fd441a32a3f71005d7da0";
 true
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+DATA: landRushAbi=[{"constant":true,"inputs":[{"name":"ethAmount","type":"uint256"},{"name":"bonusPercent","type":"uint256"}],"name":"gzeFromEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TEAM_PERCENT_GZE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TIER3_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_teamWallet","type":"address"}],"name":"setTeamWallet","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"finalised","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"MIN_CONTRIBUTION_ETH","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"bonusList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"START_DATE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_endDate","type":"uint256"}],"name":"setEndDate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"TIER2_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"CAP_USD","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"capEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"wallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"USD_CENT_PER_GZE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"teamWallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TOKEN_DECIMALS","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"generatedGze","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"contributedUsd","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"}],"name":"roundUp","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"lockedAccountThresholdEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"tokens","type":"uint256"},{"name":"token","type":"address"},{"name":"","type":"bytes"}],"name":"receiveApproval","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"ethAmount","type":"uint256"},{"name":"bonusPercent","type":"uint256"}],"name":"addPrecommitment","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"lockedAccountThresholdUsd","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"finalise","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"contributedEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"usdPerKEther","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzePerEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TIER1_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"endDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBonusPercent","outputs":[{"name":"bonusPercent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_lockedAccountThresholdUsd","type":"uint256"}],"name":"setLockedAccountThresholdUsd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_bonusList","type":"address"}],"name":"setBonusList","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_usdPerKEther","type":"uint256"}],"name":"setUsdPerKEther","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_bttsToken","type":"address"}],"name":"setBTTSToken","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_wallet","type":"address"}],"name":"setWallet","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"gzeAmount","type":"uint256"}],"name":"addPrecommitmentAdjustment","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"bttsToken","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"precommitmentAdjusted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"accountEthAmount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldBTTSToken","type":"address"},{"indexed":true,"name":"newBTTSToken","type":"address"}],"name":"BTTSTokenUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldWallet","type":"address"},{"indexed":true,"name":"newWallet","type":"address"}],"name":"WalletUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldTeamWallet","type":"address"},{"indexed":true,"name":"newTeamWallet","type":"address"}],"name":"TeamWalletUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldBonusList","type":"address"},{"indexed":true,"name":"newBonusList","type":"address"}],"name":"BonusListUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldEndDate","type":"uint256"},{"indexed":false,"name":"newEndDate","type":"uint256"}],"name":"EndDateUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldUsdPerKEther","type":"uint256"},{"indexed":false,"name":"newUsdPerKEther","type":"uint256"}],"name":"UsdPerKEtherUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldEthLockedThreshold","type":"uint256"},{"indexed":false,"name":"newEthLockedThreshold","type":"uint256"}],"name":"LockedAccountThresholdUsdUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"addr","type":"address"},{"indexed":false,"name":"ethAmount","type":"uint256"},{"indexed":false,"name":"ethRefund","type":"uint256"},{"indexed":false,"name":"accountEthAmount","type":"uint256"},{"indexed":false,"name":"usdAmount","type":"uint256"},{"indexed":false,"name":"gzeAmount","type":"uint256"},{"indexed":false,"name":"contributedEth","type":"uint256"},{"indexed":false,"name":"contributedUsd","type":"uint256"},{"indexed":false,"name":"generatedGze","type":"uint256"},{"indexed":false,"name":"lockAccount","type":"bool"}],"name":"Contributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+undefined
+> 
+DATA: landRushBin="0x608060405260038054600160a060020a0319908116738cd8baa410e9172b949f2c4433d3b5905f8606ff179091556004805490911673b4ec550893d31763c02ebda44dff90b7b5a62656179055635a3bda80600655620777e0600755611d4c600b5534801561006d57600080fd5b5061008033640100000000610085810204565b6100a7565b60008054600160a060020a031916600160a060020a0392909216919091179055565b611880806100b66000396000f3006080604052600436106102195763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166309c110a181146105575780630d50266c14610584578063112227ae146105995780631525ff7d146105ae578063214bb60f146105d157806325fdb725146105fa5780632a8a8b191461060f578063372c6533146106405780633784f000146106555780633a6f85b11461066d5780634d0ad141146106825780634e01799414610697578063521eb273146106ac57806354a8ed7b146106c157806359927044146106d65780635b7f415c146106eb5780636a5392d7146107165780636e2e9c3b1461072b57806379ba5097146107405780637b6a6f4a146107555780637e71fb091461076d5780638a654a641461078e5780638da5cb5b146107a35780638f4ffcb1146107b857806393e4bf4f146108285780639eddc4411461084f578063a439926314610864578063b4d3ef5f14610879578063bb5b586b1461088e578063c135c040146108a3578063c1927292146108b8578063c24a0f8b146108cd578063c252ca75146108e2578063c8c0cbbb14610903578063cfeaa5ea1461091b578063d4ee1d901461093c578063d9e4fa6a14610951578063db4e1df514610969578063deaa59df1461098a578063e7a7043d146109ab578063ed62543d146109cf578063f2fde38b146109e4578063f59db64714610a05578063ff8872c214610a1a575b600080600080600080635a2d5a00421015801561023857506006544211155b8061025e5750600054600160a060020a03163314801561025e5750662386f26fc1000034145b151561026957600080fd5b610271610a3b565b6008541061027e57600080fd5b662386f26fc1000034101561029257600080fd5b61029b33610a5d565b9550349450600093506102ac610a3b565b6008546102bf908763ffffffff610b3516565b11156102f4576102df6008546102d3610a3b565b9063ffffffff610b4b16565b94506102f1348663ffffffff610b4b16565b93505b60075461032390683635c9adc5dea000009061031790889063ffffffff610b6016565b9063ffffffff610b8516565b925061032f8587610ba6565b600a54909250610345908363ffffffff610b3516565b600a5560085461035b908663ffffffff610b3516565b600855600954610371908463ffffffff610b3516565b600955336000908152600c6020526040902054610394908663ffffffff610b3516565b336000908152600c60205260409020556103ac610bc4565b336000818152600c6020908152604080832054600254825160008051602061183583398151915281526004810196909652602486018990529510604485018190529051909550600160a060020a039094169363d1a1beb493606480820194918390030190829087803b15801561042157600080fd5b505af1158015610435573d6000803e3d6000fd5b505050506040513d602081101561044b57600080fd5b5050600085111561049257600354604051600160a060020a039091169086156108fc029087906000818181858888f19350505050158015610490573d6000803e3d6000fd5b505b336000818152600c602090815260409182902054600854600954600a5485518c81529485018b905284860193909352606084018990526080840188905260a084019190915260c083015260e082015283151561010082015290517fd26cbe1e4ad3aac3c0576434d30cbefafb4a77e0a28ae8fe938d1db3e3052a5c918190036101200190a2600084111561054f57604051339085156108fc029086906000818181858888f1935050505015801561054d573d6000803e3d6000fd5b505b505050505050005b34801561056357600080fd5b50610572600435602435610ba6565b60408051918252519081900360200190f35b34801561059057600080fd5b50610572610bdb565b3480156105a557600080fd5b50610572610be0565b3480156105ba57600080fd5b506105cf600160a060020a0360043516610be5565b005b3480156105dd57600080fd5b506105e6610c58565b604080519115158252519081900360200190f35b34801561060657600080fd5b50610572610c66565b34801561061b57600080fd5b50610624610c71565b60408051600160a060020a039092168252519081900360200190f35b34801561064c57600080fd5b50610572610c80565b34801561066157600080fd5b506105cf600435610c88565b34801561067957600080fd5b50610572610cee565b34801561068e57600080fd5b50610572610cf3565b3480156106a357600080fd5b50610572610a3b565b3480156106b857600080fd5b50610624610cfb565b3480156106cd57600080fd5b50610572610d0a565b3480156106e257600080fd5b50610624610d0f565b3480156106f757600080fd5b50610700610d1e565b6040805160ff9092168252519081900360200190f35b34801561072257600080fd5b50610572610d23565b34801561073757600080fd5b50610572610d29565b34801561074c57600080fd5b506105cf610d2f565b34801561076157600080fd5b50610572600435610daa565b34801561077957600080fd5b506105cf600160a060020a0360043516610dde565b34801561079a57600080fd5b50610572610bc4565b3480156107af57600080fd5b50610624610e50565b3480156107c457600080fd5b50604080516020601f6064356004818101359283018490048402850184019095528184526105cf94600160a060020a03813581169560248035966044359093169536956084949201918190840183828082843750949750610e5f9650505050505050565b34801561083457600080fd5b506105cf600160a060020a0360043516602435604435610f03565b34801561085b57600080fd5b50610572611135565b34801561087057600080fd5b506105cf61113b565b34801561088557600080fd5b5061057261137a565b34801561089a57600080fd5b50610572611380565b3480156108af57600080fd5b50610572611386565b3480156108c457600080fd5b506105726113a0565b3480156108d957600080fd5b506105726113a5565b3480156108ee57600080fd5b50610572600160a060020a0360043516610a5d565b34801561090f57600080fd5b506105cf6004356113ab565b34801561092757600080fd5b506105cf600160a060020a0360043516611415565b34801561094857600080fd5b50610624611499565b34801561095d57600080fd5b506105cf6004356114a8565b34801561097557600080fd5b506105cf600160a060020a0360043516611512565b34801561099657600080fd5b506105cf600160a060020a0360043516611596565b3480156109b757600080fd5b506105cf600160a060020a0360043516602435611609565b3480156109db57600080fd5b506106246117d1565b3480156109f057600080fd5b506105cf600160a060020a03600435166117e0565b348015610a1157600080fd5b506105e6611819565b348015610a2657600080fd5b50610572600160a060020a0360043516611822565b6007546000906b71175249d9818853b8000000811515610a5757fe5b04905090565b600554604080517f76fbc07e000000000000000000000000000000000000000000000000000000008152600160a060020a0384811660048301529151600093849316916376fbc07e91602480830192602092919082900301818787803b158015610ac657600080fd5b505af1158015610ada573d6000803e3d6000fd5b505050506040513d6020811015610af057600080fd5b505190506001811415610b065760329150610b2f565b8060021415610b185760149150610b2f565b8060031415610b2a57600f9150610b2f565b600091505b50919050565b81810182811015610b4557600080fd5b92915050565b600082821115610b5a57600080fd5b50900390565b818102821580610b7a5750818382811515610b7757fe5b04145b1515610b4557600080fd5b6000808211610b9357600080fd5b8183811515610b9e57fe5b049392505050565b6007546000906023906103e8908502606485010204811515610b9e57fe5b60006007546015600a0a600b5402811515610a5757fe5b601e81565b600f81565b600054600160a060020a03163314610bfc57600080fd5b600454604051600160a060020a038084169216907fd9a2a08302ed3220f4e646ff99d6780d87e27baddf1af05679dc930ce811309590600090a360048054600160a060020a031916600160a060020a0392909216919091179055565b600d54610100900460ff1681565b662386f26fc1000081565b600554600160a060020a031681565b635a2d5a0081565b600054600160a060020a03163314610c9f57600080fd5b42811015610cac57600080fd5b600654604080519182526020820183905280517f275dd536a6956e78302b90e20bb13c379fb11632284794aa77ad452d0f472a159281900390910190a1600655565b601481565b6302160ec081565b600354600160a060020a031681565b602381565b600454600160a060020a031681565b601281565b600a5481565b60095481565b600154600160a060020a03163314610d4657600080fd5b60015460008054604051600160a060020a0393841693909116917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a36001805460008054600160a060020a0319908116600160a060020a03841617909155169055565b6000670de0b6b3a764000080830682811115610dd757610dd4816102d3868563ffffffff610b3516565b92505b5050919050565b600054600160a060020a03163314610df557600080fd5b60008054604051600160a060020a03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a360008054600160a060020a031916600160a060020a0392909216919091179055565b600054600160a060020a031681565b604080517f23b872dd000000000000000000000000000000000000000000000000000000008152600160a060020a038681166004830152306024830152604482018690529151918416916323b872dd916064808201926020929091908290030181600087803b158015610ed157600080fd5b505af1158015610ee5573d6000803e3d6000fd5b505050506040513d6020811015610efb57600080fd5b505050505050565b60008054819081908190600160a060020a03163314610f2157600080fd5b600d54610100900460ff1615610f3657600080fd5b600754610f5990683635c9adc5dea000009061031790899063ffffffff610b6016565b9350610f658686610ba6565b600a5490935060009250610f7f908463ffffffff610b3516565b600a55600854610f95908763ffffffff610b3516565b600855600954610fab908563ffffffff610b3516565b600955600160a060020a0387166000908152600c6020526040902054610fd7908763ffffffff610b3516565b600160a060020a0388166000908152600c6020526040902055610ff8610bc4565b600160a060020a038089166000818152600c6020908152604080832054600254825160008051602061183583398151915281526004810196909652602486018b90529610604485018190529051909650949093169363d1a1beb4936064808501949193918390030190829087803b15801561107257600080fd5b505af1158015611086573d6000803e3d6000fd5b505050506040513d602081101561109c57600080fd5b5050600160a060020a0387166000818152600c602090815260409182902054600854600954600a5485518d815294850189905284860193909352606084018a90526080840189905260a084019190915260c083015260e082015283151561010082015290517fd26cbe1e4ad3aac3c0576434d30cbefafb4a77e0a28ae8fe938d1db3e3052a5c918190036101200190a250505050505050565b600b5481565b60008054819081908190600160a060020a0316331461115957600080fd5b600d54610100900460ff161561116e57600080fd5b600d5460ff16151561117f57600080fd5b6006544211806111985750611192610a3b565b60085410155b15156111a357600080fd5b6111cc6111b86064601e63ffffffff610b4b16565b600a5461031790606463ffffffff610b6016565b93506111e4606461031786601e63ffffffff610b6016565b600a549093506111fa908463ffffffff610b3516565b600a81905561120890610daa565b9150600a5482111561125457600a5461122890839063ffffffff610b4b16565b600a5490915061123e908263ffffffff610b3516565b600a55611251838263ffffffff610b3516565b92505b60025460048054604080516000805160206118358339815191528152600160a060020a0392831693810193909352602483018790526000604484018190529051919093169263d1a1beb492606480820193602093909283900390910190829087803b1580156112c257600080fd5b505af11580156112d6573d6000803e3d6000fd5b505050506040513d60208110156112ec57600080fd5b5050600254604080517f7e5cd5c10000000000000000000000000000000000000000000000000000000081529051600160a060020a0390921691637e5cd5c19160048082019260009290919082900301818387803b15801561134d57600080fd5b505af1158015611361573d6000803e3d6000fd5b5050600d805461ff001916610100179055505050505050565b60085481565b60075481565b600061139b670de0b6b3a76400006000610ba6565b905090565b603281565b60065481565b600054600160a060020a031633146113c257600080fd5b635a2d5a004211156113d357600080fd5b600b54604080519182526020820183905280517fdc6b7fb4070913b683ac64f3f8277ce62edafe38aa6a745c209afb83c56d4d589281900390910190a1600b55565b600054600160a060020a0316331461142c57600080fd5b635a2d5a0042111561143d57600080fd5b600554604051600160a060020a038084169216907f638c5ddc377449aaff4480295d9a2badaf1c760258b9fe159be0e3aae99864fb90600090a360058054600160a060020a031916600160a060020a0392909216919091179055565b600154600160a060020a031681565b600054600160a060020a031633146114bf57600080fd5b635a2d5a004211156114d057600080fd5b600754604080519182526020820183905280517fda24b08c8dd5211861cbd763d68ed6681bc82d8c0b57feecb2b12b6a08da73629281900390910190a1600755565b600054600160a060020a0316331461152957600080fd5b635a2d5a0042111561153a57600080fd5b600254604051600160a060020a038084169216907f3c32673f6f3164beac0929065588e958c62b9ae087a486a272234f61cbd28b3190600090a360028054600160a060020a031916600160a060020a0392909216919091179055565b600054600160a060020a031633146115ad57600080fd5b600354604051600160a060020a038084169216907f0f37c6733428a3a65d46b7f1853a5ce4bfa3cf92d25322507a50bf23a0b5a0a890600090a360038054600160a060020a031916600160a060020a0392909216919091179055565b60008054819081908190600160a060020a0316331461162757600080fd5b600654421180611640575061163a610a3b565b60085410155b151561164b57600080fd5b600d54610100900460ff161561166057600080fd5b600a546000945084935083925061167d908663ffffffff610b3516565b600a55611688610bc4565b600160a060020a038088166000818152600c6020908152604080832054600254825160008051602061183583398151915281526004810196909652602486018d90529610604485018190529051909650949093169363d1a1beb4936064808501949193918390030190829087803b15801561170257600080fd5b505af1158015611716573d6000803e3d6000fd5b505050506040513d602081101561172c57600080fd5b5050600d805460ff19166001179055600160a060020a0386166000818152600c602090815260409182902054600854600954600a5485518b81529485018990528486019390935260608401899052608084018b905260a084019190915260c083015260e082015283151561010082015290517fd26cbe1e4ad3aac3c0576434d30cbefafb4a77e0a28ae8fe938d1db3e3052a5c918190036101200190a2505050505050565b600254600160a060020a031681565b600054600160a060020a031633146117f757600080fd5b60018054600160a060020a031916600160a060020a0392909216919091179055565b600d5460ff1681565b600c60205260009081526040902054815600d1a1beb400000000000000000000000000000000000000000000000000000000a165627a7a72305820c799ca22f2a02edeca9c4ebf2ccf150fdfb872a31dae9e6607d5862e02383a3c0029"
+undefined
+> 
+> 
+> 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
+RESULT:                                                                                                        2                              3
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.000000000000000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000           0.000000000000000000 Deployer
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 DEXOperator
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000           0.000000000000000000 User4
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000           0.000000000000000000 User5
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000           0.000000000000000000 User6
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000           0.000000000000000000 Fee
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ---------- Deploy Lib ----------
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+... 
+undefined
+> 
+DATA: var bttsLibAddress="0x332ceb425309f4ab99839300329a9626983323be";
+DATA: var bttsLibAbi=[{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApprove","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferFromCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"signedApproveAndCallSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"owner","type":"address"},{"name":"symbol","type":"string"},{"name":"name","type":"string"},{"name":"decimals","type":"uint8"},{"name":"initialSupply","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"name":"init","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedApproveHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"minter","type":"address"}],"name":"setMinter","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedTransferSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"}],"name":"approveAndCall","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedTransferFromHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedTransferHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"bttsVersion","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"enableTransfers","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"tokens","type":"uint256"},{"name":"lockAccount","type":"bool"}],"name":"mint","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedApproveSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"}],"name":"unlockAccount","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedTransferFromSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"name":"getCheckResultMessage","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"hash","type":"bytes32"},{"name":"sig","type":"bytes"}],"name":"ecrecoverFromSig","outputs":[{"name":"recoveredAddress","type":"address"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveAndCallCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"signingPrefix","outputs":[{"name":"","type":"bytes"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedApproveAndCallHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveAndCall","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"disableMinting","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"from","type":"address"},{"indexed":false,"name":"to","type":"address"}],"name":"MinterUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"},{"indexed":false,"name":"lockAccount","type":"bool"}],"name":"Mint","type":"event"},{"anonymous":false,"inputs":[],"name":"MintingDisabled","type":"event"},{"anonymous":false,"inputs":[],"name":"TransfersEnabled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"}],"name":"AccountUnlocked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Approval","type":"event"}];
+DATA: var bttsLib=eth.contract(bttsLibAbi).at(bttsLibAddress);
+RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
+RESULT:                                                                                                        2                              3
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.011006763900000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.011006763900000000           0.000000000000000000           0.000000000000000000 Deployer
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 DEXOperator
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000           0.000000000000000000 User4
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000           0.000000000000000000 User5
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000           0.000000000000000000 User6
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000           0.000000000000000000 Fee
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 10 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Lib - BTTSLib
+1
+> 
+RESULT: bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21299 txIx=0 txId=0x70dcc4db1852809e6c6dc378125769b57ab11a2c65bc9883f3e8ec7d7b7d14f9 @ 1538200467 Sat, 29 Sep 2018 05:54:27 UTC
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ---------- Deploy Factory ----------
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+... 
+undefined
+> 
+DATA: var bttsFactoryAddress="0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87";
+DATA: var bttsFactoryAbi=[{"constant":false,"inputs":[{"name":"symbol","type":"string"},{"name":"name","type":"string"},{"name":"decimals","type":"uint8"},{"name":"initialSupply","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"name":"deployBTTSTokenContract","outputs":[{"name":"bttsTokenAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"numberOfDeployedTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"decimals","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"deployedTokens","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"bttsTokenAddress","type":"address"},{"indexed":false,"name":"symbol","type":"string"},{"indexed":false,"name":"name","type":"string"},{"indexed":false,"name":"decimals","type":"uint8"},{"indexed":false,"name":"initialSupply","type":"uint256"},{"indexed":false,"name":"mintable","type":"bool"},{"indexed":false,"name":"transferable","type":"bool"}],"name":"BTTSTokenListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
+DATA: var bttsFactory=eth.contract(bttsFactoryAbi).at(bttsFactoryAddress);
+RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
+RESULT:                                                                                                        2                              3
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.020540293100000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.020540293100000000           0.000000000000000000           0.000000000000000000 Deployer
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 DEXOperator
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000           0.000000000000000000 User4
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000           0.000000000000000000 User5
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000           0.000000000000000000 User6
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000           0.000000000000000000 Fee
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 10 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 11 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy Factory - BTTSFactory
+1
+> 
+RESULT: bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3075332 costETH=0.0095335292 costUSD=2.747277109564 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21301 txIx=0 txId=0x4a9f6c2cb477536cad83928105c8e381ed15e21ea5436277b5111eeb6ceddbd0 @ 1538200469 Sat, 29 Sep 2018 05:54:29 UTC
+undefined
+> 
+RESULT: factoryContract.address=BTTSFactory:0xd8dc
+RESULT: factory.owner/new=Deployer:0xa11a/Null:0x0000
+RESULT: factory.numberOfDeployedTokens=0
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+RESULT: ---------- Deploy Tokens ----------
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+... 
+"0xdb41e99a0dd02e365f342bbd10f1ae04ca8f88eeec036a3fbbf728d3f62d5f35"
+> 
+... 
+undefined
+> 
+RESULT: factoryContractAddress=0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87
+RESULT: get BTTSTokenListing 0 #21303 {"bttsTokenAddress":"0xc5296efc04a152de6ca6040fe20eeaf11a34a3ec","decimals":"18","initialSupply":"1e+24","mintable":false,"name":"Abc","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"ABC","transferable":true}
+RESULT: get BTTSTokenListing 1 #21303 {"bttsTokenAddress":"0x6cd262f5b2afddd74eb6a0cae4fd335f1daa5f8b","decimals":"18","initialSupply":"1e+24","mintable":false,"name":"Def","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"DEF","transferable":true}
+RESULT: get BTTSTokenListing 2 #21303 {"bttsTokenAddress":"0xed4c38bcc84fd9236ef8c49f516f046f9655d73d","decimals":"18","initialSupply":"1e+24","mintable":false,"name":"Ghi","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GHI","transferable":true}
+RESULT: get BTTSTokenListing 3 #21303 {"bttsTokenAddress":"0x3148d314bed8be94bd90d982877c815f82722a3c","decimals":"18","initialSupply":"1e+24","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
+undefined
+> 
+... 
+... 
+... 
+... 
+... 
+undefined
+> 
+RESULT:  # Account                                             EtherBalanceChange                            ABC                            DEF Name
+RESULT:                                                                                                      GHI                            GZE
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.044183025900000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.044183025900000000     1000000.000000000000000000     1000000.000000000000000000 Deployer
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 DEXOperator
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000           0.000000000000000000 User4
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000           0.000000000000000000 User5
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000           0.000000000000000000 User6
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000           0.000000000000000000 Fee
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 10 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 11 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 12 0xc5296efc04a152de6ca6040fe20eeaf11a34a3ec        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'ABC' 'Abc'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 13 0x6cd262f5b2afddd74eb6a0cae4fd335f1daa5f8b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'DEF' 'Def'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 14 0xed4c38bcc84fd9236ef8c49f516f046f9655d73d        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GHI' 'Ghi'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 15 0x3148d314bed8be94bd90d982877c815f82722a3c        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000 Total Token Balances
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+... 
+... 
+RESULT: PASS Deploy Tokens - Token 'ABC' 'Abc'
+RESULT: PASS Deploy Tokens - Token 'DEF' 'Def'
+RESULT: PASS Deploy Tokens - Token 'GHI' 'Ghi'
+RESULT: PASS Deploy Tokens - Token 'GZE' 'GazeCoin'
+1
+> 
+... 
+... 
+RESULT: tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1917842 costETH=0.0059453102 costUSD=1.713260040334 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21303 txIx=0 txId=0x0c400a606abbff36b5d83ad687c5984ab3dc0d90d1402440b29841993099a605 @ 1538200471 Sat, 29 Sep 2018 05:54:31 UTC
+RESULT: tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1902842 costETH=0.0058988102 costUSD=1.699860135334 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21303 txIx=1 txId=0x98a8e639500611bd4d19b797a9da738cc34b7c8fdca3749f575699569b242b25 @ 1538200471 Sat, 29 Sep 2018 05:54:31 UTC
+RESULT: tokenTx[2] status=0x1 Success gas=6000000 gasUsed=1902842 costETH=0.0058988102 costUSD=1.699860135334 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21303 txIx=2 txId=0x3184297d447562558f9e5463f17da04827ea0ce30183c5b9f27e574f70504d71 @ 1538200471 Sat, 29 Sep 2018 05:54:31 UTC
+RESULT: tokenTx[3] status=0x1 Success gas=6000000 gasUsed=1903162 costETH=0.0058998022 costUSD=1.700145999974 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21303 txIx=3 txId=0xdb41e99a0dd02e365f342bbd10f1ae04ca8f88eeec036a3fbbf728d3f62d5f35 @ 1538200471 Sat, 29 Sep 2018 05:54:31 UTC
+undefined
+> 
+RESULT: 
+undefined
+> 
+... 
+... 
+... 
+RESULT: token0ContractAddress=Token 'ABC' 'Abc':0xc529
+RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
+RESULT: token0.details='ABC' 'Abc' 18 dp
+RESULT: token0.totalSupply=1000000
+RESULT: token0.Transfer 0 #21303 from=Null:0x0000 to=Deployer:0xa11a tokens=1000000
+RESULT: 
+RESULT: token1ContractAddress=Token 'DEF' 'Def':0x6cd2
+RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
+RESULT: token1.details='DEF' 'Def' 18 dp
+RESULT: token1.totalSupply=1000000
+RESULT: token1.Transfer 0 #21303 from=Null:0x0000 to=Deployer:0xa11a tokens=1000000
+RESULT: 
+RESULT: token2ContractAddress=Token 'GHI' 'Ghi':0xed4c
+RESULT: token2.owner/new=Deployer:0xa11a/Null:0x0000
+RESULT: token2.details='GHI' 'Ghi' 18 dp
+RESULT: token2.totalSupply=1000000
+RESULT: token2.Transfer 0 #21303 from=Null:0x0000 to=Deployer:0xa11a tokens=1000000
+RESULT: 
+RESULT: token3ContractAddress=Token 'GZE' 'GazeCoin':0x3148
+RESULT: token3.owner/new=Deployer:0xa11a/Null:0x0000
+RESULT: token3.details='GZE' 'GazeCoin' 18 dp
+RESULT: token3.totalSupply=1000000
+RESULT: token3.Transfer 0 #21303 from=Null:0x0000 to=Deployer:0xa11a tokens=1000000
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ---------- Deploy FxxxLandRush ----------
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
+... 
+undefined
+> 
+... 
+undefined
+> 
+DATA: var landRushAddress="0x022bfb654ced61e65f2869d87b5b3247514c606b";
+DATA: var landRushAbi=[{"constant":true,"inputs":[{"name":"ethAmount","type":"uint256"},{"name":"bonusPercent","type":"uint256"}],"name":"gzeFromEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TEAM_PERCENT_GZE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TIER3_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_teamWallet","type":"address"}],"name":"setTeamWallet","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"finalised","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"MIN_CONTRIBUTION_ETH","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"bonusList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"START_DATE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_endDate","type":"uint256"}],"name":"setEndDate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"TIER2_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"CAP_USD","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"capEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"wallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"USD_CENT_PER_GZE","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"teamWallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TOKEN_DECIMALS","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"generatedGze","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"contributedUsd","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"}],"name":"roundUp","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"lockedAccountThresholdEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"tokens","type":"uint256"},{"name":"token","type":"address"},{"name":"","type":"bytes"}],"name":"receiveApproval","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"ethAmount","type":"uint256"},{"name":"bonusPercent","type":"uint256"}],"name":"addPrecommitment","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"lockedAccountThresholdUsd","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"finalise","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"contributedEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"usdPerKEther","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzePerEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"TIER1_BONUS","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"endDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"getBonusPercent","outputs":[{"name":"bonusPercent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_lockedAccountThresholdUsd","type":"uint256"}],"name":"setLockedAccountThresholdUsd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_bonusList","type":"address"}],"name":"setBonusList","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_usdPerKEther","type":"uint256"}],"name":"setUsdPerKEther","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_bttsToken","type":"address"}],"name":"setBTTSToken","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_wallet","type":"address"}],"name":"setWallet","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"gzeAmount","type":"uint256"}],"name":"addPrecommitmentAdjustment","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"bttsToken","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"precommitmentAdjusted","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"accountEthAmount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldBTTSToken","type":"address"},{"indexed":true,"name":"newBTTSToken","type":"address"}],"name":"BTTSTokenUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldWallet","type":"address"},{"indexed":true,"name":"newWallet","type":"address"}],"name":"WalletUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldTeamWallet","type":"address"},{"indexed":true,"name":"newTeamWallet","type":"address"}],"name":"TeamWalletUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldBonusList","type":"address"},{"indexed":true,"name":"newBonusList","type":"address"}],"name":"BonusListUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldEndDate","type":"uint256"},{"indexed":false,"name":"newEndDate","type":"uint256"}],"name":"EndDateUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldUsdPerKEther","type":"uint256"},{"indexed":false,"name":"newUsdPerKEther","type":"uint256"}],"name":"UsdPerKEtherUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldEthLockedThreshold","type":"uint256"},{"indexed":false,"name":"newEthLockedThreshold","type":"uint256"}],"name":"LockedAccountThresholdUsdUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"addr","type":"address"},{"indexed":false,"name":"ethAmount","type":"uint256"},{"indexed":false,"name":"ethRefund","type":"uint256"},{"indexed":false,"name":"accountEthAmount","type":"uint256"},{"indexed":false,"name":"usdAmount","type":"uint256"},{"indexed":false,"name":"gzeAmount","type":"uint256"},{"indexed":false,"name":"contributedEth","type":"uint256"},{"indexed":false,"name":"contributedUsd","type":"uint256"},{"indexed":false,"name":"generatedGze","type":"uint256"},{"indexed":false,"name":"lockAccount","type":"bool"}],"name":"Contributed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
+DATA: var landRush=eth.contract(landRushAbi).at(landRushAddress);
+RESULT:  # Account                                             EtherBalanceChange                            ABC                            DEF Name
+RESULT:                                                                                                      GHI                            GZE
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.049904320800000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.049904320800000000     1000000.000000000000000000     1000000.000000000000000000 Deployer
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000
+RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 DEXOperator
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000           0.000000000000000000 User4
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000           0.000000000000000000 User5
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000           0.000000000000000000 User6
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT:  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000           0.000000000000000000 Fee
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 10 0x332ceb425309f4ab99839300329a9626983323be        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 11 0xd8dc1b690f36cf38e8032d751343c9e4df9bdf87        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 12 0xc5296efc04a152de6ca6040fe20eeaf11a34a3ec        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'ABC' 'Abc'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 13 0x6cd262f5b2afddd74eb6a0cae4fd335f1daa5f8b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'DEF' 'Def'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 14 0xed4c38bcc84fd9236ef8c49f516f046f9655d73d        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GHI' 'Ghi'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 15 0x3148d314bed8be94bd90d982877c815f82722a3c        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: 16 0x022bfb654ced61e65f2869d87b5b3247514c606b        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
+RESULT:                                                                                     0.000000000000000000           0.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000 Total Token Balances
+RESULT:                                                                               1000000.000000000000000000     1000000.000000000000000000
+RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
+RESULT: 
+undefined
+> 
+RESULT: PASS Deploy FxxxLandRush - FxxxLandRush
+1
+> 
+RESULT: landRushTx status=0x1 Success gas=5000000 gasUsed=1845579 costETH=0.0057212949 costUSD=1.648705551333 @ ETH/USD=288.17 gasPrice=3.1 gwei block=21309 txIx=0 txId=0xfbd8a8c198e81082392b29336ec7749729a54b5c2e192aaa108f8b9ccae75851 @ 1538200477 Sat, 29 Sep 2018 05:54:37 UTC
+undefined
+> 
+RESULT: 
+undefined
+> 
 > 
 > 
