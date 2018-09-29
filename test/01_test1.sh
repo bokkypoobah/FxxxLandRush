@@ -234,7 +234,7 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var deployGroup1Message = "Deploy Group #2";
+var deployGroup1Message = "Deploy Group #1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployGroup1Message + " ----------");
 var deployGroup1_setMinterTx = tokens[$AAA].setMinter(landRushAddress, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
@@ -263,6 +263,27 @@ for (i = 0; i < numberOfTokens; i++) {
   console.log("RESULT: ");
 }
 console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute1Message = "Contribute #1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + contribute1Message + " ----------");
+var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, new BigNumber(1000).shift(18), "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(contribute1_1Tx, deployGroup1Message + " - AAA.setMinter(landRush)");
+printTxData("contribute1_1Tx", contribute1_1Tx);
+console.log("RESULT: ");
+printLandRushContractDetails();
+console.log("RESULT: ");
+for (i = 0; i < numberOfTokens; i++) {
+  printTokenContractDetails(i);
+  console.log("RESULT: ");
+}
+console.log("RESULT: ");
+
 
 
 EOF

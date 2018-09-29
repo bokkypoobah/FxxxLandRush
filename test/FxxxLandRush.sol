@@ -293,7 +293,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         }
     }
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
+        require(token == address(gzeToken));
         ERC20Interface(token).transferFrom(from, address(this), tokens);
+        bttsToken.mint(from, tokens, false);
     }
     function () public payable {
         require((now >= startDate && now <= endDate) || (msg.sender == owner && msg.value == MIN_CONTRIBUTION_ETH));
