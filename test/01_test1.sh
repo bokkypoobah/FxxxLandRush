@@ -325,11 +325,11 @@ console.log("RESULT: ");
 var contribute1Message = "Contribute #1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + contribute1Message + " ----------");
-var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, new BigNumber(1000).shift(18), "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
+var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, new BigNumber(200000).shift(18), "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(contribute1_1Tx, deployGroup1Message + " - AAA.setMinter(landRush)");
+failIfTxStatusError(contribute1_1Tx, contribute1Message + " - GZE.approveAndCall(landRush, 200000, \"\")");
 printTxData("contribute1_1Tx", contribute1_1Tx);
 console.log("RESULT: ");
 printLandRushContractDetails();
