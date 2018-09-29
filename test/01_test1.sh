@@ -153,6 +153,38 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
+var deployPriceFeedMessage = "Deploy PriceFeed";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + deployPriceFeedMessage + " ----------");
+var priceFeedContract = web3.eth.contract(priceFeedAbi);
+var priceFeedTx = null;
+var priceFeedAddress = null;
+var priceFeed = priceFeedContract.new(new BigNumber($ETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        priceFeedTx = contract.transactionHash;
+      } else {
+        priceFeedAddress = contract.address;
+        addAccount(priceFeedAddress, "ETH/USD PriceFeed");
+        addPriceFeedContractAddressAndAbi(priceFeedAddress, priceFeedAbi);
+        console.log("DATA: var priceFeedAddress=\"" + priceFeedAddress + "\";");
+        console.log("DATA: var priceFeedAbi=" + JSON.stringify(priceFeedAbi) + ";");
+        console.log("DATA: var priceFeed=eth.contract(priceFeedAbi).at(priceFeedAddress);");
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(priceFeedTx, deployPriceFeedMessage + " - PriceFeed");
+printTxData("priceFeedTx", priceFeedTx);
+printPriceFeedContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
 var deployTokens1Message = "Deploy Tokens";
 var numberOfTokens = $NUMBEROFTOKENS;
 var _tokenSymbols = "$TOKENSYMBOLS".split(":");
@@ -169,7 +201,6 @@ var _tokenMintable = "$TOKENMINTABLE".split(":");
 console.log("RESULT: _tokenMintable = " + JSON.stringify(_tokenMintable));
 var transferable = true;
 var i;
-
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployTokens1Message + " ----------");
 var tokenTxs = [];
@@ -210,7 +241,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], wallet, $START_DATE, $END_DATE, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], priceFeedAddress, wallet, $START_DATE, $END_DATE, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

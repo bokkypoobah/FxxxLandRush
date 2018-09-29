@@ -61,6 +61,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
 
     BTTSTokenInterface public bttsToken;
     BTTSTokenInterface public gzeToken;
+    MakerDAOPriceFeedInterface public priceFeed;
     uint8 public constant TOKEN_DECIMALS = 18;
 
     address public wallet;
@@ -101,15 +102,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event LockedAccountThresholdUsdUpdated(uint oldEthLockedThreshold, uint newEthLockedThreshold);
     event Contributed(address indexed addr, uint ethAmount, uint ethRefund, uint accountEthAmount, uint usdAmount, uint gzeAmount, uint contributedEth, uint contributedUsd, uint generatedGze, bool lockAccount);
 
-    constructor(address _bttsToken, address _gzeToken, address _wallet, uint _startDate, uint _endDate) public {
-        require(_bttsToken != 0);
-        require(_gzeToken != 0);
-        require(_wallet != 0);
-        require(_startDate >= now);
-        require(_endDate >= now);
+    constructor(address _bttsToken, address _gzeToken, address _priceFeed, address _wallet, uint _startDate, uint _endDate) public {
+        require(_bttsToken != 0 && _gzeToken != 0 && _priceFeed != 0 && _wallet != 0);
+        require(_startDate >= now && _endDate > _startDate);
         initOwned(msg.sender);
         bttsToken = BTTSTokenInterface(_bttsToken);
         gzeToken = BTTSTokenInterface(_gzeToken);
+        priceFeed = MakerDAOPriceFeedInterface(_priceFeed);
         wallet = _wallet;
         startDate = _startDate;
         endDate = _endDate;

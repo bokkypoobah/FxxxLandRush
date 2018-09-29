@@ -405,6 +405,42 @@ function printFactoryContractDetails() {
 
 
 //-----------------------------------------------------------------------------
+// PriceFeed Contract
+//-----------------------------------------------------------------------------
+var priceFeedContractAddress = null;
+var priceFeedContractAbi = null;
+function addPriceFeedContractAddressAndAbi(address, abi) {
+  priceFeedContractAddress = address;
+  priceFeedContractAbi = abi;
+}
+var priceFeedFromBlock = 0;
+function printPriceFeedContractDetails() {
+  if (priceFeedFromBlock == 0) {
+    priceFeedFromBlock = baseBlock;
+  }
+  console.log("RESULT: priceFeedContract.address=" + getShortAddressName(priceFeedContractAddress));
+  if (priceFeedContractAddress != null && priceFeedContractAbi != null) {
+    var contract = eth.contract(priceFeedContractAbi).at(priceFeedContractAddress);
+    console.log("RESULT: priceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: priceFeed.value=" + contract.value().shift(-18));
+    console.log("RESULT: priceFeed.hasValue=" + contract.hasValue());
+
+    var i;
+    var latestBlock = eth.blockNumber;
+
+    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: priceFeedFromBlock, toBlock: latestBlock });
+    i = 0;
+    ownershipTransferredEvents.watch(function (error, result) {
+      console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    ownershipTransferredEvents.stopWatching();
+
+    priceFeedFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
 // LandRush Contract
 //-----------------------------------------------------------------------------
 var landRushContractAddress = null;
@@ -424,6 +460,7 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
     console.log("RESULT: landRush.bttsToken=" + getShortAddressName(contract.bttsToken()));
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
+    console.log("RESULT: landRush.priceFeed=" + getShortAddressName(contract.priceFeed()));
     console.log("RESULT: landRush.wallet=" + getShortAddressName(contract.wallet()));
     console.log("RESULT: landRush.startDate=" + new Date(contract.startDate() * 1000).toString());
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
