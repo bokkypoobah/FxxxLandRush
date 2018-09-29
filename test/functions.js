@@ -10,40 +10,24 @@ var accountNames = {};
 
 addAccount(eth.accounts[0], "Miner");
 addAccount(eth.accounts[1], "Deployer");
-addAccount(eth.accounts[2], "DEXOperator");
+addAccount(eth.accounts[2], "Wallet");
 addAccount(eth.accounts[3], "User1");
 addAccount(eth.accounts[4], "User2");
 addAccount(eth.accounts[5], "User3");
-addAccount(eth.accounts[6], "User4");
-addAccount(eth.accounts[7], "User5");
-addAccount(eth.accounts[8], "User6");
-addAccount(eth.accounts[9], "Fee");
-// addAccount(eth.accounts[10], "Account #10");
-// addAccount(eth.accounts[11], "Account #11");
 
 var miner = eth.accounts[0];
 var deployer = eth.accounts[1];
-var dexOperator = eth.accounts[2];
+var wallet = eth.accounts[2];
 var user1 = eth.accounts[3];
 var user2 = eth.accounts[4];
 var user3 = eth.accounts[5];
-var user4 = eth.accounts[6];
-var user5 = eth.accounts[7];
-var user6 = eth.accounts[8];
-var feeAccount = eth.accounts[9];
-// var account10 = eth.accounts[10];
-// var account11 = eth.accounts[11];
 
 console.log("DATA: var miner=\"" + eth.accounts[0] + "\";");
 console.log("DATA: var deployer=\"" + eth.accounts[1] + "\";");
-console.log("DATA: var dexOperator=\"" + eth.accounts[2] + "\";");
+console.log("DATA: var wallet=\"" + eth.accounts[2] + "\";");
 console.log("DATA: var user1=\"" + eth.accounts[3] + "\";");
 console.log("DATA: var user2=\"" + eth.accounts[4] + "\";");
 console.log("DATA: var user3=\"" + eth.accounts[5] + "\";");
-console.log("DATA: var user4=\"" + eth.accounts[6] + "\";");
-console.log("DATA: var user5=\"" + eth.accounts[7] + "\";");
-console.log("DATA: var user6=\"" + eth.accounts[8] + "\";");
-console.log("DATA: var feeAccount=\"" + eth.accounts[9] + "\";");
 
 var baseBlock = eth.blockNumber;
 
@@ -93,25 +77,25 @@ function printBalances() {
   var j;
   var totalTokenBalances = [new BigNumber(0), new BigNumber(0), new BigNumber(0), new BigNumber(0)];
   console.log("RESULT:  # Account                                             EtherBalanceChange               " + padLeft(_symbols[0], 16) + "               " + padLeft(_symbols[1], 16) + " Name");
-  console.log("RESULT:                                                                                         " + padLeft(_symbols[2], 16) + "               " + padLeft(_symbols[3], 16));
+  // console.log("RESULT:                                                                                         " + padLeft(_symbols[2], 16) + "               " + padLeft(_symbols[3], 16));
   console.log("RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------");
   accounts.forEach(function(e) {
     var etherBalanceBaseBlock = eth.getBalance(e, baseBlock);
     var etherBalance = web3.fromWei(eth.getBalance(e).minus(etherBalanceBaseBlock), "ether");
     var tokenBalances = [];
-    for (j = 0; j < 4; j++) {
+    for (j = 0; j < 2; j++) {
       tokenBalances[j] = _tokens[j] == null ? new BigNumber(0) : _tokens[j].balanceOf(e).shift(-_decimals[j]);
       totalTokenBalances[j] = totalTokenBalances[j].add(tokenBalances[j]);
     }
     console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " +
       padToken(tokenBalances[0], _decimals[0]) + " " + padToken(tokenBalances[1], _decimals[1]) + " " + accountNames[e]);
-      console.log("RESULT:                                                                           " +
-        padToken(tokenBalances[2], _decimals[2]) + " " + padToken(tokenBalances[3], _decimals[3]));
+    // console.log("RESULT:                                                                           " +
+    //   padToken(tokenBalances[2], _decimals[2]) + " " + padToken(tokenBalances[3], _decimals[3]));
     i++;
   });
   console.log("RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------");
   console.log("RESULT:                                                                           " + padToken(totalTokenBalances[0], _decimals[0]) + " " + padToken(totalTokenBalances[1], _decimals[1]) + " Total Token Balances");
-  console.log("RESULT:                                                                           " + padToken(totalTokenBalances[2], _decimals[2]) + " " + padToken(totalTokenBalances[3], _decimals[3]));
+  // console.log("RESULT:                                                                           " + padToken(totalTokenBalances[2], _decimals[2]) + " " + padToken(totalTokenBalances[3], _decimals[3]));
   console.log("RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------");
   console.log("RESULT: ");
 }
