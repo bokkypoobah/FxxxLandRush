@@ -180,9 +180,10 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     using SafeMath for uint;
 
     BTTSTokenInterface public bttsToken;
+    BTTSTokenInterface public gzeToken;
     uint8 public constant TOKEN_DECIMALS = 18;
 
-    address public wallet = 0x8cD8baa410E9172b949f2c4433D3b5905F8606fF;
+    address public wallet;
     address public teamWallet = 0xb4eC550893D31763C02EBDa44Dff90b7b5a62656;
     uint public constant TEAM_PERCENT_GZE = 30;
 
@@ -191,12 +192,8 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     uint public constant TIER2_BONUS = 20;
     uint public constant TIER3_BONUS = 15;
 
-    // Start 10 Dec 2017 11:00 EST => 10 Dec 2017 16:00 UTC => 11 Dec 2017 03:00 AEST
-    // new Date(1512921600 * 1000).toUTCString() => "Sun, 10 Dec 2017 16:00:00 UTC"
-    uint public constant START_DATE = 1512921600;
-    // End 21 Dec 2017 11:00 EST => 21 Dec 2017 16:00 UTC => 21 Dec 2017 03:00 AEST
-    // new Date(1513872000 * 1000).toUTCString() => "Thu, 21 Dec 2017 16:00:00 UTC"
-    uint public endDate = 1513872000;
+    uint public startDate;
+    uint public endDate;
 
     // ETH/USD 9 Dec 2017 11:00 EST => 9 Dec 2017 16:00 UTC => 10 Dec 2017 03:00 AEST => 489.44 from CMC
     uint public usdPerKEther = 489440;
@@ -215,22 +212,27 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     bool public precommitmentAdjusted;
     bool public finalised;
 
-    event BTTSTokenUpdated(address indexed oldBTTSToken, address indexed newBTTSToken);
     event WalletUpdated(address indexed oldWallet, address indexed newWallet);
     event TeamWalletUpdated(address indexed oldTeamWallet, address indexed newTeamWallet);
     event BonusListUpdated(address indexed oldBonusList, address indexed newBonusList);
+    event StartDateUpdated(uint oldStartDate, uint newStartDate);
     event EndDateUpdated(uint oldEndDate, uint newEndDate);
     event UsdPerKEtherUpdated(uint oldUsdPerKEther, uint newUsdPerKEther);
     event LockedAccountThresholdUsdUpdated(uint oldEthLockedThreshold, uint newEthLockedThreshold);
     event Contributed(address indexed addr, uint ethAmount, uint ethRefund, uint accountEthAmount, uint usdAmount, uint gzeAmount, uint contributedEth, uint contributedUsd, uint generatedGze, bool lockAccount);
 
-    constructor() public {
+    constructor(address _bttsToken, address _gzeToken, address _wallet, uint _startDate, uint _endDate) public {
+        require(_bttsToken != 0);
+        require(_gzeToken != 0);
+        require(_wallet != 0);
+        require(_startDate >= now);
+        require(_endDate >= now);
         initOwned(msg.sender);
-    }
-    function setBTTSToken(address _bttsToken) public onlyOwner {
-        require(now <= START_DATE);
-        emit BTTSTokenUpdated(address(bttsToken), _bttsToken);
         bttsToken = BTTSTokenInterface(_bttsToken);
+        gzeToken = BTTSTokenInterface(_gzeToken);
+        wallet = _wallet;
+        startDate = _startDate;
+        endDate = _endDate;
     }
     function setWallet(address _wallet) public onlyOwner {
         emit WalletUpdated(wallet, _wallet);
@@ -241,9 +243,14 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         teamWallet = _teamWallet;
     }
     function setBonusList(address _bonusList) public onlyOwner {
-        require(now <= START_DATE);
+        require(now <= startDate);
         emit BonusListUpdated(address(bonusList), _bonusList);
         bonusList = BonusListInterface(_bonusList);
+    }
+    function setStartDate(uint _startDate) public onlyOwner {
+        require(_startDate >= now);
+        emit StartDateUpdated(startDate, _startDate);
+        startDate = _startDate;
     }
     function setEndDate(uint _endDate) public onlyOwner {
         require(_endDate >= now);
@@ -251,12 +258,12 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         endDate = _endDate;
     }
     function setUsdPerKEther(uint _usdPerKEther) public onlyOwner {
-        require(now <= START_DATE);
+        require(now <= startDate);
         emit UsdPerKEtherUpdated(usdPerKEther, _usdPerKEther);
         usdPerKEther = _usdPerKEther;
     }
     function setLockedAccountThresholdUsd(uint _lockedAccountThresholdUsd) public onlyOwner {
-        require(now <= START_DATE);
+        require(now <= startDate);
         emit LockedAccountThresholdUsdUpdated(lockedAccountThresholdUsd, _lockedAccountThresholdUsd);
         lockedAccountThresholdUsd = _lockedAccountThresholdUsd;
     }
@@ -289,7 +296,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         ERC20Interface(token).transferFrom(from, address(this), tokens);
     }
     function () public payable {
-        require((now >= START_DATE && now <= endDate) || (msg.sender == owner && msg.value == MIN_CONTRIBUTION_ETH));
+        require((now >= startDate && now <= endDate) || (msg.sender == owner && msg.value == MIN_CONTRIBUTION_ETH));
         require(contributedEth < capEth());
         require(msg.value >= MIN_CONTRIBUTION_ETH);
         uint bonusPercent = getBonusPercent(msg.sender);

@@ -149,11 +149,6 @@ printTxData("bttsFactoryTx", bttsFactoryTx);
 printFactoryContractDetails();
 console.log("RESULT: ");
 
-// Tokens
-var ABC = 0;
-var DEF = 1;
-var GHI = 2;
-var GZE = 3;
 
 // -----------------------------------------------------------------------------
 var deployTokens1Message = "Deploy Tokens";
@@ -163,12 +158,13 @@ var _tokenNames = "$TOKENNAMES".split(":");
 var _tokenDecimals = "$TOKENDECIMALS".split(":");
 var _tokenInitialSupplies = "$TOKENINITIALSUPPLIES".split(":");
 var _tokenInitialDistributions = "$TOKENINITIALDISTRIBUTION".split(":");
+var _tokenMintable = "$TOKENMINTABLE".split(":");
 // console.log("RESULT: _tokenSymbols = " + JSON.stringify(_tokenSymbols));
 // console.log("RESULT: _tokenNames = " + JSON.stringify(_tokenNames));
 // console.log("RESULT: _tokenDecimals = " + JSON.stringify(_tokenDecimals));
 // console.log("RESULT: _tokenInitialSupplies = " + JSON.stringify(_tokenInitialSupplies));
 // console.log("RESULT: _tokenInitialDistributions = " + JSON.stringify(_tokenInitialDistributions));
-var mintable = false;
+console.log("RESULT: _tokenMintable = " + JSON.stringify(_tokenMintable));
 var transferable = true;
 var i;
 
@@ -177,7 +173,7 @@ console.log("RESULT: ---------- " + deployTokens1Message + " ----------");
 var tokenTxs = [];
 var tokens = [];
 for (i = 0; i < numberOfTokens; i++) {
-  tokenTxs[i] = bttsFactory.deployBTTSTokenContract(_tokenSymbols[i], _tokenNames[i], _tokenDecimals[i], _tokenInitialSupplies[i], mintable, transferable, {from: deployer, gas: 6000000, gasPrice: defaultGasPrice});
+  tokenTxs[i] = bttsFactory.deployBTTSTokenContract(_tokenSymbols[i], _tokenNames[i], _tokenDecimals[i], _tokenInitialSupplies[i], _tokenMintable[i] == "true", transferable, {from: deployer, gas: 6000000, gasPrice: defaultGasPrice});
 }
 while (txpool.status.pending > 0) {
 }
@@ -212,7 +208,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new({from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], wallet, $START_DATE, $END_DATE, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -220,7 +216,7 @@ var landRush = landRushContract.new({from: deployer, data: landRushBin, gas: 500
       } else {
         landRushAddress = contract.address;
         addAccount(landRushAddress, "FxxxLandRush");
-        // addDexOneExchangeContractAddressAndAbi(dexzAddress, dexzAbi);
+        addLandRushContractAddressAndAbi(landRushAddress, landRushAbi);
         console.log("DATA: var landRushAddress=\"" + landRushAddress + "\";");
         console.log("DATA: var landRushAbi=" + JSON.stringify(landRushAbi) + ";");
         console.log("DATA: var landRush=eth.contract(landRushAbi).at(landRushAddress);");
@@ -233,6 +229,39 @@ while (txpool.status.pending > 0) {
 printBalances();
 failIfTxStatusError(landRushTx, deployLandRushMessage + " - FxxxLandRush");
 printTxData("landRushTx", landRushTx);
+printLandRushContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var deployGroup1Message = "Deploy Group #2";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + deployGroup1Message + " ----------");
+var deployGroup1_setMinterTx = tokens[$AAA].setMinter(landRushAddress, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+var users = [user1, user2, user3];
+var deployGroup1_Txs = [];
+users.forEach(function(u) {
+  for (i = 0; i < numberOfTokens; i++) {
+    var tx = tokens[i].transfer(u, new BigNumber(_tokenInitialDistributions[i]).shift(_tokenDecimals[i]), {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+    deployGroup1_Txs.push(tx);
+  }
+});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(deployGroup1_setMinterTx, deployGroup1Message + " - AAA.setMinter(landRush)");
+deployGroup1_Txs.forEach(function(t) {
+  failIfTxStatusError(t, deployGroup1Message + " - Distribute tokens - " + t);
+});
+printTxData("deployGroup1_setMinterTx", deployGroup1_setMinterTx);
+deployGroup1_Txs.forEach(function(t) {
+  printTxData("", t);
+});
+console.log("RESULT: ");
+for (i = 0; i < numberOfTokens; i++) {
+  printTokenContractDetails(i);
+  console.log("RESULT: ");
+}
 console.log("RESULT: ");
 
 
