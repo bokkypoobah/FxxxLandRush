@@ -43,6 +43,7 @@ solc_0.4.20 --version | tee -a $TEST1OUTPUT
 echo "var bttsFactoryOutput=`solc_0.4.20 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $BTTSFACTORYSOL`;" > $BTTSFACTORYJS
 
 solc_0.4.25 --version | tee -a $TEST1OUTPUT
+echo "var landRushOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $LANDRUSHSOL`;" > $LANDRUSHJS
 
 #echo "var dexzOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $EXCHANGESOL`;" > $EXCHANGEJS
 #echo "var mintableTokenOutput=`solc_0.4.24 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $MINTABLETOKENSOL`;" > $MINTABLETOKENJS
@@ -56,8 +57,14 @@ fi
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$BTTSFACTORYJS");
+loadScript("$LANDRUSHJS");
 loadScript("lookups.js");
 loadScript("functions.js");
+
+exit;
+LANDRUSHSOL=FxxxLandRush.sol
+LANDRUSHJS=FxxxLandRush.js
+
 
 var bttsLibAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].abi);
 var bttsLibBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].bin;
