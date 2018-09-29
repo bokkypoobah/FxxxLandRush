@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// MakerDAO "pip" Pricefeed Interface
+// Pricefeed Interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
-contract MakerDAOPriceFeedInterface {
+contract PriceFeedInterface {
     function peek() public view returns (bytes32 _value, bool _hasValue);
 }

@@ -67,8 +67,8 @@ var bttsFactoryAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTT
 var bttsFactoryBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].bin;
 var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
 var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
-var priceFeedAbi = JSON.parse(priceFeedOutput.contracts["$PRICEFEEDSOL:MakerDAOPriceFeedSimulator"].abi);
-var priceFeedBin = "0x" + priceFeedOutput.contracts["$PRICEFEEDSOL:MakerDAOPriceFeedSimulator"].bin;
+var priceFeedAbi = JSON.parse(priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].abi);
+var priceFeedBin = "0x" + priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].bin;
 
 // console.log("DATA: bttsLibAbi=" + JSON.stringify(bttsLibAbi));
 // console.log("DATA: bttsLibBin=" + JSON.stringify(bttsLibBin));
@@ -153,24 +153,43 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var deployPriceFeedMessage = "Deploy PriceFeed";
+var deployPriceFeedMessage = "Deploy PriceFeeds";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployPriceFeedMessage + " ----------");
-var priceFeedContract = web3.eth.contract(priceFeedAbi);
-var priceFeedTx = null;
-var priceFeedAddress = null;
-var priceFeed = priceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var ethUsdPriceFeedContract = web3.eth.contract(priceFeedAbi);
+var ethUsdPriceFeedTx = null;
+var ethUsdPriceFeedAddress = null;
+var ethUsdPriceFeed = ethUsdPriceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        priceFeedTx = contract.transactionHash;
+        ethUsdPriceFeedTx = contract.transactionHash;
       } else {
-        priceFeedAddress = contract.address;
-        addAccount(priceFeedAddress, "ETH/USD PriceFeed");
-        addPriceFeedContractAddressAndAbi(priceFeedAddress, priceFeedAbi);
-        console.log("DATA: var priceFeedAddress=\"" + priceFeedAddress + "\";");
-        console.log("DATA: var priceFeedAbi=" + JSON.stringify(priceFeedAbi) + ";");
-        console.log("DATA: var priceFeed=eth.contract(priceFeedAbi).at(priceFeedAddress);");
+        ethUsdPriceFeedAddress = contract.address;
+        addAccount(ethUsdPriceFeedAddress, "ETH/USD PriceFeed");
+        addEthUsdPriceFeedContractAddressAndAbi(ethUsdPriceFeedAddress, priceFeedAbi);
+        console.log("DATA: var ethUsdPriceFeedAddress=\"" + ethUsdPriceFeedAddress + "\";");
+        console.log("DATA: var ethUsdPriceFeedAbi=" + JSON.stringify(priceFeedAbi) + ";");
+        console.log("DATA: var ethUsdPriceFeed=eth.contract(ethUsdPriceFeedAbi).at(ethUsdPriceFeedAddress);");
+      }
+    }
+  }
+);
+var gzeEthPriceFeedContract = web3.eth.contract(priceFeedAbi);
+var gzeEthPriceFeedTx = null;
+var gzeEthPriceFeedAddress = null;
+var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        gzeEthPriceFeedTx = contract.transactionHash;
+      } else {
+        gzeEthPriceFeedAddress = contract.address;
+        addAccount(gzeEthPriceFeedAddress, "GZE/ETH PriceFeed");
+        addGzeEthPriceFeedContractAddressAndAbi(gzeEthPriceFeedAddress, priceFeedAbi);
+        console.log("DATA: var gzeEthPriceFeedAddress=\"" + gzeEthPriceFeedAddress + "\";");
+        console.log("DATA: var gzeEthPriceFeedAbi=" + JSON.stringify(priceFeedAbi) + ";");
+        console.log("DATA: var gzeEthPriceFeed=eth.contract(gzeEthPriceFeedAbi).at(gzeEthPriceFeedAddress);");
       }
     }
   }
@@ -178,9 +197,12 @@ var priceFeed = priceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), t
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(priceFeedTx, deployPriceFeedMessage + " - PriceFeed");
-printTxData("priceFeedTx", priceFeedTx);
-printPriceFeedContractDetails();
+failIfTxStatusError(ethUsdPriceFeedTx, deployPriceFeedMessage + " - ETH/USD PriceFeed");
+failIfTxStatusError(gzeEthPriceFeedTx, deployPriceFeedMessage + " - GZE/ETH PriceFeed");
+printTxData("ethUsdPriceFeedTx", ethUsdPriceFeedTx);
+printTxData("gzeEthPriceFeedTx", gzeEthPriceFeedTx);
+printEthUsdPriceFeedContractDetails();
+printGzeEthPriceFeedContractDetails();
 console.log("RESULT: ");
 
 
@@ -236,14 +258,13 @@ console.log("RESULT: ");
 var deployLandRushMessage = "Deploy FxxxLandRush";
 var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
 var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
-var initialGzeEth = new BigNumber($INITIALGZEETH).shift(18);
 var initialParcelUsd = new BigNumber($INITIALPARCELUSD).shift(18);
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], priceFeedAddress, wallet, $START_DATE, $END_DATE, initialGzeEth, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, wallet, $START_DATE, $END_DATE, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

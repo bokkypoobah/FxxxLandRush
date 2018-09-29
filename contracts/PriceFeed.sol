@@ -1,27 +1,23 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's MakerDAO ETH/USD Pricefeed Simulator v1.00
+// BokkyPooBah's Pricefeed compatible with MakerDAO's "pip" PriceFeed
 //
-// Simulates pricefeed on the Ethereum mainnet at
+// Used to simulate the MakerDAO ETH/USD pricefeed on the Ethereum mainnet at
 //   https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B
+// Used as a manual feed for GZE/ETH
 //
-// https://github.com/bokkypoobah/BokkyPooBahsDerivatives
 //
-//
-// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018.
-//
-// GNU Lesser General Public License 3.0
-// https://www.gnu.org/licenses/lgpl-3.0.en.html
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
 import "Owned.sol";
 
 
 // ----------------------------------------------------------------------------
-// MakerDAO PricefeedSimulator
+// Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
-contract MakerDAOPriceFeedSimulator is Owned {
+contract PriceFeed is Owned {
     uint public value;
     bool public hasValue;
 

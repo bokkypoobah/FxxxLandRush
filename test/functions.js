@@ -405,37 +405,89 @@ function printFactoryContractDetails() {
 
 
 //-----------------------------------------------------------------------------
-// PriceFeed Contract
+// ETH/USD PriceFeed Contract
 //-----------------------------------------------------------------------------
-var priceFeedContractAddress = null;
-var priceFeedContractAbi = null;
-function addPriceFeedContractAddressAndAbi(address, abi) {
-  priceFeedContractAddress = address;
-  priceFeedContractAbi = abi;
+var ethUsdPriceFeedContractAddress = null;
+var ethUsdPriceFeedContractAbi = null;
+function addEthUsdPriceFeedContractAddressAndAbi(address, abi) {
+  ethUsdPriceFeedContractAddress = address;
+  ethUsdPriceFeedContractAbi = abi;
 }
-var priceFeedFromBlock = 0;
-function printPriceFeedContractDetails() {
-  if (priceFeedFromBlock == 0) {
-    priceFeedFromBlock = baseBlock;
+var ethUsdPriceFeedFromBlock = 0;
+function printEthUsdPriceFeedContractDetails() {
+  if (ethUsdPriceFeedFromBlock == 0) {
+    ethUsdPriceFeedFromBlock = baseBlock;
   }
-  console.log("RESULT: priceFeedContract.address=" + getShortAddressName(priceFeedContractAddress));
-  if (priceFeedContractAddress != null && priceFeedContractAbi != null) {
-    var contract = eth.contract(priceFeedContractAbi).at(priceFeedContractAddress);
-    console.log("RESULT: priceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: priceFeed.value=" + contract.value().shift(-18));
-    console.log("RESULT: priceFeed.hasValue=" + contract.hasValue());
+  console.log("RESULT: ethUsdPriceFeedContract.address=" + getShortAddressName(ethUsdPriceFeedContractAddress));
+  if (ethUsdPriceFeedContractAddress != null && ethUsdPriceFeedContractAbi != null) {
+    var contract = eth.contract(ethUsdPriceFeedContractAbi).at(ethUsdPriceFeedContractAddress);
+    console.log("RESULT: ethUsdPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: ethUsdPriceFeed.value=" + contract.value().shift(-18));
+    console.log("RESULT: ethUsdPriceFeed.hasValue=" + contract.hasValue());
 
     var i;
     var latestBlock = eth.blockNumber;
 
-    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: priceFeedFromBlock, toBlock: latestBlock });
+    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
     i = 0;
     ownershipTransferredEvents.watch(function (error, result) {
       console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
     ownershipTransferredEvents.stopWatching();
 
-    priceFeedFromBlock = latestBlock + 1;
+    var setValueEvents = contract.SetValue({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
+    i = 0;
+    setValueEvents.watch(function (error, result) {
+      console.log("RESULT: SetValue " + i++ + " #" + result.blockNumber + " value=" + result.args.value.shift(-18) +
+        " hasValue=" + result.args.hasValue);
+    });
+    setValueEvents.stopWatching();
+
+    ethUsdPriceFeedFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
+// ETH/USD PriceFeed Contract
+//-----------------------------------------------------------------------------
+var gzeEthPriceFeedContractAddress = null;
+var gzeEthPriceFeedContractAbi = null;
+function addGzeEthPriceFeedContractAddressAndAbi(address, abi) {
+  gzeEthPriceFeedContractAddress = address;
+  gzeEthPriceFeedContractAbi = abi;
+}
+var gzeEthPriceFeedFromBlock = 0;
+function printGzeEthPriceFeedContractDetails() {
+  if (gzeEthPriceFeedFromBlock == 0) {
+    gzeEthPriceFeedFromBlock = baseBlock;
+  }
+  console.log("RESULT: gzeEthPriceFeedContract.address=" + getShortAddressName(gzeEthPriceFeedContractAddress));
+  if (gzeEthPriceFeedContractAddress != null && gzeEthPriceFeedContractAbi != null) {
+    var contract = eth.contract(gzeEthPriceFeedContractAbi).at(gzeEthPriceFeedContractAddress);
+    console.log("RESULT: gzeEthPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: gzeEthPriceFeed.value=" + contract.value().shift(-18));
+    console.log("RESULT: gzeEthPriceFeed.hasValue=" + contract.hasValue());
+
+    var i;
+    var latestBlock = eth.blockNumber;
+
+    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
+    i = 0;
+    ownershipTransferredEvents.watch(function (error, result) {
+      console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    ownershipTransferredEvents.stopWatching();
+
+    var setValueEvents = contract.SetValue({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
+    i = 0;
+    setValueEvents.watch(function (error, result) {
+      console.log("RESULT: SetValue " + i++ + " #" + result.blockNumber + " value=" + result.args.value.shift(-18) +
+        " hasValue=" + result.args.hasValue);
+    });
+    setValueEvents.stopWatching();
+
+    gzeEthPriceFeedFromBlock = latestBlock + 1;
   }
 }
 
@@ -461,13 +513,16 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.bttsToken=" + getShortAddressName(contract.bttsToken()));
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
     console.log("RESULT: landRush.ethUsdPriceFeed=" + getShortAddressName(contract.ethUsdPriceFeed()));
+    console.log("RESULT: landRush.gzeEthPriceFeed=" + getShortAddressName(contract.gzeEthPriceFeed()));
     console.log("RESULT: landRush.wallet=" + getShortAddressName(contract.wallet()));
     console.log("RESULT: landRush.startDate=" + new Date(contract.startDate() * 1000).toString());
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
-    console.log("RESULT: landRush.gzeEth=" + contract.gzeEth().shift(-18));
     console.log("RESULT: landRush.parcelUsd=" + contract.parcelUsd().shift(-18));
+    console.log("RESULT: landRush.gzeBonus=" + contract.gzeBonus());
     var ethUsd = contract.ethUsd();
     console.log("RESULT: landRush.ethUsd=" + ethUsd[0].shift(-18) + " " + ethUsd[1]);
+    var gzeEth = contract.gzeEth();
+    console.log("RESULT: landRush.gzeEth=" + gzeEth[0].shift(-18) + " " + gzeEth[1]);
     var gzeUsd = contract.gzeUsd();
     console.log("RESULT: landRush.gzeUsd=" + gzeUsd[0].shift(-18) + " " + gzeUsd[1]);
     var parcelEth = contract.parcelEth();
