@@ -349,6 +349,26 @@ for (i = 0; i < numberOfTokens; i++) {
 console.log("RESULT: ");
 
 
+// -----------------------------------------------------------------------------
+var offlinePurchaseMessage = "Offline Purchase #1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + offlinePurchaseMessage + " ----------");
+var offlinePurchase_1Tx = landRush.offlinePurchase(user3, 20, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(offlinePurchase_1Tx, offlinePurchaseMessage + " - deployer landRush.landRush.offlinePurchase(user3, 20)");
+printTxData("offlinePurchase_1Tx", offlinePurchase_1Tx);
+console.log("RESULT: ");
+printLandRushContractDetails();
+console.log("RESULT: ");
+for (i = 0; i < numberOfTokens; i++) {
+  printTokenContractDetails(i);
+  console.log("RESULT: ");
+}
+console.log("RESULT: ");
+
+
 
 EOF
 grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
