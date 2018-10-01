@@ -321,7 +321,7 @@ for (i = 0; i < numberOfTokens; i++) {
 console.log("RESULT: ");
 
 
-waitUntil("startTime", landRush.startDate(), 0);
+waitUntil("landRush.startDate", landRush.startDate(), 0);
 
 
 // -----------------------------------------------------------------------------
@@ -353,11 +353,11 @@ console.log("RESULT: ");
 var offlinePurchaseMessage = "Offline Purchase #1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + offlinePurchaseMessage + " ----------");
-var offlinePurchase_1Tx = landRush.offlinePurchase(user3, 20, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+var offlinePurchase_1Tx = landRush.offlinePurchase(user3, 5, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(offlinePurchase_1Tx, offlinePurchaseMessage + " - deployer landRush.landRush.offlinePurchase(user3, 20)");
+failIfTxStatusError(offlinePurchase_1Tx, offlinePurchaseMessage + " - deployer landRush.offlinePurchase(user3, 5)");
 printTxData("offlinePurchase_1Tx", offlinePurchase_1Tx);
 console.log("RESULT: ");
 printLandRushContractDetails();
@@ -368,6 +368,29 @@ for (i = 0; i < numberOfTokens; i++) {
 }
 console.log("RESULT: ");
 
+
+// -----------------------------------------------------------------------------
+var finaliseMessage = "Finalise";
+// -----------------------------------------------------------------------------
+if (!landRush.finalised()) {
+  waitUntil("landRush.endDate", landRush.endDate(), 0);
+
+  console.log("RESULT: ---------- " + finaliseMessage + " ----------");
+  var finalise_1Tx = landRush.finalise({from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+  while (txpool.status.pending > 0) {
+  }
+  printBalances();
+  failIfTxStatusError(finalise_1Tx, finaliseMessage + " - deployer landRush.finalise()");
+  printTxData("finalise_1Tx", finalise_1Tx);
+  console.log("RESULT: ");
+  printLandRushContractDetails();
+  console.log("RESULT: ");
+  for (i = 0; i < numberOfTokens; i++) {
+    printTokenContractDetails(i);
+    console.log("RESULT: ");
+  }
+  console.log("RESULT: ");
+}
 
 
 EOF
