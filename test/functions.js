@@ -510,6 +510,7 @@ function printLandRushContractDetails() {
   if (landRushContractAddress != null && landRushContractAbi != null) {
     var contract = eth.contract(landRushContractAbi).at(landRushContractAddress);
     console.log("RESULT: landRush.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: landRush.symbol/name='" + contract.symbol() + "'/'" + contract.name() + "'");
     console.log("RESULT: landRush.parcelToken=" + getShortAddressName(contract.parcelToken()));
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
     console.log("RESULT: landRush.ethUsdPriceFeed=" + getShortAddressName(contract.ethUsdPriceFeed()));

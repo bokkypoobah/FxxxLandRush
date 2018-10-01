@@ -126,6 +126,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         gzeBonus = _gzeBonus;
     }
 
+    function symbol() public view returns (string _symbol) {
+        _symbol = parcelToken.symbol();
+    }
+    function name() public view returns (string _name) {
+        _name = parcelToken.name();
+    }
+
     function ethUsd() public view returns (uint rate, bool hasValue) {
         bytes32 value;
         (value, hasValue) = ethUsdPriceFeed.peek();

@@ -67,6 +67,10 @@ contract BTTSTokenInterface is ERC20Interface {
     event TransfersEnabled();
     event AccountUnlocked(address indexed tokenOwner);
 
+    function symbol() public view returns (string);
+    function name() public view returns (string);
+    function decimals() public view returns (uint8);
+
     function approveAndCall(address spender, uint tokens, bytes data) public returns (bool success);
 
     // ------------------------------------------------------------------------
@@ -257,6 +261,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     function setGzeBonus(uint _gzeBonus) public onlyOwner {
         emit GzeBonusUpdated(gzeBonus, _gzeBonus);
         gzeBonus = _gzeBonus;
+    }
+
+    function symbol() public view returns (string _symbol) {
+        _symbol = parcelToken.symbol();
+    }
+    function name() public view returns (string _name) {
+        _name = parcelToken.name();
     }
 
     function ethUsd() public view returns (uint rate, bool hasValue) {

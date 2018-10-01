@@ -20,13 +20,13 @@
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy Lib - BTTSLib
-bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110193 txIx=0 txId=0x71cda9b95b7019de029096ad04fa4f09d7278678ff8b7989286cb70902b16f3b @ 1538400942 Mon, 01 Oct 2018 13:35:42 UTC
+bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110785 txIx=0 txId=0x7d5c2e989fc0775dfb999be41269abb2146d1ab019a008db1819f905f5f55e3b @ 1538401534 Mon, 01 Oct 2018 13:45:34 UTC
 
 ---------- Deploy Factory ----------
  # Account                                             EtherBalanceChange                              0                              1 Name
@@ -37,15 +37,15 @@ bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 co
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy Factory - BTTSFactory
-bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110195 txIx=0 txId=0x04edd9b160572c848fbdcbe224de9eb68d8ef574e58fd14601cf83365e49aa56 @ 1538400944 Mon, 01 Oct 2018 13:35:44 UTC
-factoryContract.address=BTTSFactory:0x8923
+bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110787 txIx=0 txId=0x4e89c6c294ee90b30aea95896b55ada91ab7ab62142be49f48e11e1aa4ab2dd4 @ 1538401536 Mon, 01 Oct 2018 13:45:36 UTC
+factoryContract.address=BTTSFactory:0x792b
 factory.owner/new=Deployer:0xa11a/Null:0x0000
 factory.numberOfDeployedTokens=0
 
@@ -58,33 +58,33 @@ factory.numberOfDeployedTokens=0
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
- 8 0xe383919fdd7904c6c2bb262e1a106fd9343eb91a        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
- 9 0xdedc70f03187e1b49919f9f7c5bb7bf86dd05d21        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 8 0xe9122a56b55f54d6641a77a013bff64592eb948c        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
+ 9 0xf8477c98d764affd635d828a85c05ec5706729c8        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy PriceFeeds - ETH/USD PriceFeed
 PASS Deploy PriceFeeds - GZE/ETH PriceFeed
-ethUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=398066 costETH=0.0012340046 costUSD=0.355603105582 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110197 txIx=0 txId=0xbc718466b5c0cdc0b3a157f1fe8c068ede9cff46b5d422be6e2e0ce98ab6aa1c @ 1538400946 Mon, 01 Oct 2018 13:35:46 UTC
-gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=397938 costETH=0.0012336078 costUSD=0.355488759726 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110197 txIx=1 txId=0x1ca3e914ec693bf47c82495c44959784be5d206e84fa5f337767f06d2b5c6d81 @ 1538400946 Mon, 01 Oct 2018 13:35:46 UTC
-ethUsdPriceFeedContract.address=ETH/USD PriceFeed:0xe383
+ethUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=398066 costETH=0.0012340046 costUSD=0.355603105582 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110789 txIx=0 txId=0x031336dd1900a9737a5e2bb14db249be11dd17ea9998f2a12488517d4ef8cef7 @ 1538401538 Mon, 01 Oct 2018 13:45:38 UTC
+gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=397938 costETH=0.0012336078 costUSD=0.355488759726 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110789 txIx=1 txId=0x7a7938e22ba14746215af8bcd4ce1602e827d4bfb7419222e7593a8d432b7175 @ 1538401538 Mon, 01 Oct 2018 13:45:38 UTC
+ethUsdPriceFeedContract.address=ETH/USD PriceFeed:0xe912
 ethUsdPriceFeed.owner/new=Deployer:0xa11a/Null:0x0000
 ethUsdPriceFeed.value=231.11
 ethUsdPriceFeed.hasValue=true
-SetValue 0 #110197 value=231.11 hasValue=true
-gzeEthPriceFeedContract.address=GZE/ETH PriceFeed:0xdedc
+SetValue 0 #110789 value=231.11 hasValue=true
+gzeEthPriceFeedContract.address=GZE/ETH PriceFeed:0xf847
 gzeEthPriceFeed.owner/new=Deployer:0xa11a/Null:0x0000
 gzeEthPriceFeed.value=0.00005197
 gzeEthPriceFeed.hasValue=true
-SetValue 0 #110197 value=0.00005197 hasValue=true
+SetValue 0 #110789 value=0.00005197 hasValue=true
 
 ---------- Deploy Tokens ----------
-factoryContractAddress=0x89237dd770af171846de54b847178fc0b5586279
-get BTTSTokenListing 0 #110199 {"bttsTokenAddress":"0x23e4c08eec45dd637ddf07cb317e3ecd10a53743","decimals":"18","initialSupply":"2.9508557e+25","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
-get BTTSTokenListing 1 #110199 {"bttsTokenAddress":"0x2acfa1039f5f74cbe19fe492dbf16445c01fcf0f","decimals":"18","initialSupply":"0","mintable":true,"name":"Parcel A","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"PARCELA","transferable":true}
+factoryContractAddress=0x792b53216151d433de6be62518bece1ff879b15a
+get BTTSTokenListing 0 #110791 {"bttsTokenAddress":"0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e","decimals":"18","initialSupply":"2.9508557e+25","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
+get BTTSTokenListing 1 #110791 {"bttsTokenAddress":"0x449d9e881ee832015165baf4ef5427939991b48b","decimals":"18","initialSupply":"0","mintable":true,"name":"Parcel A","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"PARCELA","transferable":true}
  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.034722002600000000           0.000000000000000000           0.000000000000000000 Miner
@@ -93,31 +93,31 @@ get BTTSTokenListing 1 #110199 {"bttsTokenAddress":"0x2acfa1039f5f74cbe19fe492db
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
- 8 0xe383919fdd7904c6c2bb262e1a106fd9343eb91a        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
- 9 0xdedc70f03187e1b49919f9f7c5bb7bf86dd05d21        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-10 0x23e4c08eec45dd637ddf07cb317e3ecd10a53743        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-11 0x2acfa1039f5f74cbe19fe492dbf16445c01fcf0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 8 0xe9122a56b55f54d6641a77a013bff64592eb948c        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
+ 9 0xf8477c98d764affd635d828a85c05ec5706729c8        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+10 0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+11 0x449d9e881ee832015165baf4ef5427939991b48b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy Tokens - Token 'GZE' 'GazeCoin'
 PASS Deploy Tokens - Token 'PARCELA' 'Parcel A'
-tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1918290 costETH=0.005946699 costUSD=1.71366025083 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110199 txIx=0 txId=0x815ca3339d80f701d9d8f26fbdd1da4a9ba60478ccc08eaeb20faf106bd28ff6 @ 1538400948 Mon, 01 Oct 2018 13:35:48 UTC
-tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1858787 costETH=0.0057622397 costUSD=1.660504614349 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110199 txIx=1 txId=0x885830cec2743064c74e8911e97e44ec7d583f40d50c318a62e402dcbb84fc00 @ 1538400948 Mon, 01 Oct 2018 13:35:48 UTC
+tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1918290 costETH=0.005946699 costUSD=1.71366025083 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110791 txIx=0 txId=0x83b8710796b4811042a6bc3cbd1422a5dbcec32f208cc2109f405a65caf8e783 @ 1538401540 Mon, 01 Oct 2018 13:45:40 UTC
+tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1858787 costETH=0.0057622397 costUSD=1.660504614349 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110791 txIx=1 txId=0x9e965a0c46c1833d38e736dedfeba5d5308519aababc7366f04b7c837081837e @ 1538401540 Mon, 01 Oct 2018 13:45:40 UTC
 
-token0ContractAddress=Token 'GZE' 'GazeCoin':0x23e4
+token0ContractAddress=Token 'GZE' 'GazeCoin':0x7e8f
 token0.owner/new=Deployer:0xa11a/Null:0x0000
 token0.details='GZE' 'GazeCoin' 18 dp
 token0.totalSupply=29508557
 token0.mintable=false
 token0.transferable=true
 token0.minter=Null:0x0000
-token0.Transfer 0 #110199 from=Null:0x0000 to=Deployer:0xa11a tokens=29508557
+token0.Transfer 0 #110791 from=Null:0x0000 to=Deployer:0xa11a tokens=29508557
 
-token1ContractAddress=Token 'PARCELA' 'Parcel A':0x2acf
+token1ContractAddress=Token 'PARCELA' 'Parcel A':0x449d
 token1.owner/new=Deployer:0xa11a/Null:0x0000
 token1.details='PARCELA' 'Parcel A' 18 dp
 token1.totalSupply=0
@@ -129,34 +129,35 @@ token1.minter=Null:0x0000
 ---------- Deploy FxxxLandRush ----------
  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.039590924600000000           0.000000000000000000           0.000000000000000000 Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.039590924600000000    29508557.000000000000000000           0.000000000000000000 Deployer
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.040000750800000000           0.000000000000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040000750800000000    29508557.000000000000000000           0.000000000000000000 Deployer
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
- 8 0xe383919fdd7904c6c2bb262e1a106fd9343eb91a        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
- 9 0xdedc70f03187e1b49919f9f7c5bb7bf86dd05d21        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-10 0x23e4c08eec45dd637ddf07cb317e3ecd10a53743        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-11 0x2acfa1039f5f74cbe19fe492dbf16445c01fcf0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-12 0xea1ba6789f8cfbcfe90d98596ba469e3643ad7c7        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 8 0xe9122a56b55f54d6641a77a013bff64592eb948c        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
+ 9 0xf8477c98d764affd635d828a85c05ec5706729c8        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+10 0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+11 0x449d9e881ee832015165baf4ef5427939991b48b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
+12 0x5f4e2ce711ef0a6830276902110f010c366b2352        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy FxxxLandRush - FxxxLandRush
-landRushTx status=0x1 Success gas=5000000 gasUsed=1570620 costETH=0.004868922 costUSD=1.40307725274 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110203 txIx=0 txId=0x51fd018c5d2019f0f257deb28db923273938b0a7e22e5658ba8f3364a89a413d @ 1538400952 Mon, 01 Oct 2018 13:35:52 UTC
-landRushContract.address=FxxxLandRush:0xea1b
+landRushTx status=0x1 Success gas=5000000 gasUsed=1702822 costETH=0.0052787482 costUSD=1.521176868794 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110795 txIx=0 txId=0xa089e7d62492c3227d00e833fbf231a2df33bcfa177cc306bb0a0e19c37dc089 @ 1538401544 Mon, 01 Oct 2018 13:45:44 UTC
+landRushContract.address=FxxxLandRush:0x5f4e
 landRush.owner/new=Deployer:0xa11a/Null:0x0000
-landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x2acf
-landRush.gzeToken=Token 'GZE' 'GazeCoin':0x23e4
-landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe383
-landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0xdedc
+landRush.symbol/name='PARCELA'/'Parcel A'
+landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x449d
+landRush.gzeToken=Token 'GZE' 'GazeCoin':0x7e8f
+landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe912
+landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0xf847
 landRush.wallet=Wallet:0xa22a
-landRush.startDate=Mon, 01 Oct 2018 23:35:59 AEST
-landRush.endDate=Mon, 01 Oct 2018 23:37:34 AEST
+landRush.startDate=Mon, 01 Oct 2018 23:45:52 AEST
+landRush.endDate=Mon, 01 Oct 2018 23:47:27 AEST
 landRush.maxParcels=1500
 landRush.parcelUsd=1500
 landRush.gzeBonus=30
@@ -174,98 +175,99 @@ landRush.parcelGze=162354.061287259393258561 true
 ---------- Deploy Group #1 ----------
  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.040574737500000000           0.000000000000000000           0.000000000000000000 Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040574737500000000    26508557.000000000000000000           0.000000000000000000 Deployer
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.040984563700000000           0.000000000000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040984563700000000    26508557.000000000000000000           0.000000000000000000 Deployer
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
- 8 0xe383919fdd7904c6c2bb262e1a106fd9343eb91a        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
- 9 0xdedc70f03187e1b49919f9f7c5bb7bf86dd05d21        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-10 0x23e4c08eec45dd637ddf07cb317e3ecd10a53743        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-11 0x2acfa1039f5f74cbe19fe492dbf16445c01fcf0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-12 0xea1ba6789f8cfbcfe90d98596ba469e3643ad7c7        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 8 0xe9122a56b55f54d6641a77a013bff64592eb948c        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
+ 9 0xf8477c98d764affd635d828a85c05ec5706729c8        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+10 0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+11 0x449d9e881ee832015165baf4ef5427939991b48b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
+12 0x5f4e2ce711ef0a6830276902110f010c366b2352        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Deploy Group #1 - AAA.setMinter(landRush)
-PASS Deploy Group #1 - Distribute tokens - 0xa09108f69989979a67463f4c607ec27729941fa5747a65eacade646490670bd3
-PASS Deploy Group #1 - Distribute tokens - 0x98e201620c52fc738bdfffba5ebe7ccb174c0423a0e80a92e453409afda2c0e9
-PASS Deploy Group #1 - Distribute tokens - 0x93567de02ae1fb3b82fbb5e10bcebc344298346b18b04dd812252bebedd8847d
-PASS Deploy Group #1 - Distribute tokens - 0xf59c94335db9b5836136340fc79ff4eca799806d2cadf67d0c52db28e9879301
-PASS Deploy Group #1 - Distribute tokens - 0x8c463178b054b6edd038f0274cf91fe1f1ebd0f10f01800700b296013c236bae
-PASS Deploy Group #1 - Distribute tokens - 0xd6a78e7ac838bf87eeb5e10e6300cc3890f74305aa62b561505def74daeb1389
-deployGroup1_setMinterTx status=0x1 Success gas=2000000 gasUsed=33697 costETH=0.0001044607 costUSD=0.030102439919 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110206 txIx=0 txId=0xe860cca6c6af2617e400c1c304e0be0ca2f0c0e1953c90e9702097f5c526d4d3 @ 1538400955 Mon, 01 Oct 2018 13:35:55 UTC
- status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=0 txId=0xa09108f69989979a67463f4c607ec27729941fa5747a65eacade646490670bd3 @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
- status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=1 txId=0x98e201620c52fc738bdfffba5ebe7ccb174c0423a0e80a92e453409afda2c0e9 @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
- status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=2 txId=0x93567de02ae1fb3b82fbb5e10bcebc344298346b18b04dd812252bebedd8847d @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
- status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=3 txId=0xf59c94335db9b5836136340fc79ff4eca799806d2cadf67d0c52db28e9879301 @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
- status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=4 txId=0x8c463178b054b6edd038f0274cf91fe1f1ebd0f10f01800700b296013c236bae @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
- status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110207 txIx=5 txId=0xd6a78e7ac838bf87eeb5e10e6300cc3890f74305aa62b561505def74daeb1389 @ 1538400956 Mon, 01 Oct 2018 13:35:56 UTC
+PASS Deploy Group #1 - Distribute tokens - 0x8c0627c34b7f42d00cf11ec8d6287281a02067f181f0f023672b2a21820eed73
+PASS Deploy Group #1 - Distribute tokens - 0x2248e3557aa2e6e8304a86acfe94f156715ba48ecd5f1dc823c23be396562162
+PASS Deploy Group #1 - Distribute tokens - 0x130253ace034d500cfc10529fbdf08920882e5d043ad59d2293eb66e22236175
+PASS Deploy Group #1 - Distribute tokens - 0x6485027262593029fc1622959845f20b5b5e7709e3458fe69643baa8e1af77aa
+PASS Deploy Group #1 - Distribute tokens - 0xc2b3d51037aa20817fe0dfa9373f9b6137fe2172204371dba2c5bcd79063b321
+PASS Deploy Group #1 - Distribute tokens - 0x19f2a068a896071f512c3fe3d2272616b0475aed029f08041910cda8421e33de
+deployGroup1_setMinterTx status=0x1 Success gas=2000000 gasUsed=33697 costETH=0.0001044607 costUSD=0.030102439919 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110798 txIx=0 txId=0xcd5e3929e2918ec7b13e73c97694a2dcb59d88a35b52cc354ddf15c0f99fc074 @ 1538401547 Mon, 01 Oct 2018 13:45:47 UTC
+ status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110798 txIx=1 txId=0x8c0627c34b7f42d00cf11ec8d6287281a02067f181f0f023672b2a21820eed73 @ 1538401547 Mon, 01 Oct 2018 13:45:47 UTC
+ status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110798 txIx=2 txId=0x2248e3557aa2e6e8304a86acfe94f156715ba48ecd5f1dc823c23be396562162 @ 1538401547 Mon, 01 Oct 2018 13:45:47 UTC
+ status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110799 txIx=0 txId=0x130253ace034d500cfc10529fbdf08920882e5d043ad59d2293eb66e22236175 @ 1538401548 Mon, 01 Oct 2018 13:45:48 UTC
+ status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110799 txIx=1 txId=0x6485027262593029fc1622959845f20b5b5e7709e3458fe69643baa8e1af77aa @ 1538401548 Mon, 01 Oct 2018 13:45:48 UTC
+ status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110799 txIx=2 txId=0xc2b3d51037aa20817fe0dfa9373f9b6137fe2172204371dba2c5bcd79063b321 @ 1538401548 Mon, 01 Oct 2018 13:45:48 UTC
+ status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110799 txIx=3 txId=0x19f2a068a896071f512c3fe3d2272616b0475aed029f08041910cda8421e33de @ 1538401548 Mon, 01 Oct 2018 13:45:48 UTC
 
-token0ContractAddress=Token 'GZE' 'GazeCoin':0x23e4
+token0ContractAddress=Token 'GZE' 'GazeCoin':0x7e8f
 token0.owner/new=Deployer:0xa11a/Null:0x0000
 token0.details='GZE' 'GazeCoin' 18 dp
 token0.totalSupply=29508557
 token0.mintable=false
 token0.transferable=true
 token0.minter=Null:0x0000
-token0.Transfer 0 #110207 from=Deployer:0xa11a to=User1:0xa33a tokens=1000000
-token0.Transfer 1 #110207 from=Deployer:0xa11a to=User2:0xa44a tokens=1000000
-token0.Transfer 2 #110207 from=Deployer:0xa11a to=User3:0xa55a tokens=1000000
+token0.Transfer 0 #110798 from=Deployer:0xa11a to=User1:0xa33a tokens=1000000
+token0.Transfer 1 #110799 from=Deployer:0xa11a to=User2:0xa44a tokens=1000000
+token0.Transfer 2 #110799 from=Deployer:0xa11a to=User3:0xa55a tokens=1000000
 
-token1ContractAddress=Token 'PARCELA' 'Parcel A':0x2acf
+token1ContractAddress=Token 'PARCELA' 'Parcel A':0x449d
 token1.owner/new=Deployer:0xa11a/Null:0x0000
 token1.details='PARCELA' 'Parcel A' 18 dp
 token1.totalSupply=0
 token1.mintable=true
 token1.transferable=true
-token1.minter=FxxxLandRush:0xea1b
-token1.Transfer 0 #110207 from=Deployer:0xa11a to=User1:0xa33a tokens=0
-token1.Transfer 1 #110207 from=Deployer:0xa11a to=User2:0xa44a tokens=0
-token1.Transfer 2 #110207 from=Deployer:0xa11a to=User3:0xa55a tokens=0
+token1.minter=FxxxLandRush:0x5f4e
+token1.Transfer 0 #110798 from=Deployer:0xa11a to=User1:0xa33a tokens=0
+token1.Transfer 1 #110799 from=Deployer:0xa11a to=User2:0xa44a tokens=0
+token1.Transfer 2 #110799 from=Deployer:0xa11a to=User3:0xa55a tokens=0
 
 
-Waiting until 'startTime' at 1538400959+0s=Mon, 01 Oct 2018 23:36:00 AEST now=Mon, 01 Oct 2018 23:35:57 AEST
-Waited until 'startTime' at at 1538400959+0s=Mon, 01 Oct 2018 23:36:00 AEST now=Mon, 01 Oct 2018 23:36:00 AEST
+Waiting until 'startTime' at 1538401552+0s=Mon, 01 Oct 2018 23:45:53 AEST now=Mon, 01 Oct 2018 23:45:50 AEST
+Waited until 'startTime' at at 1538401552+0s=Mon, 01 Oct 2018 23:45:53 AEST now=Mon, 01 Oct 2018 23:45:53 AEST
 
 ---------- Contribute #1 ----------
  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.041487513900000000           0.000000000000000000           0.000000000000000000 Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040574737500000000    26508557.000000000000000000           0.000000000000000000 Deployer
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.041897408300000000           0.000000000000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040984563700000000    26508557.000000000000000000           0.000000000000000000 Deployer
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000      162354.061287259393258561           0.000000000000000000 Wallet
- 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000607717800000000      837645.938712740606741439        1500.000000000000000000 User1
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000607786000000000      837645.938712740606741439        1500.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -19.471552516520470770     1000000.000000000000000000        4500.000000000000000000 User2
  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User3
- 6 0xe1192f6044fc49ce9aaef164ee300b9bbe0ab7b1        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
- 7 0x89237dd770af171846de54b847178fc0b5586279        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
- 8 0xe383919fdd7904c6c2bb262e1a106fd9343eb91a        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
- 9 0xdedc70f03187e1b49919f9f7c5bb7bf86dd05d21        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-10 0x23e4c08eec45dd637ddf07cb317e3ecd10a53743        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-11 0x2acfa1039f5f74cbe19fe492dbf16445c01fcf0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-12 0xea1ba6789f8cfbcfe90d98596ba469e3643ad7c7       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
+ 6 0x0f6baedc63f80fd43e6934c4240c39d024c52f0f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+ 7 0x792b53216151d433de6be62518bece1ff879b15a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+ 8 0xe9122a56b55f54d6641a77a013bff64592eb948c        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
+ 9 0xf8477c98d764affd635d828a85c05ec5706729c8        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+10 0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
+11 0x449d9e881ee832015165baf4ef5427939991b48b        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
+12 0x5f4e2ce711ef0a6830276902110f010c366b2352       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
                                                                              29508557.000000000000000000        6000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 
 PASS Contribute #1 - GZE.approveAndCall(landRush, 200000, "")
 PASS Contribute #1 - sendTransaction(landRush, 25 ETH)
-contribute1_1Tx status=0x1 Success gas=2000000 gasUsed=196038 costETH=0.0006077178 costUSD=0.175126038426 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110213 txIx=0 txId=0x7356b5bed58162c825d190f63f54c0b0cc46bbedbb4eee7f45d52091be2170fe @ 1538400962 Mon, 01 Oct 2018 13:36:02 UTC
-contribute1_2Tx status=0x1 Success gas=2000000 gasUsed=98406 costETH=0.0003050586 costUSD=0.087908736762 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110213 txIx=1 txId=0x6b7d5def00163c790afb0a904b4e42fc9ee5f68dfd7e254bd55c8e4c44b9918a @ 1538400962 Mon, 01 Oct 2018 13:36:02 UTC
+contribute1_1Tx status=0x1 Success gas=2000000 gasUsed=196060 costETH=0.000607786 costUSD=0.17514569162 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110806 txIx=0 txId=0x72b6b019c2c487cf6fc1e687e162bc439171aac1d21cfe0166f9a3e9d45ed8b9 @ 1538401555 Mon, 01 Oct 2018 13:45:55 UTC
+contribute1_2Tx status=0x1 Success gas=2000000 gasUsed=98406 costETH=0.0003050586 costUSD=0.087908736762 @ ETH/USD=288.17 gasPrice=3.1 gwei block=110806 txIx=1 txId=0x57f66bbd15afafe421f4c2c2591b231fed1973be4b09bb263eb78d4422629337 @ 1538401555 Mon, 01 Oct 2018 13:45:55 UTC
 
-landRushContract.address=FxxxLandRush:0xea1b
+landRushContract.address=FxxxLandRush:0x5f4e
 landRush.owner/new=Deployer:0xa11a/Null:0x0000
-landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x2acf
-landRush.gzeToken=Token 'GZE' 'GazeCoin':0x23e4
-landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe383
-landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0xdedc
+landRush.symbol/name='PARCELA'/'Parcel A'
+landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x449d
+landRush.gzeToken=Token 'GZE' 'GazeCoin':0x7e8f
+landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe912
+landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0xf847
 landRush.wallet=Wallet:0xa22a
-landRush.startDate=Mon, 01 Oct 2018 23:35:59 AEST
-landRush.endDate=Mon, 01 Oct 2018 23:37:34 AEST
+landRush.startDate=Mon, 01 Oct 2018 23:45:52 AEST
+landRush.endDate=Mon, 01 Oct 2018 23:47:27 AEST
 landRush.maxParcels=1500
 landRush.parcelUsd=1500
 landRush.gzeBonus=30
@@ -279,27 +281,27 @@ landRush.gzeUsd=0.0120107867 true
 landRush.parcelEth=6.49041581930682359 true
 landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
 landRush.parcelGze=162354.061287259393258561 true
-Contributed 0 #110213 addr=0x23e4c08eec45dd637ddf07cb317e3ecd10a53743 parcels=1 gzeToTransfer=162354.061287259393258561 ethToTransfer=0 parcelsSold=1 contributedGze=162354.061287259393258561 contributedEth=0
-Contributed 1 #110213 addr=0xa44a08d3f6933c69212114bb66e2df1813651844 parcels=3 gzeToTransfer=0 ethToTransfer=19.47124745792047077 parcelsSold=4 contributedGze=162354.061287259393258561 contributedEth=19.47124745792047077
+Contributed 0 #110806 addr=0x7e8f8c6587da19ede152d9beefbc13bb1cf2029e parcels=1 gzeToTransfer=162354.061287259393258561 ethToTransfer=0 parcelsSold=1 contributedGze=162354.061287259393258561 contributedEth=0
+Contributed 1 #110806 addr=0xa44a08d3f6933c69212114bb66e2df1813651844 parcels=3 gzeToTransfer=0 ethToTransfer=19.47124745792047077 parcelsSold=4 contributedGze=162354.061287259393258561 contributedEth=19.47124745792047077
 
-token0ContractAddress=Token 'GZE' 'GazeCoin':0x23e4
+token0ContractAddress=Token 'GZE' 'GazeCoin':0x7e8f
 token0.owner/new=Deployer:0xa11a/Null:0x0000
 token0.details='GZE' 'GazeCoin' 18 dp
 token0.totalSupply=29508557
 token0.mintable=false
 token0.transferable=true
 token0.minter=Null:0x0000
-token0.Approval 0 #110213 tokenOwner=User1:0xa33a spender=FxxxLandRush:0xea1b tokens=200000
-token0.Transfer 0 #110213 from=User1:0xa33a to=Wallet:0xa22a tokens=162354.061287259393258561
+token0.Approval 0 #110806 tokenOwner=User1:0xa33a spender=FxxxLandRush:0x5f4e tokens=200000
+token0.Transfer 0 #110806 from=User1:0xa33a to=Wallet:0xa22a tokens=162354.061287259393258561
 
-token1ContractAddress=Token 'PARCELA' 'Parcel A':0x2acf
+token1ContractAddress=Token 'PARCELA' 'Parcel A':0x449d
 token1.owner/new=Deployer:0xa11a/Null:0x0000
 token1.details='PARCELA' 'Parcel A' 18 dp
 token1.totalSupply=6000
 token1.mintable=true
 token1.transferable=true
-token1.minter=FxxxLandRush:0xea1b
-token1.Transfer 0 #110213 from=Null:0x0000 to=User1:0xa33a tokens=1500
-token1.Transfer 1 #110213 from=Null:0x0000 to=User2:0xa44a tokens=4500
+token1.minter=FxxxLandRush:0x5f4e
+token1.Transfer 0 #110806 from=Null:0x0000 to=User1:0xa33a tokens=1500
+token1.Transfer 1 #110806 from=Null:0x0000 to=User2:0xa44a tokens=4500
 
 

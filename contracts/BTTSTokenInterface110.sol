@@ -39,6 +39,10 @@ contract BTTSTokenInterface is ERC20Interface {
     event TransfersEnabled();
     event AccountUnlocked(address indexed tokenOwner);
 
+    function symbol() public view returns (string);
+    function name() public view returns (string);
+    function decimals() public view returns (uint8);
+
     function approveAndCall(address spender, uint tokens, bytes data) public returns (bool success);
 
     // ------------------------------------------------------------------------
