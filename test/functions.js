@@ -507,6 +507,13 @@ function printGzeEthPriceFeedContractDetails() {
     });
     ownershipTransferredEvents.stopWatching();
 
+    var updaterSetEvents = contract.UpdaterSet({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
+    i = 0;
+    updaterSetEvents.watch(function (error, result) {
+      console.log("RESULT: UpdaterSet " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    updaterSetEvents.stopWatching();
+
     var setValueEvents = contract.SetValue({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
     i = 0;
     setValueEvents.watch(function (error, result) {
