@@ -264,7 +264,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, wallet, $START_DATE, $END_DATE, $INITIALPARCELUSD, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -329,6 +329,8 @@ var contribute1Message = "Contribute #1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + contribute1Message + " ----------");
 var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, new BigNumber(200000).shift(18), "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
 var contribute1_2Tx = eth.sendTransaction({from: user2, to: landRushAddress, value: web3.toWei(25, "ether"), gas: 2000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }

@@ -327,6 +327,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelGze, hasValue) = parcelGze();
         require(hasValue);
         uint parcels = tokens.div(_parcelGze);
+        if (parcelsSold.add(parcels) >= maxParcels) {
+            parcels = maxParcels.sub(parcelsSold);
+        }
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
         require(parcelsSold <= maxParcels);
@@ -344,6 +347,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelEth, hasValue) = parcelEth();
         require(hasValue);
         uint parcels = msg.value.div(_parcelEth);
+        if (parcelsSold.add(parcels) >= maxParcels) {
+            parcels = maxParcels.sub(parcelsSold);
+        }
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
         require(parcelsSold <= maxParcels);
