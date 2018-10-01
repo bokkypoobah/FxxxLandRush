@@ -619,15 +619,15 @@ function printLandRushContractDetails() {
     });
     gzeBonusUpdatedEvents.stopWatching();
 
-    var contributedEvents = contract.Contributed({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    var purchasedEvents = contract.Purchased({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
     i = 0;
-    contributedEvents.watch(function (error, result) {
-      console.log("RESULT: Contributed " + i++ + " #" + result.blockNumber + " addr=" + result.args.addr + " parcels=" + result.args.parcels +
+    purchasedEvents.watch(function (error, result) {
+      console.log("RESULT: Purchased " + i++ + " #" + result.blockNumber + " addr=" + result.args.addr + " parcels=" + result.args.parcels +
         " gzeToTransfer=" + result.args.gzeToTransfer.shift(-18) + " ethToTransfer=" + result.args.ethToTransfer.shift(-18) +
         " parcelsSold=" + result.args.parcelsSold +
         " contributedGze=" + result.args.contributedGze.shift(-18) + " contributedEth=" + result.args.contributedEth.shift(-18));
     });
-    contributedEvents.stopWatching();
+    purchasedEvents.stopWatching();
 
     landRushFromBlock = latestBlock + 1;
   }

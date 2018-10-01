@@ -18,7 +18,7 @@ CURRENTTIME=`date +%s`
 CURRENTTIMES=`perl -le "print scalar localtime $CURRENTTIME"`
 START_DATE=`echo "$CURRENTTIME+25" | bc`
 START_DATE_S=`perl -le "print scalar localtime $START_DATE"`
-END_DATE=`echo "$CURRENTTIME+60*2" | bc`
+END_DATE=`echo "$CURRENTTIME+60" | bc`
 END_DATE_S=`perl -le "print scalar localtime $END_DATE"`
 
 printf "CURRENTTIME = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
@@ -326,19 +326,46 @@ waitUntil("landRush.startDate", landRush.startDate(), 0);
 
 // -----------------------------------------------------------------------------
 var contribute1Message = "Contribute #1";
+var gzeAmount1 = new BigNumber(200000).shift(18);
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + contribute1Message + " ----------");
-var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, new BigNumber(200000).shift(18), "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
+var contribute1_1Tx = tokens[$GZE].approveAndCall(landRushAddress, gzeAmount1, "", {from: user1, gas: 2000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 var contribute1_2Tx = eth.sendTransaction({from: user2, to: landRushAddress, value: web3.toWei(25, "ether"), gas: 2000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(contribute1_1Tx, contribute1Message + " - GZE.approveAndCall(landRush, 200000, \"\")");
+failIfTxStatusError(contribute1_1Tx, contribute1Message + " - GZE.approveAndCall(landRush, " + gzeAmount1.shift(-18) + ", \"\")");
 failIfTxStatusError(contribute1_2Tx, contribute1Message + " - sendTransaction(landRush, 25 ETH)");
 printTxData("contribute1_1Tx", contribute1_1Tx);
 printTxData("contribute1_2Tx", contribute1_2Tx);
+console.log("RESULT: ");
+printLandRushContractDetails();
+console.log("RESULT: ");
+for (i = 0; i < numberOfTokens; i++) {
+  printTokenContractDetails(i);
+  console.log("RESULT: ");
+}
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribute2Message = "Contribute #2";
+var gzeAmount2 = new BigNumber(400000).shift(18);
+// -----------------------------------------------------------------------------
+console.log("RESULT: ---------- " + contribute2Message + " ----------");
+var contribute2_1Tx = tokens[$GZE].approve(landRushAddress, gzeAmount2, {from: user3, gas: 2000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+var contribute2_2Tx = landRush.purchaseWithGze(gzeAmount2, {from: user3, to: landRushAddress, gas: 2000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(contribute2_1Tx, contribute2Message + " - user3 GZE.approve(landRush, " + gzeAmount2.shift(-18) + ", \"\")");
+failIfTxStatusError(contribute2_2Tx, contribute2Message + " - user3 landRush.purchaseWithGze(" + gzeAmount2.shift(-18) + ")");
+printTxData("contribute2_1Tx", contribute2_1Tx);
+printTxData("contribute2_2Tx", contribute2_2Tx);
 console.log("RESULT: ");
 printLandRushContractDetails();
 console.log("RESULT: ");

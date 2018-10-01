@@ -212,7 +212,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event MaxParcelsUpdated(uint oldMaxParcels, uint newMaxParcels);
     event ParcelUsdUpdated(uint oldParcelUsd, uint newParcelUsd);
     event GzeBonusUpdated(uint oldGzeBonus, uint newGzeBonus);
-    event Contributed(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
+    event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
 
     constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonus) public {
         require(_parcelToken != address(0) && _gzeToken != address(0));
@@ -329,6 +329,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         }
     }
 
+    // Account contributes by:
+    // 1. calling GZE.approve(landRushAddress, tokens)
+    // 2. calling this.purchaseWithGze(tokens)
+    function purchaseWithGze(uint256 tokens) public {
+        require(gzeToken.allowance(msg.sender, this) >= tokens);
+        receiveApproval(msg.sender, tokens, gzeToken, "");
+    }
     // Account contributes by calling GZE.approveAndCall(landRushAddress, tokens, "")
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
         require(now >= startDate && now <= endDate);
@@ -347,7 +354,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         contributedGze = contributedGze.add(gzeToTransfer);
         ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer);
         parcelToken.mint(from, parcelUsd.mul(parcels), false);
-        emit Contributed(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
+        emit Purchased(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
             finalised = true;
@@ -373,7 +380,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             msg.sender.transfer(ethToRefund);
         }
         parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false);
-        emit Contributed(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
+        emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
             finalised = true;
@@ -388,7 +395,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
         parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false);
-        emit Contributed(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
+        emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
             finalised = true;
