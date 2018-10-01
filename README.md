@@ -13,8 +13,8 @@ The GZE amount is calculated using a less frequently updated GZE/ETH [pricefeed]
 ## Table Of Contents
 
 * [Purchasing Parcels](#purchasing-parcels)
-  * [Purchasing Parcels With GZE - First Method](#purchasing-parcels-with-gze--first-method)
-  * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze--second-method)
+  * [Purchasing Parcels With GZE - First Method](#purchasing-parcels-with-gze---first-method)
+  * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze---second-method)
   * [Purchasing Parcels With ETH](#purchasing-parcels-with-eth)
 * [Deployment Of Contracts](#deployment-of-contracts)
 
