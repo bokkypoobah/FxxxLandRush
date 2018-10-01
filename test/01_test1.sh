@@ -16,7 +16,7 @@ echo "" | tee -a $TEST1OUTPUT
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`perl -le "print scalar localtime $CURRENTTIME"`
-START_DATE=`echo "$CURRENTTIME+45" | bc`
+START_DATE=`echo "$CURRENTTIME+25" | bc`
 START_DATE_S=`perl -le "print scalar localtime $START_DATE"`
 END_DATE=`echo "$CURRENTTIME+60*2" | bc`
 END_DATE_S=`perl -le "print scalar localtime $END_DATE"`
@@ -35,7 +35,7 @@ find ./modifiedContracts -type f -name \* -exec cp {} . \;
 #`perl -pi -e "s/emit LogUint.*$//" $EXCHANGESOL`
 # Does not work `perl -pi -e "print if(!/emit LogUint/);" $EXCHANGESOL`
 
-DIFFS1=`diff -r -x '*.js' -x '*.json' -x '*.txt' -x 'testchain' -x '*.md' -x '*.sh' -x 'settings' -x 'modifiedContracts' $SOURCEDIR .`
+DIFFS1=`diff -r -x '*.js' -x '*.json' -x '*.txt' -x 'testchain' -x '*.md' -x '*.sh' -x 'settings' -x 'modifiedContracts' -x '*_flattened.sol' $SOURCEDIR .`
 echo "--- Differences $SOURCEDIR/*.sol *.sol ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
@@ -319,6 +319,9 @@ for (i = 0; i < numberOfTokens; i++) {
   console.log("RESULT: ");
 }
 console.log("RESULT: ");
+
+
+waitUntil("startTime", landRush.startDate(), 0);
 
 
 // -----------------------------------------------------------------------------
