@@ -52,46 +52,52 @@ library SafeMath {
 contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     using SafeMath for uint;
 
-    BTTSTokenInterface public bttsToken;
+    BTTSTokenInterface public parcelToken;
     BTTSTokenInterface public gzeToken;
     PriceFeedInterface public ethUsdPriceFeed;
     PriceFeedInterface public gzeEthPriceFeed;
 
     address public wallet;
-
     uint public startDate;
     uint public endDate;
-
-    // ETH/USD 9 Dec 2017 11:00 EST => 9 Dec 2017 16:00 UTC => 10 Dec 2017 03:00 AEST => 489.44 from CMC
+    uint public maxParcels;
     uint public parcelUsd;
     uint public gzeBonus;
 
+    uint public parcelsSold;
     uint public contributedGze;
     uint public contributedEth;
-    uint public generatedParcels;
-    uint public maxParcels = 10;
+    bool public finalised;
 
     event WalletUpdated(address indexed oldWallet, address indexed newWallet);
     event StartDateUpdated(uint oldStartDate, uint newStartDate);
     event EndDateUpdated(uint oldEndDate, uint newEndDate);
-    event Contributed(address indexed addr, uint ethAmount, uint ethRefund, uint accountEthAmount, uint usdAmount, uint gzeAmount, uint contributedEth, uint contributedUsd, uint generatedGze, bool lockAccount);
+    event MaxParcelsUpdated(uint oldMaxParcels, uint newMaxParcels);
+    event ParcelUsdUpdated(uint oldParcelUsd, uint newParcelUsd);
+    event GzeBonusUpdated(uint oldGzeBonus, uint newGzeBonus);
 
-    constructor(address _bttsToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _wallet, uint _startDate, uint _endDate, uint _parcelUsd, uint _gzeBonus) public {
-        require(_bttsToken != 0 && _gzeToken != 0 && _ethUsdPriceFeed != 0 && _gzeEthPriceFeed != 0 && _wallet != 0);
+    event Contributed(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
+
+    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonus) public {
+        require(_parcelToken != address(0) && _gzeToken != address(0));
+        require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0));
+        require(_wallet != address(0));
         require(_startDate >= now && _endDate > _startDate);
-        require(_parcelUsd > 0);
+        require(_maxParcels > 0 && _parcelUsd > 0);
         initOwned(msg.sender);
-        bttsToken = BTTSTokenInterface(_bttsToken);
+        parcelToken = BTTSTokenInterface(_parcelToken);
         gzeToken = BTTSTokenInterface(_gzeToken);
         ethUsdPriceFeed = PriceFeedInterface(_ethUsdPriceFeed);
         gzeEthPriceFeed = PriceFeedInterface(_gzeEthPriceFeed);
         wallet = _wallet;
         startDate = _startDate;
         endDate = _endDate;
+        maxParcels = _maxParcels;
         parcelUsd = _parcelUsd;
         gzeBonus = _gzeBonus;
     }
     function setWallet(address _wallet) public onlyOwner {
+        require(_wallet != address(0));
         emit WalletUpdated(wallet, _wallet);
         wallet = _wallet;
     }
@@ -104,6 +110,20 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(_endDate >= now);
         emit EndDateUpdated(endDate, _endDate);
         endDate = _endDate;
+    }
+    function setMaxParcels(uint _maxParcels) public onlyOwner {
+        require(_maxParcels > 0);
+        emit MaxParcelsUpdated(maxParcels, _maxParcels);
+        maxParcels = _maxParcels;
+    }
+    function setParcelUsd(uint _parcelUsd) public onlyOwner {
+        require(_parcelUsd > 0);
+        emit ParcelUsdUpdated(parcelUsd, _parcelUsd);
+        parcelUsd = _parcelUsd;
+    }
+    function setGzeBonus(uint _gzeBonus) public onlyOwner {
+        emit GzeBonusUpdated(gzeBonus, _gzeBonus);
+        gzeBonus = _gzeBonus;
     }
 
     function ethUsd() public view returns (uint rate, bool hasValue) {
@@ -156,7 +176,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
 
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
         require(now >= startDate && now <= endDate);
-        // BK TODO: Owner check?, check parcel limit
+        // BK TODO: Owner check?
         require(token == address(gzeToken));
         uint _parcelGze;
         bool hasValue;
@@ -164,25 +184,33 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(hasValue);
         uint parcels = tokens.div(_parcelGze);
         require(parcels > 0);
+        parcelsSold = parcelsSold.add(parcels);
+        require(parcelsSold <= maxParcels);
         uint gzeToTransfer = parcels.mul(_parcelGze);
+        contributedGze = contributedGze.add(gzeToTransfer);
         ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer);
-        bttsToken.mint(from, parcelUsd.mul(parcels), false);
+        parcelToken.mint(from, parcelUsd.mul(parcels), false);
+        emit Contributed(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
     }
     function () public payable {
         require(now >= startDate && now <= endDate);
-        // BK TODO: Owner check?, check parcel limit
+        // BK TODO: Owner check?
         uint _parcelEth;
         bool hasValue;
         (_parcelEth, hasValue) = parcelEth();
         require(hasValue);
         uint parcels = msg.value.div(_parcelEth);
         require(parcels > 0);
+        parcelsSold = parcelsSold.add(parcels);
+        require(parcelsSold <= maxParcels);
         uint ethToTransfer = parcels.mul(_parcelEth);
+        contributedEth = contributedEth.add(ethToTransfer);
         uint ethToRefund = msg.value.sub(ethToTransfer);
         if (ethToRefund > 0) {
             msg.sender.transfer(ethToRefund);
         }
-        bttsToken.mint(msg.sender, parcelUsd.mul(parcels), false);
+        parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false);
+        emit Contributed(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
     }
     // function addPrecommitment(address tokenOwner, uint ethAmount, uint bonusPercent) public onlyOwner {
     //     require(!finalised);
@@ -194,7 +222,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     //     contributedUsd = contributedUsd.add(usdAmount);
     //     accountEthAmount[tokenOwner] = accountEthAmount[tokenOwner].add(ethAmount);
     //     bool lockAccount = accountEthAmount[tokenOwner] > lockedAccountThresholdEth();
-    //     bttsToken.mint(tokenOwner, gzeAmount, lockAccount);
+    //     parcelToken.mint(tokenOwner, gzeAmount, lockAccount);
     //     emit Contributed(tokenOwner, ethAmount, ethRefund, accountEthAmount[tokenOwner], usdAmount, gzeAmount, contributedEth, contributedUsd, generatedGze, lockAccount);
     // }
+    function finalise() public onlyOwner {
+        require(!finalised);
+        require(now > endDate || parcelsSold >= maxParcels);
+        parcelToken.disableMinting();
+        finalised = true;
+    }
 }

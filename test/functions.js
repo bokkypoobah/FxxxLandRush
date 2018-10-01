@@ -510,15 +510,21 @@ function printLandRushContractDetails() {
   if (landRushContractAddress != null && landRushContractAbi != null) {
     var contract = eth.contract(landRushContractAbi).at(landRushContractAddress);
     console.log("RESULT: landRush.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: landRush.bttsToken=" + getShortAddressName(contract.bttsToken()));
+    console.log("RESULT: landRush.parcelToken=" + getShortAddressName(contract.parcelToken()));
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
     console.log("RESULT: landRush.ethUsdPriceFeed=" + getShortAddressName(contract.ethUsdPriceFeed()));
     console.log("RESULT: landRush.gzeEthPriceFeed=" + getShortAddressName(contract.gzeEthPriceFeed()));
     console.log("RESULT: landRush.wallet=" + getShortAddressName(contract.wallet()));
     console.log("RESULT: landRush.startDate=" + new Date(contract.startDate() * 1000).toString());
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
+    console.log("RESULT: landRush.maxParcels=" + contract.maxParcels());
     console.log("RESULT: landRush.parcelUsd=" + contract.parcelUsd().shift(-18));
     console.log("RESULT: landRush.gzeBonus=" + contract.gzeBonus());
+    console.log("RESULT: landRush.parcelsSold=" + contract.parcelsSold());
+    console.log("RESULT: landRush.contributedGze=" + contract.contributedGze().shift(-18));
+    console.log("RESULT: landRush.contributedEth=" + contract.contributedEth().shift(-18));
+    console.log("RESULT: landRush.finalised=" + contract.finalised());
+
     var ethUsd = contract.ethUsd();
     console.log("RESULT: landRush.ethUsd=" + ethUsd[0].shift(-18) + " " + ethUsd[1]);
     var gzeEth = contract.gzeEth();
@@ -541,6 +547,58 @@ function printLandRushContractDetails() {
       console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
     ownershipTransferredEvents.stopWatching();
+
+    var walletUpdatedEvents = contract.WalletUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    walletUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: WalletUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    walletUpdatedEvents.stopWatching();
+
+    var startDateUpdatedEvents = contract.StartDateUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    startDateUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: StartDateUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    startDateUpdatedEvents.stopWatching();
+
+    var endDateUpdatedEvents = contract.EndDateUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    endDateUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: EndDateUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    endDateUpdatedEvents.stopWatching();
+
+    var maxParcelsUpdatedEvents = contract.MaxParcelsUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    maxParcelsUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: MaxParcelsUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    maxParcelsUpdatedEvents.stopWatching();
+
+    var parcelUsdUpdatedEvents = contract.ParcelUsdUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    parcelUsdUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: ParcelUsdUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    parcelUsdUpdatedEvents.stopWatching();
+
+    var gzeBonusUpdatedEvents = contract.GzeBonusUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    gzeBonusUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: GzeBonusUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    gzeBonusUpdatedEvents.stopWatching();
+
+    var contributedEvents = contract.Contributed({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    contributedEvents.watch(function (error, result) {
+      console.log("RESULT: Contributed " + i++ + " #" + result.blockNumber + " addr=" + result.args.addr + " parcels=" + result.args.parcels +
+        " gzeToTransfer=" + result.args.gzeToTransfer.shift(-18) + " ethToTransfer=" + result.args.ethToTransfer.shift(-18) +
+        " parcelsSold=" + result.args.parcelsSold +
+        " contributedGze=" + result.args.contributedGze.shift(-18) + " contributedEth=" + result.args.contributedEth.shift(-18));
+    });
+    contributedEvents.stopWatching();
 
     landRushFromBlock = latestBlock + 1;
   }
