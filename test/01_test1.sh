@@ -206,7 +206,7 @@ var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).
 var bonusListContract = web3.eth.contract(bonusListAbi);
 var bonusListTx = null;
 var bonusListAddress = null;
-var bonusList = bonusListContract.new({from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var bonusList = bonusListContract.new({from: deployer, data: bonusListBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -216,7 +216,7 @@ var bonusList = bonusListContract.new({from: deployer, data: priceFeedBin, gas: 
         addAccount(bonusListAddress, "BonusList");
         addBonusListContractAddressAndAbi(bonusListAddress, bonusListAbi);
         console.log("DATA: var bonusListAddress=\"" + bonusListAddress + "\";");
-        console.log("DATA: var gzeEthPriceFeedAbi=" + JSON.stringify(bonusListAbi) + ";");
+        console.log("DATA: var bonusListAbi=" + JSON.stringify(bonusListAbi) + ";");
         console.log("DATA: var bonusList=eth.contract(bonusListAbi).at(bonusListAddress);");
       }
     }

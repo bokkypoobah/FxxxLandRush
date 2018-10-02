@@ -224,8 +224,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(token == address(gzeToken));
         uint _parcelGze;
         bool hasValue;
-        // if (bonusList.isInBonusList(from)) {
-        if (false) {
+        if (bonusList.isInBonusList(from)) {
             (_parcelGze, hasValue) = parcelGzeWithBonusOnList();
         } else {
             (_parcelGze, hasValue) = parcelGzeWithBonusOffList();
