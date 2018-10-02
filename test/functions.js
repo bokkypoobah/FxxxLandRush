@@ -535,6 +535,64 @@ function printGzeEthPriceFeedContractDetails() {
 
 
 //-----------------------------------------------------------------------------
+// ETH/USD PriceFeed Contract
+//-----------------------------------------------------------------------------
+var bonusListContractAddress = null;
+var bonusListContractAbi = null;
+function addBonusListContractAddressAndAbi(address, abi) {
+  bonusListContractAddress = address;
+  bonusListContractAbi = abi;
+}
+var bonusListFromBlock = 0;
+function printBonusListContractDetails() {
+  if (bonusListFromBlock == 0) {
+    bonusListFromBlock = baseBlock;
+  }
+  console.log("RESULT: bonusListContract.address=" + getShortAddressName(bonusListContractAddress));
+  if (bonusListContractAddress != null && bonusListContractAbi != null) {
+    var contract = eth.contract(bonusListContractAbi).at(bonusListContractAddress);
+    console.log("RESULT: bonusList.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: bonusList.value=" + contract.value().shift(-18));
+    console.log("RESULT: bonusList.hasValue=" + contract.hasValue());
+
+    var i;
+    var latestBlock = eth.blockNumber;
+
+    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: bonusListFromBlock, toBlock: latestBlock });
+    i = 0;
+    ownershipTransferredEvents.watch(function (error, result) {
+      console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    ownershipTransferredEvents.stopWatching();
+
+    var operatorAddedEvents = contract.OperatorAdded({}, { fromBlock: bonusListFromBlock, toBlock: latestBlock });
+    i = 0;
+    operatorAddedEvents.watch(function (error, result) {
+      console.log("RESULT: OperatorAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    operatorAddedEvents.stopWatching();
+
+    var operatorRemovedEvents = contract.OperatorRemoved({}, { fromBlock: bonusListFromBlock, toBlock: latestBlock });
+    i = 0;
+    operatorRemovedEvents.watch(function (error, result) {
+      console.log("RESULT: OperatorRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    operatorRemovedEvents.stopWatching();
+
+    var accountListedEvents = contract.AccountListed({}, { fromBlock: bonusListFromBlock, toBlock: latestBlock });
+    i = 0;
+    accountListedEvents.watch(function (error, result) {
+      console.log("RESULT: AccountListed " + i++ + " #" + result.blockNumber + " account=" + result.args.account +
+        " status=" + result.args.status);
+    });
+    accountListedEvents.stopWatching();
+
+    bonusListFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
 // LandRush Contract
 //-----------------------------------------------------------------------------
 var landRushContractAddress = null;
@@ -557,6 +615,7 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.gzeToken=" + getShortAddressName(contract.gzeToken()));
     console.log("RESULT: landRush.ethUsdPriceFeed=" + getShortAddressName(contract.ethUsdPriceFeed()));
     console.log("RESULT: landRush.gzeEthPriceFeed=" + getShortAddressName(contract.gzeEthPriceFeed()));
+    console.log("RESULT: landRush.bonusList=" + getShortAddressName(contract.bonusList()));
     console.log("RESULT: landRush.wallet=" + getShortAddressName(contract.wallet()));
     console.log("RESULT: landRush.startDate=" + new Date(contract.startDate() * 1000).toString());
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());

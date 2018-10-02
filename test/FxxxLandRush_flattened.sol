@@ -200,6 +200,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     BTTSTokenInterface public gzeToken;
     PriceFeedInterface public ethUsdPriceFeed;
     PriceFeedInterface public gzeEthPriceFeed;
+    BonusListInterface public bonusList;
 
     address public wallet;
     uint public startDate;
@@ -221,9 +222,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event GzeBonusUpdated(uint oldGzeBonus, uint newGzeBonus);
     event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
 
-    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonus) public {
+    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonus) public {
         require(_parcelToken != address(0) && _gzeToken != address(0));
-        require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0));
+        require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0) && _bonusList != address(0));
         require(_wallet != address(0));
         require(_startDate >= now && _endDate > _startDate);
         require(_maxParcels > 0 && _parcelUsd > 0);
@@ -232,6 +233,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         gzeToken = BTTSTokenInterface(_gzeToken);
         ethUsdPriceFeed = PriceFeedInterface(_ethUsdPriceFeed);
         gzeEthPriceFeed = PriceFeedInterface(_gzeEthPriceFeed);
+        bonusList = BonusListInterface(_bonusList);
         wallet = _wallet;
         startDate = _startDate;
         endDate = _endDate;

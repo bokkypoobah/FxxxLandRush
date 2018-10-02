@@ -55,10 +55,12 @@ if [ "$MODE" = "compile" ]; then
   exit 1;
 fi
 
+
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$BTTSFACTORYJS");
-loadScript("$LANDRUSHJS");
 loadScript("$PRICEFEEDJS");
+loadScript("$BONUSLISTJS");
+loadScript("$LANDRUSHJS");
 loadScript("lookups.js");
 loadScript("functions.js");
 
@@ -68,20 +70,24 @@ var bttsLibBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].b
 var bttsTokenAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSToken"].abi);
 var bttsFactoryAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].abi);
 var bttsFactoryBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].bin;
-var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
-var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
 var priceFeedAbi = JSON.parse(priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].abi);
 var priceFeedBin = "0x" + priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].bin;
+var bonusListAbi = JSON.parse(bonusListOutput.contracts["$BONUSLISTSOL:BonusList"].abi);
+var bonusListBin = "0x" + bonusListOutput.contracts["$BONUSLISTSOL:BonusList"].bin;
+var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
+var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
 
 // console.log("DATA: bttsLibAbi=" + JSON.stringify(bttsLibAbi));
 // console.log("DATA: bttsLibBin=" + JSON.stringify(bttsLibBin));
 // console.log("DATA: bttsTokenAbi=" + JSON.stringify(bttsTokenAbi));
 // console.log("DATA: bttsFactoryAbi=" + JSON.stringify(bttsFactoryAbi));
 // console.log("DATA: bttsFactoryBin=" + JSON.stringify(bttsFactoryBin));
-// console.log("DATA: landRushAbi=" + JSON.stringify(landRushAbi));
-// console.log("DATA: landRushBin=" + JSON.stringify(landRushBin));
 // console.log("DATA: priceFeedAbi=" + JSON.stringify(priceFeedAbi));
 // console.log("DATA: priceFeedBin=" + JSON.stringify(priceFeedBin));
+// console.log("DATA: bonusListAbi=" + JSON.stringify(bonusListAbi));
+// console.log("DATA: bonusListBin=" + JSON.stringify(bonusListBin));
+// console.log("DATA: landRushAbi=" + JSON.stringify(landRushAbi));
+// console.log("DATA: landRushBin=" + JSON.stringify(landRushBin));
 
 
 unlockAccounts("$PASSWORD");
@@ -156,9 +162,9 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var deployPriceFeedMessage = "Deploy PriceFeeds";
+var deployGroup1Message = "Deploy PriceFeeds";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ---------- " + deployPriceFeedMessage + " ----------");
+console.log("RESULT: ---------- " + deployGroup1Message + " ----------");
 var ethUsdPriceFeedContract = web3.eth.contract(priceFeedAbi);
 var ethUsdPriceFeedTx = null;
 var ethUsdPriceFeedAddress = null;
@@ -197,15 +203,37 @@ var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).
     }
   }
 );
+var bonusListContract = web3.eth.contract(bonusListAbi);
+var bonusListTx = null;
+var bonusListAddress = null;
+var bonusList = bonusListContract.new({from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        bonusListTx = contract.transactionHash;
+      } else {
+        bonusListAddress = contract.address;
+        addAccount(bonusListAddress, "BonusList");
+        addBonusListContractAddressAndAbi(bonusListAddress, bonusListAbi);
+        console.log("DATA: var bonusListAddress=\"" + bonusListAddress + "\";");
+        console.log("DATA: var gzeEthPriceFeedAbi=" + JSON.stringify(bonusListAbi) + ";");
+        console.log("DATA: var bonusList=eth.contract(bonusListAbi).at(bonusListAddress);");
+      }
+    }
+  }
+);
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(ethUsdPriceFeedTx, deployPriceFeedMessage + " - ETH/USD PriceFeed");
-failIfTxStatusError(gzeEthPriceFeedTx, deployPriceFeedMessage + " - GZE/ETH PriceFeed");
+failIfTxStatusError(ethUsdPriceFeedTx, deployGroup1Message + " - ETH/USD PriceFeed");
+failIfTxStatusError(gzeEthPriceFeedTx, deployGroup1Message + " - GZE/ETH PriceFeed");
+failIfTxStatusError(bonusListTx, deployGroup1Message + " - BonusList");
 printTxData("ethUsdPriceFeedTx", ethUsdPriceFeedTx);
 printTxData("gzeEthPriceFeedTx", gzeEthPriceFeedTx);
+printTxData("bonusListTx", bonusListTx);
 printEthUsdPriceFeedContractDetails();
 printGzeEthPriceFeedContractDetails();
+printBonusListContractDetails();
 console.log("RESULT: ");
 
 
@@ -267,7 +295,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -293,27 +321,27 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var deployGroup1Message = "Deploy Group #1";
+var settingGroup1Message = "Setting Group #1";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ---------- " + deployGroup1Message + " ----------");
-var deployGroup1_setMinterTx = tokens[$AAA].setMinter(landRushAddress, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
+console.log("RESULT: ---------- " + settingGroup1Message + " ----------");
+var settingGroup1_setMinterTx = tokens[$AAA].setMinter(landRushAddress, {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
 var users = [user1, user2, user3];
-var deployGroup1_Txs = [];
+var settingGroup1_Txs = [];
 users.forEach(function(u) {
   for (i = 0; i < numberOfTokens; i++) {
     var tx = tokens[i].transfer(u, new BigNumber(_tokenInitialDistributions[i]).shift(_tokenDecimals[i]), {from: deployer, gas: 2000000, gasPrice: defaultGasPrice});
-    deployGroup1_Txs.push(tx);
+    settingGroup1_Txs.push(tx);
   }
 });
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(deployGroup1_setMinterTx, deployGroup1Message + " - AAA.setMinter(landRush)");
-deployGroup1_Txs.forEach(function(t) {
-  failIfTxStatusError(t, deployGroup1Message + " - Distribute tokens - " + t);
+failIfTxStatusError(settingGroup1_setMinterTx, settingGroup1Message + " - AAA.setMinter(landRush)");
+settingGroup1_Txs.forEach(function(t) {
+  failIfTxStatusError(t, settingGroup1Message + " - Distribute tokens - " + t);
 });
-printTxData("deployGroup1_setMinterTx", deployGroup1_setMinterTx);
-deployGroup1_Txs.forEach(function(t) {
+printTxData("settingGroup1_setMinterTx", settingGroup1_setMinterTx);
+settingGroup1_Txs.forEach(function(t) {
   printTxData("", t);
 });
 console.log("RESULT: ");
