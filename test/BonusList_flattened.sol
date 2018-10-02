@@ -1,14 +1,11 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's Pricefeed compatible with MakerDAO's "pip" PriceFeed
+// GazeCoin FxxxLandRush Bonus List
 //
-// Used to simulate the MakerDAO ETH/USD pricefeed on the Ethereum mainnet at
-//   https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B
-// Used as a manual feed for GZE/ETH
+// Enjoy.
 //
-//
-// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
+// (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
 
@@ -74,29 +71,48 @@ contract Operated is Owned {
     }
 }
 
+// ----------------------------------------------------------------------------
+// Bonus List interface
+// ----------------------------------------------------------------------------
+contract BonusListInterface {
+    function isInBonusList(address account) public view returns (bool);
+}
+
 
 // ----------------------------------------------------------------------------
-// Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
+// Bonus List - on list or not
 // ----------------------------------------------------------------------------
-contract PriceFeed is Operated {
-    uint public value;
-    bool public hasValue;
+contract BonusList is BonusListInterface, Operated {
+    mapping(address => bool) public bonusList;
 
-    event SetValue(uint oldValue, bool oldHasValue, uint newValue, bool newHasValue);
+    event AccountListed(address indexed account, bool status);
 
-    constructor(uint _value, bool _hasValue) public {
+    constructor() public {
         initOperated(msg.sender);
-        value = _value;
-        hasValue = _hasValue;
-        emit SetValue(0, false, value, hasValue);
     }
-    function setValue(uint _value, bool _hasValue) public onlyOperator {
-        emit SetValue(value, hasValue, _value, _hasValue);
-        value = _value;
-        hasValue = _hasValue;
+
+    function isInBonusList(address account) public view returns (bool) {
+        return bonusList[account];
     }
-    function peek() public view returns (bytes32 _value, bool _hasValue) {
-        _value = bytes32(value);
-        _hasValue = hasValue;
+
+    function add(address[] accounts) public onlyOperator {
+        require(accounts.length != 0);
+        for (uint i = 0; i < accounts.length; i++) {
+            require(accounts[i] != address(0));
+            if (!bonusList[accounts[i]]) {
+                bonusList[accounts[i]] = true;
+                emit AccountListed(accounts[i], true);
+            }
+        }
+    }
+    function remove(address[] accounts) public onlyOperator {
+        require(accounts.length != 0);
+        for (uint i = 0; i < accounts.length; i++) {
+            require(accounts[i] != address(0));
+            if (bonusList[accounts[i]]) {
+                delete bonusList[accounts[i]];
+                emit AccountListed(accounts[i], false);
+            }
+        }
     }
 }

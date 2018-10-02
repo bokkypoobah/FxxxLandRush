@@ -14,6 +14,38 @@ pragma solidity ^0.4.25;
 
 
 // ----------------------------------------------------------------------------
+// Owned contract
+// ----------------------------------------------------------------------------
+contract Owned {
+    address public owner;
+    address public newOwner;
+
+    event OwnershipTransferred(address indexed _from, address indexed _to);
+
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+
+    function initOwned(address _owner) internal {
+        owner = _owner;
+    }
+    function transferOwnership(address _newOwner) public onlyOwner {
+        newOwner = _newOwner;
+    }
+    function acceptOwnership() public {
+        require(msg.sender == newOwner);
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
+        newOwner = address(0);
+    }
+    function transferOwnershipImmediately(address _newOwner) public onlyOwner {
+        emit OwnershipTransferred(owner, _newOwner);
+        owner = _newOwner;
+    }
+}
+
+// ----------------------------------------------------------------------------
 // BokkyPooBah's Token Teleportation Service Interface v1.10
 //
 // https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract
@@ -115,42 +147,17 @@ contract BTTSTokenInterface is ERC20Interface {
 }
 
 // ----------------------------------------------------------------------------
-// Owned contract
-// ----------------------------------------------------------------------------
-contract Owned {
-    address public owner;
-    address public newOwner;
-
-    event OwnershipTransferred(address indexed _from, address indexed _to);
-
-    modifier onlyOwner {
-        require(msg.sender == owner);
-        _;
-    }
-
-    function initOwned(address _owner) internal {
-        owner = _owner;
-    }
-    function transferOwnership(address _newOwner) public onlyOwner {
-        newOwner = _newOwner;
-    }
-    function acceptOwnership() public {
-        require(msg.sender == newOwner);
-        emit OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
-        newOwner = address(0);
-    }
-    function transferOwnershipImmediately(address _newOwner) public onlyOwner {
-        emit OwnershipTransferred(owner, _newOwner);
-        owner = _newOwner;
-    }
-}
-
-// ----------------------------------------------------------------------------
 // Pricefeed Interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
 contract PriceFeedInterface {
     function peek() public view returns (bytes32 _value, bool _hasValue);
+}
+
+// ----------------------------------------------------------------------------
+// Bonus List interface
+// ----------------------------------------------------------------------------
+contract BonusListInterface {
+    function isInBonusList(address account) public view returns (bool);
 }
 
 

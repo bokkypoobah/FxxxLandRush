@@ -12,9 +12,10 @@ pragma solidity ^0.4.25;
 // (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "BTTSTokenInterface110.sol";
 import "Owned.sol";
+import "BTTSTokenInterface110.sol";
 import "PriceFeedInterface.sol";
+import "BonusListInterface.sol";
 
 
 // ----------------------------------------------------------------------------

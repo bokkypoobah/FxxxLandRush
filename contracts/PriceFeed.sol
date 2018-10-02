@@ -11,37 +11,25 @@ pragma solidity ^0.4.24;
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "Owned.sol";
+import "Operated.sol";
 
 
 // ----------------------------------------------------------------------------
 // Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
-contract PriceFeed is Owned {
-    mapping(address => bool) updaters;
-
+contract PriceFeed is Operated {
     uint public value;
     bool public hasValue;
 
-    event UpdaterSet(address indexed updater, bool status);
     event SetValue(uint oldValue, bool oldHasValue, uint newValue, bool newHasValue);
 
-    modifier onlyUpdater {
-        require(msg.sender == owner || updaters[msg.sender]);
-        _;
-    }
-
     constructor(uint _value, bool _hasValue) public {
-        initOwned(msg.sender);
+        initOperated(msg.sender);
         value = _value;
         hasValue = _hasValue;
         emit SetValue(0, false, value, hasValue);
     }
-    function setUpdater(address updater, bool status) public onlyOwner {
-        updaters[updater] = status;
-        emit UpdaterSet(updater, status);
-    }
-    function setValue(uint _value, bool _hasValue) public onlyUpdater {
+    function setValue(uint _value, bool _hasValue) public onlyOperator {
         emit SetValue(value, hasValue, _value, _hasValue);
         value = _value;
         hasValue = _hasValue;
