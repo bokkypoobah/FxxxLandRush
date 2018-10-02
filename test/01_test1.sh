@@ -16,7 +16,7 @@ echo "" | tee -a $TEST1OUTPUT
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`perl -le "print scalar localtime $CURRENTTIME"`
-START_DATE=`echo "$CURRENTTIME+25" | bc`
+START_DATE=`echo "$CURRENTTIME+30" | bc`
 START_DATE_S=`perl -le "print scalar localtime $START_DATE"`
 END_DATE=`echo "$CURRENTTIME+60" | bc`
 END_DATE_S=`perl -le "print scalar localtime $END_DATE"`
@@ -295,7 +295,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUS, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUSOFFLIST, $GZEBONUSONLIST, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

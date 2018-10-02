@@ -206,8 +206,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     uint public startDate;
     uint public endDate;
     uint public maxParcels;
-    uint public parcelUsd;      // USD per parcel, e.g., USD 1,500 * 10^18
-    uint public gzeBonus;       // e.g., 30 = 30% bonus
+    uint public parcelUsd;          // USD per parcel, e.g., USD 1,500 * 10^18
+    uint public gzeBonusOffList;    // e.g., 20 = 20% bonus
+    uint public gzeBonusOnList;     // e.g., 30 = 30% bonus
 
     uint public parcelsSold;
     uint public contributedGze;
@@ -219,10 +220,11 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event EndDateUpdated(uint oldEndDate, uint newEndDate);
     event MaxParcelsUpdated(uint oldMaxParcels, uint newMaxParcels);
     event ParcelUsdUpdated(uint oldParcelUsd, uint newParcelUsd);
-    event GzeBonusUpdated(uint oldGzeBonus, uint newGzeBonus);
+    event GzeBonusOffListUpdated(uint oldGzeBonusOffList, uint newGzeBonusOffList);
+    event GzeBonusOnListUpdated(uint oldGzeBonusOnList, uint newGzeBonusOnList);
     event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
 
-    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonus) public {
+    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonusOffList, uint _gzeBonusOnList) public {
         require(_parcelToken != address(0) && _gzeToken != address(0));
         require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0) && _bonusList != address(0));
         require(_wallet != address(0));
@@ -239,7 +241,8 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         endDate = _endDate;
         maxParcels = _maxParcels;
         parcelUsd = _parcelUsd;
-        gzeBonus = _gzeBonus;
+        gzeBonusOffList = _gzeBonusOffList;
+        gzeBonusOnList = _gzeBonusOnList;
     }
     function setWallet(address _wallet) public onlyOwner {
         require(!finalised);
@@ -271,10 +274,15 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         emit ParcelUsdUpdated(parcelUsd, _parcelUsd);
         parcelUsd = _parcelUsd;
     }
-    function setGzeBonus(uint _gzeBonus) public onlyOwner {
+    function setGzeBonusOffList(uint _gzeBonusOffList) public onlyOwner {
         require(!finalised);
-        emit GzeBonusUpdated(gzeBonus, _gzeBonus);
-        gzeBonus = _gzeBonus;
+        emit GzeBonusOffListUpdated(gzeBonusOffList, _gzeBonusOffList);
+        gzeBonusOffList = _gzeBonusOffList;
+    }
+    function setGzeBonusOnList(uint _gzeBonusOnList) public onlyOwner {
+        require(!finalised);
+        emit GzeBonusOnListUpdated(gzeBonusOnList, _gzeBonusOnList);
+        gzeBonusOnList = _gzeBonusOnList;
     }
 
     function symbol() public view returns (string _symbol) {
@@ -329,12 +337,20 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             rate = parcelUsd.mul(10**18).div(_gzeUsd);
         }
     }
-    // GZE per parcel, with bonus, e.g., 162354.061287259393258561 * 10^18
-    function parcelGze() public view returns (uint rate, bool hasValue) {
+    // GZE per parcel, with bonus but not on bonus list, e.g., 104073.116209781662345231 * 10^18
+    function parcelGzeWithBonusOffList() public view returns (uint rate, bool hasValue) {
         uint _parcelGzeWithoutBonus;
         (_parcelGzeWithoutBonus, hasValue) = parcelGzeWithoutBonus();
         if (hasValue) {
-            rate = _parcelGzeWithoutBonus.mul(gzeBonus.add(100)).div(100);
+            rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
+        }
+    }
+    // GZE per parcel, with bonus and on bonus list, e.g., 96067.49188595230370329 * 10^18
+    function parcelGzeWithBonusOnList() public view returns (uint rate, bool hasValue) {
+        uint _parcelGzeWithoutBonus;
+        (_parcelGzeWithoutBonus, hasValue) = parcelGzeWithoutBonus();
+        if (hasValue) {
+            rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
         }
     }
 
@@ -351,7 +367,11 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(token == address(gzeToken));
         uint _parcelGze;
         bool hasValue;
-        (_parcelGze, hasValue) = parcelGze();
+        if (bonusList.isInBonusList(from)) {
+            (_parcelGze, hasValue) = parcelGzeWithBonusOnList();
+        } else {
+            (_parcelGze, hasValue) = parcelGzeWithBonusOffList();
+        }
         require(hasValue);
         uint parcels = tokens.div(_parcelGze);
         if (parcelsSold.add(parcels) >= maxParcels) {

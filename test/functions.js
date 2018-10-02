@@ -552,8 +552,6 @@ function printBonusListContractDetails() {
   if (bonusListContractAddress != null && bonusListContractAbi != null) {
     var contract = eth.contract(bonusListContractAbi).at(bonusListContractAddress);
     console.log("RESULT: bonusList.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: bonusList.value=" + contract.value().shift(-18));
-    console.log("RESULT: bonusList.hasValue=" + contract.hasValue());
 
     var i;
     var latestBlock = eth.blockNumber;
@@ -621,7 +619,8 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
     console.log("RESULT: landRush.maxParcels=" + contract.maxParcels());
     console.log("RESULT: landRush.parcelUsd=" + contract.parcelUsd().shift(-18));
-    console.log("RESULT: landRush.gzeBonus=" + contract.gzeBonus());
+    console.log("RESULT: landRush.gzeBonusOffList=" + contract.gzeBonusOffList());
+    console.log("RESULT: landRush.gzeBonusOnList=" + contract.gzeBonusOnList());
     console.log("RESULT: landRush.parcelsSold=" + contract.parcelsSold());
     console.log("RESULT: landRush.contributedGze=" + contract.contributedGze().shift(-18));
     console.log("RESULT: landRush.contributedEth=" + contract.contributedEth().shift(-18));
@@ -637,8 +636,10 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.parcelEth=" + parcelEth[0].shift(-18) + " " + parcelEth[1]);
     var parcelGzeWithoutBonus = contract.parcelGzeWithoutBonus();
     console.log("RESULT: landRush.parcelGzeWithoutBonus=" + parcelGzeWithoutBonus[0].shift(-18) + " " + parcelGzeWithoutBonus[1]);
-    var parcelGze = contract.parcelGze();
-    console.log("RESULT: landRush.parcelGze=" + parcelGze[0].shift(-18) + " " + parcelGze[1]);
+    var parcelGzeWithBonusOffList = contract.parcelGzeWithBonusOffList();
+    console.log("RESULT: landRush.parcelGzeWithBonusOffList=" + parcelGzeWithBonusOffList[0].shift(-18) + " " + parcelGzeWithBonusOffList[1]);
+    var parcelGzeWithBonusOnList = contract.parcelGzeWithBonusOnList();
+    console.log("RESULT: landRush.parcelGzeWithBonusOnList=" + parcelGzeWithBonusOnList[0].shift(-18) + " " + parcelGzeWithBonusOnList[1]);
 
     var i;
     var latestBlock = eth.blockNumber;
@@ -685,12 +686,19 @@ function printLandRushContractDetails() {
     });
     parcelUsdUpdatedEvents.stopWatching();
 
-    var gzeBonusUpdatedEvents = contract.GzeBonusUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    var gzeBonusOffListUpdatedEvents = contract.GzeBonusOffListUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
     i = 0;
-    gzeBonusUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: GzeBonusUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    gzeBonusOffListUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: GzeBonusOffListUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
-    gzeBonusUpdatedEvents.stopWatching();
+    gzeBonusOffListUpdatedEvents.stopWatching();
+
+    var gzeBonusOnListUpdatedEvents = contract.GzeBonusOnListUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    gzeBonusOnListUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: GzeBonusOnListUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    gzeBonusOnListUpdatedEvents.stopWatching();
 
     var purchasedEvents = contract.Purchased({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
     i = 0;
