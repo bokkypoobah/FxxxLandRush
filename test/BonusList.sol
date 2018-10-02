@@ -25,8 +25,7 @@ contract BonusList is BonusListInterface, Operated {
     }
 
     function isInBonusList(address account) public view returns (bool) {
-        return true;
-        // return bonusList[account];
+        return bonusList[account];
     }
 
     function add(address[] accounts) public onlyOperator {

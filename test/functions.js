@@ -552,6 +552,9 @@ function printBonusListContractDetails() {
   if (bonusListContractAddress != null && bonusListContractAbi != null) {
     var contract = eth.contract(bonusListContractAbi).at(bonusListContractAddress);
     console.log("RESULT: bonusList.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: bonusList.isInBonusList(user1)=" + contract.isInBonusList(user1));
+    console.log("RESULT: bonusList.isInBonusList(user2)=" + contract.isInBonusList(user2));
+    console.log("RESULT: bonusList.isInBonusList(user3)=" + contract.isInBonusList(user3));
 
     var i;
     var latestBlock = eth.blockNumber;
