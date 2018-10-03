@@ -95,11 +95,8 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
   * [x] contract Operated is Owned
 * [x] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [x] library SafeMath
-* [ ] [code-review/ERC20Interface.md](code-review/ERC20Interface.md)
-  * [ ] contract ERC20Interface
-* [ ] [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
-  * [ ] contract ApproveAndCallFallBack
-  * [ ] contract BTTSTokenInterface is ERC20Interface
+* [x] [code-review/ERC20Interface.md](code-review/ERC20Interface.md)
+  * [x] contract ERC20Interface
 * [ ] [code-review/BonusListInterface.md](code-review/BonusListInterface.md)
   * [ ] contract BonusListInterface
 * [ ] [code-review/BonusList.md](code-review/BonusList.md)
@@ -121,6 +118,9 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 Outside scope as the following have been audited:
 
+* [ ] [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
+  * [ ] contract ApproveAndCallFallBack
+  * [ ] contract BTTSTokenInterface is ERC20Interface
 * [ ] [code-review/BTTSTokenFactory110.md](code-review/BTTSTokenFactory110.md)
   * [ ] contract ERC20Interface
   * [ ] contract ApproveAndCallFallBack
