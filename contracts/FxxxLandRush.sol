@@ -121,7 +121,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     }
     function setMaxParcels(uint _maxParcels) public onlyOwner {
         require(!finalised);
-        require(_maxParcels > parcelsSold);
+        require(_maxParcels >= parcelsSold);
         emit MaxParcelsUpdated(maxParcels, _maxParcels);
         maxParcels = _maxParcels;
     }
