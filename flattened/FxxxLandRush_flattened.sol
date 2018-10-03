@@ -262,7 +262,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     }
     function setEndDate(uint _endDate) public onlyOwner {
         require(!finalised);
-        require(_endDate >= now);
+        require(_endDate > startDate);
         emit EndDateUpdated(endDate, _endDate);
         endDate = _endDate;
     }
