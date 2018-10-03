@@ -124,10 +124,10 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 Outside scope as the following have been [audited](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract#history):
 
-* [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
+* [contracts/BTTSTokenInterface110.sol](contract/BTTSTokenInterface110.sol)
   * contract ApproveAndCallFallBack
   * contract BTTSTokenInterface is ERC20Interface
-* [code-review/BTTSTokenFactory110.md](code-review/BTTSTokenFactory110.md)
+* [contracts/BTTSTokenFactory110.sol](contracts/BTTSTokenFactory110.sol)
   * contract ERC20Interface
   * contract ApproveAndCallFallBack
   * contract BTTSTokenInterface is ERC20Interface
