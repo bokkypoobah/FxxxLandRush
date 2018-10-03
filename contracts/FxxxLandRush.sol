@@ -204,8 +204,8 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         parcelsSold = parcelsSold.add(parcels);
         uint gzeToTransfer = parcels.mul(_parcelGze);
         contributedGze = contributedGze.add(gzeToTransfer);
-        ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer);
-        parcelToken.mint(from, parcelUsd.mul(parcels), false);
+        require(ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer));
+        require(parcelToken.mint(from, parcelUsd.mul(parcels), false));
         emit Purchased(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
@@ -231,7 +231,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         if (ethToRefund > 0) {
             msg.sender.transfer(ethToRefund);
         }
-        parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false);
+        require(parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false));
         emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
@@ -246,7 +246,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         }
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
-        parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false);
+        require(parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false));
         emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();

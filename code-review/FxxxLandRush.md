@@ -183,19 +183,19 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         _name = parcelToken.name();
     }
 
-    // USD per ETH, e.g., 231.11 * 10^18
+    // USD per ETH, e.g., 221.99 * 10^18
     // BK Ok - View function
     function ethUsd() public view returns (uint _rate, bool _live) {
         // BK Ok
         return ethUsdPriceFeed.getRate();
     }
-    // ETH per GZE, e.g., 0.00005197 * 10^18
+    // ETH per GZE, e.g., 0.00004366 * 10^18
     // BK Ok - View function
     function gzeEth() public view returns (uint _rate, bool _live) {
         // BK Ok
         return gzeEthPriceFeed.getRate();
     }
-    // USD per GZE, e.g., 0.0120107867 * 10^18
+    // USD per GZE, e.g., 0.0096920834 * 10^18
     // BK Ok - View function
     function gzeUsd() public view returns (uint _rate, bool _live) {
         // BK Next 2 Ok
@@ -216,7 +216,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = _ethUsd.mul(_gzeEth).div(TENPOW18);
         }
     }
-    // ETH per parcel, e.g., 6.49041581930682359 * 10^18
+    // ETH per parcel, e.g., 6.757061128879679264 * 10^18
     // BK Ok - View function
     function parcelEth() public view returns (uint _rate, bool _live) {
         // BK Ok
@@ -229,7 +229,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = parcelUsd.mul(TENPOW18).div(_ethUsd);
         }
     }
-    // GZE per parcel, without bonus, e.g., 124887.739451737994814278 * 10^18
+    // GZE per parcel, without bonus, e.g., 154765.486231783766945298 * 10^18
     // BK Ok - View function
     function parcelGzeWithoutBonus() public view returns (uint _rate, bool _live) {
         // BK Ok
@@ -242,7 +242,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = parcelUsd.mul(TENPOW18).div(_gzeUsd);
         }
     }
-    // GZE per parcel, with bonus but not on bonus list, e.g., 104073.116209781662345231 * 10^18
+    // GZE per parcel, with bonus but not on bonus list, e.g., 128971.238526486472454415 * 10^18
     // BK Ok - View function
     function parcelGzeWithBonusOffList() public view returns (uint _rate, bool _live) {
         // BK Ok
@@ -251,11 +251,11 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
         // BK Ok
         if (_live) {
-            // BK Ok
+            // BK TODO: Check this
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
         }
     }
-    // GZE per parcel, with bonus and on bonus list, e.g., 96067.49188595230370329 * 10^18
+    // GZE per parcel, with bonus and on bonus list, e.g., 119050.374024449051496383 * 10^18
     // BK Ok - View function
     function parcelGzeWithBonusOnList() public view returns (uint _rate, bool _live) {
         // BK Ok
@@ -264,7 +264,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
         // BK Ok
         if (_live) {
-            // BK Ok
+            // BK TODO: Check this
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
         }
     }
@@ -272,32 +272,53 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     // Account contributes by:
     // 1. calling GZE.approve(landRushAddress, tokens)
     // 2. calling this.purchaseWithGze(tokens)
+    // BK Ok - Any account can call this, but must ave approve(...)-d the right amount of GZE tokens
     function purchaseWithGze(uint256 tokens) public {
+        // BK Ok
         require(gzeToken.allowance(msg.sender, this) >= tokens);
+        // BK Ok
         receiveApproval(msg.sender, tokens, gzeToken, "");
     }
     // Account contributes by calling GZE.approveAndCall(landRushAddress, tokens, "")
+    // BK Ok - Any account can call this via GZE.approveAndCall(landRushAddress, tokens, "")
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
+        // BK Ok
         require(now >= startDate && now <= endDate);
+        // BK Ok
         require(token == address(gzeToken));
+        // BK Next 2 Ok
         uint _parcelGze;
         bool _live;
+        // BK Ok
         if (bonusList.isInBonusList(from)) {
+            // BK Ok
             (_parcelGze, _live) = parcelGzeWithBonusOnList();
+        // BK Ok
         } else {
+            // BK Ok
             (_parcelGze, _live) = parcelGzeWithBonusOffList();
         }
+        // BK Ok
         require(_live);
+        // BK Ok
         uint parcels = tokens.div(_parcelGze);
+        // BK Ok
         if (parcelsSold.add(parcels) >= maxParcels) {
+            // BK Ok
             parcels = maxParcels.sub(parcelsSold);
         }
+        // BK Ok
         require(parcels > 0);
+        // BK Ok
         parcelsSold = parcelsSold.add(parcels);
+        // BK Ok
         uint gzeToTransfer = parcels.mul(_parcelGze);
+        // BK Ok
         contributedGze = contributedGze.add(gzeToTransfer);
-        ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer);
-        parcelToken.mint(from, parcelUsd.mul(parcels), false);
+        // BK Ok
+        require(ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer));
+        // BK Ok
+        require(parcelToken.mint(from, parcelUsd.mul(parcels), false));
         emit Purchased(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
@@ -323,7 +344,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         if (ethToRefund > 0) {
             msg.sender.transfer(ethToRefund);
         }
-        parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false);
+        require(parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false));
         emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
@@ -338,7 +359,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         }
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
-        parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false);
+        require(parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false));
         emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
