@@ -8,12 +8,13 @@ pragma solidity ^0.4.25;
 // ----------------------------------------------------------------------------
 
 import "Operated.sol";
+import "PriceFeedInterface.sol";
 
 
 // ----------------------------------------------------------------------------
 // Pricefeed from a single source
 // ----------------------------------------------------------------------------
-contract PriceFeed is Operated {
+contract PriceFeed is PriceFeedInterface, Operated {
     uint public rate;
     bool public live;
 
