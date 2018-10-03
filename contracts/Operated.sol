@@ -2,8 +2,10 @@ pragma solidity ^0.4.25;
 
 import "Owned.sol";
 
+
 // ----------------------------------------------------------------------------
-// Operated
+// Maintain a list of operators that are permissioned to execute certain
+// functions
 // ----------------------------------------------------------------------------
 contract Operated is Owned {
     mapping(address => bool) public operators;

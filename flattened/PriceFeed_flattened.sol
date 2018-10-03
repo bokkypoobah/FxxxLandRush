@@ -1,11 +1,7 @@
 pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's Pricefeed compatible with MakerDAO's "pip" PriceFeed
-//
-// Used to simulate the MakerDAO ETH/USD pricefeed on the Ethereum mainnet at
-//   https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B
-// Used as a manual feed for GZE/ETH
+// BokkyPooBah's Pricefeed from a single source
 //
 //
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
@@ -48,8 +44,10 @@ contract Owned {
     }
 }
 
+
 // ----------------------------------------------------------------------------
-// Operated
+// Maintain a list of operators that are permissioned to execute certain
+// functions
 // ----------------------------------------------------------------------------
 contract Operated is Owned {
     mapping(address => bool) public operators;
@@ -79,7 +77,7 @@ contract Operated is Owned {
 
 
 // ----------------------------------------------------------------------------
-// Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
+// Pricefeed from a single source
 // ----------------------------------------------------------------------------
 contract PriceFeed is Operated {
     uint public rate;
@@ -94,9 +92,9 @@ contract PriceFeed is Operated {
         emit SetRate(0, false, rate, live);
     }
     function setRate(uint _rate, bool _live) public onlyOperator {
-        emit SetRate(rate, live, _rate, _live);
         rate = _rate;
         live = _live;
+        emit SetRate(rate, live, _rate, _live);
     }
     function getRate() public view returns (uint _rate, bool _live) {
         return (rate, live);
