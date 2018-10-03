@@ -7,6 +7,7 @@ Source file [../contracts/MakerDAOPriceFeedAdaptor.sol](../contracts/MakerDAOPri
 <hr />
 
 ```solidity
+// BK Ok
 pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
@@ -21,13 +22,16 @@ pragma solidity ^0.4.25;
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
+// BK Ok
 import "PriceFeedInterface.sol";
 
 
 // ----------------------------------------------------------------------------
 // See https://github.com/bokkypoobah/MakerDAOSaiContractAudit/tree/master/audit#pip-and-pep-price-feeds
 // ----------------------------------------------------------------------------
+// BK Ok
 contract MakerDAOPriceFeedInterface {
+    // BK Ok - Matches `function peek() constant returns (bytes32, bool)` from MakerDAO 0x729D...
     function peek() public view returns (bytes32 _value, bool _hasValue);
 }
 
@@ -35,15 +39,23 @@ contract MakerDAOPriceFeedInterface {
 // ----------------------------------------------------------------------------
 // Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
+// BK Ok
 contract MakerDAOPriceFeedAdaptor is PriceFeedInterface {
+    // BK Ok
     MakerDAOPriceFeedInterface public makerDAOPriceFeed;
 
+    // BK Ok - Constructor
     constructor(address _makerDAOPriceFeed) public {
+        // BK Ok
         makerDAOPriceFeed = MakerDAOPriceFeedInterface(_makerDAOPriceFeed);
     }
+    // BK Ok - View function, matches interface
     function getRate() public view returns (uint _rate, bool _live) {
+        // BK Ok
         bytes32 value;
+        // BK Ok
         (value, _live) = makerDAOPriceFeed.peek();
+        // BK Ok
         _rate = uint(value);
     }
 }

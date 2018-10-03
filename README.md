@@ -105,11 +105,11 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
   * [x] contract PriceFeedInterface
 * [x] [code-review/PriceFeed.md](code-review/PriceFeed.md)
   * [x] contract PriceFeed is Operated
-* [ ] [code-review/MakerDAOETHUSDPriceFeedSimulator.md](code-review/MakerDAOETHUSDPriceFeedSimulator.md)
-  * [ ] contract MakerDAOETHUSDPriceFeedSimulator is Owned
-* [ ] [code-review/MakerDAOPriceFeedAdaptor.md](code-review/MakerDAOPriceFeedAdaptor.md)
-  * [ ] contract MakerDAOPriceFeedInterface
-  * [ ] contract MakerDAOPriceFeedAdaptor is PriceFeedInterface
+* [x] [code-review/MakerDAOETHUSDPriceFeedSimulator.md](code-review/MakerDAOETHUSDPriceFeedSimulator.md)
+  * [x] contract MakerDAOETHUSDPriceFeedSimulator is Owned
+* [x] [code-review/MakerDAOPriceFeedAdaptor.md](code-review/MakerDAOPriceFeedAdaptor.md)
+  * [x] contract MakerDAOPriceFeedInterface
+  * [x] contract MakerDAOPriceFeedAdaptor is PriceFeedInterface
 * [ ] [code-review/FxxxLandRush.md](code-review/FxxxLandRush.md)
   * [ ] contract FxxxLandRush is Owned, ApproveAndCallFallBack
     * [ ] using SafeMath for uint;
