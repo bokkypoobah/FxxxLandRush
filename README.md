@@ -23,6 +23,7 @@ When the parcels of land are later available for development, the BTTSToken parc
   * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze---second-method)
   * [Purchasing Parcels With ETH](#purchasing-parcels-with-eth)
 * [Deployment Of Contracts](#deployment-of-contracts)
+* [Code Review](#code-review)
 
 <br />
 
@@ -61,31 +62,74 @@ A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
 
 Following are the constructor parameters
 
-\#      | Type             | Notes
+No      | Type             | Notes
 :------ |:---------------- |:----
-address | _parcelToken     | FxxxLandRush sector token
-address | _gzeToken        | [GazeCoin GZE token](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
-address | _ethUsdPriceFeed | PriceFeed adaptor for MakerDAO ETH/USD price feed
-address | _gzeEthPriceFeed | GazeCoin maintained GZE/ETH price feed
-address | _bonusList       | BonusList contract
-address | _wallet          | Wallet for GZE and ETH
-uint    | _startDate       | Start date, in seconds since Jan 01 1970
-uint    | _endDate         | End date, in seconds since Jan 01 1970
-uint    | _maxParcels      | Maximum parcels of land for the sector
-uint    | _parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
-uint    | _gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
-uint    | _gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
+address | \_parcelToken     | FxxxLandRush sector token
+address | \_gzeToken        | [GazeCoin GZE token](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
+address | \_ethUsdPriceFeed | PriceFeed adaptor for MakerDAO ETH/USD price feed
+address | \_gzeEthPriceFeed | GazeCoin maintained GZE/ETH price feed
+address | \_bonusList       | BonusList contract
+address | \_wallet          | Wallet for GZE and ETH
+uint    | \_startDate       | Start date, in seconds since Jan 01 1970
+uint    | \_endDate         | End date, in seconds since Jan 01 1970
+uint    | \_maxParcels      | Maximum parcels of land for the sector
+uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
+uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
+uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
 
 #### Configurable Parameters
 
-* setWallet(address _wallet)
-* setStartDate(uint _startDate)
-* setEndDate(uint _endDate)
-* setMaxParcels(uint _maxParcels)
-* setParcelUsd(uint _parcelUsd)
-* setGzeBonusOffList(uint _gzeBonusOffList)
-* setGzeBonusOnList(uint _gzeBonusOnList)
+* setWallet(address \_wallet)
+* setStartDate(uint \_startDate)
+* setEndDate(uint \_endDate)
+* setMaxParcels(uint \_maxParcels)
+* setParcelUsd(uint \_parcelUsd)
+* setGzeBonusOffList(uint \_gzeBonusOffList)
+* setGzeBonusOnList(uint \_gzeBonusOnList)
 
+## Code Review
+
+* [x] [code-review/Owned.md](code-review/Owned.md)
+  * [x] contract Owned
+* [ ] [code-review/Operated.md](code-review/Operated.md)
+  * [ ] contract Operated is Owned
+* [ ] [code-review/SafeMath.md](code-review/SafeMath.md)
+  * [ ] library SafeMath
+* [ ] [code-review/ERC20Interface.md](code-review/ERC20Interface.md)
+  * [ ] contract ERC20Interface
+* [ ] [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
+  * [ ] contract ApproveAndCallFallBack
+  * [ ] contract BTTSTokenInterface is ERC20Interface
+* [ ] [code-review/BonusListInterface.md](code-review/BonusListInterface.md)
+  * [ ] contract BonusListInterface
+* [ ] [code-review/BonusList.md](code-review/BonusList.md)
+  * [ ] contract BonusList is BonusListInterface, Operated
+* [ ] [code-review/PriceFeedInterface.md](code-review/PriceFeedInterface.md)
+  * [ ] contract PriceFeedInterface
+* [ ] [code-review/PriceFeed.md](code-review/PriceFeed.md)
+  * [ ] contract PriceFeed is Operated
+* [ ] [code-review/MakerDAOETHUSDPriceFeedSimulator.md](code-review/MakerDAOETHUSDPriceFeedSimulator.md)
+  * [ ] contract MakerDAOETHUSDPriceFeedSimulator is Owned
+* [ ] [code-review/MakerDAOPriceFeedAdaptor.md](code-review/MakerDAOPriceFeedAdaptor.md)
+  * [ ] contract MakerDAOPriceFeedInterface
+  * [ ] contract MakerDAOPriceFeedAdaptor is PriceFeedInterface
+* [ ] [code-review/FxxxLandRush.md](code-review/FxxxLandRush.md)
+  * [ ] contract FxxxLandRush is Owned, ApproveAndCallFallBack
+    * [ ] using SafeMath for uint;
+
+<br />
+
+Outside scope as the following have been audited:
+
+* [ ] [code-review/BTTSTokenFactory110.md](code-review/BTTSTokenFactory110.md)
+  * [ ] contract ERC20Interface
+  * [ ] contract ApproveAndCallFallBack
+  * [ ] contract BTTSTokenInterface is ERC20Interface
+  * [ ] library BTTSLib
+  * [ ] contract BTTSToken is BTTSTokenInterface
+  * [ ]     using BTTSLib for BTTSLib.Data;
+  * [ ] contract Owned
+  * [ ] contract BTTSTokenFactory is Owned
 
 <br />
 
