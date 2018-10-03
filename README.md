@@ -91,8 +91,8 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 * [x] [code-review/Owned.md](code-review/Owned.md)
   * [x] contract Owned
-* [ ] [code-review/Operated.md](code-review/Operated.md)
-  * [ ] contract Operated is Owned
+* [x] [code-review/Operated.md](code-review/Operated.md)
+  * [x] contract Operated is Owned
 * [ ] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [ ] library SafeMath
 * [ ] [code-review/ERC20Interface.md](code-review/ERC20Interface.md)
