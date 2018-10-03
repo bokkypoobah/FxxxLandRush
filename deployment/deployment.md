@@ -26,4 +26,4 @@ var makerdaopricefeedadaptor = makerdaopricefeedadaptorContract.new(
 
 Deployed in tx [0xa589d028](https://etherscan.io/tx/0xa589d028962a7db12323a2decd01e1c98126fc68b63e565d9c3b13bd446c4782) to [0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code).
 
-View the MakerDAO ETH/USD rate in *uint* format at [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#readContract).
+View the MakerDAO ETH/USD rate in *uint* format at [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#readContract) and compare to the ETH/USD rate from [https://makerdao.com/feeds/](https://makerdao.com/feeds/).
