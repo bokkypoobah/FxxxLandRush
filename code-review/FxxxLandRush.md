@@ -131,86 +131,140 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         // BK Ok
         endDate = _endDate;
     }
+    // BK Ok - Only owner can execute
     function setMaxParcels(uint _maxParcels) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         require(_maxParcels >= parcelsSold);
+        // BK Ok - Log event
         emit MaxParcelsUpdated(maxParcels, _maxParcels);
+        // BK Ok
         maxParcels = _maxParcels;
     }
+    // BK Ok - Only owner can execute
     function setParcelUsd(uint _parcelUsd) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         require(_parcelUsd > 0);
+        // BK Ok - Log event
         emit ParcelUsdUpdated(parcelUsd, _parcelUsd);
+        // BK Ok
         parcelUsd = _parcelUsd;
     }
+    // BK Ok - Only owner can execute
     function setGzeBonusOffList(uint _gzeBonusOffList) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok - Log event
         emit GzeBonusOffListUpdated(gzeBonusOffList, _gzeBonusOffList);
+        // BK Ok
         gzeBonusOffList = _gzeBonusOffList;
     }
+    // BK Ok - Only owner can execute
     function setGzeBonusOnList(uint _gzeBonusOnList) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok - Log event
         emit GzeBonusOnListUpdated(gzeBonusOnList, _gzeBonusOnList);
+        // BK Ok
         gzeBonusOnList = _gzeBonusOnList;
     }
 
+    // BK Ok - View function
     function symbol() public view returns (string _symbol) {
+        // BK Ok
         _symbol = parcelToken.symbol();
     }
+    // BK Ok - View function
     function name() public view returns (string _name) {
+        // BK Ok
         _name = parcelToken.name();
     }
 
     // USD per ETH, e.g., 231.11 * 10^18
+    // BK Ok - View function
     function ethUsd() public view returns (uint _rate, bool _live) {
+        // BK Ok
         return ethUsdPriceFeed.getRate();
     }
     // ETH per GZE, e.g., 0.00005197 * 10^18
+    // BK Ok - View function
     function gzeEth() public view returns (uint _rate, bool _live) {
+        // BK Ok
         return gzeEthPriceFeed.getRate();
     }
     // USD per GZE, e.g., 0.0120107867 * 10^18
+    // BK Ok - View function
     function gzeUsd() public view returns (uint _rate, bool _live) {
+        // BK Next 2 Ok
         uint _ethUsd;
         bool _ethUsdLive;
+        // BK Ok
         (_ethUsd, _ethUsdLive) = ethUsdPriceFeed.getRate();
+        // BK Next 2 Ok
         uint _gzeEth;
         bool _gzeEthLive;
+        // BK Ok
         (_gzeEth, _gzeEthLive) = gzeEthPriceFeed.getRate();
+        // BK Ok
         if (_ethUsdLive && _gzeEthLive) {
+            // BK Ok
             _live = true;
+            // BK Ok
             _rate = _ethUsd.mul(_gzeEth).div(TENPOW18);
         }
     }
     // ETH per parcel, e.g., 6.49041581930682359 * 10^18
+    // BK Ok - View function
     function parcelEth() public view returns (uint _rate, bool _live) {
+        // BK Ok
         uint _ethUsd;
+        // BK Ok
         (_ethUsd, _live) = ethUsd();
+        // BK Ok
         if (_live) {
+            // BK Ok
             _rate = parcelUsd.mul(TENPOW18).div(_ethUsd);
         }
     }
     // GZE per parcel, without bonus, e.g., 124887.739451737994814278 * 10^18
+    // BK Ok - View function
     function parcelGzeWithoutBonus() public view returns (uint _rate, bool _live) {
+        // BK Ok
         uint _gzeUsd;
+        // BK Ok
         (_gzeUsd, _live) = gzeUsd();
+        // BK Ok
         if (_live) {
+            // BK Ok
             _rate = parcelUsd.mul(TENPOW18).div(_gzeUsd);
         }
     }
     // GZE per parcel, with bonus but not on bonus list, e.g., 104073.116209781662345231 * 10^18
+    // BK Ok - View function
     function parcelGzeWithBonusOffList() public view returns (uint _rate, bool _live) {
+        // BK Ok
         uint _parcelGzeWithoutBonus;
+        // BK Ok
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
+        // BK Ok
         if (_live) {
+            // BK Ok
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
         }
     }
     // GZE per parcel, with bonus and on bonus list, e.g., 96067.49188595230370329 * 10^18
+    // BK Ok - View function
     function parcelGzeWithBonusOnList() public view returns (uint _rate, bool _live) {
+        // BK Ok
         uint _parcelGzeWithoutBonus;
+        // BK Ok
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
+        // BK Ok
         if (_live) {
+            // BK Ok
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
         }
     }
