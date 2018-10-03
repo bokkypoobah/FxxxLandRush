@@ -25,6 +25,8 @@ import "BonusListInterface.sol";
 contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     using SafeMath for uint;
 
+    uint private constant TENPOW18 = 10 ** 18;
+
     BTTSTokenInterface public parcelToken;
     BTTSTokenInterface public gzeToken;
     PriceFeedInterface public ethUsdPriceFeed;
@@ -122,64 +124,56 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     }
 
     // USD per ETH, e.g., 231.11 * 10^18
-    function ethUsd() public view returns (uint rate, bool hasValue) {
-        bytes32 value;
-        (value, hasValue) = ethUsdPriceFeed.peek();
-        if (hasValue) {
-            rate = uint(value);
-        }
+    function ethUsd() public view returns (uint _rate, bool _live) {
+        return ethUsdPriceFeed.getRate();
     }
     // ETH per GZE, e.g., 0.00005197 * 10^18
-    function gzeEth() public view returns (uint rate, bool hasValue) {
-        bytes32 value;
-        (value, hasValue) = gzeEthPriceFeed.peek();
-        if (hasValue) {
-            rate = uint(value);
-        }
+    function gzeEth() public view returns (uint _rate, bool _live) {
+        return gzeEthPriceFeed.getRate();
     }
     // USD per GZE, e.g., 0.0120107867 * 10^18
-    function gzeUsd() public view returns (uint rate, bool hasValue) {
-        bytes32 ethUsdValue;
-        bool hasEthUsdValue;
-        (ethUsdValue, hasEthUsdValue) = ethUsdPriceFeed.peek();
-        bytes32 gzeEthValue;
-        bool hasGzeEthValue;
-        (gzeEthValue, hasGzeEthValue) = gzeEthPriceFeed.peek();
-        if (hasEthUsdValue && hasGzeEthValue) {
-            hasValue = true;
-            rate = uint(ethUsdValue).mul(uint(gzeEthValue)).div(10**18);
+    function gzeUsd() public view returns (uint _rate, bool _live) {
+        uint _ethUsd;
+        bool _ethUsdLive;
+        (_ethUsd, _ethUsdLive) = ethUsdPriceFeed.getRate();
+        uint _gzeEth;
+        bool _gzeEthLive;
+        (_gzeEth, _gzeEthLive) = gzeEthPriceFeed.getRate();
+        if (_ethUsdLive && _gzeEthLive) {
+            _live = true;
+            _rate = _ethUsd.mul(_gzeEth).div(TENPOW18);
         }
     }
     // ETH per parcel, e.g., 6.49041581930682359 * 10^18
-    function parcelEth() public view returns (uint rate, bool hasValue) {
+    function parcelEth() public view returns (uint _rate, bool _live) {
         uint _ethUsd;
-        (_ethUsd, hasValue) = ethUsd();
-        if (hasValue) {
-            rate = parcelUsd.mul(10**18).div(_ethUsd);
+        (_ethUsd, _live) = ethUsd();
+        if (_live) {
+            _rate = parcelUsd.mul(TENPOW18).div(_ethUsd);
         }
     }
     // GZE per parcel, without bonus, e.g., 124887.739451737994814278 * 10^18
-    function parcelGzeWithoutBonus() public view returns (uint rate, bool hasValue) {
+    function parcelGzeWithoutBonus() public view returns (uint _rate, bool _live) {
         uint _gzeUsd;
-        (_gzeUsd, hasValue) = gzeUsd();
-        if (hasValue) {
-            rate = parcelUsd.mul(10**18).div(_gzeUsd);
+        (_gzeUsd, _live) = gzeUsd();
+        if (_live) {
+            _rate = parcelUsd.mul(TENPOW18).div(_gzeUsd);
         }
     }
     // GZE per parcel, with bonus but not on bonus list, e.g., 104073.116209781662345231 * 10^18
-    function parcelGzeWithBonusOffList() public view returns (uint rate, bool hasValue) {
+    function parcelGzeWithBonusOffList() public view returns (uint _rate, bool _live) {
         uint _parcelGzeWithoutBonus;
-        (_parcelGzeWithoutBonus, hasValue) = parcelGzeWithoutBonus();
-        if (hasValue) {
-            rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
+        (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
+        if (_live) {
+            _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
         }
     }
     // GZE per parcel, with bonus and on bonus list, e.g., 96067.49188595230370329 * 10^18
-    function parcelGzeWithBonusOnList() public view returns (uint rate, bool hasValue) {
+    function parcelGzeWithBonusOnList() public view returns (uint _rate, bool _live) {
         uint _parcelGzeWithoutBonus;
-        (_parcelGzeWithoutBonus, hasValue) = parcelGzeWithoutBonus();
-        if (hasValue) {
-            rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
+        (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
+        if (_live) {
+            _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
         }
     }
 
@@ -195,13 +189,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(now >= startDate && now <= endDate);
         require(token == address(gzeToken));
         uint _parcelGze;
-        bool hasValue;
+        bool _live;
         if (bonusList.isInBonusList(from)) {
-            (_parcelGze, hasValue) = parcelGzeWithBonusOnList();
+            (_parcelGze, _live) = parcelGzeWithBonusOnList();
         } else {
-            (_parcelGze, hasValue) = parcelGzeWithBonusOffList();
+            (_parcelGze, _live) = parcelGzeWithBonusOffList();
         }
-        require(hasValue);
+        require(_live);
         uint parcels = tokens.div(_parcelGze);
         if (parcelsSold.add(parcels) >= maxParcels) {
             parcels = maxParcels.sub(parcelsSold);
@@ -222,9 +216,9 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     function () public payable {
         require(now >= startDate && now <= endDate);
         uint _parcelEth;
-        bool hasValue;
-        (_parcelEth, hasValue) = parcelEth();
-        require(hasValue);
+        bool _live;
+        (_parcelEth, _live) = parcelEth();
+        require(_live);
         uint parcels = msg.value.div(_parcelEth);
         if (parcelsSold.add(parcels) >= maxParcels) {
             parcels = maxParcels.sub(parcelsSold);

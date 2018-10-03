@@ -18,23 +18,24 @@ import "Operated.sol";
 // Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
 contract PriceFeed is Operated {
-    uint public rate;
-    bool public live;
+    uint public value;
+    bool public hasValue;
 
-    event SetRate(uint oldRate, bool oldLive, uint newRate, bool newLive);
+    event SetValue(uint oldValue, bool oldHasValue, uint newValue, bool newHasValue);
 
-    constructor(uint _rate, bool _live) public {
+    constructor(uint _value, bool _hasValue) public {
         initOperated(msg.sender);
-        rate = _rate;
-        live = _live;
-        emit SetRate(0, false, rate, live);
+        value = _value;
+        hasValue = _hasValue;
+        emit SetValue(0, false, value, hasValue);
     }
-    function setValue(uint _rate, bool _live) public onlyOperator {
-        emit SetRate(rate, live, _rate, _live);
-        rate = _rate;
-        live = _live;
+    function setValue(uint _value, bool _hasValue) public onlyOperator {
+        emit SetValue(value, hasValue, _value, _hasValue);
+        value = _value;
+        hasValue = _hasValue;
     }
-    function getRate() public view returns (uint _rate, bool _live) {
-        return (rate, live);
+    function peek() public view returns (bytes32 _value, bool _hasValue) {
+        _value = bytes32(value);
+        _hasValue = hasValue;
     }
 }

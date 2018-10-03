@@ -7,10 +7,13 @@ BTTSFACTORYSOL=BTTSTokenFactory110.sol
 BTTSFACTORYJS=BTTSTokenFactory110.js
 PRICEFEEDSOL=PriceFeed.sol
 PRICEFEEDJS=PriceFeed.js
+PRICEFEEDFLATTENED=../flattened/PriceFeed_flattened.sol
 BONUSLISTSOL=BonusList.sol
 BONUSLISTJS=BonusList.js
+BONUSLISTFLATTENED=../flattened/BonusList_flattened.sol
 LANDRUSHSOL=FxxxLandRush.sol
 LANDRUSHJS=FxxxLandRush.js
+LANDRUSHFLATTENED=../flattened/FxxxLandRush_flattened.sol
 
 NUMBEROFTOKENS=2
 GZE=0

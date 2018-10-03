@@ -46,9 +46,10 @@ solc_0.4.25 --version | tee -a $TEST1OUTPUT
 echo "var priceFeedOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $PRICEFEEDSOL`;" > $PRICEFEEDJS
 echo "var bonusListOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $BONUSLISTSOL`;" > $BONUSLISTJS
 echo "var landRushOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $LANDRUSHSOL`;" > $LANDRUSHJS
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$PRICEFEEDSOL --verbose | tee -a $TEST1OUTPUT
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$BONUSLISTSOL --verbose | tee -a $TEST1OUTPUT
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$LANDRUSHSOL --verbose | tee -a $TEST1OUTPUT
+
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$PRICEFEEDSOL --outputsol=$PRICEFEEDFLATTENED --verbose | tee -a $TEST1OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$BONUSLISTSOL --outputsol=$BONUSLISTFLATTENED --verbose | tee -a $TEST1OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$LANDRUSHSOL --outputsol=$LANDRUSHFLATTENED --verbose | tee -a $TEST1OUTPUT
 
 if [ "$MODE" = "compile" ]; then
   echo "Compiling only"

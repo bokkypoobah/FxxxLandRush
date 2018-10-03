@@ -450,8 +450,8 @@ function printEthUsdPriceFeedContractDetails() {
   if (ethUsdPriceFeedContractAddress != null && ethUsdPriceFeedContractAbi != null) {
     var contract = eth.contract(ethUsdPriceFeedContractAbi).at(ethUsdPriceFeedContractAddress);
     console.log("RESULT: ethUsdPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: ethUsdPriceFeed.value=" + contract.value().shift(-18));
-    console.log("RESULT: ethUsdPriceFeed.hasValue=" + contract.hasValue());
+    console.log("RESULT: ethUsdPriceFeed.rate=" + contract.rate().shift(-18));
+    console.log("RESULT: ethUsdPriceFeed.live=" + contract.live());
 
     var i;
     var latestBlock = eth.blockNumber;
@@ -463,13 +463,14 @@ function printEthUsdPriceFeedContractDetails() {
     });
     ownershipTransferredEvents.stopWatching();
 
-    var setValueEvents = contract.SetValue({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
+    var setRateEvents = contract.SetRate({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
     i = 0;
-    setValueEvents.watch(function (error, result) {
-      console.log("RESULT: SetValue " + i++ + " #" + result.blockNumber + " value=" + result.args.value.shift(-18) +
-        " hasValue=" + result.args.hasValue);
+    setRateEvents.watch(function (error, result) {
+      console.log("RESULT: SetRate " + i++ + " #" + result.blockNumber + " oldRate=" + result.args.oldRate.shift(-18) +
+        " oldLive=" + result.args.oldLive + " newRate=" + result.args.newRate.shift(-18) +
+        " newLive=" + result.args.newLive);
     });
-    setValueEvents.stopWatching();
+    setRateEvents.stopWatching();
 
     ethUsdPriceFeedFromBlock = latestBlock + 1;
   }
@@ -494,8 +495,8 @@ function printGzeEthPriceFeedContractDetails() {
   if (gzeEthPriceFeedContractAddress != null && gzeEthPriceFeedContractAbi != null) {
     var contract = eth.contract(gzeEthPriceFeedContractAbi).at(gzeEthPriceFeedContractAddress);
     console.log("RESULT: gzeEthPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: gzeEthPriceFeed.value=" + contract.value().shift(-18));
-    console.log("RESULT: gzeEthPriceFeed.hasValue=" + contract.hasValue());
+    console.log("RESULT: gzeEthPriceFeed.rate=" + contract.rate().shift(-18));
+    console.log("RESULT: gzeEthPriceFeed.live=" + contract.live());
 
     var i;
     var latestBlock = eth.blockNumber;
@@ -521,13 +522,14 @@ function printGzeEthPriceFeedContractDetails() {
     });
     operatorRemovedEvents.stopWatching();
 
-    var setValueEvents = contract.SetValue({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
+    var setRateEvents = contract.SetRate({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: latestBlock });
     i = 0;
-    setValueEvents.watch(function (error, result) {
-      console.log("RESULT: SetValue " + i++ + " #" + result.blockNumber + " value=" + result.args.value.shift(-18) +
-        " hasValue=" + result.args.hasValue);
+    setRateEvents.watch(function (error, result) {
+      console.log("RESULT: SetRate " + i++ + " #" + result.blockNumber + " oldRate=" + result.args.oldRate.shift(-18) +
+        " oldLive=" + result.args.oldLive + " newRate=" + result.args.newRate.shift(-18) +
+        " newLive=" + result.args.newLive);
     });
-    setValueEvents.stopWatching();
+    setRateEvents.stopWatching();
 
     gzeEthPriceFeedFromBlock = latestBlock + 1;
   }
