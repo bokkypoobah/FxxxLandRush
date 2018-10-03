@@ -87,6 +87,10 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 * setGzeBonusOffList(uint \_gzeBonusOffList)
 * setGzeBonusOnList(uint \_gzeBonusOnList)
 
+<br />
+
+<hr />
+
 ## Code Review
 
 * [x] [code-review/Owned.md](code-review/Owned.md)
