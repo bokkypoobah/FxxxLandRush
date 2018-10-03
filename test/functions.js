@@ -449,28 +449,29 @@ function printEthUsdPriceFeedContractDetails() {
   console.log("RESULT: ethUsdPriceFeedContract.address=" + getShortAddressName(ethUsdPriceFeedContractAddress));
   if (ethUsdPriceFeedContractAddress != null && ethUsdPriceFeedContractAbi != null) {
     var contract = eth.contract(ethUsdPriceFeedContractAbi).at(ethUsdPriceFeedContractAddress);
-    console.log("RESULT: ethUsdPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
-    console.log("RESULT: ethUsdPriceFeed.rate=" + contract.rate().shift(-18));
-    console.log("RESULT: ethUsdPriceFeed.live=" + contract.live());
+    // console.log("RESULT: ethUsdPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: ethUsdPriceFeed.makerDAOPriceFeed=" + getShortAddressName(contract.makerDAOPriceFeed()));
+    var rate = contract.getRate();
+    console.log("RESULT: ethUsdPriceFeed.ethUsd=" + rate[0].shift(-18) + " " + rate[1]);
 
     var i;
     var latestBlock = eth.blockNumber;
 
-    var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
-    i = 0;
-    ownershipTransferredEvents.watch(function (error, result) {
-      console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    ownershipTransferredEvents.stopWatching();
-
-    var setRateEvents = contract.SetRate({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
-    i = 0;
-    setRateEvents.watch(function (error, result) {
-      console.log("RESULT: SetRate " + i++ + " #" + result.blockNumber + " oldRate=" + result.args.oldRate.shift(-18) +
-        " oldLive=" + result.args.oldLive + " newRate=" + result.args.newRate.shift(-18) +
-        " newLive=" + result.args.newLive);
-    });
-    setRateEvents.stopWatching();
+    // var ownershipTransferredEvents = contract.OwnershipTransferred({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
+    // i = 0;
+    // ownershipTransferredEvents.watch(function (error, result) {
+    //   console.log("RESULT: OwnershipTransferred " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    // });
+    // ownershipTransferredEvents.stopWatching();
+    //
+    // var setRateEvents = contract.SetRate({}, { fromBlock: ethUsdPriceFeedFromBlock, toBlock: latestBlock });
+    // i = 0;
+    // setRateEvents.watch(function (error, result) {
+    //   console.log("RESULT: SetRate " + i++ + " #" + result.blockNumber + " oldRate=" + result.args.oldRate.shift(-18) +
+    //     " oldLive=" + result.args.oldLive + " newRate=" + result.args.newRate.shift(-18) +
+    //     " newLive=" + result.args.newLive);
+    // });
+    // setRateEvents.stopWatching();
 
     ethUsdPriceFeedFromBlock = latestBlock + 1;
   }

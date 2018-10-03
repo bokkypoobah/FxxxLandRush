@@ -5,6 +5,15 @@ SOURCEDIR=../contracts/
 
 BTTSFACTORYSOL=BTTSTokenFactory110.sol
 BTTSFACTORYJS=BTTSTokenFactory110.js
+
+MDPRICEFEEDSIMULATORSOL=MakerDAOETHUSDPriceFeedSimulator.sol
+MDPRICEFEEDSIMULATORJS=MakerDAOETHUSDPriceFeedSimulator.js
+MDPRICEFEEDSIMULATORFLATTENED=../flattened/MakerDAOETHUSDPriceFeedSimulator_flattened.sol
+
+MDPRICEFEEDADAPTORSOL=MakerDAOPriceFeedAdaptor.sol
+MDPRICEFEEDADAPTORJS=MakerDAOPriceFeedAdaptor.js
+MDPRICEFEEDADAPTORFLATTENED=../flattened/MakerDAOPriceFeedAdaptor_flattened.sol
+
 PRICEFEEDSOL=PriceFeed.sol
 PRICEFEEDJS=PriceFeed.js
 PRICEFEEDFLATTENED=../flattened/PriceFeed_flattened.sol

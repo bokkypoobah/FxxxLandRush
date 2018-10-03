@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
 // BokkyPooBah's Pricefeed compatible with MakerDAO's "pip" PriceFeed
@@ -29,7 +29,7 @@ contract PriceFeed is Operated {
         live = _live;
         emit SetRate(0, false, rate, live);
     }
-    function setValue(uint _rate, bool _live) public onlyOperator {
+    function setRate(uint _rate, bool _live) public onlyOperator {
         emit SetRate(rate, live, _rate, _live);
         rate = _rate;
         live = _live;

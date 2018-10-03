@@ -6,6 +6,15 @@ SOURCEDIR=../contracts/
 
 BTTSFACTORYSOL=BTTSTokenFactory110.sol
 BTTSFACTORYJS=BTTSTokenFactory110.js
+
+MDPRICEFEEDSIMULATORSOL=MakerDAOETHUSDPriceFeedSimulator.sol
+MDPRICEFEEDSIMULATORJS=MakerDAOETHUSDPriceFeedSimulator.js
+MDPRICEFEEDSIMULATORFLATTENED=../flattened/MakerDAOETHUSDPriceFeedSimulator_flattened.sol
+
+MDPRICEFEEDADAPTORSOL=MakerDAOPriceFeedAdaptor.sol
+MDPRICEFEEDADAPTORJS=MakerDAOPriceFeedAdaptor.js
+MDPRICEFEEDADAPTORFLATTENED=../flattened/MakerDAOPriceFeedAdaptor_flattened.sol
+
 PRICEFEEDSOL=PriceFeed.sol
 PRICEFEEDJS=PriceFeed.js
 PRICEFEEDFLATTENED=../flattened/PriceFeed_flattened.sol
@@ -45,15 +54,29 @@ TEST3RESULTS=test3results.txt
 TEST4OUTPUT=test4output.txt
 TEST4RESULTS=test4results.txt
 
-CURRENTTIME = '1538542770' 'Wed Oct  3 14:59:30 2018'
-START_DATE  = '1538542800' 'Wed Oct  3 15:00:00 2018'
-END_DATE    = '1538542830' 'Wed Oct  3 15:00:30 2018'
+CURRENTTIME = '1538551951' 'Wed Oct  3 17:32:31 2018'
+START_DATE  = '1538551981' 'Wed Oct  3 17:33:01 2018'
+END_DATE    = '1538552011' 'Wed Oct  3 17:33:31 2018'
 --- Differences ../contracts//*.sol *.sol ---
 
 solc, the solidity compiler commandline interface
 Version: 0.4.20+commit.3155dd80.Darwin.appleclang
 solc, the solidity compiler commandline interface
 Version: 0.4.25+commit.59dbf8f1.Darwin.appleclang
+contractsdir: ../contracts
+remapdir    : (no remapping)
+mainsol     : MakerDAOETHUSDPriceFeedSimulator.sol
+outputsol   : ../flattened/MakerDAOETHUSDPriceFeedSimulator_flattened.sol
+Processing ../contracts/MakerDAOETHUSDPriceFeedSimulator.sol
+    Importing ../contracts/Owned.sol
+    Processing ../contracts/Owned.sol
+contractsdir: ../contracts
+remapdir    : (no remapping)
+mainsol     : MakerDAOPriceFeedAdaptor.sol
+outputsol   : ../flattened/MakerDAOPriceFeedAdaptor_flattened.sol
+Processing ../contracts/MakerDAOPriceFeedAdaptor.sol
+    Importing ../contracts/PriceFeedInterface.sol
+    Processing ../contracts/PriceFeedInterface.sol
 contractsdir: ../contracts
 remapdir    : (no remapping)
 mainsol     : PriceFeed.sol
@@ -95,10 +118,14 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.8.15-stable-89451f7c/darwin-amd64/go1.10.4
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 36390 (Wed, 03 Oct 2018 14:59:31 AEST)
+at block: 6815 (Wed, 03 Oct 2018 17:32:33 AEST)
  datadir: /Users/bok/Projects/FxxxLandRush/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
+> 
+true
+> 
+true
 > 
 true
 > 
@@ -142,6 +169,20 @@ undefined
 > 
 undefined
 > 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
 > 
 undefined
 > 
@@ -223,7 +264,7 @@ undefined
 ... 
 undefined
 > 
-DATA: var bttsLibAddress="0xa20b8c918ab41831a39bca34282daf2981da8c7e";
+DATA: var bttsLibAddress="0x8970bbfd1a54ae581064ab34e7910dab7e86172f";
 DATA: var bttsLibAbi=[{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApprove","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferFromCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"signedApproveAndCallSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"owner","type":"address"},{"name":"symbol","type":"string"},{"name":"name","type":"string"},{"name":"decimals","type":"uint8"},{"name":"initialSupply","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"name":"init","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedApproveHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"minter","type":"address"}],"name":"setMinter","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedTransferSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"}],"name":"approveAndCall","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedTransferFromHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedTransferHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"bttsVersion","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"enableTransfers","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"tokens","type":"uint256"},{"name":"lockAccount","type":"bool"}],"name":"mint","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedApproveSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"}],"name":"unlockAccount","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"signedTransferFromSig","outputs":[{"name":"","type":"bytes4"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"name":"getCheckResultMessage","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"hash","type":"bytes32"},{"name":"sig","type":"bytes"}],"name":"ecrecoverFromSig","outputs":[{"name":"recoveredAddress","type":"address"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveAndCallCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"signingPrefix","outputs":[{"name":"","type":"bytes"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"}],"name":"signedApproveAndCallHash","outputs":[{"name":"hash","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedTransferCheck","outputs":[{"name":"result","type":"BTTSTokenInterface.CheckResult"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"},{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"},{"name":"data","type":"bytes"},{"name":"fee","type":"uint256"},{"name":"nonce","type":"uint256"},{"name":"sig","type":"bytes"},{"name":"feeAccount","type":"address"}],"name":"signedApproveAndCall","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"self","type":"BTTSLib.Data storage"}],"name":"disableMinting","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"from","type":"address"},{"indexed":false,"name":"to","type":"address"}],"name":"MinterUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"},{"indexed":false,"name":"lockAccount","type":"bool"}],"name":"Mint","type":"event"},{"anonymous":false,"inputs":[],"name":"MintingDisabled","type":"event"},{"anonymous":false,"inputs":[],"name":"TransfersEnabled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"}],"name":"AccountUnlocked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Approval","type":"event"}];
 DATA: var bttsLib=eth.contract(bttsLibAbi).at(bttsLibAddress);
 RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
@@ -234,7 +275,7 @@ RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.00000000000000000
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
 RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:  6 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
@@ -244,7 +285,7 @@ undefined
 RESULT: PASS Deploy Lib - BTTSLib
 1
 > 
-RESULT: bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36398 txIx=0 txId=0x13a6931c57cbd53ce7ef32b3843cdf278ace497260b60b2441f175656b70d567 @ 1538542779 Wed, 03 Oct 2018 04:59:39 UTC
+RESULT: bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6824 txIx=0 txId=0xe51349a5ed142e089a2d1c6727de9d056ad9c4081070bb31f5007e7871c91a33 @ 1538551962 Wed, 03 Oct 2018 07:32:42 UTC
 undefined
 > 
 RESULT: 
@@ -293,7 +334,7 @@ undefined
 ... 
 undefined
 > 
-DATA: var bttsFactoryAddress="0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a";
+DATA: var bttsFactoryAddress="0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50";
 DATA: var bttsFactoryAbi=[{"constant":false,"inputs":[{"name":"symbol","type":"string"},{"name":"name","type":"string"},{"name":"decimals","type":"uint8"},{"name":"initialSupply","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"name":"deployBTTSTokenContract","outputs":[{"name":"bttsTokenAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"numberOfDeployedTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"decimals","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"deployedTokens","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"bttsTokenAddress","type":"address"},{"indexed":false,"name":"symbol","type":"string"},{"indexed":false,"name":"name","type":"string"},{"indexed":false,"name":"decimals","type":"uint8"},{"indexed":false,"name":"initialSupply","type":"uint256"},{"indexed":false,"name":"mintable","type":"bool"},{"indexed":false,"name":"transferable","type":"bool"}],"name":"BTTSTokenListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
 DATA: var bttsFactory=eth.contract(bttsFactoryAbi).at(bttsFactoryAddress);
 RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
@@ -304,8 +345,8 @@ RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.00000000000000000
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
 RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+RESULT:  6 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:  7 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
@@ -315,10 +356,10 @@ undefined
 RESULT: PASS Deploy Factory - BTTSFactory
 1
 > 
-RESULT: bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36400 txIx=0 txId=0x938676d2dadd28a8c641dd6be7499a0df2da033e547e3018c5531eeff64eb572 @ 1538542781 Wed, 03 Oct 2018 04:59:41 UTC
+RESULT: bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6826 txIx=0 txId=0xa98d5e7d0b07e7d4c4f4f00d0662819454acdf5e515155629b8bb18b5ed7acee @ 1538551964 Wed, 03 Oct 2018 07:32:44 UTC
 undefined
 > 
-RESULT: factoryContract.address=BTTSFactory:0x7b41
+RESULT: factoryContract.address=BTTSFactory:0x6b8b
 RESULT: factory.owner/new=Deployer:0xa11a/Null:0x0000
 RESULT: factory.numberOfDeployedTokens=0
 undefined
@@ -360,6 +401,12 @@ undefined
 ... 
 undefined
 > 
+... 
+undefined
+> 
+DATA: var makerDaoEthUsdPriceFeedAddress="0x2484679c29325eaf2f2e91d661e5413d47c04660";
+DATA: var makerDaoEthUsdPriceFeedAbi=[{"constant":true,"inputs":[],"name":"hasValue","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"value","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"peek","outputs":[{"name":"_value","type":"bytes32"},{"name":"_hasValue","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"},{"name":"_hasValue","type":"bool"}],"name":"setValue","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_value","type":"uint256"},{"name":"_hasValue","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldValue","type":"uint256"},{"indexed":false,"name":"oldHasValue","type":"bool"},{"indexed":false,"name":"newValue","type":"uint256"},{"indexed":false,"name":"newHasValue","type":"bool"}],"name":"SetValue","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
+DATA: var makerDaoEthUsdPriceFeed=eth.contract(makerDaoEthUsdPriceFeedAbi).at(makerDaoEthUsdPriceFeedAddress);
 undefined
 > 
 undefined
@@ -406,38 +453,65 @@ undefined
 ... 
 undefined
 > 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+...... 
+......... 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+............ 
+......... 
+...... 
 ... 
 undefined
 > 
-DATA: var ethUsdPriceFeedAddress="0xe8af831517db90d180bd9e05928a9b3577b2a19d";
-DATA: var ethUsdPriceFeedAbi=[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"rate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"name":"setValue","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldRate","type":"uint256"},{"indexed":false,"name":"oldLive","type":"bool"},{"indexed":false,"name":"newRate","type":"uint256"},{"indexed":false,"name":"newLive","type":"bool"}],"name":"SetRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
-DATA: var ethUsdPriceFeed=eth.contract(ethUsdPriceFeedAbi).at(ethUsdPriceFeedAddress);
-DATA: var gzeEthPriceFeedAddress="0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e";
-DATA: var gzeEthPriceFeedAbi=[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"rate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"name":"setValue","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldRate","type":"uint256"},{"indexed":false,"name":"oldLive","type":"bool"},{"indexed":false,"name":"newRate","type":"uint256"},{"indexed":false,"name":"newLive","type":"bool"}],"name":"SetRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
+... 
+undefined
+> 
+DATA: var makerDaoPriceFeedAdaptorAddress="0x0779c66d49a48e162bc0c7244b3baef8a2eba1ef";
+DATA: var makerDaoPriceFeedAdaptorAbi=[{"constant":true,"inputs":[],"name":"makerDAOPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_makerDAOPriceFeed","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
+DATA: var makerDaoPriceFeedAdaptor=eth.contract(makerDaoPriceFeedAdaptorAbi).at(makerDaoPriceFeedAdaptorAddress);
+DATA: var gzeEthPriceFeedAddress="0x1b8b7961968285d8e0bc6580e101b495b5ad166f";
+DATA: var gzeEthPriceFeedAbi=[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"rate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"name":"setRate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldRate","type":"uint256"},{"indexed":false,"name":"oldLive","type":"bool"},{"indexed":false,"name":"newRate","type":"uint256"},{"indexed":false,"name":"newLive","type":"bool"}],"name":"SetRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
 DATA: var gzeEthPriceFeed=eth.contract(gzeEthPriceFeedAbi).at(gzeEthPriceFeedAddress);
-DATA: var bonusListAddress="0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f";
+DATA: var bonusListAddress="0xdd762bbc7c44eed484cd5145c0bbc8d02eb4dcc3";
 DATA: var bonusListAbi=[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"bonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"isInBonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"add","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"},{"indexed":false,"name":"status","type":"bool"}],"name":"AccountListed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
 DATA: var bonusList=eth.contract(bonusListAbi).at(bonusListAddress);
 RESULT:  # Account                                             EtherBalanceChange                              0                              1 Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.026113519600000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.026113519600000000           0.000000000000000000           0.000000000000000000 Deployer
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.025818294200000000           0.000000000000000000           0.000000000000000000 Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.025818294200000000           0.000000000000000000           0.000000000000000000 Deployer
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
 RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
+RESULT:  6 0x8970bbfd1a54ae581064ab34e7910dab7e86172f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
+RESULT:  7 0x6b8bba219f069b3dd5920e6d6958071eb9b8bc50        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
+RESULT:  8 0x2484679c29325eaf2f2e91d661e5413d47c04660        0.000000000000000000           0.000000000000000000           0.000000000000000000 MakerDAO ETH/USD PriceFeed Simulator
+RESULT:  9 0x0779c66d49a48e162bc0c7244b3baef8a2eba1ef        0.000000000000000000           0.000000000000000000           0.000000000000000000 MakerDAO ETH/USD PriceFeed Adaptor
+RESULT: 10 0x1b8b7961968285d8e0bc6580e101b495b5ad166f        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
+RESULT: 11 0xdd762bbc7c44eed484cd5145c0bbc8d02eb4dcc3        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 RESULT:                                                                                     0.000000000000000000           0.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
 RESULT: 
 undefined
 > 
-RESULT: PASS Deploy PriceFeeds - ETH/USD PriceFeed
+RESULT: PASS Deploy PriceFeeds - MakerDAO ETH/USD PriceFeed Simulator
+1
+> 
+RESULT: PASS Deploy PriceFeeds - MakerDAO ETH/USD PriceFeed Adaptor
 1
 > 
 RESULT: PASS Deploy PriceFeeds - GZE/ETH PriceFeed
@@ -446,30 +520,31 @@ RESULT: PASS Deploy PriceFeeds - GZE/ETH PriceFeed
 RESULT: PASS Deploy PriceFeeds - BonusList
 1
 > 
-RESULT: ethUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=556930 costETH=0.001726483 costUSD=0.49752060611 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36402 txIx=0 txId=0xb689bd03e401432620314db744b064de15d98171a474958982207823de6585e7 @ 1538542783 Wed, 03 Oct 2018 04:59:43 UTC
+RESULT: makerDaoEthUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=427813 costETH=0.0013262203 costUSD=0.382176903851 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6828 txIx=0 txId=0x9007ddc970cf437066589e4f99fd282daee6c018cb5d9d34f4e1840ae9821750 @ 1538551966 Wed, 03 Oct 2018 07:32:46 UTC
 undefined
 > 
-RESULT: gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=556802 costETH=0.0017260862 costUSD=0.497406260254 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36402 txIx=1 txId=0x156ad36c08e21f1f0fc32a1400b2526221f21a693bf1e18ccd030255615498ca @ 1538542783 Wed, 03 Oct 2018 04:59:43 UTC
+RESULT: makerDaoPriceFeedAdaptorTx status=0x1 Success gas=5000000 gasUsed=190140 costETH=0.000589434 costUSD=0.16985719578 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6830 txIx=0 txId=0xe719fc08ea26507eb218a020c6869a5b25f54fe88700343978afb9bc7cf1dcc2 @ 1538551968 Wed, 03 Oct 2018 07:32:48 UTC
 undefined
 > 
-RESULT: bonusListTx status=0x1 Success gas=5000000 gasUsed=682419 costETH=0.0021154989 costUSD=0.609623318013 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36402 txIx=2 txId=0x719807ab7499f1186a8c028e8de4ad15d58dd5a7803afc043b3875c613636990 @ 1538542783 Wed, 03 Oct 2018 04:59:43 UTC
+RESULT: gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=556802 costETH=0.0017260862 costUSD=0.497406260254 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6830 txIx=1 txId=0xcfde3fe3064deca244cf6feaa2619b004b638808fb49af3ab4d5a1bbb5cb46f5 @ 1538551968 Wed, 03 Oct 2018 07:32:48 UTC
 undefined
 > 
-RESULT: ethUsdPriceFeedContract.address=ETH/USD PriceFeed:0xe8af
-RESULT: ethUsdPriceFeed.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: ethUsdPriceFeed.rate=231.11
-RESULT: ethUsdPriceFeed.live=true
-RESULT: SetRate 0 #36402 oldRate=0 oldLive=false newRate=231.11 newLive=true
+RESULT: bonusListTx status=0x1 Success gas=5000000 gasUsed=526162 costETH=0.0016311022 costUSD=0.470034720974 @ ETH/USD=288.17 gasPrice=3.1 gwei block=6830 txIx=2 txId=0x8d6d0298a91c69cd6ba196c8a1b449e59be83c7c6ce07e4120b337e4f227a1fd @ 1538551968 Wed, 03 Oct 2018 07:32:48 UTC
 undefined
 > 
-RESULT: gzeEthPriceFeedContract.address=GZE/ETH PriceFeed:0x2f9c
+RESULT: ethUsdPriceFeedContract.address=MakerDAO ETH/USD PriceFeed Adaptor:0x0779
+RESULT: ethUsdPriceFeed.makerDAOPriceFeed=MakerDAO ETH/USD PriceFeed Simulator:0x2484
+RESULT: ethUsdPriceFeed.ethUsd=231.11 true
+undefined
+> 
+RESULT: gzeEthPriceFeedContract.address=GZE/ETH PriceFeed:0x1b8b
 RESULT: gzeEthPriceFeed.owner/new=Deployer:0xa11a/Null:0x0000
 RESULT: gzeEthPriceFeed.rate=0.00005197
 RESULT: gzeEthPriceFeed.live=true
-RESULT: SetRate 0 #36402 oldRate=0 oldLive=false newRate=0.00005197 newLive=true
+RESULT: SetRate 0 #6830 oldRate=0 oldLive=false newRate=0.00005197 newLive=true
 undefined
 > 
-RESULT: bonusListContract.address=BonusList:0x2bf4
+RESULT: bonusListContract.address=BonusList:0xdd76
 RESULT: bonusList.owner/new=Deployer:0xa11a/Null:0x0000
 RESULT: bonusList.isInBonusList(user1)=false
 RESULT: bonusList.isInBonusList(user2)=false
@@ -478,802 +553,5 @@ undefined
 > 
 RESULT: 
 undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Deploy Tokens ----------
-undefined
-> 
-undefined
-> 
-undefined
-> 
-... 
-... 
-"0x48ad736aef629c2f2589b78e738878ee66610fc1c57ed004c8aedadba2a14bd2"
-> 
-... 
-undefined
-> 
-RESULT: factoryContractAddress=0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a
-RESULT: get BTTSTokenListing 0 #36405 {"bttsTokenAddress":"0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f","decimals":"18","initialSupply":"2.9508557e+25","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
-RESULT: get BTTSTokenListing 1 #36405 {"bttsTokenAddress":"0x3ea843afb20687d8a221c3e752a766562a2fd794","decimals":"18","initialSupply":"0","mintable":true,"name":"Parcel A","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"PARCELA","transferable":true}
-undefined
-> 
-... 
-... 
-... 
-... 
-... 
-undefined
-> 
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.037822458300000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.037822458300000000    29508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-... 
-... 
-RESULT: PASS Deploy Tokens - Token 'GZE' 'GazeCoin'
-RESULT: PASS Deploy Tokens - Token 'PARCELA' 'Parcel A'
-1
-> 
-... 
-... 
-RESULT: tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1918290 costETH=0.005946699 costUSD=1.71366025083 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36405 txIx=0 txId=0x0389fce0564fe9cc0884ce252728e34f519e07a27b6499ddbe43b491c268de6f @ 1538542786 Wed, 03 Oct 2018 04:59:46 UTC
-RESULT: tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1858787 costETH=0.0057622397 costUSD=1.660504614349 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36405 txIx=1 txId=0x48ad736aef629c2f2589b78e738878ee66610fc1c57ed004c8aedadba2a14bd2 @ 1538542786 Wed, 03 Oct 2018 04:59:46 UTC
-undefined
-> 
-RESULT: 
-undefined
-> 
-... 
-... 
-... 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: token0.Mint 0 #36405 {"lockAccount":false,"tokenOwner":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","tokens":"2.9508557e+25"}
-RESULT: token0.Transfer 0 #36405 from=Null:0x0000 to=Deployer:0xa11a tokens=29508557
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=0
-RESULT: token1.mintable=true
-RESULT: token1.transferable=true
-RESULT: token1.minter=Null:0x0000
-RESULT: 
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Deploy FxxxLandRush ----------
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-... 
-...... 
-......... 
-............ 
-............ 
-............ 
-............ 
-............ 
-............ 
-............ 
-............ 
-............ 
-......... 
-...... 
-... 
-undefined
-> 
-... 
-undefined
-> 
-DATA: var landRushAddress="0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e";
-DATA: var landRushAbi=[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"_name","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parcelsSold","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"startDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"finalised","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"bonusList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_endDate","type":"uint256"}],"name":"setEndDate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"ethUsdPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parcelGzeWithBonusOffList","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzeBonusOnList","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_gzeBonusOffList","type":"uint256"}],"name":"setGzeBonusOffList","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"wallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"ethUsd","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parcelUsd","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tokens","type":"uint256"}],"name":"purchaseWithGze","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_startDate","type":"uint256"}],"name":"setStartDate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"tokens","type":"uint256"},{"name":"token","type":"address"},{"name":"","type":"bytes"}],"name":"receiveApproval","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"gzeEth","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"maxParcels","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_maxParcels","type":"uint256"}],"name":"setMaxParcels","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_parcelUsd","type":"uint256"}],"name":"setParcelUsd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"_symbol","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"parcels","type":"uint256"}],"name":"offlinePurchase","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"finalise","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"gzeEthPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"contributedGze","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"contributedEth","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzeBonusOffList","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzeUsd","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"endDate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"gzeToken","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parcelToken","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_gzeBonusOnList","type":"uint256"}],"name":"setGzeBonusOnList","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"parcelGzeWithBonusOnList","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_wallet","type":"address"}],"name":"setWallet","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"parcelEth","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"parcelGzeWithoutBonus","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_parcelToken","type":"address"},{"name":"_gzeToken","type":"address"},{"name":"_ethUsdPriceFeed","type":"address"},{"name":"_gzeEthPriceFeed","type":"address"},{"name":"_bonusList","type":"address"},{"name":"_wallet","type":"address"},{"name":"_startDate","type":"uint256"},{"name":"_endDate","type":"uint256"},{"name":"_maxParcels","type":"uint256"},{"name":"_parcelUsd","type":"uint256"},{"name":"_gzeBonusOffList","type":"uint256"},{"name":"_gzeBonusOnList","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"oldWallet","type":"address"},{"indexed":true,"name":"newWallet","type":"address"}],"name":"WalletUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldStartDate","type":"uint256"},{"indexed":false,"name":"newStartDate","type":"uint256"}],"name":"StartDateUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldEndDate","type":"uint256"},{"indexed":false,"name":"newEndDate","type":"uint256"}],"name":"EndDateUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldMaxParcels","type":"uint256"},{"indexed":false,"name":"newMaxParcels","type":"uint256"}],"name":"MaxParcelsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldParcelUsd","type":"uint256"},{"indexed":false,"name":"newParcelUsd","type":"uint256"}],"name":"ParcelUsdUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldGzeBonusOffList","type":"uint256"},{"indexed":false,"name":"newGzeBonusOffList","type":"uint256"}],"name":"GzeBonusOffListUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldGzeBonusOnList","type":"uint256"},{"indexed":false,"name":"newGzeBonusOnList","type":"uint256"}],"name":"GzeBonusOnListUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"addr","type":"address"},{"indexed":false,"name":"parcels","type":"uint256"},{"indexed":false,"name":"gzeToTransfer","type":"uint256"},{"indexed":false,"name":"ethToTransfer","type":"uint256"},{"indexed":false,"name":"parcelsSold","type":"uint256"},{"indexed":false,"name":"contributedGze","type":"uint256"},{"indexed":false,"name":"contributedEth","type":"uint256"}],"name":"Purchased","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}];
-DATA: var landRush=eth.contract(landRushAbi).at(landRushAddress);
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.044740099000000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.044740099000000000    29508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000           0.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000           0.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-RESULT: PASS Deploy FxxxLandRush - FxxxLandRush
-1
-> 
-RESULT: landRushTx status=0x1 Success gas=5000000 gasUsed=2231497 costETH=0.0069176407 costUSD=1.993456520519 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36410 txIx=0 txId=0xb4db283d8354fa65cf7d86f3ee3945c0eac6c06631f35ec347e69fc71b639038 @ 1538542791 Wed, 03 Oct 2018 04:59:51 UTC
-undefined
-> 
-RESULT: landRushContract.address=FxxxLandRush:0x0705
-RESULT: landRush.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: landRush.symbol/name='PARCELA'/'Parcel A'
-RESULT: landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: landRush.gzeToken=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe8af
-RESULT: landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0x2f9c
-RESULT: landRush.bonusList=BonusList:0x2bf4
-RESULT: landRush.wallet=Wallet:0xa22a
-RESULT: landRush.startDate=Wed, 03 Oct 2018 15:00:00 AEST
-RESULT: landRush.endDate=Wed, 03 Oct 2018 15:00:30 AEST
-RESULT: landRush.maxParcels=20
-RESULT: landRush.parcelUsd=1500
-RESULT: landRush.gzeBonusOffList=20
-RESULT: landRush.gzeBonusOnList=30
-RESULT: landRush.parcelsSold=0
-RESULT: landRush.contributedGze=0
-RESULT: landRush.contributedEth=0
-RESULT: landRush.finalised=false
-RESULT: landRush.ethUsd=231.11 true
-RESULT: landRush.gzeEth=0.00005197 true
-RESULT: landRush.gzeUsd=0.0120107867 true
-RESULT: landRush.parcelEth=6.49041581930682359 true
-RESULT: landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
-RESULT: landRush.parcelGzeWithBonusOffList=104073.116209781662345231 true
-RESULT: landRush.parcelGzeWithBonusOnList=96067.49188595230370329 true
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Setting Group #1 ----------
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-...... 
-......... 
-......... 
-......... 
-...... 
-undefined
-> 
-... 
-undefined
-> 
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.045723911900000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.045723911900000000    26508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e        0.000000000000000000           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000           0.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-RESULT: PASS Setting Group #1 - AAA.setMinter(landRush)
-1
-> 
-...... 
-...... 
-RESULT: PASS Setting Group #1 - Distribute tokens - 0x49802e6f4207055f39cbc6ce2bc633497a5329a1e59ae68ec39fbdc4581f7fc8
-RESULT: PASS Setting Group #1 - Distribute tokens - 0x1c66c7e49faa0c2dbee02f57566218f93af3d5f47a3fac3be4fa5759bf910e6a
-RESULT: PASS Setting Group #1 - Distribute tokens - 0xce1741a8848ece0b9733bbd280135739e382906ee0494a47874eac3fc3513afc
-RESULT: PASS Setting Group #1 - Distribute tokens - 0xaf52bb392d77b3cdf95110ca1bd1139cc901cbb03080e42b9762c030c5ab3c61
-RESULT: PASS Setting Group #1 - Distribute tokens - 0xb171c7aef42e27775a8ddb72fb235c29ff128f870aa2058ca0838caafa3f4898
-RESULT: PASS Setting Group #1 - Distribute tokens - 0x121b41cb87a5d6ec624a53719530407a26694f040e4f7acda774b0f9eab3e5ba
-undefined
-> 
-RESULT: settingGroup1_setMinterTx status=0x1 Success gas=2000000 gasUsed=33697 costETH=0.0001044607 costUSD=0.030102439919 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36414 txIx=0 txId=0x9d19b5ded9027451041b75d583bbe2e699c4688b1908a4e99c10e6412478bd71 @ 1538542795 Wed, 03 Oct 2018 04:59:55 UTC
-undefined
-> 
-...... 
-...... 
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36414 txIx=1 txId=0x49802e6f4207055f39cbc6ce2bc633497a5329a1e59ae68ec39fbdc4581f7fc8 @ 1538542795 Wed, 03 Oct 2018 04:59:55 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36415 txIx=0 txId=0x1c66c7e49faa0c2dbee02f57566218f93af3d5f47a3fac3be4fa5759bf910e6a @ 1538542796 Wed, 03 Oct 2018 04:59:56 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36415 txIx=1 txId=0xce1741a8848ece0b9733bbd280135739e382906ee0494a47874eac3fc3513afc @ 1538542796 Wed, 03 Oct 2018 04:59:56 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36415 txIx=2 txId=0xaf52bb392d77b3cdf95110ca1bd1139cc901cbb03080e42b9762c030c5ab3c61 @ 1538542796 Wed, 03 Oct 2018 04:59:56 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36415 txIx=3 txId=0xb171c7aef42e27775a8ddb72fb235c29ff128f870aa2058ca0838caafa3f4898 @ 1538542796 Wed, 03 Oct 2018 04:59:56 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36415 txIx=4 txId=0x121b41cb87a5d6ec624a53719530407a26694f040e4f7acda774b0f9eab3e5ba @ 1538542796 Wed, 03 Oct 2018 04:59:56 UTC
-undefined
-> 
-RESULT: 
-undefined
-> 
-... 
-... 
-... 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: token0.Transfer 0 #36414 from=Deployer:0xa11a to=User1:0xa33a tokens=1000000
-RESULT: token0.Transfer 1 #36415 from=Deployer:0xa11a to=User2:0xa44a tokens=1000000
-RESULT: token0.Transfer 2 #36415 from=Deployer:0xa11a to=User3:0xa55a tokens=1000000
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=0
-RESULT: token1.mintable=true
-RESULT: token1.transferable=true
-RESULT: token1.minter=FxxxLandRush:0x0705
-RESULT: token1.MinterUpdated 0 #36414 {"from":"0x0000000000000000000000000000000000000000","to":"0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e"}
-RESULT: token1.Transfer 0 #36415 from=Deployer:0xa11a to=User1:0xa33a tokens=0
-RESULT: token1.Transfer 1 #36415 from=Deployer:0xa11a to=User2:0xa44a tokens=0
-RESULT: token1.Transfer 2 #36415 from=Deployer:0xa11a to=User3:0xa55a tokens=0
-RESULT: 
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-RESULT: Waiting until 'landRush.startDate' at 1538542800+0s=Wed, 03 Oct 2018 15:00:01 AEST now=Wed, 03 Oct 2018 14:59:59 AEST
-RESULT: Waited until 'landRush.startDate' at at 1538542800+0s=Wed, 03 Oct 2018 15:00:01 AEST now=Wed, 03 Oct 2018 15:00:01 AEST
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Contribute #1 ----------
-undefined
-> 
-undefined
-> 
-... 
-undefined
-> 
-undefined
-> 
-... 
-undefined
-> 
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.046648855800000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.045723911900000000    26508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000      104073.116209781662345231           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000618267100000000      895926.883790218337654769        1500.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -19.471554134720470770     1000000.000000000000000000        4500.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000     1000000.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000        6000.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-RESULT: PASS Contribute #1 - GZE.approveAndCall(landRush, 200000, "")
-1
-> 
-RESULT: PASS Contribute #1 - sendTransaction(landRush, 25 ETH)
-1
-> 
-RESULT: contribute1_1Tx status=0x1 Success gas=2000000 gasUsed=199441 costETH=0.0006182671 costUSD=0.178166030207 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36422 txIx=0 txId=0xb573ad2a95248ff19ea4ca1afd646c26df51bf75000dbbe5c58bf64a565b882d @ 1538542803 Wed, 03 Oct 2018 05:00:03 UTC
-undefined
-> 
-RESULT: contribute1_2Tx status=0x1 Success gas=2000000 gasUsed=98928 costETH=0.0003066768 costUSD=0.088375053456 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36424 txIx=0 txId=0xe38ec8a3bb0ac713a837484f72ebcfe889e76fb2221f4ad70d98a7a8c7a2db12 @ 1538542805 Wed, 03 Oct 2018 05:00:05 UTC
-undefined
-> 
-RESULT: 
-undefined
-> 
-RESULT: landRushContract.address=FxxxLandRush:0x0705
-RESULT: landRush.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: landRush.symbol/name='PARCELA'/'Parcel A'
-RESULT: landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: landRush.gzeToken=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe8af
-RESULT: landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0x2f9c
-RESULT: landRush.bonusList=BonusList:0x2bf4
-RESULT: landRush.wallet=Wallet:0xa22a
-RESULT: landRush.startDate=Wed, 03 Oct 2018 15:00:00 AEST
-RESULT: landRush.endDate=Wed, 03 Oct 2018 15:00:30 AEST
-RESULT: landRush.maxParcels=20
-RESULT: landRush.parcelUsd=1500
-RESULT: landRush.gzeBonusOffList=20
-RESULT: landRush.gzeBonusOnList=30
-RESULT: landRush.parcelsSold=4
-RESULT: landRush.contributedGze=104073.116209781662345231
-RESULT: landRush.contributedEth=19.47124745792047077
-RESULT: landRush.finalised=false
-RESULT: landRush.ethUsd=231.11 true
-RESULT: landRush.gzeEth=0.00005197 true
-RESULT: landRush.gzeUsd=0.0120107867 true
-RESULT: landRush.parcelEth=6.49041581930682359 true
-RESULT: landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
-RESULT: landRush.parcelGzeWithBonusOffList=104073.116209781662345231 true
-RESULT: landRush.parcelGzeWithBonusOnList=96067.49188595230370329 true
-RESULT: Purchased 0 #36422 addr=0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f parcels=1 gzeToTransfer=104073.116209781662345231 ethToTransfer=0 parcelsSold=1 contributedGze=104073.116209781662345231 contributedEth=0
-RESULT: Purchased 1 #36424 addr=0xa44a08d3f6933c69212114bb66e2df1813651844 parcels=3 gzeToTransfer=0 ethToTransfer=19.47124745792047077 parcelsSold=4 contributedGze=104073.116209781662345231 contributedEth=19.47124745792047077
-undefined
-> 
-RESULT: 
-undefined
-> 
-... 
-... 
-... 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: token0.Approval 0 #36422 tokenOwner=User1:0xa33a spender=FxxxLandRush:0x0705 tokens=200000
-RESULT: token0.Transfer 0 #36422 from=User1:0xa33a to=Wallet:0xa22a tokens=104073.116209781662345231
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=6000
-RESULT: token1.mintable=true
-RESULT: token1.transferable=true
-RESULT: token1.minter=FxxxLandRush:0x0705
-RESULT: token1.Mint 0 #36422 {"lockAccount":false,"tokenOwner":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","tokens":"1.5e+21"}
-RESULT: token1.Mint 1 #36424 {"lockAccount":false,"tokenOwner":"0xa44a08d3f6933c69212114bb66e2df1813651844","tokens":"4.5e+21"}
-RESULT: token1.Transfer 0 #36422 from=Null:0x0000 to=User1:0xa33a tokens=1500
-RESULT: token1.Transfer 1 #36424 from=Null:0x0000 to=User2:0xa44a tokens=4500
-RESULT: 
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Contribute #2 ----------
-undefined
-> 
-undefined
-> 
-... 
-undefined
-> 
-undefined
-> 
-... 
-undefined
-> 
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.047148002300000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.045723911900000000    26508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000      416292.464839126649380924           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000618267100000000      895926.883790218337654769        1500.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -19.471554134720470770     1000000.000000000000000000        4500.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000499146500000000      687780.651370655012964307        4500.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000       10500.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-RESULT: PASS Contribute #2 - user3 GZE.approve(landRush, 400000, "")
-1
-> 
-RESULT: PASS Contribute #2 - user3 landRush.purchaseWithGze(400000)
-1
-> 
-RESULT: contribute2_1Tx status=0x1 Success gas=2000000 gasUsed=48745 costETH=0.0001511095 costUSD=0.043545224615 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36429 txIx=0 txId=0x5ef8135d8b72a0564fac78c783f6665d7234d8bc7dd255c3bc7c9ddac65a83a6 @ 1538542810 Wed, 03 Oct 2018 05:00:10 UTC
-undefined
-> 
-RESULT: contribute2_2Tx status=0x1 Success gas=2000000 gasUsed=112270 costETH=0.000348037 costUSD=0.10029382229 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36431 txIx=0 txId=0x11597429a77225de83e2bfd07e484d12650f65bcb032198171072952ef4651ca @ 1538542812 Wed, 03 Oct 2018 05:00:12 UTC
-undefined
-> 
-RESULT: 
-undefined
-> 
-RESULT: landRushContract.address=FxxxLandRush:0x0705
-RESULT: landRush.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: landRush.symbol/name='PARCELA'/'Parcel A'
-RESULT: landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: landRush.gzeToken=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe8af
-RESULT: landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0x2f9c
-RESULT: landRush.bonusList=BonusList:0x2bf4
-RESULT: landRush.wallet=Wallet:0xa22a
-RESULT: landRush.startDate=Wed, 03 Oct 2018 15:00:00 AEST
-RESULT: landRush.endDate=Wed, 03 Oct 2018 15:00:30 AEST
-RESULT: landRush.maxParcels=20
-RESULT: landRush.parcelUsd=1500
-RESULT: landRush.gzeBonusOffList=20
-RESULT: landRush.gzeBonusOnList=30
-RESULT: landRush.parcelsSold=7
-RESULT: landRush.contributedGze=416292.464839126649380924
-RESULT: landRush.contributedEth=19.47124745792047077
-RESULT: landRush.finalised=false
-RESULT: landRush.ethUsd=231.11 true
-RESULT: landRush.gzeEth=0.00005197 true
-RESULT: landRush.gzeUsd=0.0120107867 true
-RESULT: landRush.parcelEth=6.49041581930682359 true
-RESULT: landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
-RESULT: landRush.parcelGzeWithBonusOffList=104073.116209781662345231 true
-RESULT: landRush.parcelGzeWithBonusOnList=96067.49188595230370329 true
-RESULT: Purchased 0 #36431 addr=0xa55a151eb00fded1634d27d1127b4be4627079ea parcels=3 gzeToTransfer=312219.348629344987035693 ethToTransfer=0 parcelsSold=7 contributedGze=416292.464839126649380924 contributedEth=19.47124745792047077
-undefined
-> 
-RESULT: 
-undefined
-> 
-... 
-... 
-... 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: token0.Approval 0 #36429 tokenOwner=User3:0xa55a spender=FxxxLandRush:0x0705 tokens=400000
-RESULT: token0.Transfer 0 #36431 from=User3:0xa55a to=Wallet:0xa22a tokens=312219.348629344987035693
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=10500
-RESULT: token1.mintable=true
-RESULT: token1.transferable=true
-RESULT: token1.minter=FxxxLandRush:0x0705
-RESULT: token1.Mint 0 #36431 {"lockAccount":false,"tokenOwner":"0xa55a151eb00fded1634d27d1127b4be4627079ea","tokens":"4.5e+21"}
-RESULT: token1.Transfer 0 #36431 from=Null:0x0000 to=User3:0xa55a tokens=4500
-RESULT: 
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-RESULT: ---------- Offline Purchase #1 ----------
-undefined
-> 
-undefined
-> 
-... 
-undefined
-> 
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.047319640000000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.045895549600000000    26508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000      416292.464839126649380924           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000618267100000000      895926.883790218337654769        1500.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -19.471554134720470770     1000000.000000000000000000        4500.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000499146500000000      687780.651370655012964307       12000.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000       18000.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-undefined
-> 
-RESULT: PASS Offline Purchase #1 - deployer landRush.offlinePurchase(user3, 5)
-1
-> 
-RESULT: offlinePurchase_1Tx status=0x1 Success gas=2000000 gasUsed=55367 costETH=0.0001716377 costUSD=0.049460836009 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36437 txIx=0 txId=0x525b10deadc5db73be68d57a7e8d2b640161a9b881dd1a866f73a8d56c3c4629 @ 1538542818 Wed, 03 Oct 2018 05:00:18 UTC
-undefined
-> 
-RESULT: 
-undefined
-> 
-RESULT: landRushContract.address=FxxxLandRush:0x0705
-RESULT: landRush.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: landRush.symbol/name='PARCELA'/'Parcel A'
-RESULT: landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: landRush.gzeToken=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe8af
-RESULT: landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0x2f9c
-RESULT: landRush.bonusList=BonusList:0x2bf4
-RESULT: landRush.wallet=Wallet:0xa22a
-RESULT: landRush.startDate=Wed, 03 Oct 2018 15:00:00 AEST
-RESULT: landRush.endDate=Wed, 03 Oct 2018 15:00:30 AEST
-RESULT: landRush.maxParcels=20
-RESULT: landRush.parcelUsd=1500
-RESULT: landRush.gzeBonusOffList=20
-RESULT: landRush.gzeBonusOnList=30
-RESULT: landRush.parcelsSold=12
-RESULT: landRush.contributedGze=416292.464839126649380924
-RESULT: landRush.contributedEth=19.47124745792047077
-RESULT: landRush.finalised=false
-RESULT: landRush.ethUsd=231.11 true
-RESULT: landRush.gzeEth=0.00005197 true
-RESULT: landRush.gzeUsd=0.0120107867 true
-RESULT: landRush.parcelEth=6.49041581930682359 true
-RESULT: landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
-RESULT: landRush.parcelGzeWithBonusOffList=104073.116209781662345231 true
-RESULT: landRush.parcelGzeWithBonusOnList=96067.49188595230370329 true
-RESULT: Purchased 0 #36437 addr=0xa55a151eb00fded1634d27d1127b4be4627079ea parcels=5 gzeToTransfer=0 ethToTransfer=0 parcelsSold=12 contributedGze=416292.464839126649380924 contributedEth=19.47124745792047077
-undefined
-> 
-RESULT: 
-undefined
-> 
-... 
-... 
-... 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=18000
-RESULT: token1.mintable=true
-RESULT: token1.transferable=true
-RESULT: token1.minter=FxxxLandRush:0x0705
-RESULT: token1.Mint 0 #36437 {"lockAccount":false,"tokenOwner":"0xa55a151eb00fded1634d27d1127b4be4627079ea","tokens":"7.5e+21"}
-RESULT: token1.Transfer 0 #36437 from=Null:0x0000 to=User3:0xa55a tokens=7500
-RESULT: 
-undefined
-> 
-RESULT: 
-undefined
-> 
-> 
-> 
-undefined
-> 
-undefined
-> 
-undefined
-> 
-... 
-... 
-... 
-... 
-... 
-...... 
-... 
-... 
-... 
-... 
-... 
-... 
-... 
-...... 
-...... 
-...... 
-... 
-... 
-RESULT: Waiting until 'landRush.endDate' at 1538542830+0s=Wed, 03 Oct 2018 15:00:31 AEST now=Wed, 03 Oct 2018 15:00:21 AEST
-RESULT: Waited until 'landRush.endDate' at at 1538542830+0s=Wed, 03 Oct 2018 15:00:31 AEST now=Wed, 03 Oct 2018 15:00:31 AEST
-RESULT: 
-RESULT: ---------- Finalise ----------
-RESULT:  # Account                                             EtherBalanceChange                            GZE                        PARCELA Name
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.047511247900000000           0.000000000000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.046087157500000000    26508557.000000000000000000           0.000000000000000000 Deployer
-RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000      416292.464839126649380924           0.000000000000000000 Wallet
-RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.000618267100000000      895926.883790218337654769        1500.000000000000000000 User1
-RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844      -19.471554134720470770     1000000.000000000000000000        4500.000000000000000000 User2
-RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000499146500000000      687780.651370655012964307       12000.000000000000000000 User3
-RESULT:  6 0xa20b8c918ab41831a39bca34282daf2981da8c7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSLib
-RESULT:  7 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000           0.000000000000000000 BTTSFactory
-RESULT:  8 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000           0.000000000000000000 ETH/USD PriceFeed
-RESULT:  9 0x2f9c836fb15d19d1ad679f2d86ca6841e24c8d7e        0.000000000000000000           0.000000000000000000           0.000000000000000000 GZE/ETH PriceFeed
-RESULT: 10 0x2bf4dd749b6a58271d15684796ce878b2b8f2f9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 BonusList
-RESULT: 11 0x0feceb5a2579c10bbd5fad5632edbec4da8b6b9f        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'GZE' 'GazeCoin'
-RESULT: 12 0x3ea843afb20687d8a221c3e752a766562a2fd794        0.000000000000000000           0.000000000000000000           0.000000000000000000 Token 'PARCELA' 'Parcel A'
-RESULT: 13 0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e       19.471247457920470770           0.000000000000000000           0.000000000000000000 FxxxLandRush
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT:                                                                              29508557.000000000000000000       18000.000000000000000000 Total Token Balances
-RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ------------------------------ ---------------------------
-RESULT: 
-RESULT: PASS Finalise - deployer landRush.finalise()
-RESULT: finalise_1Tx status=0x1 Success gas=2000000 gasUsed=61809 costETH=0.0001916079 costUSD=0.055215648543 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36452 txIx=0 txId=0xe10639a8275848dd9d8f3abf3e756e83cabb46d2693a54bdb0b0b429a4841026 @ 1538542833 Wed, 03 Oct 2018 05:00:33 UTC
-RESULT: 
-RESULT: landRushContract.address=FxxxLandRush:0x0705
-RESULT: landRush.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: landRush.symbol/name='PARCELA'/'Parcel A'
-RESULT: landRush.parcelToken=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: landRush.gzeToken=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: landRush.ethUsdPriceFeed=ETH/USD PriceFeed:0xe8af
-RESULT: landRush.gzeEthPriceFeed=GZE/ETH PriceFeed:0x2f9c
-RESULT: landRush.bonusList=BonusList:0x2bf4
-RESULT: landRush.wallet=Wallet:0xa22a
-RESULT: landRush.startDate=Wed, 03 Oct 2018 15:00:00 AEST
-RESULT: landRush.endDate=Wed, 03 Oct 2018 15:00:30 AEST
-RESULT: landRush.maxParcels=20
-RESULT: landRush.parcelUsd=1500
-RESULT: landRush.gzeBonusOffList=20
-RESULT: landRush.gzeBonusOnList=30
-RESULT: landRush.parcelsSold=12
-RESULT: landRush.contributedGze=416292.464839126649380924
-RESULT: landRush.contributedEth=19.47124745792047077
-RESULT: landRush.finalised=true
-RESULT: landRush.ethUsd=231.11 true
-RESULT: landRush.gzeEth=0.00005197 true
-RESULT: landRush.gzeUsd=0.0120107867 true
-RESULT: landRush.parcelEth=6.49041581930682359 true
-RESULT: landRush.parcelGzeWithoutBonus=124887.739451737994814278 true
-RESULT: landRush.parcelGzeWithBonusOffList=104073.116209781662345231 true
-RESULT: landRush.parcelGzeWithBonusOnList=96067.49188595230370329 true
-RESULT: 
-RESULT: token0ContractAddress=Token 'GZE' 'GazeCoin':0x0fec
-RESULT: token0.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token0.details='GZE' 'GazeCoin' 18 dp
-RESULT: token0.totalSupply=29508557
-RESULT: token0.mintable=false
-RESULT: token0.transferable=true
-RESULT: token0.minter=Null:0x0000
-RESULT: 
-RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x3ea8
-RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
-RESULT: token1.details='PARCELA' 'Parcel A' 18 dp
-RESULT: token1.totalSupply=18000
-RESULT: token1.mintable=false
-RESULT: token1.transferable=true
-RESULT: token1.minter=Null:0x0000
-RESULT: token1.MinterUpdated 0 #36452 {"from":"0x0705aa935d1e8b988c6b7d9ab19f9e46bcaf7a8e","to":"0x0000000000000000000000000000000000000000"}
-RESULT: token1.MintingDisabled 0 #36452 {}
-RESULT: 
-RESULT: 
-undefined
-> 
 > 
 > 

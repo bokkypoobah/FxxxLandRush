@@ -43,10 +43,14 @@ solc_0.4.20 --version | tee -a $TEST1OUTPUT
 echo "var bttsFactoryOutput=`solc_0.4.20 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $BTTSFACTORYSOL`;" > $BTTSFACTORYJS
 
 solc_0.4.25 --version | tee -a $TEST1OUTPUT
+echo "var makerDaoEthUsdPriceFeedSimulatorOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $MDPRICEFEEDSIMULATORSOL`;" > $MDPRICEFEEDSIMULATORJS
+echo "var makerDaoPriceFeedAdaptorOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $MDPRICEFEEDADAPTORSOL`;" > $MDPRICEFEEDADAPTORJS
 echo "var priceFeedOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $PRICEFEEDSOL`;" > $PRICEFEEDJS
 echo "var bonusListOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $BONUSLISTSOL`;" > $BONUSLISTJS
 echo "var landRushOutput=`solc_0.4.25 --allow-paths . --optimize --pretty-json --combined-json abi,bin,interface $LANDRUSHSOL`;" > $LANDRUSHJS
 
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$MDPRICEFEEDSIMULATORSOL --outputsol=$MDPRICEFEEDSIMULATORFLATTENED --verbose | tee -a $TEST1OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$MDPRICEFEEDADAPTORSOL --outputsol=$MDPRICEFEEDADAPTORFLATTENED --verbose | tee -a $TEST1OUTPUT
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$PRICEFEEDSOL --outputsol=$PRICEFEEDFLATTENED --verbose | tee -a $TEST1OUTPUT
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$BONUSLISTSOL --outputsol=$BONUSLISTFLATTENED --verbose | tee -a $TEST1OUTPUT
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$LANDRUSHSOL --outputsol=$LANDRUSHFLATTENED --verbose | tee -a $TEST1OUTPUT
@@ -59,6 +63,8 @@ fi
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$BTTSFACTORYJS");
+loadScript("$MDPRICEFEEDSIMULATORJS");
+loadScript("$MDPRICEFEEDADAPTORJS");
 loadScript("$PRICEFEEDJS");
 loadScript("$BONUSLISTJS");
 loadScript("$LANDRUSHJS");
@@ -71,6 +77,10 @@ var bttsLibBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSLib"].b
 var bttsTokenAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSToken"].abi);
 var bttsFactoryAbi = JSON.parse(bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].abi);
 var bttsFactoryBin = "0x" + bttsFactoryOutput.contracts["$BTTSFACTORYSOL:BTTSTokenFactory"].bin;
+var makerDaoEthUsdPriceFeedSimulatorAbi = JSON.parse(makerDaoEthUsdPriceFeedSimulatorOutput.contracts["$MDPRICEFEEDSIMULATORSOL:MakerDAOETHUSDPriceFeedSimulator"].abi);
+var makerDaoEthUsdPriceFeedSimulatorBin = "0x" + makerDaoEthUsdPriceFeedSimulatorOutput.contracts["$MDPRICEFEEDSIMULATORSOL:MakerDAOETHUSDPriceFeedSimulator"].bin;
+var makerDaoPriceFeedAdaptorAbi = JSON.parse(makerDaoPriceFeedAdaptorOutput.contracts["$MDPRICEFEEDADAPTORSOL:MakerDAOPriceFeedAdaptor"].abi);
+var makerDaoPriceFeedAdaptorBin = "0x" + makerDaoPriceFeedAdaptorOutput.contracts["$MDPRICEFEEDADAPTORSOL:MakerDAOPriceFeedAdaptor"].bin;
 var priceFeedAbi = JSON.parse(priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].abi);
 var priceFeedBin = "0x" + priceFeedOutput.contracts["$PRICEFEEDSOL:PriceFeed"].bin;
 var bonusListAbi = JSON.parse(bonusListOutput.contracts["$BONUSLISTSOL:BonusList"].abi);
@@ -83,7 +93,10 @@ var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].b
 // console.log("DATA: bttsTokenAbi=" + JSON.stringify(bttsTokenAbi));
 // console.log("DATA: bttsFactoryAbi=" + JSON.stringify(bttsFactoryAbi));
 // console.log("DATA: bttsFactoryBin=" + JSON.stringify(bttsFactoryBin));
-// console.log("DATA: priceFeedAbi=" + JSON.stringify(priceFeedAbi));
+// console.log("DATA: makerDaoEthUsdPriceFeedSimulatorAbi=" + JSON.stringify(makerDaoEthUsdPriceFeedSimulatorAbi));
+// console.log("DATA: makerDaoEthUsdPriceFeedSimulatorBin=" + JSON.stringify(makerDaoEthUsdPriceFeedSimulatorBin));
+// console.log("DATA: makerDaoPriceFeedAdaptorAbi=" + JSON.stringify(makerDaoPriceFeedAdaptorAbi));
+// console.log("DATA: makerDaoPriceFeedAdaptorBin=" + JSON.stringify(makerDaoPriceFeedAdaptorBin));
 // console.log("DATA: priceFeedBin=" + JSON.stringify(priceFeedBin));
 // console.log("DATA: bonusListAbi=" + JSON.stringify(bonusListAbi));
 // console.log("DATA: bonusListBin=" + JSON.stringify(bonusListBin));
@@ -166,21 +179,42 @@ console.log("RESULT: ");
 var deployGroup1Message = "Deploy PriceFeeds";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployGroup1Message + " ----------");
-var ethUsdPriceFeedContract = web3.eth.contract(priceFeedAbi);
-var ethUsdPriceFeedTx = null;
-var ethUsdPriceFeedAddress = null;
-var ethUsdPriceFeed = ethUsdPriceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var makerDaoEthUsdPriceFeedContract = web3.eth.contract(makerDaoEthUsdPriceFeedSimulatorAbi);
+var makerDaoEthUsdPriceFeedTx = null;
+var makerDaoEthUsdPriceFeedAddress = null;
+var makerDaoEthUsdPriceFeed = makerDaoEthUsdPriceFeedContract.new(new BigNumber($INITIALETHUSD).shift(18), true, {from: deployer, data: makerDaoEthUsdPriceFeedSimulatorBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        ethUsdPriceFeedTx = contract.transactionHash;
+        makerDaoEthUsdPriceFeedTx = contract.transactionHash;
       } else {
-        ethUsdPriceFeedAddress = contract.address;
-        addAccount(ethUsdPriceFeedAddress, "ETH/USD PriceFeed");
-        addEthUsdPriceFeedContractAddressAndAbi(ethUsdPriceFeedAddress, priceFeedAbi);
-        console.log("DATA: var ethUsdPriceFeedAddress=\"" + ethUsdPriceFeedAddress + "\";");
-        console.log("DATA: var ethUsdPriceFeedAbi=" + JSON.stringify(priceFeedAbi) + ";");
-        console.log("DATA: var ethUsdPriceFeed=eth.contract(ethUsdPriceFeedAbi).at(ethUsdPriceFeedAddress);");
+        makerDaoEthUsdPriceFeedAddress = contract.address;
+        addAccount(makerDaoEthUsdPriceFeedAddress, "MakerDAO ETH/USD PriceFeed Simulator");
+        // addEthUsdPriceFeedContractAddressAndAbi(makerDaoEthUsdPriceFeedAddress, makerDaoEthUsdPriceFeedSimulatorAbi);
+        console.log("DATA: var makerDaoEthUsdPriceFeedAddress=\"" + makerDaoEthUsdPriceFeedAddress + "\";");
+        console.log("DATA: var makerDaoEthUsdPriceFeedAbi=" + JSON.stringify(makerDaoEthUsdPriceFeedSimulatorAbi) + ";");
+        console.log("DATA: var makerDaoEthUsdPriceFeed=eth.contract(makerDaoEthUsdPriceFeedAbi).at(makerDaoEthUsdPriceFeedAddress);");
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+var makerDaoPriceFeedAdaptorContract = web3.eth.contract(makerDaoPriceFeedAdaptorAbi);
+var makerDaoPriceFeedAdaptorTx = null;
+var makerDaoPriceFeedAdaptorAddress = null;
+var makerDaoPriceFeedAdaptor = makerDaoPriceFeedAdaptorContract.new(makerDaoEthUsdPriceFeedAddress, {from: deployer, data: makerDaoPriceFeedAdaptorBin, gas: 5000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        makerDaoPriceFeedAdaptorTx = contract.transactionHash;
+      } else {
+        makerDaoPriceFeedAdaptorAddress = contract.address;
+        addAccount(makerDaoPriceFeedAdaptorAddress, "MakerDAO ETH/USD PriceFeed Adaptor");
+        addEthUsdPriceFeedContractAddressAndAbi(makerDaoPriceFeedAdaptorAddress, makerDaoPriceFeedAdaptorAbi);
+        console.log("DATA: var makerDaoPriceFeedAdaptorAddress=\"" + makerDaoPriceFeedAdaptorAddress + "\";");
+        console.log("DATA: var makerDaoPriceFeedAdaptorAbi=" + JSON.stringify(makerDaoPriceFeedAdaptorAbi) + ";");
+        console.log("DATA: var makerDaoPriceFeedAdaptor=eth.contract(makerDaoPriceFeedAdaptorAbi).at(makerDaoPriceFeedAdaptorAddress);");
       }
     }
   }
@@ -207,7 +241,7 @@ var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).
 var bonusListContract = web3.eth.contract(bonusListAbi);
 var bonusListTx = null;
 var bonusListAddress = null;
-var bonusList = bonusListContract.new({from: deployer, data: bonusListBin, gas: 5000000, gasPrice: defaultGasPrice},
+var bonusList = bonusListContract.new({from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -226,16 +260,20 @@ var bonusList = bonusListContract.new({from: deployer, data: bonusListBin, gas: 
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(ethUsdPriceFeedTx, deployGroup1Message + " - ETH/USD PriceFeed");
+failIfTxStatusError(makerDaoEthUsdPriceFeedTx, deployGroup1Message + " - MakerDAO ETH/USD PriceFeed Simulator");
+failIfTxStatusError(makerDaoPriceFeedAdaptorTx, deployGroup1Message + " - MakerDAO ETH/USD PriceFeed Adaptor");
 failIfTxStatusError(gzeEthPriceFeedTx, deployGroup1Message + " - GZE/ETH PriceFeed");
 failIfTxStatusError(bonusListTx, deployGroup1Message + " - BonusList");
-printTxData("ethUsdPriceFeedTx", ethUsdPriceFeedTx);
+printTxData("makerDaoEthUsdPriceFeedTx", makerDaoEthUsdPriceFeedTx);
+printTxData("makerDaoPriceFeedAdaptorTx", makerDaoPriceFeedAdaptorTx);
 printTxData("gzeEthPriceFeedTx", gzeEthPriceFeedTx);
 printTxData("bonusListTx", bonusListTx);
 printEthUsdPriceFeedContractDetails();
 printGzeEthPriceFeedContractDetails();
 printBonusListContractDetails();
 console.log("RESULT: ");
+
+exit;
 
 
 // -----------------------------------------------------------------------------
