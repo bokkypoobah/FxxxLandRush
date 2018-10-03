@@ -97,10 +97,10 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
   * [x] library SafeMath
 * [x] [code-review/ERC20Interface.md](code-review/ERC20Interface.md)
   * [x] contract ERC20Interface
-* [ ] [code-review/BonusListInterface.md](code-review/BonusListInterface.md)
-  * [ ] contract BonusListInterface
-* [ ] [code-review/BonusList.md](code-review/BonusList.md)
-  * [ ] contract BonusList is BonusListInterface, Operated
+* [x] [code-review/BonusListInterface.md](code-review/BonusListInterface.md)
+  * [x] contract BonusListInterface
+* [x] [code-review/BonusList.md](code-review/BonusList.md)
+  * [x] contract BonusList is BonusListInterface, Operated
 * [ ] [code-review/PriceFeedInterface.md](code-review/PriceFeedInterface.md)
   * [ ] contract PriceFeedInterface
 * [ ] [code-review/PriceFeed.md](code-review/PriceFeed.md)
