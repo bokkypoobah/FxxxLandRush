@@ -272,7 +272,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     // Account contributes by:
     // 1. calling GZE.approve(landRushAddress, tokens)
     // 2. calling this.purchaseWithGze(tokens)
-    // BK Ok - Any account can call this, but must ave approve(...)-d the right amount of GZE tokens
+    // BK Ok - Any account can purchase parcels, but must have approve(...)-d the right amount of GZE tokens
     function purchaseWithGze(uint256 tokens) public {
         // BK Ok
         require(gzeToken.allowance(msg.sender, this) >= tokens);
@@ -280,7 +280,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         receiveApproval(msg.sender, tokens, gzeToken, "");
     }
     // Account contributes by calling GZE.approveAndCall(landRushAddress, tokens, "")
-    // BK Ok - Any account can call this via GZE.approveAndCall(landRushAddress, tokens, "")
+    // BK Ok - Any account can purchase parcels with GZE.approveAndCall(landRushAddress, tokens, "")
     function receiveApproval(address from, uint256 tokens, address token, bytes /* data */) public {
         // BK Ok
         require(now >= startDate && now <= endDate);
@@ -319,58 +319,98 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer));
         // BK Ok
         require(parcelToken.mint(from, parcelUsd.mul(parcels), false));
+        // BK Ok - Log event
         emit Purchased(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
+        // BK Ok
         if (parcelsSold >= maxParcels) {
+            // BK Ok
             parcelToken.disableMinting();
+            // BK Ok
             finalised = true;
         }
     }
     // Account contributes by sending ETH
+    // BK Ok - Any account can purchase with ETH
     function () public payable {
+        // BK Ok
         require(now >= startDate && now <= endDate);
+        // BK Next 2 Ok
         uint _parcelEth;
         bool _live;
+        // BK Ok
         (_parcelEth, _live) = parcelEth();
+        // BK Ok
         require(_live);
+        // BK Ok
         uint parcels = msg.value.div(_parcelEth);
+        // BK Ok
         if (parcelsSold.add(parcels) >= maxParcels) {
+            // BK Ok
             parcels = maxParcels.sub(parcelsSold);
         }
+        // BK Ok
         require(parcels > 0);
+        // BK Ok
         parcelsSold = parcelsSold.add(parcels);
+        // BK Ok
         uint ethToTransfer = parcels.mul(_parcelEth);
+        // BK Ok
         contributedEth = contributedEth.add(ethToTransfer);
+        // BK Ok
         uint ethToRefund = msg.value.sub(ethToTransfer);
+        // BK Ok
         if (ethToRefund > 0) {
+            // BK Ok
             msg.sender.transfer(ethToRefund);
         }
+        // BK Ok
         require(parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false));
+        // BK Ok - Log event
         emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
+        // BK Ok
         if (parcelsSold >= maxParcels) {
+            // BK Ok
             parcelToken.disableMinting();
+            // BK Ok
             finalised = true;
         }
     }
     // Contract owner allocates parcels to tokenOwner for offline purchase
+    // BK Ok - Owner can mint for offline purchases
     function offlinePurchase(address tokenOwner, uint parcels) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         if (parcelsSold.add(parcels) >= maxParcels) {
+            // BK Ok
             parcels = maxParcels.sub(parcelsSold);
         }
+        // BK Ok
         require(parcels > 0);
+        // BK Ok
         parcelsSold = parcelsSold.add(parcels);
+        // BK Ok
         require(parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false));
+        // BK Ok - Log event
         emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
+        // BK Ok
         if (parcelsSold >= maxParcels) {
+            // BK Ok
             parcelToken.disableMinting();
+            // BK Ok
             finalised = true;
         }
     }
     // Contract owner finalises to disable parcel minting
+    // BK Ok - Only owner can execute
     function finalise() public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         require(now > endDate || parcelsSold >= maxParcels);
+        // BK Ok
         parcelToken.disableMinting();
+        // BK Ok
         finalised = true;
     }
 }
