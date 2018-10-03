@@ -1,11 +1,9 @@
 pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
-// Fxxx Land Rush Contract
+// Fxxx Land Rush Contract - Purchase land parcels with GZE and ETH
 //
 // Deployed to : {TBA}
-//
-// Note: Calculations are based on GZE having 18 decimal places
 //
 // Enjoy.
 //
