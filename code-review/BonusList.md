@@ -40,7 +40,7 @@ contract BonusList is BonusListInterface, Operated {
         initOperated(msg.sender);
     }
 
-    // BK Ok - View function
+    // BK Ok - View function, matches interface
     function isInBonusList(address account) public view returns (bool) {
         // BK Ok
         return bonusList[account];

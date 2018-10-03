@@ -101,10 +101,10 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
   * [x] contract BonusListInterface
 * [x] [code-review/BonusList.md](code-review/BonusList.md)
   * [x] contract BonusList is BonusListInterface, Operated
-* [ ] [code-review/PriceFeedInterface.md](code-review/PriceFeedInterface.md)
-  * [ ] contract PriceFeedInterface
-* [ ] [code-review/PriceFeed.md](code-review/PriceFeed.md)
-  * [ ] contract PriceFeed is Operated
+* [x] [code-review/PriceFeedInterface.md](code-review/PriceFeedInterface.md)
+  * [x] contract PriceFeedInterface
+* [x] [code-review/PriceFeed.md](code-review/PriceFeed.md)
+  * [x] contract PriceFeed is Operated
 * [ ] [code-review/MakerDAOETHUSDPriceFeedSimulator.md](code-review/MakerDAOETHUSDPriceFeedSimulator.md)
   * [ ] contract MakerDAOETHUSDPriceFeedSimulator is Owned
 * [ ] [code-review/MakerDAOPriceFeedAdaptor.md](code-review/MakerDAOPriceFeedAdaptor.md)
