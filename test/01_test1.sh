@@ -222,7 +222,7 @@ var makerDaoPriceFeedAdaptor = makerDaoPriceFeedAdaptorContract.new(makerDaoEthU
 var gzeEthPriceFeedContract = web3.eth.contract(priceFeedAbi);
 var gzeEthPriceFeedTx = null;
 var gzeEthPriceFeedAddress = null;
-var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var gzeEthPriceFeed = gzeEthPriceFeedContract.new("GZE/ETH PriceFeed", new BigNumber($INITIALGZEETH).shift(18), true, {from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

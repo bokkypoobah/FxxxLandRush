@@ -296,15 +296,15 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         _name = parcelToken.name();
     }
 
-    // USD per ETH, e.g., 231.11 * 10^18
+    // USD per ETH, e.g., 221.99 * 10^18
     function ethUsd() public view returns (uint _rate, bool _live) {
         return ethUsdPriceFeed.getRate();
     }
-    // ETH per GZE, e.g., 0.00005197 * 10^18
+    // ETH per GZE, e.g., 0.00004366 * 10^18
     function gzeEth() public view returns (uint _rate, bool _live) {
         return gzeEthPriceFeed.getRate();
     }
-    // USD per GZE, e.g., 0.0120107867 * 10^18
+    // USD per GZE, e.g., 0.0096920834 * 10^18
     function gzeUsd() public view returns (uint _rate, bool _live) {
         uint _ethUsd;
         bool _ethUsdLive;
@@ -317,7 +317,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = _ethUsd.mul(_gzeEth).div(TENPOW18);
         }
     }
-    // ETH per parcel, e.g., 6.49041581930682359 * 10^18
+    // ETH per parcel, e.g., 6.757061128879679264 * 10^18
     function parcelEth() public view returns (uint _rate, bool _live) {
         uint _ethUsd;
         (_ethUsd, _live) = ethUsd();
@@ -325,7 +325,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = parcelUsd.mul(TENPOW18).div(_ethUsd);
         }
     }
-    // GZE per parcel, without bonus, e.g., 124887.739451737994814278 * 10^18
+    // GZE per parcel, without bonus, e.g., 154765.486231783766945298 * 10^18
     function parcelGzeWithoutBonus() public view returns (uint _rate, bool _live) {
         uint _gzeUsd;
         (_gzeUsd, _live) = gzeUsd();
@@ -333,7 +333,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = parcelUsd.mul(TENPOW18).div(_gzeUsd);
         }
     }
-    // GZE per parcel, with bonus but not on bonus list, e.g., 104073.116209781662345231 * 10^18
+    // GZE per parcel, with bonus but not on bonus list, e.g., 128971.238526486472454415 * 10^18
     function parcelGzeWithBonusOffList() public view returns (uint _rate, bool _live) {
         uint _parcelGzeWithoutBonus;
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
@@ -341,7 +341,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
         }
     }
-    // GZE per parcel, with bonus and on bonus list, e.g., 96067.49188595230370329 * 10^18
+    // GZE per parcel, with bonus and on bonus list, e.g., 119050.374024449051496383 * 10^18
     function parcelGzeWithBonusOnList() public view returns (uint _rate, bool _live) {
         uint _parcelGzeWithoutBonus;
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();

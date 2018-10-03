@@ -496,6 +496,7 @@ function printGzeEthPriceFeedContractDetails() {
   if (gzeEthPriceFeedContractAddress != null && gzeEthPriceFeedContractAbi != null) {
     var contract = eth.contract(gzeEthPriceFeedContractAbi).at(gzeEthPriceFeedContractAddress);
     console.log("RESULT: gzeEthPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
+    console.log("RESULT: gzeEthPriceFeed.name=" + contract.name());
     console.log("RESULT: gzeEthPriceFeed.rate=" + contract.rate().shift(-18));
     console.log("RESULT: gzeEthPriceFeed.live=" + contract.live());
 
