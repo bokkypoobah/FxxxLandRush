@@ -116,20 +116,22 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 <br />
 
-Outside scope as the following have been audited:
+### Outside Scope
 
-* [ ] [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
-  * [ ] contract ApproveAndCallFallBack
-  * [ ] contract BTTSTokenInterface is ERC20Interface
-* [ ] [code-review/BTTSTokenFactory110.md](code-review/BTTSTokenFactory110.md)
-  * [ ] contract ERC20Interface
-  * [ ] contract ApproveAndCallFallBack
-  * [ ] contract BTTSTokenInterface is ERC20Interface
-  * [ ] library BTTSLib
-  * [ ] contract BTTSToken is BTTSTokenInterface
-  * [ ]     using BTTSLib for BTTSLib.Data;
-  * [ ] contract Owned
-  * [ ] contract BTTSTokenFactory is Owned
+Outside scope as the following have been [audited](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract#history):
+
+* [code-review/BTTSTokenInterface110.md](code-review/BTTSTokenInterface110.md)
+  * contract ApproveAndCallFallBack
+  * contract BTTSTokenInterface is ERC20Interface
+* [code-review/BTTSTokenFactory110.md](code-review/BTTSTokenFactory110.md)
+  * contract ERC20Interface
+  * contract ApproveAndCallFallBack
+  * contract BTTSTokenInterface is ERC20Interface
+  * library BTTSLib
+  * contract BTTSToken is BTTSTokenInterface
+    * using BTTSLib for BTTSLib.Data;
+  * contract Owned
+  * contract BTTSTokenFactory is Owned
 
 <br />
 
