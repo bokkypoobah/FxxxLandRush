@@ -7,6 +7,7 @@ Source file [../contracts/FxxxLandRush.sol](../contracts/FxxxLandRush.sol).
 <hr />
 
 ```solidity
+// BK Ok
 pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
@@ -21,6 +22,7 @@ pragma solidity ^0.4.25;
 // (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
+// BK Next 5 Ok
 import "Owned.sol";
 import "SafeMath.sol";
 import "BTTSTokenInterface110.sol";
@@ -31,17 +33,22 @@ import "BonusListInterface.sol";
 // ----------------------------------------------------------------------------
 // FxxxLandRush Contract
 // ----------------------------------------------------------------------------
+// BK Ok
 contract FxxxLandRush is Owned, ApproveAndCallFallBack {
+    // BK Ok
     using SafeMath for uint;
 
+    // BK Ok
     uint private constant TENPOW18 = 10 ** 18;
 
+    // BK Next 5 Ok
     BTTSTokenInterface public parcelToken;
     BTTSTokenInterface public gzeToken;
     PriceFeedInterface public ethUsdPriceFeed;
     PriceFeedInterface public gzeEthPriceFeed;
     BonusListInterface public bonusList;
 
+    // BK Next 7 Ok
     address public wallet;
     uint public startDate;
     uint public endDate;
@@ -50,11 +57,13 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     uint public gzeBonusOffList;    // e.g., 20 = 20% bonus
     uint public gzeBonusOnList;     // e.g., 30 = 30% bonus
 
+    // BK Next 4 Ok
     uint public parcelsSold;
     uint public contributedGze;
     uint public contributedEth;
     bool public finalised;
 
+    // BK Next 8 Ok - Events
     event WalletUpdated(address indexed oldWallet, address indexed newWallet);
     event StartDateUpdated(uint oldStartDate, uint newStartDate);
     event EndDateUpdated(uint oldEndDate, uint newEndDate);
@@ -64,18 +73,23 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event GzeBonusOnListUpdated(uint oldGzeBonusOnList, uint newGzeBonusOnList);
     event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
 
+    // BK Ok - Constructor
     constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonusOffList, uint _gzeBonusOnList) public {
+        // BK Next 5 Ok. _gzeBonus*List don't need to be `require(...)`-d as they can be 0
         require(_parcelToken != address(0) && _gzeToken != address(0));
         require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0) && _bonusList != address(0));
         require(_wallet != address(0));
         require(_startDate >= now && _endDate > _startDate);
         require(_maxParcels > 0 && _parcelUsd > 0);
+        // BK Ok - Initialisation executed
         initOwned(msg.sender);
+        // BK Next 5 Ok
         parcelToken = BTTSTokenInterface(_parcelToken);
         gzeToken = BTTSTokenInterface(_gzeToken);
         ethUsdPriceFeed = PriceFeedInterface(_ethUsdPriceFeed);
         gzeEthPriceFeed = PriceFeedInterface(_gzeEthPriceFeed);
         bonusList = BonusListInterface(_bonusList);
+        // BK Next 7 Ok
         wallet = _wallet;
         startDate = _startDate;
         endDate = _endDate;
@@ -84,22 +98,37 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         gzeBonusOffList = _gzeBonusOffList;
         gzeBonusOnList = _gzeBonusOnList;
     }
+    // BK Ok - Only owner can execute
     function setWallet(address _wallet) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         require(_wallet != address(0));
+        // BK Ok - Log event
         emit WalletUpdated(wallet, _wallet);
+        // BK Ok
         wallet = _wallet;
     }
+    // BK Ok - Only owner can execute
     function setStartDate(uint _startDate) public onlyOwner {
+        // BK Ok
         require(!finalised);
+        // BK Ok
         require(_startDate >= now);
+        // BK Ok - Log event
         emit StartDateUpdated(startDate, _startDate);
+        // BK Ok
         startDate = _startDate;
     }
+    // BK Ok - Only owner can execute
     function setEndDate(uint _endDate) public onlyOwner {
+        // BK Ok
         require(!finalised);
-        require(_endDate >= now);
+        // BK Ok
+        require(_endDate > startDate);
+        // BK Ok - Log event
         emit EndDateUpdated(endDate, _endDate);
+        // BK Ok
         endDate = _endDate;
     }
     function setMaxParcels(uint _maxParcels) public onlyOwner {
