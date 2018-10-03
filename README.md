@@ -5,8 +5,9 @@ The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to
 Purchase price:
 
 * The price of each parcel of land is USD 1,500 (and some parcels with variations of this amount)
-* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [0x729D19f657BD0614b4985Cf1D82531c67569197B](https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract)
-* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate
+* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [0x729D19f657BD0614b4985Cf1D82531c67569197B](https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract). The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code) will reflect the MakerDAO ETH/USD rate
+* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc](https://etherscan.io/address/0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc#code)
+* Purchases using GZE will have a 30% discount if the purchasing account has been added to the [BonusList.sol](contracts/BonusList.sol) deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code). Accounts not in the BonusList will get a 20% discount when purchasing with GZE
 
 There are 17 sectors containing parcels of land that will be sold at different timeframes. Each of these sectors will have a unique FxxxLandRush.sol smart contract, and an associated [BTTSToken](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract) smart contract to record the purchases of these parcels.
 
@@ -18,12 +19,40 @@ When the parcels of land are later available for development, the BTTSToken parc
 
 ## Table Of Contents
 
+* [Deployment Addresses](#deployment-addresses)
+  * [Purchasing Contract And Token Contract](#purchasing-contract-and-token-contract)
+  * [Other Contracts](#other-contracts)
 * [Purchasing Parcels](#purchasing-parcels)
   * [Purchasing Parcels With GZE - First Method](#purchasing-parcels-with-gze---first-method)
   * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze---second-method)
   * [Purchasing Parcels With ETH](#purchasing-parcels-with-eth)
 * [Deployment Of Contracts](#deployment-of-contracts)
 * [Code Review](#code-review)
+
+<br />
+
+<hr />
+
+## Deployment Addresses
+
+### Purchasing Contract And Token Contract
+
+Sector    | Purchasing Contract | Token Contract | Purchase From         | Purchase To
+:-------- |:------------------- |:-------------- |:--------------------- |:---------------------
+FxxxHub   | TBA                 | TBA            | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
+FxxxRK    | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+FxxxDude  | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+FxxxBooty | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+
+<br />
+
+### Other Contracts
+
+Contract                         | Address
+:------------------------------- |:-------
+ETH/USD MakerDAOPriceFeedAdaptor | [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code)
+GZE/ETH PriceFeed                | [0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc](https://etherscan.io/address/0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc#code)
+BonusList                        | [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code)
 
 <br />
 
@@ -142,4 +171,4 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 02 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 04 2018. The MIT Licence.
