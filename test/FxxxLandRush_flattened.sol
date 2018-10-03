@@ -19,6 +19,7 @@ pragma solidity ^0.4.25;
 contract Owned {
     address public owner;
     address public newOwner;
+    bool private initialised;
 
     event OwnershipTransferred(address indexed _from, address indexed _to);
 
@@ -28,7 +29,9 @@ contract Owned {
     }
 
     function initOwned(address _owner) internal {
+        require(!initialised);
         owner = _owner;
+        initialised = true;
     }
     function transferOwnership(address _newOwner) public onlyOwner {
         newOwner = _newOwner;
@@ -42,6 +45,34 @@ contract Owned {
     function transferOwnershipImmediately(address _newOwner) public onlyOwner {
         emit OwnershipTransferred(owner, _newOwner);
         owner = _newOwner;
+    }
+}
+
+// ----------------------------------------------------------------------------
+// Safe maths
+// ----------------------------------------------------------------------------
+library SafeMath {
+    function add(uint a, uint b) internal pure returns (uint c) {
+        c = a + b;
+        require(c >= a);
+    }
+    function sub(uint a, uint b) internal pure returns (uint c) {
+        require(b <= a);
+        c = a - b;
+    }
+    function mul(uint a, uint b) internal pure returns (uint c) {
+        c = a * b;
+        require(a == 0 || c / a == b);
+    }
+    function div(uint a, uint b) internal pure returns (uint c) {
+        require(b > 0);
+        c = a / b;
+    }
+    function max(uint a, uint b) internal pure returns (uint c) {
+        c = a >= b ? a : b;
+    }
+    function min(uint a, uint b) internal pure returns (uint c) {
+        c = a <= b ? a : b;
     }
 }
 
@@ -162,35 +193,6 @@ contract BonusListInterface {
 
 
 // ----------------------------------------------------------------------------
-// Safe maths
-// ----------------------------------------------------------------------------
-library SafeMath {
-    function add(uint a, uint b) internal pure returns (uint c) {
-        c = a + b;
-        require(c >= a);
-    }
-    function sub(uint a, uint b) internal pure returns (uint c) {
-        require(b <= a);
-        c = a - b;
-    }
-    function mul(uint a, uint b) internal pure returns (uint c) {
-        c = a * b;
-        require(a == 0 || c / a == b);
-    }
-    function div(uint a, uint b) internal pure returns (uint c) {
-        require(b > 0);
-        c = a / b;
-    }
-    function max(uint a, uint b) internal pure returns (uint c) {
-        c = a >= b ? a : b;
-    }
-    function min(uint a, uint b) internal pure returns (uint c) {
-        c = a <= b ? a : b;
-    }
-}
-
-
-// ----------------------------------------------------------------------------
 // FxxxLandRush Contract
 // ----------------------------------------------------------------------------
 contract FxxxLandRush is Owned, ApproveAndCallFallBack {
@@ -264,7 +266,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     }
     function setMaxParcels(uint _maxParcels) public onlyOwner {
         require(!finalised);
-        require(_maxParcels > parcelsSold);
+        require(_maxParcels >= parcelsSold);
         emit MaxParcelsUpdated(maxParcels, _maxParcels);
         maxParcels = _maxParcels;
     }
