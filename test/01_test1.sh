@@ -241,7 +241,7 @@ var gzeEthPriceFeed = gzeEthPriceFeedContract.new(new BigNumber($INITIALGZEETH).
 var bonusListContract = web3.eth.contract(bonusListAbi);
 var bonusListTx = null;
 var bonusListAddress = null;
-var bonusList = bonusListContract.new({from: deployer, data: priceFeedBin, gas: 5000000, gasPrice: defaultGasPrice},
+var bonusList = bonusListContract.new({from: deployer, data: bonusListBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
@@ -272,8 +272,6 @@ printEthUsdPriceFeedContractDetails();
 printGzeEthPriceFeedContractDetails();
 printBonusListContractDetails();
 console.log("RESULT: ");
-
-exit;
 
 
 // -----------------------------------------------------------------------------
@@ -334,7 +332,7 @@ console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], ethUsdPriceFeedAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUSOFFLIST, $GZEBONUSONLIST, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], makerDaoPriceFeedAdaptorAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUSOFFLIST, $GZEBONUSONLIST, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
