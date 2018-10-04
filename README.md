@@ -6,7 +6,7 @@ Purchase price:
 
 * The price of each parcel of land is USD 1,500 (and some parcels with variations of this amount)
 * The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [0x729D19f657BD0614b4985Cf1D82531c67569197B](https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract). The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code) will reflect the MakerDAO ETH/USD rate
-* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc](https://etherscan.io/address/0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc#code)
+* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code)
 * Purchases using GZE will have a 30% discount if the purchasing account has been added to the [BonusList.sol](contracts/BonusList.sol) deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code). Accounts not in the BonusList will get a 20% discount when purchasing with GZE
 
 There are 17 sectors containing parcels of land that will be sold at different timeframes. Each of these sectors will have a unique FxxxLandRush.sol smart contract, and an associated [BTTSToken](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract) smart contract to record the purchases of these parcels.
@@ -53,7 +53,7 @@ FxxxBooty | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 0
 Contract                         | Address
 :------------------------------- |:-------
 ETH/USD MakerDAOPriceFeedAdaptor | [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code)
-GZE/ETH PriceFeed                | [0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc](https://etherscan.io/address/0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc#code)
+GZE/ETH PriceFeed                | [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code)
 BonusList                        | [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code)
 
 <br />
@@ -102,7 +102,7 @@ No      | Type                      | Notes
 address | \_parcelToken             | FxxxLandRush sector token
 address | \_gzeToken                | [GazeCoin GZE token](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
 address | \_ethUsdPriceFeed         | PriceFeed adaptor for MakerDAO ETH/USD price feed, address 0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292
-address | \_gzeEthPriceFeed         | GazeCoin maintained GZE/ETH price feed, address 0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc
+address | \_gzeEthPriceFeed         | GazeCoin maintained GZE/ETH price feed, address 0x4604646C55410EAa6Cf43b04d26071E36bC227Ef
 address | \_bonusList               | BonusList contract, address 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
 address | \_wallet                  | Wallet for GZE and ETH
 uint    | \_startDate               | Start date, in seconds since Jan 01 1970
@@ -119,7 +119,7 @@ uint    | \_gzeBonusOnList          | Bonus for accounts listed in the BonusList
 
 #### setWallet
 ```javascript
-FxxxLandRush.setWallet(address _wallet);
+function setWallet(address _wallet)
 ```
 
 Parameters:
@@ -132,7 +132,7 @@ address | \_wallet          | Wallet for GZE and ETH
 
 #### setStartDate
 ```javascript
-FxxxLandRush.setStartDate(uint _startDate)
+function setStartDate(uint _startDate)
 ```
 
 Parameters:
@@ -145,7 +145,7 @@ uint    | \_startDate       | Start date, in seconds since Jan 01 1970
 
 #### setEndDate
 ```javascript
-* setEndDate(uint _endDate)
+function setEndDate(uint _endDate)
 ```
 
 Parameters:
@@ -158,7 +158,7 @@ uint    | \_endDate         | End date, in seconds since Jan 01 1970
 
 #### setMaxParcels
 ```javascript
-FxxxLandRush.setMaxParcels(uint _maxParcels)
+function setMaxParcels(uint _maxParcels)
 ```
 
 Parameters:
@@ -171,7 +171,7 @@ uint    | \_maxParcels      | Maximum parcels of land for the sector
 
 #### setParcelUsd
 ```javascript
-FxxxLandRush.setParcelUsd(uint _parcelUsd)
+function setParcelUsd(uint _parcelUsd)
 ```
 
 Parameters:
@@ -184,7 +184,7 @@ uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500
 
 #### setUsdLockAccountThreshold
 ```javascript
-FxxxLandRush.setUsdLockAccountThreshold(uint _usdLockAccountThreshold)
+function setUsdLockAccountThreshold(uint _usdLockAccountThreshold)
 ```
 
 Parameters:
@@ -197,7 +197,7 @@ uint    | \_usdLockAccountThreshold | Lock transfers for purchasing account if U
 
 #### setGzeBonusOffList
 ```javascript
-FxxxLandRush.setGzeBonusOffList(uint _gzeBonusOffList)
+function setGzeBonusOffList(uint _gzeBonusOffList)
 ```
 
 Parameters:
@@ -210,7 +210,7 @@ uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList con
 
 #### setGzeBonusOnList
 ```javascript
-FxxxLandRush.setGzeBonusOnList(uint _gzeBonusOnList)
+function setGzeBonusOnList(uint _gzeBonusOnList)
 ```
 
 Parameters:
@@ -272,5 +272,7 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 <br />
 
 <br />
+
+Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to validate these contracts.
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 04 2018. The MIT Licence.

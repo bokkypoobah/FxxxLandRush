@@ -54,7 +54,11 @@ function generateSummaryJSON() {
     } else {
       separator = ",";
     }
-    console.log("JSONSUMMARY:     { \"newRate\": \"" + e.args.newRate.shift(-18) + "\", \"newLive\": \"" + e.args.newLive + "\" }" + separator);
+    var b = eth.getBlock(e.blockNumber);
+    var ts = b.timestamp;
+    console.log("JSONSUMMARY:     { \"newRate\": \"" + e.args.newRate.shift(-18) + "\", \"newLive\": \"" + e.args.newLive + "\", " +
+      "\"oldRate\": \"" + e.args.oldRate.shift(-18) + "\", \"oldLive\": \"" + e.args.oldLive + "\", " +
+      "\"timestamp\":" + ts + ", \"timestampUTCString\": \"" + new Date(ts * 1000).toUTCString() + "\" }" + separator);
   }
   console.log("JSONSUMMARY:   ]");
   console.log("JSONSUMMARY: }");

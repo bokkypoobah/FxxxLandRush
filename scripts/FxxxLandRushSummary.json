@@ -1,13 +1,13 @@
 {
-  "blockNumber": 6448263,
-  "blockTimestamp": 1538606360,
-  "blockTimestampString": "Thu, 04 Oct 2018 08:39:20 AEST",
-  "blockTimestampUTCString": "Wed, 03 Oct 2018 22:39:20 UTC",
+  "blockNumber": 6451902,
+  "blockTimestamp": 1538657427,
+  "blockTimestampString": "Thu, 04 Oct 2018 22:50:27 AEST",
+  "blockTimestampUTCString": "Thu, 04 Oct 2018 12:50:27 UTC",
   "makerDAOPriceFeedAdaptorAddress": "0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292",
   "bonusListAddress": "0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46",
-  "ethUsdRate": "217.2125",
+  "ethUsdRate": "222.3725",
   "ethUsdLive": "true",
-  "gzeEthRate": "0.00004366",
+  "gzeEthRate": "0.00004204",
   "gzeEthLive": "true",
   "numberOfBonusListAccounts": 78,
   "bonusListAccounts": [
@@ -92,6 +92,6 @@
   ],
   "numberOfGzeEthPriceFeedSetRateEvents": 1,
   "gzeEthPriceFeedSetRateEvents": [
-    { "newRate": "0.00004366", "newLive": "true" }
+    { "newRate": "0.00004204", "newLive": "true", "oldRate": "0", "oldLive": "false", "timestamp":1538655984, "timestampUTCString": "Thu, 04 Oct 2018 12:26:24 UTC" }
   ]
 }
