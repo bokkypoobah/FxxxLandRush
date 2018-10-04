@@ -26,7 +26,7 @@ When the parcels of land are later available for development, the BTTSToken parc
   * [Purchasing Parcels With GZE - First Method](#purchasing-parcels-with-gze---first-method)
   * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze---second-method)
   * [Purchasing Parcels With ETH](#purchasing-parcels-with-eth)
-* [Deployment And Configuration Of Contracts](#deployment-and-configuration-of-contracts)
+* [Deployment And Configuration Of FxxxLandRush Contracts](#deployment-and-configuration-of-fxxxlandrush-contracts)
   * [Deployment Of FxxxLandRush Contract](#deployment-of-fxxxlandrush-contract)
   * [FxxxLandRush Contract Configuration](#fxxxlandrush-contract-configuration)
 * [Code Review](#code-review)
@@ -87,7 +87,7 @@ A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
 
 <hr />
 
-## Deployment And Configuration Of Contracts
+## Deployment And Configuration Of FxxxLandRush Contracts
 
 ### Deployment Of FxxxLandRush Contract
 
@@ -107,6 +107,8 @@ uint    | \_maxParcels      | Maximum parcels of land for the sector
 uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
 uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
 uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
+
+<br />
 
 ### FxxxLandRush Contract Configuration
 
