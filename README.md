@@ -29,8 +29,8 @@ When the parcels of land are later available for development, the BTTSToken parc
 * [Deployment And Configuration Of FxxxLandRush Contracts](#deployment-and-configuration-of-fxxxlandrush-contracts)
   * [Deployment Of FxxxLandRush Contract](#deployment-of-fxxxlandrush-contract)
   * [FxxxLandRush Contract Configuration](#fxxxlandrush-contract-configuration)
-* [Updating The BonusList](#updating-the-bonuslist)
 * [Updating The GZE/ETH PriceFeed](#updating-the-gzeeth-pricefeed)
+* [Updating The BonusList](#updating-the-bonuslist)
 * [Code Review](#code-review)
 
 <br />
@@ -229,13 +229,13 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 <hr />
 
-## Updating The BonusList
+## Updating The GZE/ETH PriceFeed
 
 <br />
 
 <hr />
 
-## Updating The GZE/ETH PriceFeed
+## Updating The BonusList
 
 <br />
 
