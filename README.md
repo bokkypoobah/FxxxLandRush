@@ -109,7 +109,7 @@ uint    | \_startDate               | Start date, in seconds since Jan 01 1970
 uint    | \_endDate                 | End date, in seconds since Jan 01 1970
 uint    | \_maxParcels              | Maximum parcels of land for the sector
 uint    | \_parcelUsd               | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
-uint    | \_usdLockAccountThreshold | Lock transfers for purchasing account if USD amount exceeds this threshol. e.g. USD 7,000 is specified as 7,500 * 10^18
+uint    | \_usdLockAccountThreshold | Lock transfers for purchasing account if USD amount exceeds this threshold. e.g. USD 7,000 is specified as 7,500 * 10^18
 uint    | \_gzeBonusOffList         | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
 uint    | \_gzeBonusOnList          | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
 
@@ -178,7 +178,7 @@ Parameters:
 
 No      | Type              | Notes
 :------ |:----------------- |:----
-uint    | \_parcelUsd       | Lock transfers for purchasing account if USD amount exceeds this threshol. e.g. USD 7,000 is specified as 7,500 * 10^18
+uint    | \_parcelUsd       | Lock transfers for purchasing account if USD amount exceeds this threshold. e.g. USD 7,000 is specified as 7,500 * 10^18
 
 <br />
 
