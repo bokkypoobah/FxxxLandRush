@@ -298,6 +298,82 @@ bool    | \_live            | Is the price live? If the price is not live, user'
 
 ## Updating The BonusList
 
+The BonusList has been deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code).
+
+Contract address:
+```
+0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
+```
+
+Contract ABI:
+```javascript
+[{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"bonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"isInBonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"add","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"},{"indexed":false,"name":"status","type":"bool"}],"name":"AccountListed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
+```
+
+<br />
+
+#### addOperator
+
+The contract owner adds an operator account that is then permissioned to update the bonus list. Multiple operators can be permissioned.
+
+```javascript
+function addOperator(address _operator)
+```
+
+Parameters:
+
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_operator        | Operator account
+
+<br />
+
+#### removeOperator
+
+The contract owner can remove an operator account's permission.
+
+```javascript
+function removeOperator(address _operator)
+```
+
+Parameters:
+
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_operator        | Operator account
+
+<br />
+
+#### add
+
+Any permissioned operator account can add one or more addresses to the bonus list.
+
+```javascript
+function add(address[] accounts)
+```
+
+Parameters:
+
+No        | Type     | Notes
+:-------- |:-------- |:----
+address[] | accounts | Array of accounts to add to the bonus list
+
+<br />
+
+#### remove
+
+Any permissioned operator account can remove one or more addresses from the bonus list.
+
+```javascript
+function remove(address[] accounts)
+```
+
+Parameters:
+
+No        | Type     | Notes
+:-------- |:-------- |:----
+address[] | accounts | Array of accounts to remove from the bonus list
+
 <br />
 
 <hr />
