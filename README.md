@@ -45,12 +45,21 @@ See [deployment](deployment) for deployment details. See [scripts/genData.sh](sc
 
 ### Purchasing Contract And Token Contract
 
-Sector    | Purchasing Contract | Token Contract | Purchase From         | Purchase To
+Zone      | Purchasing Contract | Token Contract | Purchase From         | Purchase To
 :-------- |:------------------- |:-------------- |:--------------------- |:---------------------
 FxxxHub   | TBA                 | TBA            | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
 FxxxRK    | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
 FxxxDude  | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
 FxxxBooty | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+
+Time Conversions:
+
+PST Time              | UTC Time              | AEST Time              | Unix Time  | new Date(Unix Time * 1000).toUTCString()
+:-------------------- |:--------------------- |:---------------------- |:---------- |:----------------------------------------
+Oct 16 2018 15:00 PST | Oct 16 2018 23:00 UTC | Oct 17 2018 10:00 AEST | 1539730800 | "Tue, 16 Oct 2018 23:00:00 UTC"
+Nov 16 2018 15:00 PST | Nov 16 2018 23:00 UTC | Nov 17 2018 10:00 AEST | 1542409200 | "Fri, 16 Nov 2018 23:00:00 UTC"
+Nov 19 2018 15:00 PST | Nov 19 2018 23:00 UTC | Nov 20 2018 10:00 AEST | 1542668400 | "Mon, 19 Nov 2018 23:00:00 UTC"
+Dec 08 2018 15:00 PST | Dec 08 2018 23:00 UTC | Dec 09 2018 10:00 AEST | 1544310000 | "Sat, 08 Dec 2018 23:00:00 UTC"
 
 <br />
 
@@ -430,4 +439,4 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 
 Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to validate these contracts.
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 04 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
