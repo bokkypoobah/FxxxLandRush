@@ -97,9 +97,9 @@ No      | Type              | Notes
 :------ |:----------------- |:----
 address | \_parcelToken     | FxxxLandRush sector token
 address | \_gzeToken        | [GazeCoin GZE token](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
-address | \_ethUsdPriceFeed | PriceFeed adaptor for MakerDAO ETH/USD price feed
-address | \_gzeEthPriceFeed | GazeCoin maintained GZE/ETH price feed
-address | \_bonusList       | BonusList contract
+address | \_ethUsdPriceFeed | PriceFeed adaptor for MakerDAO ETH/USD price feed, address 0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292
+address | \_gzeEthPriceFeed | GazeCoin maintained GZE/ETH price feed, address 0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc
+address | \_bonusList       | BonusList contract, address 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
 address | \_wallet          | Wallet for GZE and ETH
 uint    | \_startDate       | Start date, in seconds since Jan 01 1970
 uint    | \_endDate         | End date, in seconds since Jan 01 1970
