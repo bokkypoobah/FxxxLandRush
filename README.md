@@ -30,7 +30,7 @@ When the parcels of land are later available for development, the BTTSToken parc
   * [Deployment Of FxxxLandRush Contract](#deployment-of-fxxxlandrush-contract)
   * [FxxxLandRush Contract Configuration](#fxxxlandrush-contract-configuration)
 * [Updating The BonusList](#updating-the-bonuslist)
-* [Updating The GZE/ETH PriceFeed](#updating-the-gze-eth-pricefeed)
+* [Updating The GZE/ETH PriceFeed](#updating-the-gzeeth-pricefeed)
 * [Code Review](#code-review)
 
 <br />
