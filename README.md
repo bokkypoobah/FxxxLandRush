@@ -232,10 +232,9 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 * [x] [code-review/MakerDAOPriceFeedAdaptor.md](code-review/MakerDAOPriceFeedAdaptor.md)
   * [x] contract MakerDAOPriceFeedInterface
   * [x] contract MakerDAOPriceFeedAdaptor is PriceFeedInterface
-* [ ] [code-review/FxxxLandRush.md](code-review/FxxxLandRush.md)
-  * [ ] contract FxxxLandRush is Owned, ApproveAndCallFallBack
+* [x] [code-review/FxxxLandRush.md](code-review/FxxxLandRush.md)
+  * [x] contract FxxxLandRush is Owned, ApproveAndCallFallBack
     * [x] using SafeMath for uint;
-  * [ ] TODO: Check bonus calculations
 
 <br />
 

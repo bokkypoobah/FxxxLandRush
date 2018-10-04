@@ -249,7 +249,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
         // BK Ok
         if (_live) {
-            // BK TODO: Check this
+            // BK Ok
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOffList.add(100));
         }
     }
@@ -262,7 +262,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         (_parcelGzeWithoutBonus, _live) = parcelGzeWithoutBonus();
         // BK Ok
         if (_live) {
-            // BK TODO: Check this
+            // BK Ok
             _rate = _parcelGzeWithoutBonus.mul(100).div(gzeBonusOnList.add(100));
         }
     }
