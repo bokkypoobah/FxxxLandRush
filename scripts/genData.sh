@@ -29,8 +29,8 @@ function generateSummaryJSON() {
   console.log("JSONSUMMARY:   \"gzeEthLive\": \"" + gzeEth[1] + "\",");
 
   var bonusListAccountListedEvents = bonusList.AccountListed({}, { fromBlock: bonusListFromBlock, toBlock: "latest" }).get();
-  console.log("JSONSUMMARY:   \"numberOfBonusListAccounts\": " + bonusListAccountListedEvents.length + ",");
-  console.log("JSONSUMMARY:   \"bonusListAccounts\": [");
+  console.log("JSONSUMMARY:   \"numberOfBonusListAccountListedEvents\": " + bonusListAccountListedEvents.length + ",");
+  console.log("JSONSUMMARY:   \"bonusListAccountListedEvents\": [");
   for (var i = 0; i < bonusListAccountListedEvents.length; i++) {
     var e = bonusListAccountListedEvents[bonusListAccountListedEvents.length - 1 - i];
     var separator;
@@ -39,7 +39,10 @@ function generateSummaryJSON() {
     } else {
       separator = ",";
     }
-    console.log("JSONSUMMARY:     { \"address\": \"" + e.args.account + "\", \"status\": \"" + e.args.status + "\" }" + separator);
+    var b = eth.getBlock(e.blockNumber);
+    var ts = b.timestamp;
+    console.log("JSONSUMMARY:     { \"address\": \"" + e.args.account + "\", \"status\": \"" + e.args.status + "\", " +
+    "\"timestamp\":" + ts + ", \"timestampUTCString\": \"" + new Date(ts * 1000).toUTCString() + "\" }" + separator);
   }
   console.log("JSONSUMMARY:   ],");
 
