@@ -89,6 +89,10 @@ A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
 
 ## Deployment And Configuration Of FxxxLandRush Contracts
 
+An FxxxLandRush contract will be deployed for each sector.
+
+<br />
+
 ### Deployment Of FxxxLandRush Contract
 
 Following are the constructor parameters
