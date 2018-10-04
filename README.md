@@ -279,7 +279,8 @@ uint    | \_operator        | Operator account
 
 #### setRate
 
-The contract owner can remove an operator
+Any permissioned operator account can set the GZE/ETH rate.
+
 ```javascript
 function setRate(uint _rate, bool _live)
 ```
