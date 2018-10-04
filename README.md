@@ -114,6 +114,7 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 ```javascript
 FxxxLandRush.setWallet(address _wallet);
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 address | \_wallet          | Wallet for GZE and ETH
@@ -124,6 +125,7 @@ address | \_wallet          | Wallet for GZE and ETH
 ```javascript
 FxxxLandRush.setStartDate(uint _startDate)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_startDate       | Start date, in seconds since Jan 01 1970
@@ -134,6 +136,7 @@ uint    | \_startDate       | Start date, in seconds since Jan 01 1970
 ```javascript
 * setEndDate(uint _endDate)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_endDate         | End date, in seconds since Jan 01 1970
@@ -144,6 +147,7 @@ uint    | \_endDate         | End date, in seconds since Jan 01 1970
 ```javascript
 FxxxLandRush.setMaxParcels(uint _maxParcels)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_maxParcels      | Maximum parcels of land for the sector
@@ -154,6 +158,7 @@ uint    | \_maxParcels      | Maximum parcels of land for the sector
 ```javascript
 FxxxLandRush.setParcelUsd(uint _parcelUsd)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
@@ -164,6 +169,7 @@ uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500
 ```javascript
 FxxxLandRush.setGzeBonusOffList(uint _gzeBonusOffList)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
@@ -174,6 +180,7 @@ uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList con
 ```javascript
 FxxxLandRush.setGzeBonusOnList(uint _gzeBonusOnList)
 ```
+Parameters:
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
