@@ -208,9 +208,10 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     uint public startDate;
     uint public endDate;
     uint public maxParcels;
-    uint public parcelUsd;          // USD per parcel, e.g., USD 1,500 * 10^18
-    uint public gzeBonusOffList;    // e.g., 20 = 20% bonus
-    uint public gzeBonusOnList;     // e.g., 30 = 30% bonus
+    uint public parcelUsd;                  // USD per parcel, e.g., USD 1,500 * 10^18
+    uint public usdLockAccountThreshold;    // e.g., USD 7,000 * 10^18
+    uint public gzeBonusOffList;            // e.g., 20 = 20% bonus
+    uint public gzeBonusOnList;             // e.g., 30 = 30% bonus
 
     uint public parcelsSold;
     uint public contributedGze;
@@ -222,11 +223,12 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
     event EndDateUpdated(uint oldEndDate, uint newEndDate);
     event MaxParcelsUpdated(uint oldMaxParcels, uint newMaxParcels);
     event ParcelUsdUpdated(uint oldParcelUsd, uint newParcelUsd);
+    event UsdLockAccountThresholdUpdated(uint oldUsdLockAccountThreshold, uint newUsdLockAccountThreshold);
     event GzeBonusOffListUpdated(uint oldGzeBonusOffList, uint newGzeBonusOffList);
     event GzeBonusOnListUpdated(uint oldGzeBonusOnList, uint newGzeBonusOnList);
-    event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth);
+    event Purchased(address indexed addr, uint parcels, uint gzeToTransfer, uint ethToTransfer, uint parcelsSold, uint contributedGze, uint contributedEth, bool lockAccount);
 
-    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _gzeBonusOffList, uint _gzeBonusOnList) public {
+    constructor(address _parcelToken, address _gzeToken, address _ethUsdPriceFeed, address _gzeEthPriceFeed, address _bonusList, address _wallet, uint _startDate, uint _endDate, uint _maxParcels, uint _parcelUsd, uint _usdLockAccountThreshold, uint _gzeBonusOffList, uint _gzeBonusOnList) public {
         require(_parcelToken != address(0) && _gzeToken != address(0));
         require(_ethUsdPriceFeed != address(0) && _gzeEthPriceFeed != address(0) && _bonusList != address(0));
         require(_wallet != address(0));
@@ -243,6 +245,7 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         endDate = _endDate;
         maxParcels = _maxParcels;
         parcelUsd = _parcelUsd;
+        usdLockAccountThreshold = _usdLockAccountThreshold;
         gzeBonusOffList = _gzeBonusOffList;
         gzeBonusOnList = _gzeBonusOnList;
     }
@@ -275,6 +278,11 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         require(_parcelUsd > 0);
         emit ParcelUsdUpdated(parcelUsd, _parcelUsd);
         parcelUsd = _parcelUsd;
+    }
+    function setUsdLockAccountThreshold(uint _usdLockAccountThreshold) public onlyOwner {
+        require(!finalised);
+        emit UsdLockAccountThresholdUpdated(usdLockAccountThreshold, _usdLockAccountThreshold);
+        usdLockAccountThreshold = _usdLockAccountThreshold;
     }
     function setGzeBonusOffList(uint _gzeBonusOffList) public onlyOwner {
         require(!finalised);
@@ -371,17 +379,11 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         if (parcelsSold.add(parcels) >= maxParcels) {
             parcels = maxParcels.sub(parcelsSold);
         }
-        require(parcels > 0);
-        parcelsSold = parcelsSold.add(parcels);
         uint gzeToTransfer = parcels.mul(_parcelGze);
         contributedGze = contributedGze.add(gzeToTransfer);
         require(ERC20Interface(token).transferFrom(from, wallet, gzeToTransfer));
-        require(parcelToken.mint(from, parcelUsd.mul(parcels), false));
-        emit Purchased(msg.sender, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth);
-        if (parcelsSold >= maxParcels) {
-            parcelToken.disableMinting();
-            finalised = true;
-        }
+        bool lock = mintParcelTokens(from, parcels);
+        emit Purchased(from, parcels, gzeToTransfer, 0, parcelsSold, contributedGze, contributedEth, lock);
     }
     // Account contributes by sending ETH
     function () public payable {
@@ -394,20 +396,14 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         if (parcelsSold.add(parcels) >= maxParcels) {
             parcels = maxParcels.sub(parcelsSold);
         }
-        require(parcels > 0);
-        parcelsSold = parcelsSold.add(parcels);
         uint ethToTransfer = parcels.mul(_parcelEth);
         contributedEth = contributedEth.add(ethToTransfer);
         uint ethToRefund = msg.value.sub(ethToTransfer);
         if (ethToRefund > 0) {
             msg.sender.transfer(ethToRefund);
         }
-        require(parcelToken.mint(msg.sender, parcelUsd.mul(parcels), false));
-        emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth);
-        if (parcelsSold >= maxParcels) {
-            parcelToken.disableMinting();
-            finalised = true;
-        }
+        bool lock = mintParcelTokens(msg.sender, parcels);
+        emit Purchased(msg.sender, parcels, 0, ethToTransfer, parcelsSold, contributedGze, contributedEth, lock);
     }
     // Contract owner allocates parcels to tokenOwner for offline purchase
     function offlinePurchase(address tokenOwner, uint parcels) public onlyOwner {
@@ -415,10 +411,15 @@ contract FxxxLandRush is Owned, ApproveAndCallFallBack {
         if (parcelsSold.add(parcels) >= maxParcels) {
             parcels = maxParcels.sub(parcelsSold);
         }
+        bool lock = mintParcelTokens(tokenOwner, parcels);
+        emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth, lock);
+    }
+    // Internal function to mint tokens and disable minting if maxParcels sold
+    function mintParcelTokens(address account, uint parcels) internal returns (bool _lock) {
         require(parcels > 0);
         parcelsSold = parcelsSold.add(parcels);
-        require(parcelToken.mint(tokenOwner, parcelUsd.mul(parcels), false));
-        emit Purchased(tokenOwner, parcels, 0, 0, parcelsSold, contributedGze, contributedEth);
+        _lock = parcelToken.balanceOf(account).add(parcelUsd.mul(parcels)) >= usdLockAccountThreshold;
+        require(parcelToken.mint(account, parcelUsd.mul(parcels), _lock));
         if (parcelsSold >= maxParcels) {
             parcelToken.disableMinting();
             finalised = true;

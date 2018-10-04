@@ -102,9 +102,9 @@ contract PriceFeed is PriceFeedInterface, Operated {
         emit SetRate(0, false, rate, live);
     }
     function setRate(uint _rate, bool _live) public onlyOperator {
+        emit SetRate(rate, live, _rate, _live);
         rate = _rate;
         live = _live;
-        emit SetRate(rate, live, _rate, _live);
     }
     function getRate() public view returns (uint _rate, bool _live) {
         return (rate, live);

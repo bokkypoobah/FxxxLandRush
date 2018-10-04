@@ -327,12 +327,13 @@ var deployLandRushMessage = "Deploy FxxxLandRush";
 var landRushAbi = JSON.parse(landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].abi);
 var landRushBin = "0x" + landRushOutput.contracts["$LANDRUSHSOL:FxxxLandRush"].bin;
 var initialParcelUsd = new BigNumber($INITIALPARCELUSD).shift(18);
+var usdLockAccountThreshold = new BigNumber($USDLOCKACCOUNTTHRESHOLD).shift(18);
 // -----------------------------------------------------------------------------
 console.log("RESULT: ---------- " + deployLandRushMessage + " ----------");
 var landRushContract = web3.eth.contract(landRushAbi);
 var landRushTx = null;
 var landRushAddress = null;
-var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], makerDaoPriceFeedAdaptorAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, $GZEBONUSOFFLIST, $GZEBONUSONLIST, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
+var landRush = landRushContract.new(tokenAddresses[$AAA], tokenAddresses[$GZE], makerDaoPriceFeedAdaptorAddress, gzeEthPriceFeedAddress, bonusListAddress, wallet, $START_DATE, $END_DATE, $INITIALMAXPARCELS, initialParcelUsd, usdLockAccountThreshold, $GZEBONUSOFFLIST, $GZEBONUSONLIST, {from: deployer, data: landRushBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

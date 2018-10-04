@@ -13,6 +13,7 @@ pragma solidity ^0.4.25;
 // ----------------------------------------------------------------------------
 // BokkyPooBah's Pricefeed from a single source
 //
+// Deployed to: 0x695Bd54a75FA8e28183F9aF30063AD444ca0EBFc
 //
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
@@ -27,7 +28,8 @@ import "PriceFeedInterface.sol";
 // ----------------------------------------------------------------------------
 // BK Ok
 contract PriceFeed is PriceFeedInterface, Operated {
-    // BK Next 2 Ok
+    // BK Next 3 Ok
+    string public name;
     uint public rate;
     bool public live;
 
@@ -35,10 +37,11 @@ contract PriceFeed is PriceFeedInterface, Operated {
     event SetRate(uint oldRate, bool oldLive, uint newRate, bool newLive);
 
     // BK Ok - Constructor
-    constructor(uint _rate, bool _live) public {
+    constructor(string _name, uint _rate, bool _live) public {
         // BK Ok - Initialisation called
         initOperated(msg.sender);
-        // BK Next 2 Ok
+        // BK Next 3 Ok
+        name = _name;
         rate = _rate;
         live = _live;
         // BK Ok - Log event
@@ -46,11 +49,11 @@ contract PriceFeed is PriceFeedInterface, Operated {
     }
     // BK Ok - Only operator can execute
     function setRate(uint _rate, bool _live) public onlyOperator {
+      // BK Ok - Log event
+      emit SetRate(rate, live, _rate, _live);
         // BK Next 2 Ok
         rate = _rate;
         live = _live;
-        // BK Ok - Log event
-        emit SetRate(rate, live, _rate, _live);
     }
     // BK Ok - View function, matches interface
     function getRate() public view returns (uint _rate, bool _live) {

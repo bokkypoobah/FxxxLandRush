@@ -626,6 +626,7 @@ function printLandRushContractDetails() {
     console.log("RESULT: landRush.endDate=" + new Date(contract.endDate() * 1000).toString());
     console.log("RESULT: landRush.maxParcels=" + contract.maxParcels());
     console.log("RESULT: landRush.parcelUsd=" + contract.parcelUsd().shift(-18));
+    console.log("RESULT: landRush.usdLockAccountThreshold=" + contract.usdLockAccountThreshold().shift(-18));
     console.log("RESULT: landRush.gzeBonusOffList=" + contract.gzeBonusOffList());
     console.log("RESULT: landRush.gzeBonusOnList=" + contract.gzeBonusOnList());
     console.log("RESULT: landRush.parcelsSold=" + contract.parcelsSold());
@@ -693,6 +694,13 @@ function printLandRushContractDetails() {
     });
     parcelUsdUpdatedEvents.stopWatching();
 
+    var usdLockAccountThresholdUpdatedEvents = contract.UsdLockAccountThresholdUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
+    i = 0;
+    usdLockAccountThresholdUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: UsdLockAccountThresholdUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    usdLockAccountThresholdUpdatedEvents.stopWatching();
+
     var gzeBonusOffListUpdatedEvents = contract.GzeBonusOffListUpdated({}, { fromBlock: landRushFromBlock, toBlock: latestBlock });
     i = 0;
     gzeBonusOffListUpdatedEvents.watch(function (error, result) {
@@ -713,7 +721,8 @@ function printLandRushContractDetails() {
       console.log("RESULT: Purchased " + i++ + " #" + result.blockNumber + " addr=" + result.args.addr + " parcels=" + result.args.parcels +
         " gzeToTransfer=" + result.args.gzeToTransfer.shift(-18) + " ethToTransfer=" + result.args.ethToTransfer.shift(-18) +
         " parcelsSold=" + result.args.parcelsSold +
-        " contributedGze=" + result.args.contributedGze.shift(-18) + " contributedEth=" + result.args.contributedEth.shift(-18));
+        " contributedGze=" + result.args.contributedGze.shift(-18) + " contributedEth=" + result.args.contributedEth.shift(-18) +
+        " lockAccount=" + result.args.lockAccount);
     });
     purchasedEvents.stopWatching();
 
