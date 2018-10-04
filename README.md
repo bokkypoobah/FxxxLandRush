@@ -178,7 +178,7 @@ Parameters:
 
 No      | Type              | Notes
 :------ |:----------------- |:----
-uint    | \_parcelUsd       | Lock transfers for purchasing account if USD amount exceeds this threshold. e.g. USD 7,000 is specified as 7,000 * 10^18
+uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
 
 <br />
 
@@ -191,7 +191,7 @@ Parameters:
 
 No      | Type                      | Notes
 :------ |:------------------------- |:----
-uint    | \_usdLockAccountThreshold | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
+uint    | \_usdLockAccountThreshold | Lock transfers for purchasing account if USD amount exceeds this threshold. e.g. USD 7,000 is specified as 7,000 * 10^18
 
 <br />
 
