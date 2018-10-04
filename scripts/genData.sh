@@ -19,7 +19,7 @@ function generateSummaryJSON() {
   console.log("JSONSUMMARY:   \"blockTimestamp\": " + timestamp + ",");
   console.log("JSONSUMMARY:   \"blockTimestampString\": \"" + new Date(timestamp * 1000).toString() + "\",");
   console.log("JSONSUMMARY:   \"blockTimestampUTCString\": \"" + new Date(timestamp * 1000).toUTCString() + "\",");
-  console.log("JSONSUMMARY:   \"makerDAOPriceFeedAdaptorAddress\": \"" + makerDAOPriceFeedAdaptorAddress + "\",");
+  console.log("JSONSUMMARY:   \"makerDAOEthUsdPriceFeedAdaptorAddress\": \"" + makerDAOPriceFeedAdaptorAddress + "\",");
   console.log("JSONSUMMARY:   \"bonusListAddress\": \"" + bonusListAddress + "\",");
   var ethUsd = makerDAOPriceFeedAdaptor.getRate();
   console.log("JSONSUMMARY:   \"ethUsdRate\": \"" + ethUsd[0].shift(-18) + "\",");
@@ -32,7 +32,7 @@ function generateSummaryJSON() {
   console.log("JSONSUMMARY:   \"numberOfBonusListAccounts\": " + bonusListAccountListedEvents.length + ",");
   console.log("JSONSUMMARY:   \"bonusListAccounts\": [");
   for (var i = 0; i < bonusListAccountListedEvents.length; i++) {
-    var e = bonusListAccountListedEvents[i];
+    var e = bonusListAccountListedEvents[bonusListAccountListedEvents.length - 1 - i];
     var separator;
     if (i == bonusListAccountListedEvents.length - 1) {
       separator = "";
@@ -47,7 +47,7 @@ function generateSummaryJSON() {
   console.log("JSONSUMMARY:   \"numberOfGzeEthPriceFeedSetRateEvents\": " + gzeEthPriceFeedSetRateEvents.length + ",");
   console.log("JSONSUMMARY:   \"gzeEthPriceFeedSetRateEvents\": [");
   for (var i = 0; i < gzeEthPriceFeedSetRateEvents.length; i++) {
-    var e = gzeEthPriceFeedSetRateEvents[i];
+    var e = gzeEthPriceFeedSetRateEvents[gzeEthPriceFeedSetRateEvents.length - 1 - i];
     var separator;
     if (i == gzeEthPriceFeedSetRateEvents.length - 1) {
       separator = "";
