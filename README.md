@@ -298,7 +298,7 @@ bool    | \_live            | Is the price live? If the price is not live, user'
 
 ## Updating The BonusList
 
-The BonusList has been deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code).
+The BonusList has been deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code). See [Deployment - BonusList](deployment#bonuslist) for scripts to update the bonus list.
 
 Contract address:
 ```
