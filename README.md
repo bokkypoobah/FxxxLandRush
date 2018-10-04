@@ -235,7 +235,7 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 <hr />
 
-Updating The GZE/ETH PriceFeed
+## Updating The GZE/ETH PriceFeed
 
 <br />
 
