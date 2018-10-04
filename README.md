@@ -26,7 +26,9 @@ When the parcels of land are later available for development, the BTTSToken parc
   * [Purchasing Parcels With GZE - First Method](#purchasing-parcels-with-gze---first-method)
   * [Purchasing Parcels With GZE - Second Method](#purchasing-parcels-with-gze---second-method)
   * [Purchasing Parcels With ETH](#purchasing-parcels-with-eth)
-* [Deployment Of Contracts](#deployment-of-contracts)
+* [Deployment And Configuration Of Contracts](#deployment-and-configuration-of-contracts)
+  * [Deployment Of FxxxLandRush Contract](#deployment-of-fxxxlandrush-contract)
+  * [FxxxLandRush Contract Configuration](#fxxxlandrush-contract-configuration)
 * [Code Review](#code-review)
 
 <br />
@@ -85,14 +87,14 @@ A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
 
 <hr />
 
-## Deployment Of Contracts
+## Deployment And Configuration Of Contracts
 
 ### Deployment Of FxxxLandRush Contract
 
 Following are the constructor parameters
 
-No      | Type             | Notes
-:------ |:---------------- |:----
+No      | Type              | Notes
+:------ |:----------------- |:----
 address | \_parcelToken     | FxxxLandRush sector token
 address | \_gzeToken        | [GazeCoin GZE token](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
 address | \_ethUsdPriceFeed | PriceFeed adaptor for MakerDAO ETH/USD price feed
@@ -106,15 +108,67 @@ uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500
 uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
 uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
 
-#### Configurable Parameters
+### FxxxLandRush Contract Configuration
 
-* setWallet(address \_wallet)
-* setStartDate(uint \_startDate)
-* setEndDate(uint \_endDate)
-* setMaxParcels(uint \_maxParcels)
-* setParcelUsd(uint \_parcelUsd)
-* setGzeBonusOffList(uint \_gzeBonusOffList)
-* setGzeBonusOnList(uint \_gzeBonusOnList)
+#### setWallet
+```javascript
+FxxxLandRush.setWallet(address _wallet);
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+address | \_wallet          | Wallet for GZE and ETH
+
+<br />
+
+#### setStartDate
+```javascript
+FxxxLandRush.setStartDate(uint _startDate)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_startDate       | Start date, in seconds since Jan 01 1970
+
+<br />
+
+#### setEndDate
+```javascript
+* setEndDate(uint _endDate)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_endDate         | End date, in seconds since Jan 01 1970
+
+#### setMaxParcels
+```javascript
+FxxxLandRush.setMaxParcels(uint _maxParcels)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_maxParcels      | Maximum parcels of land for the sector
+
+#### setParcelUsd
+```javascript
+FxxxLandRush.setParcelUsd(uint _parcelUsd)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
+
+#### setGzeBonusOffList
+```javascript
+FxxxLandRush.setGzeBonusOffList(uint _gzeBonusOffList)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
+
+#### setGzeBonusOnList
+```javascript
+FxxxLandRush.setGzeBonusOnList(uint _gzeBonusOnList)
+```
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contract. e.g., 30% is specified as 30
 
 <br />
 
