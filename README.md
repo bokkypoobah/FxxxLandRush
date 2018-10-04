@@ -138,6 +138,8 @@ No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_endDate         | End date, in seconds since Jan 01 1970
 
+<br />
+
 #### setMaxParcels
 ```javascript
 FxxxLandRush.setMaxParcels(uint _maxParcels)
@@ -145,6 +147,8 @@ FxxxLandRush.setMaxParcels(uint _maxParcels)
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_maxParcels      | Maximum parcels of land for the sector
+
+<br />
 
 #### setParcelUsd
 ```javascript
@@ -154,6 +158,8 @@ No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_parcelUsd       | Price of a parcel of land, in USD. e.g., USD 1,500 is specified as 1,500 * 10^18
 
+<br />
+
 #### setGzeBonusOffList
 ```javascript
 FxxxLandRush.setGzeBonusOffList(uint _gzeBonusOffList)
@@ -161,6 +167,8 @@ FxxxLandRush.setGzeBonusOffList(uint _gzeBonusOffList)
 No      | Type              | Notes
 :------ |:----------------- |:----
 uint    | \_gzeBonusOffList | Bonus for accounts not listed in the BonusList contract. e.g. 20% is specified as 20
+
+<br />
 
 #### setGzeBonusOnList
 ```javascript
