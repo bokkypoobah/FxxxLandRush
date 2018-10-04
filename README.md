@@ -245,6 +245,54 @@ Contract ABI:
 
 <br />
 
+#### addOperator
+
+The contract owner adds an operator account that is then permissioned to update the rates. Multiple operators can be permissioned.
+
+```javascript
+function addOperator(address _operator)
+```
+
+Parameters:
+
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_operator        | Operator account
+
+<br />
+
+#### removeOperator
+
+The contract owner can remove an operator account's permission.
+
+```javascript
+function removeOperator(address _operator)
+```
+
+Parameters:
+
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_operator        | Operator account
+
+<br />
+
+#### setRate
+
+The contract owner can remove an operator
+```javascript
+function setRate(uint _rate, bool _live)
+```
+
+Parameters:
+
+No      | Type              | Notes
+:------ |:----------------- |:----
+uint    | \_rate            | GZE/ETH market rate. e.g., 0.00004199 is specified as 0.00004199 * 10^18
+bool    | \_live            | Is the price live? If the price is not live, user's will not be able to purchase FxxxLandRush parcels with GZE
+
+<br />
+
 <hr />
 
 ## Updating The BonusList
