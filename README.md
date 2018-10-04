@@ -37,7 +37,7 @@ When the parcels of land are later available for development, the BTTSToken parc
 
 ## Deployment Addresses
 
-See [deployment](deployment) for deployment details. See [scripts/genData.sh](scripts/genData.sh), [scripts/deployment.js](scripts/deployment.js) and [scripts/FxxxLandRushSummary.json](FxxxLandRushSummary.json) for deployment statistics.
+See [deployment](deployment) for deployment details. See [scripts/genData.sh](scripts/genData.sh), [scripts/deployment.js](scripts/deployment.js) and [scripts/FxxxLandRushSummary.json](scripts/FxxxLandRushSummary.json) for deployment statistics.
 
 <br />
 
