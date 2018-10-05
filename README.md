@@ -45,12 +45,15 @@ See [deployment](deployment) for deployment details. See [scripts/genData.sh](sc
 
 ### Purchasing Contract And Token Contract
 
-Zone      | Purchasing Contract | Token Contract | Purchase From         | Purchase To
-:-------- |:------------------- |:-------------- |:--------------------- |:---------------------
-FxxxHub   | TBA                 | TBA            | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
-FxxxRK    | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
-FxxxDude  | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
-FxxxBooty | TBA                 | TBA            | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+FxxxLand purchasing contract and token contract for each zone:
+
+Token Symbol | Token Name           | Purchasing Contract | Token Contract Address                     | Purchase From         | Purchase To
+:----------- |:-------------------- | :------------------ |:------------------------------------------ |:--------------------- |:---------------------
+[FxxxHub]    | Fantasy Hub          | TBA                 | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
+[FxxxRk]     | Fantasy Riot Kitty   | TBA                 | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+[FxxxDude]   | Fantasy Dude Sweet   | TBA                 | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+[FxxxBooty]  | Fantasy Booty Sector | TBA                 | 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+
 
 Time Conversions:
 
@@ -440,3 +443,9 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to validate these contracts.
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
+
+
+[FxxxHub]: https://etherscan.io/token/0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da#code
+[FxxxRk]: https://etherscan.io/token/0xd73b9d06bffA9d8B6D2E5f03de578103531215fF#code
+[FxxxDude]: https://etherscan.io/token/0xc70ABb3546D0976d91D91AaD2773fAE69e106599#code
+[FxxxBooty]: https://etherscan.io/token/0xBC844A541855Cb797163e7f4344616a97a89ccB2#code
