@@ -57,9 +57,9 @@ TEST3RESULTS=test3results.txt
 TEST4OUTPUT=test4output.txt
 TEST4RESULTS=test4results.txt
 
-CURRENTTIME = '1538656195' 'Thu Oct  4 22:29:55 2018'
-START_DATE  = '1538656225' 'Thu Oct  4 22:30:25 2018'
-END_DATE    = '1538656255' 'Thu Oct  4 22:30:55 2018'
+CURRENTTIME = '1538704550' 'Fri Oct  5 11:55:50 2018'
+START_DATE  = '1538704580' 'Fri Oct  5 11:56:20 2018'
+END_DATE    = '1538704610' 'Fri Oct  5 11:56:50 2018'
 --- Differences ../contracts//*.sol *.sol ---
 
 solc, the solidity compiler commandline interface
@@ -123,7 +123,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.8.15-stable-89451f7c/darwin-amd64/go1.10.4
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 10 (Thu, 04 Oct 2018 22:29:57 AEST)
+at block: 51 (Fri, 05 Oct 2018 11:55:52 AEST)
  datadir: /Users/bok/Projects/FxxxLandRush/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
@@ -290,7 +290,7 @@ undefined
 RESULT: PASS Deploy Lib - BTTSLib
 1
 > 
-RESULT: bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=27 txIx=0 txId=0x0f71f55324ef80f3630482b878c0da8551dd35de2fd20ee01832af6e0d5d88bd @ 1538656214 Thu, 04 Oct 2018 12:30:14 UTC
+RESULT: bttsLibTx status=0x1 Success gas=5000000 gasUsed=3550569 costETH=0.0110067639 costUSD=3.171819153063 @ ETH/USD=288.17 gasPrice=3.1 gwei block=70 txIx=0 txId=0x0f71f55324ef80f3630482b878c0da8551dd35de2fd20ee01832af6e0d5d88bd @ 1538704571 Fri, 05 Oct 2018 01:56:11 UTC
 undefined
 > 
 RESULT: 
@@ -361,7 +361,7 @@ undefined
 RESULT: PASS Deploy Factory - BTTSFactory
 1
 > 
-RESULT: bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=29 txIx=0 txId=0x6a6bb742cf2fe87ede05cf7641ab4499e6c8f6a0a4f6486b2d420d6022f9fb0d @ 1538656216 Thu, 04 Oct 2018 12:30:16 UTC
+RESULT: bttsFactoryTx status=0x1 Success gas=5000000 gasUsed=3076996 costETH=0.0095386876 costUSD=2.748763605692 @ ETH/USD=288.17 gasPrice=3.1 gwei block=72 txIx=0 txId=0x6a6bb742cf2fe87ede05cf7641ab4499e6c8f6a0a4f6486b2d420d6022f9fb0d @ 1538704573 Fri, 05 Oct 2018 01:56:13 UTC
 undefined
 > 
 RESULT: factoryContract.address=BTTSFactory:0x0e94
@@ -525,16 +525,16 @@ RESULT: PASS Deploy PriceFeeds - GZE/ETH PriceFeed
 RESULT: PASS Deploy PriceFeeds - BonusList
 1
 > 
-RESULT: makerDaoEthUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=427813 costETH=0.0013262203 costUSD=0.382176903851 @ ETH/USD=288.17 gasPrice=3.1 gwei block=31 txIx=0 txId=0x5db052804c8f5e5c1849ee8551158cf00edcd57a1eca6c18ac64e72325419cd4 @ 1538656218 Thu, 04 Oct 2018 12:30:18 UTC
+RESULT: makerDaoEthUsdPriceFeedTx status=0x1 Success gas=5000000 gasUsed=427813 costETH=0.0013262203 costUSD=0.382176903851 @ ETH/USD=288.17 gasPrice=3.1 gwei block=74 txIx=0 txId=0x5db052804c8f5e5c1849ee8551158cf00edcd57a1eca6c18ac64e72325419cd4 @ 1538704575 Fri, 05 Oct 2018 01:56:15 UTC
 undefined
 > 
-RESULT: makerDaoPriceFeedAdaptorTx status=0x1 Success gas=5000000 gasUsed=190140 costETH=0.000589434 costUSD=0.16985719578 @ ETH/USD=288.17 gasPrice=3.1 gwei block=33 txIx=0 txId=0x7bdfe17ed1a67d1b192f52ba0a1ea36ab7d960dddd825f202b6f5da97492e97f @ 1538656220 Thu, 04 Oct 2018 12:30:20 UTC
+RESULT: makerDaoPriceFeedAdaptorTx status=0x1 Success gas=5000000 gasUsed=190140 costETH=0.000589434 costUSD=0.16985719578 @ ETH/USD=288.17 gasPrice=3.1 gwei block=76 txIx=0 txId=0x7bdfe17ed1a67d1b192f52ba0a1ea36ab7d960dddd825f202b6f5da97492e97f @ 1538704577 Fri, 05 Oct 2018 01:56:17 UTC
 undefined
 > 
-RESULT: gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=669033 costETH=0.0020740023 costUSD=0.597665242791 @ ETH/USD=288.17 gasPrice=3.1 gwei block=33 txIx=1 txId=0xf9e38fe3876eafcbf0a5412c7ac276328e75f923da8c1dc32a1000a79da5f68b @ 1538656220 Thu, 04 Oct 2018 12:30:20 UTC
+RESULT: gzeEthPriceFeedTx status=0x1 Success gas=5000000 gasUsed=669033 costETH=0.0020740023 costUSD=0.597665242791 @ ETH/USD=288.17 gasPrice=3.1 gwei block=76 txIx=1 txId=0xf9e38fe3876eafcbf0a5412c7ac276328e75f923da8c1dc32a1000a79da5f68b @ 1538704577 Fri, 05 Oct 2018 01:56:17 UTC
 undefined
 > 
-RESULT: bonusListTx status=0x1 Success gas=5000000 gasUsed=682419 costETH=0.0021154989 costUSD=0.609623318013 @ ETH/USD=288.17 gasPrice=3.1 gwei block=33 txIx=2 txId=0xb197bf35705018292a986a6964a53b23d58e9e4c5289f290ca38f83e893ef01b @ 1538656220 Thu, 04 Oct 2018 12:30:20 UTC
+RESULT: bonusListTx status=0x1 Success gas=5000000 gasUsed=682419 costETH=0.0021154989 costUSD=0.609623318013 @ ETH/USD=288.17 gasPrice=3.1 gwei block=76 txIx=2 txId=0xb197bf35705018292a986a6964a53b23d58e9e4c5289f290ca38f83e893ef01b @ 1538704577 Fri, 05 Oct 2018 01:56:17 UTC
 undefined
 > 
 RESULT: ethUsdPriceFeedContract.address=MakerDAO ETH/USD PriceFeed Adaptor:0xe6ad
@@ -547,7 +547,7 @@ RESULT: gzeEthPriceFeed.owner/new=Deployer:0xa11a/Null:0x0000
 RESULT: gzeEthPriceFeed.name=GZE/ETH PriceFeed
 RESULT: gzeEthPriceFeed.rate=0.00004366
 RESULT: gzeEthPriceFeed.live=true
-RESULT: SetRate 0 #33 oldRate=0 oldLive=false newRate=0.00004366 newLive=true
+RESULT: SetRate 0 #76 oldRate=0 oldLive=false newRate=0.00004366 newLive=true
 undefined
 > 
 RESULT: bonusListContract.address=BonusList:0x5793
@@ -613,8 +613,8 @@ undefined
 undefined
 > 
 RESULT: factoryContractAddress=0x0e946b999033257976aa5cbe0e3530618ca1582d
-RESULT: get BTTSTokenListing 0 #35 {"bttsTokenAddress":"0xbcd68847ca1a2a2736cb8a4e83312c20e760b4e2","decimals":"18","initialSupply":"2.9508557e+25","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
-RESULT: get BTTSTokenListing 1 #36 {"bttsTokenAddress":"0x48c8c674b7a01fbc8ab994da6f4823f72efe896b","decimals":"18","initialSupply":"0","mintable":true,"name":"Parcel A","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"PARCELA","transferable":true}
+RESULT: get BTTSTokenListing 0 #78 {"bttsTokenAddress":"0xbcd68847ca1a2a2736cb8a4e83312c20e760b4e2","decimals":"18","initialSupply":"2.9508557e+25","mintable":false,"name":"GazeCoin","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"GZE","transferable":true}
+RESULT: get BTTSTokenListing 1 #79 {"bttsTokenAddress":"0x48c8c674b7a01fbc8ab994da6f4823f72efe896b","decimals":"18","initialSupply":"0","mintable":true,"name":"Parcel A","ownerAddress":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","symbol":"PARCELA","transferable":true}
 undefined
 > 
 ... 
@@ -654,8 +654,8 @@ RESULT: PASS Deploy Tokens - Token 'PARCELA' 'Parcel A'
 > 
 ... 
 ... 
-RESULT: tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1918290 costETH=0.005946699 costUSD=1.71366025083 @ ETH/USD=288.17 gasPrice=3.1 gwei block=35 txIx=0 txId=0xace9416bf69c23204d29eac1d11a208b3fb276df7aae072e46859658cda12177 @ 1538656222 Thu, 04 Oct 2018 12:30:22 UTC
-RESULT: tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1858787 costETH=0.0057622397 costUSD=1.660504614349 @ ETH/USD=288.17 gasPrice=3.1 gwei block=36 txIx=0 txId=0x6c96fe6729613cb81da60e149827452c0282194ee2951a8cb147cac5a462dcbc @ 1538656223 Thu, 04 Oct 2018 12:30:23 UTC
+RESULT: tokenTx[0] status=0x1 Success gas=6000000 gasUsed=1918290 costETH=0.005946699 costUSD=1.71366025083 @ ETH/USD=288.17 gasPrice=3.1 gwei block=78 txIx=0 txId=0xace9416bf69c23204d29eac1d11a208b3fb276df7aae072e46859658cda12177 @ 1538704579 Fri, 05 Oct 2018 01:56:19 UTC
+RESULT: tokenTx[1] status=0x1 Success gas=6000000 gasUsed=1858787 costETH=0.0057622397 costUSD=1.660504614349 @ ETH/USD=288.17 gasPrice=3.1 gwei block=79 txIx=0 txId=0x6c96fe6729613cb81da60e149827452c0282194ee2951a8cb147cac5a462dcbc @ 1538704580 Fri, 05 Oct 2018 01:56:20 UTC
 undefined
 > 
 RESULT: 
@@ -671,8 +671,8 @@ RESULT: token0.totalSupply=29508557
 RESULT: token0.mintable=false
 RESULT: token0.transferable=true
 RESULT: token0.minter=Null:0x0000
-RESULT: token0.Mint 0 #35 {"lockAccount":false,"tokenOwner":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","tokens":"2.9508557e+25"}
-RESULT: token0.Transfer 0 #35 from=Null:0x0000 to=Deployer:0xa11a tokens=29508557
+RESULT: token0.Mint 0 #78 {"lockAccount":false,"tokenOwner":"0xa11aae29840fbb5c86e6fd4cf809eba183aef433","tokens":"2.9508557e+25"}
+RESULT: token0.Transfer 0 #78 from=Null:0x0000 to=Deployer:0xa11a tokens=29508557
 RESULT: 
 RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x48c8
 RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
@@ -757,7 +757,7 @@ undefined
 RESULT: FAIL Deploy FxxxLandRush - FxxxLandRush
 0
 > 
-RESULT: landRushTx status=0x0 Failure gas=5000000 gasUsed=532403 costETH=0.0016504493 costUSD=0.475609974781 @ ETH/USD=288.17 gasPrice=3.1 gwei block=42 txIx=0 txId=0xa6445f958b97bc313ee9c277b32f548d22df5745f7bd3add487a338d66091da3 @ 1538656229 Thu, 04 Oct 2018 12:30:29 UTC
+RESULT: landRushTx status=0x0 Failure gas=5000000 gasUsed=532403 costETH=0.0016504493 costUSD=0.475609974781 @ ETH/USD=288.17 gasPrice=3.1 gwei block=84 txIx=0 txId=0x59489baa92026f8b5e1feefe00b4a143b84aa31cc77f60574aa1f5ed963db7c1 @ 1538704585 Fri, 05 Oct 2018 01:56:25 UTC
 undefined
 > 
 RESULT: landRushContract.address=null
@@ -828,17 +828,17 @@ RESULT: PASS Setting Group #1 - Distribute tokens - 0xbd83dcbc19ba6f7d986c06e120
 RESULT: PASS Setting Group #1 - Distribute tokens - 0x011b6cff320e20253cf4bce7b8fcc94e1d9112c03d91896f9917cda99f9cbf46
 undefined
 > 
-RESULT: settingGroup1_setMinterTx status=0x1 Success gas=2000000 gasUsed=32417 costETH=0.0001004927 costUSD=0.028958981359 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=0 txId=0x4537194a53b90922c90588f2c00397df6e0c36af5070ba8c3f51d99632bc9c18 @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
+RESULT: settingGroup1_setMinterTx status=0x1 Success gas=2000000 gasUsed=32417 costETH=0.0001004927 costUSD=0.028958981359 @ ETH/USD=288.17 gasPrice=3.1 gwei block=88 txIx=0 txId=0x4537194a53b90922c90588f2c00397df6e0c36af5070ba8c3f51d99632bc9c18 @ 1538704589 Fri, 05 Oct 2018 01:56:29 UTC
 undefined
 > 
 ...... 
 ...... 
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=1 txId=0x85fbae38462d32976df09e49543bdf3aebc3f6e0bca42dd9412d60e575b7b807 @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=2 txId=0xb0b658d4c22f7c1e0fd1015110f0749427bfc041bd1f6903645f42cfe75721c3 @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=3 txId=0x6f885f8921ee0d9ef1a7b13cbc6f1d7b271831a18532868d7381ee387b0caa0e @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=4 txId=0x11ad800bd72054580a7db77dbe10fc8a3184b31d6b5ad4d1fdf02f53caa04ee9 @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=46 txIx=5 txId=0xbd83dcbc19ba6f7d986c06e120aaff8b35234185e1c77cfb7c58fd8d04f21671 @ 1538656233 Thu, 04 Oct 2018 12:30:33 UTC
-RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=47 txIx=0 txId=0x011b6cff320e20253cf4bce7b8fcc94e1d9112c03d91896f9917cda99f9cbf46 @ 1538656234 Thu, 04 Oct 2018 12:30:34 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=88 txIx=1 txId=0x85fbae38462d32976df09e49543bdf3aebc3f6e0bca42dd9412d60e575b7b807 @ 1538704589 Fri, 05 Oct 2018 01:56:29 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=88 txIx=2 txId=0xb0b658d4c22f7c1e0fd1015110f0749427bfc041bd1f6903645f42cfe75721c3 @ 1538704589 Fri, 05 Oct 2018 01:56:29 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=89 txIx=0 txId=0x6f885f8921ee0d9ef1a7b13cbc6f1d7b271831a18532868d7381ee387b0caa0e @ 1538704590 Fri, 05 Oct 2018 01:56:30 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=89 txIx=1 txId=0x11ad800bd72054580a7db77dbe10fc8a3184b31d6b5ad4d1fdf02f53caa04ee9 @ 1538704590 Fri, 05 Oct 2018 01:56:30 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=55001 costETH=0.0001705031 costUSD=0.049133878327 @ ETH/USD=288.17 gasPrice=3.1 gwei block=89 txIx=2 txId=0xbd83dcbc19ba6f7d986c06e120aaff8b35234185e1c77cfb7c58fd8d04f21671 @ 1538704590 Fri, 05 Oct 2018 01:56:30 UTC
+RESULT:  status=0x1 Success gas=2000000 gasUsed=39553 costETH=0.0001226143 costUSD=0.035333762831 @ ETH/USD=288.17 gasPrice=3.1 gwei block=89 txIx=3 txId=0x011b6cff320e20253cf4bce7b8fcc94e1d9112c03d91896f9917cda99f9cbf46 @ 1538704590 Fri, 05 Oct 2018 01:56:30 UTC
 undefined
 > 
 RESULT: 
@@ -854,9 +854,9 @@ RESULT: token0.totalSupply=29508557
 RESULT: token0.mintable=false
 RESULT: token0.transferable=true
 RESULT: token0.minter=Null:0x0000
-RESULT: token0.Transfer 0 #46 from=Deployer:0xa11a to=User1:0xa33a tokens=1000000
-RESULT: token0.Transfer 1 #46 from=Deployer:0xa11a to=User2:0xa44a tokens=1000000
-RESULT: token0.Transfer 2 #46 from=Deployer:0xa11a to=User3:0xa55a tokens=1000000
+RESULT: token0.Transfer 0 #88 from=Deployer:0xa11a to=User1:0xa33a tokens=1000000
+RESULT: token0.Transfer 1 #89 from=Deployer:0xa11a to=User2:0xa44a tokens=1000000
+RESULT: token0.Transfer 2 #89 from=Deployer:0xa11a to=User3:0xa55a tokens=1000000
 RESULT: 
 RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x48c8
 RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000
@@ -865,10 +865,10 @@ RESULT: token1.totalSupply=0
 RESULT: token1.mintable=true
 RESULT: token1.transferable=true
 RESULT: token1.minter=Null:0x0000
-RESULT: token1.MinterUpdated 0 #46 {"from":"0x0000000000000000000000000000000000000000","to":"0x0000000000000000000000000000000000000000"}
-RESULT: token1.Transfer 0 #46 from=Deployer:0xa11a to=User1:0xa33a tokens=0
-RESULT: token1.Transfer 1 #46 from=Deployer:0xa11a to=User2:0xa44a tokens=0
-RESULT: token1.Transfer 2 #47 from=Deployer:0xa11a to=User3:0xa55a tokens=0
+RESULT: token1.MinterUpdated 0 #88 {"from":"0x0000000000000000000000000000000000000000","to":"0x0000000000000000000000000000000000000000"}
+RESULT: token1.Transfer 0 #88 from=Deployer:0xa11a to=User1:0xa33a tokens=0
+RESULT: token1.Transfer 1 #89 from=Deployer:0xa11a to=User2:0xa44a tokens=0
+RESULT: token1.Transfer 2 #89 from=Deployer:0xa11a to=User3:0xa55a tokens=0
 RESULT: 
 undefined
 > 
@@ -942,7 +942,7 @@ Error: invalid argument 0: json: cannot unmarshal non-string into Go value of ty
     at <anonymous>:1:1
 
 > 
-RESULT: contribute1_1Tx status=0x0 Failure gas=2000000 gasUsed=50303 costETH=0.0001559393 costUSD=0.044937028081 @ ETH/USD=288.17 gasPrice=3.1 gwei block=52 txIx=0 txId=0x580ed429748fc03ad7fcfce3a5d535f4af5ec5320cc0b45c96db36cc87cc4f54 @ 1538656239 Thu, 04 Oct 2018 12:30:39 UTC
+RESULT: contribute1_1Tx status=0x0 Failure gas=2000000 gasUsed=50303 costETH=0.0001559393 costUSD=0.044937028081 @ ETH/USD=288.17 gasPrice=3.1 gwei block=93 txIx=0 txId=0x580ed429748fc03ad7fcfce3a5d535f4af5ec5320cc0b45c96db36cc87cc4f54 @ 1538704594 Fri, 05 Oct 2018 01:56:34 UTC
 undefined
 > 
 Error: invalid argument 0: json: cannot unmarshal non-string into Go value of type common.Hash
@@ -1044,7 +1044,7 @@ Error: invalid argument 0: json: cannot unmarshal non-string into Go value of ty
     at <anonymous>:1:1
 
 > 
-RESULT: contribute2_1Tx status=0x1 Success gas=2000000 gasUsed=47465 costETH=0.0001471415 costUSD=0.042401766055 @ ETH/USD=288.17 gasPrice=3.1 gwei block=56 txIx=0 txId=0x7db71df3fc267e356f619565a1924e6e2b101b1fe71b8b6005fd50d2123d22bb @ 1538656243 Thu, 04 Oct 2018 12:30:43 UTC
+RESULT: contribute2_1Tx status=0x1 Success gas=2000000 gasUsed=47465 costETH=0.0001471415 costUSD=0.042401766055 @ ETH/USD=288.17 gasPrice=3.1 gwei block=98 txIx=0 txId=0x7db71df3fc267e356f619565a1924e6e2b101b1fe71b8b6005fd50d2123d22bb @ 1538704599 Fri, 05 Oct 2018 01:56:39 UTC
 undefined
 > 
 Error: invalid argument 0: json: cannot unmarshal non-string into Go value of type common.Hash
@@ -1074,7 +1074,7 @@ RESULT: token0.totalSupply=29508557
 RESULT: token0.mintable=false
 RESULT: token0.transferable=true
 RESULT: token0.minter=Null:0x0000
-RESULT: token0.Approval 0 #56 tokenOwner=User3:0xa55a spender=Null:0x0000 tokens=400000
+RESULT: token0.Approval 0 #98 tokenOwner=User3:0xa55a spender=Null:0x0000 tokens=400000
 RESULT: 
 RESULT: token1ContractAddress=Token 'PARCELA' 'Parcel A':0x48c8
 RESULT: token1.owner/new=Deployer:0xa11a/Null:0x0000

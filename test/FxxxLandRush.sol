@@ -3,8 +3,6 @@ pragma solidity ^0.4.25;
 // ----------------------------------------------------------------------------
 // Fxxx Land Rush Contract - Purchase land parcels with GZE and ETH
 //
-// Deployed to : {TBA}
-//
 // Enjoy.
 //
 // (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin 2018. The MIT Licence.
