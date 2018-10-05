@@ -440,7 +440,7 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 
 <br />
 
-Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to validate these contracts.
+Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to [validate these contracts](https://github.com/apguerrera/FxxxLandRush/tree/master/code-review-ag).
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
 
