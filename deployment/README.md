@@ -109,3 +109,31 @@ var pricefeedContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"
 var tx = pricefeedContract.setRate(_rate, _live, { from: deploymentAccount, gasPrice: gasPrice });
 tx;
 ```
+
+<br />
+
+<hr />
+
+## Token Contracts
+
+Deployed Token Contracts:
+
+* FxxxHub - Fantasy Hub - 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da
+* FxxxRk - Fantasy Riot Kitty - 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF
+* FxxxDude - Fantasy Dude Sweet - 0xc70ABb3546D0976d91D91AaD2773fAE69e106599
+* FxxxBooty - Fantasy Booty Sector - 0xBC844A541855Cb797163e7f4344616a97a89ccB2
+
+```javascript
+var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var bttsTokenFactoryAddress = "0x14AabC5adE82240330e5BE05D8ef350661AEbB8a";
+var gasPrice = web3.toWei("3.1", "gwei");
+var gas = "2200000";
+var symbol = "FxxxBooty";
+var name = "Fantasy Booty Sector";
+var decimals = 18;
+var initialSupply = 0;
+var mintable = true;
+var transferable = true;
+var bttsTokenFactory = web3.eth.contract([{"constant":false,"inputs":[{"name":"symbol","type":"string"},{"name":"name","type":"string"},{"name":"decimals","type":"uint8"},{"name":"initialSupply","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"name":"deployBTTSTokenContract","outputs":[{"name":"bttsTokenAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"numberOfDeployedTokens","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenContract","type":"address"}],"name":"verify","outputs":[{"name":"valid","type":"bool"},{"name":"owner","type":"address"},{"name":"decimals","type":"uint256"},{"name":"mintable","type":"bool"},{"name":"transferable","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"deployedTokens","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"ownerAddress","type":"address"},{"indexed":true,"name":"bttsTokenAddress","type":"address"},{"indexed":false,"name":"symbol","type":"string"},{"indexed":false,"name":"name","type":"string"},{"indexed":false,"name":"decimals","type":"uint8"},{"indexed":false,"name":"initialSupply","type":"uint256"},{"indexed":false,"name":"mintable","type":"bool"},{"indexed":false,"name":"transferable","type":"bool"}],"name":"BTTSTokenListing","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]).at(bttsTokenFactoryAddress);
+var tx = bttsTokenFactory.deployBTTSTokenContract(symbol, name, decimals, initialSupply, mintable, transferable, { from: deploymentAccount, gasPrice: gasPrice, gas: gas });
+tx;
