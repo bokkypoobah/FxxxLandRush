@@ -243,7 +243,7 @@ uint    | \_gzeBonusOnList  | Bonus for accounts listed in the BonusList contrac
 
 ## Updating The GZE/ETH PriceFeed
 
-The GZE/ETH PriceFeed has been deployed to [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code). See [Deployment - GZE/ETH PriceFeed](deployment#gzeeth-pricefeed) for scripts to update the price feed.
+The GZE/ETH PriceFeed has been deployed to [GZEETHPriceFeed:0x4604]. See [Deployment - GZE/ETH PriceFeed](deployment#gzeeth-pricefeed) for scripts to update the price feed.
 
 Contract address:
 ```
@@ -310,7 +310,7 @@ bool    | \_live            | Is the price live? If the price is not live, user'
 
 ## Updating The BonusList
 
-The BonusList has been deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code). See [Deployment - BonusList](deployment#bonuslist) for scripts to update the bonus list.
+The BonusList has been deployed to [BonusList:0x57D2]. See [Deployment - BonusList](deployment#bonuslist) for scripts to update the bonus list.
 
 Contract address:
 ```
