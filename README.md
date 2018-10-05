@@ -1,13 +1,13 @@
 # FXXX LandRush
 
-The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to purchase of [FXXX](https://www.fxxx.io/) parcels of land using [GZE](https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b) (GazeCoin Metaverse Token) or ethers (ETH).
+The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to purchase of [FXXX](https://www.fxxx.io/) parcels of land using [GZE:0x4ac0] (GazeCoin Metaverse Token) or ethers (ETH).
 
 Purchase price:
 
 * The price of each parcel of land is USD 1,500 (and some parcels with variations of this amount)
-* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [0x729D19f657BD0614b4985Cf1D82531c67569197B](https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract). The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code) will reflect the MakerDAO ETH/USD rate
-* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code)
-* Purchases using GZE will have a 30% discount if the purchasing account has been added to the [BonusList.sol](contracts/BonusList.sol) deployed to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code). Accounts not in the BonusList will get a 20% discount when purchasing with GZE
+* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [0x729D19f657BD0614b4985Cf1D82531c67569197B](https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract). The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [MakerDAOPriceFeedAdaptor:0x12bc] will reflect the MakerDAO ETH/USD rate
+* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [GZEETHPriceFeed:0x4604]
+* Purchases using GZE will have a 30% discount if the purchasing account has been added to the [BonusList.sol](contracts/BonusList.sol) deployed to [BonusList:0x57D2]. Accounts not in the BonusList will get a 20% discount when purchasing with GZE
 
 There are 17 sectors containing parcels of land that will be sold at different timeframes. Each of these sectors will have a unique FxxxLandRush.sol smart contract, and an associated [BTTSToken](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract) smart contract to record the purchases of these parcels.
 
@@ -444,7 +444,10 @@ Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to [valid
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
 
-
+[GZE:0x4ac0]: https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
+[MakerDAOPriceFeedAdaptor:0x12bc]: https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code
+[GZEETHPriceFeed:0x4604]: https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code
+[BonusList:0x57D2]: https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code
 [FxxxHub]: https://etherscan.io/token/0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da#code
 [FxxxRk]: https://etherscan.io/token/0xd73b9d06bffA9d8B6D2E5f03de578103531215fF#code
 [FxxxDude]: https://etherscan.io/token/0xc70ABb3546D0976d91D91AaD2773fAE69e106599#code
