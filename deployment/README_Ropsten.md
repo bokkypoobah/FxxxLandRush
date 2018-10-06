@@ -1,6 +1,12 @@
-# Mainnet Deployment
+# Ropsten Deployment
 
-## MakerDAOPriceFeedAdaptor
+GZE deployed to https://ropsten.etherscan.io/token/0xa579f55467d230afc54520e6e7f0ceb5ecc3f1a0
+
+<br />
+
+# MakerDAOPriceFeedAdaptor
+
+Not deployed on Ropsten, deploying ETH/USD PriceFeed instead
 
 Deployed [MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol](MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol) on Oct 03 2018 in tx [0xa589d028](https://etherscan.io/tx/0xa589d028962a7db12323a2decd01e1c98126fc68b63e565d9c3b13bd446c4782) to [0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code).
 
@@ -8,7 +14,7 @@ View the MakerDAO ETH/USD rate in *uint* format at [0x12bc52a5a9cf8c1ffbaa2eaa82
 
 Deployment script:
 ```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
 var gasPrice = web3.toWei(6, "gwei");
 var _makerDAOPriceFeed = "0x729D19f657BD0614b4985Cf1D82531c67569197B";
 var makerdaopricefeedadaptorContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"makerDAOPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_makerDAOPriceFeed","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
@@ -33,12 +39,14 @@ var makerdaopricefeedadaptor = makerdaopricefeedadaptorContract.new(
 
 ## BonusList
 
-Deployed [BonusList_deployed_to_0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46.sol](BonusList_deployed_to_0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46.sol) on Oct 03 2018 in tx [0x8bfaf428](https://etherscan.io/tx/0x8bfaf428dacfc7b15b18deb34aa59a4fc0875379baa23320fdbee0e006a54434) to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code).
+Deployed in Mainnet  [BonusList_deployed_to_0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46.sol](BonusList_deployed_to_0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46.sol) on Oct 03 2018 in tx [0x8bfaf428](https://etherscan.io/tx/0x8bfaf428dacfc7b15b18deb34aa59a4fc0875379baa23320fdbee0e006a54434) to [0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46](https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code).
+
+Deployed in Ropsten in [0xd1d79f3a](0xd1d79f3a68c3e123eea99f231b86a60ff2b0e44b4304d4682c9d655f0cb58c9e) to [0xe0a1B299cF4b4786E56FCD27Bc20F656384073a0](https://etherscan.io/address/0xe0a1B299cF4b4786E56FCD27Bc20F656384073a0#code)
 
 
 Deployment script:
 ```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
 var gasPrice = web3.toWei(5, "gwei");
 var bonuslistContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"bonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"isInBonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"add","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"},{"indexed":false,"name":"status","type":"bool"}],"name":"AccountListed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]);
 var bonuslist = bonuslistContract.new(
@@ -72,15 +80,25 @@ tx;
 
 ## GZE/ETH PriceFeed
 
-Deployed [PriceFeed_deployed_to_0x4604646C55410EAa6Cf43b04d26071E36bC227Ef.sol](PriceFeed_deployed_to_0x4604646C55410EAa6Cf43b04d26071E36bC227Ef.sol) on Oct 04 2018 in tx [0xe600d705](https://etherscan.io/tx/0xe600d705b254735d973d22293116b3c99d0a0eff5079e066f76cb73bd35d91ea) to [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code).
+Deployed in Mainnet  [PriceFeed_deployed_to_0x4604646C55410EAa6Cf43b04d26071E36bC227Ef.sol](PriceFeed_deployed_to_0x4604646C55410EAa6Cf43b04d26071E36bC227Ef.sol) on Oct 04 2018 in tx [0xe600d705](https://etherscan.io/tx/0xe600d705b254735d973d22293116b3c99d0a0eff5079e066f76cb73bd35d91ea) to [0x4604646C55410EAa6Cf43b04d26071E36bC227Ef](https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code).
+
+Deployed GZE/ETH in Ropsten tx [0x7c2342aa](https://etherscan.io/tx/0x7c2342aa30b298576dcfb15831e77a1f32cd18a87ce2f89a50cfda24af349d93) to [0xcF5eE3a577665C7B9f6Ef867ab093C9D9727fbE8](https://etherscan.io/address/0xcF5eE3a577665C7B9f6Ef867ab093C9D9727fbE8):
+
+var name = "GZE/ETH PriceFeed";
+var rate = new BigNumber("0.00004204").shift(18);
+
+Deployed ETH/USD in Ropsten tx [0x32667f7c](https://etherscan.io/tx/0x32667f7c3c56f123605ae57e58223a19db3cca3f2e0455dbd63f9a6a4d296a3b) to [0xD26d8BE2eE6C6c6b4DC5802755BdDC74A0b71a5a](https://etherscan.io/address/0xD26d8BE2eE6C6c6b4DC5802755BdDC74A0b71a5a):
+
+* var name = "ETH/USD PriceFeed";
+* var rate = new BigNumber("223.20").shift(18);
 
 
 Deployment script:
 ```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
 var gasPrice = web3.toWei(6, "gwei");
-var _name = "GZE/ETH PriceFeed" ;
-var _rate = new BigNumber("0.00004204").shift(18);
+var _name = "ETH/USD PriceFeed" ;
+var _rate = new BigNumber("223.20").shift(18);
 var _live = true;
 var pricefeedContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"rate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"name":"setRate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_name","type":"string"},{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldRate","type":"uint256"},{"indexed":false,"name":"oldLive","type":"bool"},{"indexed":false,"name":"newRate","type":"uint256"},{"indexed":false,"name":"newLive","type":"bool"}],"name":"SetRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]);
 var pricefeed = pricefeedContract.new(
@@ -120,18 +138,18 @@ tx;
 
 Deployed Token Contracts:
 
-* FxxxHub - Fantasy Hub - 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da
+* FxxxHub - Fantasy Hub - 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da - Ropsten 0xd5F08AD7105Cf766853aeF84B846258c9fd7Bb84
 * FxxxRk - Fantasy Riot Kitty - 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF
 * FxxxDude - Fantasy Dude Sweet - 0xc70ABb3546D0976d91D91AaD2773fAE69e106599
 * FxxxBooty - Fantasy Booty Sector - 0xBC844A541855Cb797163e7f4344616a97a89ccB2
 
 ```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
-var bttsTokenFactoryAddress = "0x14AabC5adE82240330e5BE05D8ef350661AEbB8a";
+var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
+var bttsTokenFactoryAddress = "0xB62Af19795eF9208d368A98bBb0E5B5EB93ed2f3";
 var gasPrice = web3.toWei("3.1", "gwei");
 var gas = "2200000";
-var symbol = "FxxxBooty";
-var name = "Fantasy Booty Sector";
+var symbol = "FxxxHub";
+var name = "Fantasy Hub";
 var decimals = 18;
 var initialSupply = 0;
 var mintable = true;
@@ -145,28 +163,35 @@ tx;
 
 Deployed Token Contracts:
 
-* FxxxHub - Fantasy Hub - 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da
+* FxxxHub - Fantasy Hub - 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da - Ropsten 0xd5F08AD7105Cf766853aeF84B846258c9fd7Bb84
 * FxxxRk - Fantasy Riot Kitty - 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF
 * FxxxDude - Fantasy Dude Sweet - 0xc70ABb3546D0976d91D91AaD2773fAE69e106599
 * FxxxBooty - Fantasy Booty Sector - 0xBC844A541855Cb797163e7f4344616a97a89ccB2
 
+GZERopsten = 0xA579f55467d230AfC54520e6e7F0CEB5ECC3f1A0
+
+Deployed FxxxLandRush:
+
+* FxxxHub - Fantasy Hub - Ropsten 0x489A7E37dB464B5cD971F16A68aCB23559155ac8 - https://ropsten.etherscan.io/address/0x489a7e37db464b5cd971f16a68acb23559155ac8#readContract
+
 REMEMBER to setMinter
 
+Sample purchase on Ropsten https://ropsten.etherscan.io/tx/0x95650a86fe8dc0f8331bf575680403e8c4688cfe4dc80b06cda4d095760995e7
 
 ```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
 var bttsTokenAddress = "0x14AabC5adE82240330e5BE05D8ef350661AEbB8a";
 var gasPrice = web3.toWei("3.1", "gwei");
 
-var _parcelToken = "0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da";
-var _gzeToken = "0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b";
-var _ethUsdPriceFeed = "0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292";
-var _gzeEthPriceFeed = "0x4604646C55410EAa6Cf43b04d26071E36bC227Ef";
-var _bonusList = "0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46";
-var _wallet = "0x8cD8baa410E9172b949f2c4433D3b5905F8606fF"; // GZE multisig
-var _startDate = "1539730800"; // "Tue, 16 Oct 2018 23:00:00 UTC"
+var _parcelToken = "0xd5F08AD7105Cf766853aeF84B846258c9fd7Bb84";
+var _gzeToken = "0xA579f55467d230AfC54520e6e7F0CEB5ECC3f1A0";
+var _ethUsdPriceFeed = "0xD26d8BE2eE6C6c6b4DC5802755BdDC74A0b71a5a";
+var _gzeEthPriceFeed = "0xcF5eE3a577665C7B9f6Ef867ab093C9D9727fbE8";
+var _bonusList = "0xe0a1B299cF4b4786E56FCD27Bc20F656384073a0";
+var _wallet = "0x74ed6eb23c21403d7a00bf388a2ec691b98ba8ed"; // GZE multisig
+var _startDate = parseInt(new Date() / 1000) + 600; // "1539730800"; // "Tue, 16 Oct 2018 23:00:00 UTC"
 var _endDate = "1542409200"; // "Fri, 16 Nov 2018 23:00:00 UTC"
-var _maxParcels = /* var of type uint256 here */ ;
+var _maxParcels = "689";
 var _parcelUsd = new BigNumber(1500).shift(18);
 var _usdLockAccountThreshold = new BigNumber(7000).shift(18);
 var _gzeBonusOffList = "20";
