@@ -1,13 +1,27 @@
+0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b => GZE
+0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 => BonusList
+0xF31AA1dFbEd873Ab957896a0204a016F5E123e02 => MakerDAOEthUsdPriceFeedAdaptor
+0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91 => GzeEthPriceFeed
+0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da => Token 'FxxxHub' 'Fantasy Hub'
+0xd73b9d06bffA9d8B6D2E5f03de578103531215fF => Token 'FxxxRk' 'Fantasy Riot Kitty'
+0xc70ABb3546D0976d91D91AaD2773fAE69e106599 => Token 'FxxxDude' 'Fantasy Dude Sweet'
+0xBC844A541855Cb797163e7f4344616a97a89ccB2 => Token 'FxxxBooty' 'Fantasy Booty Sector'
+0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82 => FxxxLandRush 'Fantasy Hub'
+0x460E0e607eBD39C8927210A7f32ef7bD170F7d40 => FxxxLandRush 'Fantasy Riot Kitty'
+0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F => FxxxLandRush 'Fantasy Dude Sweet'
+0xf9A6d564217c44ab64E28C7F34CB8fE246f57539 => FxxxLandRush 'Fantasy Booty Sector'
 {
-  "blockNumber": 6452171,
-  "blockTimestamp": 1538661226,
-  "blockTimestampString": "Thu, 04 Oct 2018 23:53:46 AEST",
-  "blockTimestampUTCString": "Thu, 04 Oct 2018 13:53:46 UTC",
-  "makerDAOEthUsdPriceFeedAdaptorAddress": "0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292",
+  "blockNumber": 6470420,
+  "blockTimestamp": 1538916693,
+  "blockTimestampString": "Sun, 07 Oct 2018 23:51:33 AEDT",
+  "blockTimestampUTCString": "Sun, 07 Oct 2018 12:51:33 UTC",
+  "makerDAOEthUsdPriceFeedAdaptorAddress": "0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
+  "makerDAOEthUsdPriceFeedAdaptorName": "MakerDAOEthUsdPriceFeedAdaptor:0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
   "bonusListAddress": "0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46",
-  "ethUsdRate": "222.3725",
+  "bonusListName": "BonusList:0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46",
+  "ethUsdRate": "222.575",
   "ethUsdLive": "true",
-  "gzeEthRate": "0.00004194",
+  "gzeEthRate": "0.00003866",
   "gzeEthLive": "true",
   "numberOfBonusListAccountListedEvents": 78,
   "bonusListAccountListedEvents": [
@@ -92,7 +106,21 @@
   ],
   "numberOfGzeEthPriceFeedSetRateEvents": 2,
   "gzeEthPriceFeedSetRateEvents": [
-    { "newRate": "0.00004194", "newLive": "true", "oldRate": "0.00004204", "oldLive": "true", "timestamp":1538660770, "timestampUTCString": "Thu, 04 Oct 2018 13:46:10 UTC" },
-    { "newRate": "0.00004204", "newLive": "true", "oldRate": "0", "oldLive": "false", "timestamp":1538655984, "timestampUTCString": "Thu, 04 Oct 2018 12:26:24 UTC" }
+    { "newRate": "0.00003866", "newLive": "true", "oldRate": "0.00003867", "oldLive": "true", "timestamp":1538889791, "timestampUTCString": "Sun, 07 Oct 2018 05:23:11 UTC" },
+    { "newRate": "0.00003867", "newLive": "true", "oldRate": "0", "oldLive": "false", "timestamp":1538889088, "timestampUTCString": "Sun, 07 Oct 2018 05:11:28 UTC" }
+  ],
+  "numberOfTokens": 4,
+  "tokens": [
+    { "symbol": "FxxxHub", "name": "Fantasy Hub", "minterAddress": "0x3b0c1b99faafd625aacd70521d8da167807b3b82", "minterName": "FxxxLandRush 'Fantasy Hub':0x3b0c1b99faafd625aacd70521d8da167807b3b82", "totalSupply":0 },
+    { "symbol": "FxxxRk", "name": "Fantasy Riot Kitty", "minterAddress": "0x460e0e607ebd39c8927210a7f32ef7bd170f7d40", "minterName": "FxxxLandRush 'Fantasy Riot Kitty':0x460e0e607ebd39c8927210a7f32ef7bd170f7d40", "totalSupply":0 },
+    { "symbol": "FxxxDude", "name": "Fantasy Dude Sweet", "minterAddress": "0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f", "minterName": "FxxxLandRush 'Fantasy Dude Sweet':0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f", "totalSupply":0 },
+    { "symbol": "FxxxBooty", "name": "Fantasy Booty Sector", "minterAddress": "0xf9a6d564217c44ab64e28c7f34cb8fe246f57539", "minterName": "FxxxLandRush 'Fantasy Booty Sector':0xf9a6d564217c44ab64e28c7f34cb8fe246f57539", "totalSupply":0 }
+  ],
+  "numberOfFxxxLandRushes": 4,
+  "tokens": [
+    { "name": "Fantasy Hub" },
+    { "name": "Fantasy Riot Kitty" },
+    { "name": "Fantasy Dude Sweet" },
+    { "name": "Fantasy Booty Sector" }
   ]
 }

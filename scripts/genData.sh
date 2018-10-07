@@ -9,7 +9,25 @@ if [ $number -gt 2 ]; then
 fi
 
 geth attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > tmp.json
+loadScript("lookups.js");
 loadScript("deployment.js");
+
+addAddressNames(gzeAddress, "GZE");
+addAddressNames(bonusListAddress, "BonusList");
+addAddressNames(makerDAOEthUsdPriceFeedAdaptorAddress, "MakerDAOEthUsdPriceFeedAdaptor");
+addAddressNames(gzeEthPriceFeedAddress, "GzeEthPriceFeed");
+
+fxxxTokenAddresses.forEach(function(e) {
+  var c = eth.contract(fxxxTokenAbi).at(e);
+  addAddressNames(e, "Token '" + c.symbol() + "' '" + c.name() + "'");
+});
+
+fxxxLandRushAddresses.forEach(function(e) {
+  var c = eth.contract(fxxxLandRushAbi).at(e);
+  addAddressNames(e, "FxxxLandRush '" + c.name() + "'");
+});
+
+
 
 function generateSummaryJSON() {
   console.log("JSONSUMMARY: {");
@@ -19,9 +37,11 @@ function generateSummaryJSON() {
   console.log("JSONSUMMARY:   \"blockTimestamp\": " + timestamp + ",");
   console.log("JSONSUMMARY:   \"blockTimestampString\": \"" + new Date(timestamp * 1000).toString() + "\",");
   console.log("JSONSUMMARY:   \"blockTimestampUTCString\": \"" + new Date(timestamp * 1000).toUTCString() + "\",");
-  console.log("JSONSUMMARY:   \"makerDAOEthUsdPriceFeedAdaptorAddress\": \"" + makerDAOPriceFeedAdaptorAddress + "\",");
+  console.log("JSONSUMMARY:   \"makerDAOEthUsdPriceFeedAdaptorAddress\": \"" + makerDAOEthUsdPriceFeedAdaptorAddress + "\",");
+  console.log("JSONSUMMARY:   \"makerDAOEthUsdPriceFeedAdaptorName\": \"" + getAddressName(makerDAOEthUsdPriceFeedAdaptorAddress) + "\",");
   console.log("JSONSUMMARY:   \"bonusListAddress\": \"" + bonusListAddress + "\",");
-  var ethUsd = makerDAOPriceFeedAdaptor.getRate();
+  console.log("JSONSUMMARY:   \"bonusListName\": \"" + getAddressName(bonusListAddress) + "\",");
+  var ethUsd = makerDAOEthUsdPriceFeedAdaptor.getRate();
   console.log("JSONSUMMARY:   \"ethUsdRate\": \"" + ethUsd[0].shift(-18) + "\",");
   console.log("JSONSUMMARY:   \"ethUsdLive\": \"" + ethUsd[1] + "\",");
   var gzeEth = gzeEthPriceFeed.getRate();
@@ -62,6 +82,36 @@ function generateSummaryJSON() {
     console.log("JSONSUMMARY:     { \"newRate\": \"" + e.args.newRate.shift(-18) + "\", \"newLive\": \"" + e.args.newLive + "\", " +
       "\"oldRate\": \"" + e.args.oldRate.shift(-18) + "\", \"oldLive\": \"" + e.args.oldLive + "\", " +
       "\"timestamp\":" + ts + ", \"timestampUTCString\": \"" + new Date(ts * 1000).toUTCString() + "\" }" + separator);
+  }
+  console.log("JSONSUMMARY:   ],");
+  console.log("JSONSUMMARY:   \"numberOfTokens\": " + fxxxTokenAddresses.length + ",");
+  console.log("JSONSUMMARY:   \"tokens\": [");
+  for (var i = 0; i < fxxxTokenAddresses.length; i++) {
+    var e = fxxxTokenAddresses[i];
+    var c = eth.contract(fxxxTokenAbi).at(e);
+    var separator;
+    if (i == fxxxTokenAddresses.length - 1) {
+      separator = "";
+    } else {
+      separator = ",";
+    }
+    console.log("JSONSUMMARY:     { \"symbol\": \"" + c.symbol() + "\", \"name\": \"" + c.name() + "\", " +
+      "\"minterAddress\": \"" + c.minter() + "\", \"minterName\": \"" + getAddressName(c.minter()) + "\", " +
+      "\"totalSupply\":" + c.totalSupply().shift(-18) + " }" + separator);
+  }
+  console.log("JSONSUMMARY:   ],");
+  console.log("JSONSUMMARY:   \"numberOfFxxxLandRushes\": " + fxxxLandRushAddresses.length + ",");
+  console.log("JSONSUMMARY:   \"tokens\": [");
+  for (var i = 0; i < fxxxLandRushAddresses.length; i++) {
+    var e = fxxxLandRushAddresses[i];
+    var c = eth.contract(fxxxLandRushAbi).at(e);
+    var separator;
+    if (i == fxxxLandRushAddresses.length - 1) {
+      separator = "";
+    } else {
+      separator = ",";
+    }
+    console.log("JSONSUMMARY:     { \"name\": \"" + c.name() + "\" }" + separator);
   }
   console.log("JSONSUMMARY:   ]");
   console.log("JSONSUMMARY: }");
