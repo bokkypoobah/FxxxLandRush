@@ -489,6 +489,17 @@ if (!landRush.finalised()) {
 }
 
 
+console.log("RESULT: ---------- GasUsed ----------");
+printTxData("makerDaoPriceFeedAdaptorTx", makerDaoPriceFeedAdaptorTx);
+printTxData("gzeEthPriceFeedTx", gzeEthPriceFeedTx);
+printTxData("bonusListTx", bonusListTx);
+printTxData("landRushTx", landRushTx);
+printTxData("contribute1_1Tx", contribute1_1Tx);
+printTxData("contribute1_2Tx", contribute1_2Tx);
+printTxData("contribute2_1Tx", contribute2_1Tx);
+printTxData("contribute2_2Tx", contribute2_2Tx);
+printTxData("offlinePurchase_1Tx", offlinePurchase_1Tx);
+
 EOF
 grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
