@@ -5,8 +5,8 @@ The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to
 Purchase price:
 
 * The price of each parcel of land is USD 1,500 (and some parcels with variations of this amount)
-* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [MakerDAOETHUSDPriceFeed:0x729D]. The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [MakerDAOETHUSDPriceFeedAdaptor:0x12bc] will reflect the MakerDAO ETH/USD rate
-* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [GZEETHPriceFeed:0x4604]
+* The ETH purchase amount is calculated using the [MakerDAO ETH/USD pricefeed](https://makerdao.com/feeds/) rate at [MakerDAOETHUSDPriceFeed:0x729D]. The [MakerDAOPriceFeedAdaptor.sol](contracts/MakerDAOPriceFeedAdaptor.sol) deployed to [MakerDAOETHUSDPriceFeedAdaptor:0xF31A] will reflect the MakerDAO ETH/USD rate
+* The GZE purchase amount is calculated using the less frequently updated GZE/ETH [pricefeed](contracts/PriceFeed.sol) rate that is multiplied by the MakerDAO ETH/USD pricefeed rate. The GZE/ETH pricefeed has been deployed to [GZEETHPriceFeed:0xD649]
 * Purchases using GZE will have a 30% discount if the purchasing account has been added to the [BonusList.sol](contracts/BonusList.sol) deployed to [BonusList:0x57D2]. Accounts not in the BonusList will get a 20% discount when purchasing with GZE
 
 There are 17 sectors containing parcels of land that will be sold at different timeframes. Each of these sectors will have a unique FxxxLandRush.sol smart contract, and an associated [BTTSToken](https://github.com/bokkypoobah/BokkyPooBahsTokenTeleportationServiceSmartContract) smart contract to record the purchases of these parcels.
@@ -70,8 +70,8 @@ Dec 08 2018 15:00 | Dec 08 2018 23:00 | Dec 09 2018 10:00 | 1544310000 | "Sat, 0
 
 Contract                                | Address
 :-------------------------------------- |:-------
-[MakerDAOETHUSDPriceFeedAdaptor:0x12bc] | 0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292
-[GZEETHPriceFeed:0x4604]                | 0x4604646C55410EAa6Cf43b04d26071E36bC227Ef
+[MakerDAOETHUSDPriceFeedAdaptor:0xF31A] | 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
+[GZEETHPriceFeed:0xD649]                | 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
 [BonusList:0x57D2]                      | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
 
 <br />
@@ -119,8 +119,8 @@ No      | Type                      | Notes
 :------ |:------------------------- |:----
 address | \_parcelToken             | FxxxLandRush sector token
 address | \_gzeToken                | [GZE:0x4ac0] address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
-address | \_ethUsdPriceFeed         | [MakerDAOETHUSDPriceFeedAdaptor:0x12bc] address 0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292
-address | \_gzeEthPriceFeed         | GazeCoin maintained [GZEETHPriceFeed:0x4604] address 0x4604646C55410EAa6Cf43b04d26071E36bC227Ef
+address | \_ethUsdPriceFeed         | [MakerDAOETHUSDPriceFeedAdaptor:0xF31A] address 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
+address | \_gzeEthPriceFeed         | GazeCoin maintained [GZEETHPriceFeed:0xD649] address 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
 address | \_bonusList               | [BonusList:0x57D2] address 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
 address | \_wallet                  | Wallet for GZE and ETH
 uint    | \_startDate               | Start date, in seconds since Jan 01 1970
@@ -446,8 +446,9 @@ Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to [valid
 
 [GZE:0x4ac0]: https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
 [MakerDAOETHUSDPriceFeed:0x729D]: https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract
-[MakerDAOETHUSDPriceFeedAdaptor:0x12bc]: https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code
-[GZEETHPriceFeed:0x4604]: https://etherscan.io/address/0x4604646C55410EAa6Cf43b04d26071E36bC227Ef#code
+[MakerDAOETHUSDPriceFeedAdaptor:0xF31A]: https://etherscan.io/address/0xF31AA1dFbEd873Ab957896a0204a016F5E123e02#code
+[GZEETHPriceFeed:0xD649]: https://etherscan.io/address/0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91#code
+
 [BonusList:0x57D2]: https://etherscan.io/address/0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46#code
 [FxxxHub]: https://etherscan.io/token/0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da#code
 [FxxxRk]: https://etherscan.io/token/0xd73b9d06bffA9d8B6D2E5f03de578103531215fF#code

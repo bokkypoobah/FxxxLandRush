@@ -122,11 +122,11 @@ Rate update script:
 ```javascript
 var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
 var pricefeedAddress = "0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91";
-var gasPrice = web3.toWei(6, "gwei");
-var _rate = new BigNumber("0.00003866").shift(18);
-var _live = true;
+var gasPrice = new BigNumber("1.21").shift(9);
+var rate = new BigNumber("0.00003866").shift(18);
+var live = true;
 var pricefeedContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"rate","type":"uint256"},{"name":"live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"rate","type":"uint256"},{"name":"live","type":"bool"}],"name":"setRate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"name","type":"string"},{"name":"rate","type":"uint256"},{"name":"live","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldRate","type":"uint256"},{"indexed":false,"name":"oldLive","type":"bool"},{"indexed":false,"name":"newRate","type":"uint256"},{"indexed":false,"name":"newLive","type":"bool"}],"name":"SetRate","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]).at(pricefeedAddress);
-var tx = pricefeedContract.setRate(_rate, _live, { from: deploymentAccount, gasPrice: gasPrice });
+var tx = pricefeedContract.setRate(rate, live, { from: deploymentAccount, gasPrice: gasPrice });
 tx;
 ```
 
@@ -225,4 +225,4 @@ fxxxlandrush;
 [FxxxLandRush]: #fxxxlandrush-contracts
 
 [MakerDAOPriceFeedAdaptor:0xF31A]: https://etherscan.io/address/0xF31AA1dFbEd873Ab957896a0204a016F5E123e02#code
-[PriceFeed:0xD649](https://etherscan.io/address/0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91#code)
+[PriceFeed:0xD649]: https://etherscan.io/address/0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91#code
