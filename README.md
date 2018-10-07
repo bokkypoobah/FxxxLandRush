@@ -413,7 +413,7 @@ Outside scope as the following have been [audited](https://github.com/bokkypooba
 
 Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to [validate these contracts](https://github.com/apguerrera/FxxxLandRush/tree/master/code-review-ag).
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 08 2018. The MIT Licence.
 
 [GZE:0x4AC0]: https://etherscan.io/token/0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b
 [MakerDAOETHUSDPriceFeed:0x729D]: https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract
