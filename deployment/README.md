@@ -2,7 +2,7 @@
 
 Component                | Address | Check
 :----------------------- |:------- |:------
-BonusList                | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 | &#10003; Addresses loaded
+[BonusList]              | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 | &#10003; Addresses loaded
 MakerDAOPriceFeedAdaptor | TBA                                        |
 GZE/ETH PriceFeed        | TBA                                        |
 FxxxHub Token            | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | [ ] setMinter(FxxxLandRush)
@@ -215,3 +215,5 @@ var fxxxlandrush = fxxxlandrushContract.new(
 
 fxxxlandrush;
 ```
+
+[BonusList]: #bonuslist
