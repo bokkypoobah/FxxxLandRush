@@ -17,7 +17,6 @@ function addAddressNames(address, name) {
   var a = address.toLowerCase();
   addressNames[a] = name;
   nameAddresses[name] = a;
-  console.log("JSONSUMMARY: " + address + " => " + name);
 }
 
 function getAddressName(address) {

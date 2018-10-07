@@ -28,8 +28,6 @@ fxxxLandRushAddresses.forEach(function(e) {
   addAddressNames(e, "FxxxLandRush '" + c.name() + "'");
 });
 
-
-
 function generateSummaryJSON() {
   console.log("JSONSUMMARY: {");
   var blockNumber = eth.blockNumber;

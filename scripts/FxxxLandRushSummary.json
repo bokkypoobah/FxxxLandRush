@@ -1,21 +1,8 @@
-0x8cD8baa410E9172b949f2c4433D3b5905F8606fF => GZEMultisig
-0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b => GZE
-0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 => BonusList
-0xF31AA1dFbEd873Ab957896a0204a016F5E123e02 => MakerDAOEthUsdPriceFeedAdaptor
-0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91 => GzeEthPriceFeed
-0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da => Token 'FxxxHub' 'Fantasy Hub'
-0xd73b9d06bffA9d8B6D2E5f03de578103531215fF => Token 'FxxxRk' 'Fantasy Riot Kitty'
-0xc70ABb3546D0976d91D91AaD2773fAE69e106599 => Token 'FxxxDude' 'Fantasy Dude Sweet'
-0xBC844A541855Cb797163e7f4344616a97a89ccB2 => Token 'FxxxBooty' 'Fantasy Booty Sector'
-0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82 => FxxxLandRush 'Fantasy Hub'
-0x460E0e607eBD39C8927210A7f32ef7bD170F7d40 => FxxxLandRush 'Fantasy Riot Kitty'
-0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F => FxxxLandRush 'Fantasy Dude Sweet'
-0xf9A6d564217c44ab64E28C7F34CB8fE246f57539 => FxxxLandRush 'Fantasy Booty Sector'
 {
-  "blockNumber": 6470483,
-  "blockTimestamp": 1538917594,
-  "blockTimestampString": "Mon, 08 Oct 2018 00:06:34 AEDT",
-  "blockTimestampUTCString": "Sun, 07 Oct 2018 13:06:34 UTC",
+  "blockNumber": 6470488,
+  "blockTimestamp": 1538917706,
+  "blockTimestampString": "Mon, 08 Oct 2018 00:08:26 AEDT",
+  "blockTimestampUTCString": "Sun, 07 Oct 2018 13:08:26 UTC",
   "makerDAOEthUsdPriceFeedAdaptorAddress": "0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
   "makerDAOEthUsdPriceFeedAdaptorName": "MakerDAOEthUsdPriceFeedAdaptor:0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
   "gzeEthPriceFeedAddress": "0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91",
