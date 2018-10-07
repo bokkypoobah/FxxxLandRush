@@ -62,6 +62,17 @@ Nov 16 2018 15:00 | Nov 16 2018 23:00 | Nov 17 2018 10:00 | 1542409200 | "Fri, 1
 Nov 19 2018 15:00 | Nov 19 2018 23:00 | Nov 20 2018 10:00 | 1542668400 | "Mon, 19 Nov 2018 23:00:00 UTC"
 Dec 08 2018 15:00 | Dec 08 2018 23:00 | Dec 09 2018 10:00 | 1544310000 | "Sat, 08 Dec 2018 23:00:00 UTC"
 
+Available Parcels:
+
+The presale parcels are available for purchase through these FxxxLandRush contracts.
+
+Zone      | Presale \# | Total \#
+:-------- |:---------- |:--------
+FxxxHub   | 141        | 689
+FxxxRk    | 38         | 200
+FxxxDude  | 12         | 125
+FxxxBooty | 16         | 79
+
 <br />
 
 ### Other Contracts
