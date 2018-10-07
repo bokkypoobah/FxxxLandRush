@@ -218,7 +218,7 @@ The GZE/ETH PriceFeed has been deployed to [GZEETHPriceFeed:0x4604]. See [Deploy
 
 Contract address:
 ```
-0x4604646C55410EAa6Cf43b04d26071E36bC227Ef
+0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
 ```
 
 Contract ABI:
