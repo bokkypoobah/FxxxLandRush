@@ -217,3 +217,5 @@ fxxxlandrush;
 ```
 
 [BonusList]: #bonuslist
+[MakerDAOPriceFeedAdaptor]: #makerdaopricefeedadaptor
+[GZE/ETH PriceFeed]: #gzeeth-pricefeed
