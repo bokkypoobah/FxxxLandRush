@@ -1,6 +1,6 @@
 # FXXX LandRush
 
-The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to purchase of [FXXX](https://www.fxxx.io/) parcels of land using [GZE:0x4ac0] (GazeCoin Metaverse Token) or ethers (ETH).
+The [FxxxLandRush.sol](contracts/FxxxLandRush.sol) smart contract allow users to purchase of [FXXX](https://www.fxxx.io/) parcels of land using [GZE:0x4AC0] (GazeCoin Metaverse Token) or ethers (ETH).
 
 Purchase price:
 
@@ -118,7 +118,7 @@ Following are the constructor parameters
 No      | Type                      | Notes
 :------ |:------------------------- |:----
 address | \_parcelToken             | FxxxLandRush sector token
-address | \_gzeToken                | [GZE:0x4ac0] address 0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
+address | \_gzeToken                | [GZE:0x4AC0] address 0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b
 address | \_ethUsdPriceFeed         | [MakerDAOETHUSDPriceFeedAdaptor:0xF31A] address 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
 address | \_gzeEthPriceFeed         | GazeCoin maintained [GZEETHPriceFeed:0xD649] address 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
 address | \_bonusList               | [BonusList:0x57D2] address 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
@@ -444,7 +444,7 @@ Thanks to [Adrian Guerrera](https://github.com/apguerrera) for helping to [valid
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd for GazeCoin - Oct 05 2018. The MIT Licence.
 
-[GZE:0x4ac0]: https://etherscan.io/token/0x4ac00f287f36a6aad655281fe1ca6798c9cb727b
+[GZE:0x4AC0]: https://etherscan.io/token/0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b
 [MakerDAOETHUSDPriceFeed:0x729D]: https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#readContract
 [MakerDAOETHUSDPriceFeedAdaptor:0xF31A]: https://etherscan.io/address/0xF31AA1dFbEd873Ab957896a0204a016F5E123e02#code
 [GZEETHPriceFeed:0xD649]: https://etherscan.io/address/0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91#code
