@@ -2,16 +2,16 @@
 
 Component                | Address | Check
 :----------------------- |:------- |:------
-BonusList                | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 | * [x] Addresses loaded
+BonusList                | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 | &#10003; Addresses loaded
 MakerDAOPriceFeedAdaptor | TBA                                        |
 GZE/ETH PriceFeed        | TBA                                        |
-FxxxHub Token            | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | * [ ] setMinter(FxxxLandRush)
+FxxxHub Token            | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | [ ] setMinter(FxxxLandRush)
 FxxxHub FxxxLandRush     | TBA                                        |
-FxxxRk Token             | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | * [ ] setMinter(FxxxLandRush)
+FxxxRk Token             | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | [ ] setMinter(FxxxLandRush)
 FxxxRk FxxxLandRush      | TBA                                        |
-FxxxDude Token           | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | * [ ] setMinter(FxxxLandRush)
+FxxxDude Token           | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | [ ] setMinter(FxxxLandRush)
 FxxxDude FxxxLandRush    | TBA                                        |
-FxxxBooty Token          | 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | * [ ] setMinter(FxxxLandRush)
+FxxxBooty Token          | 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | [ ] setMinter(FxxxLandRush)
 FxxxBooty FxxxLandRush   | TBA                                        |
 
 <br />
