@@ -16,6 +16,8 @@ pragma solidity ^0.4.25;
 // BK Ok
 contract PriceFeedInterface {
     // BK Ok - View function interface
+    function name() public view returns (string);
+    // BK Ok - View function interface
     function getRate() public view returns (uint _rate, bool _live);
 }
 
