@@ -2,7 +2,7 @@
 
 ## Mainnet FXXX Land Rush
 
-Note that this following data is available in JSON format from [../scripts/FxxxLandRushSummary.json](../scripts/FxxxLandRushSummary.json). This live updated data will be available from a specified server at a later date.
+Note that this following data is available in JSON format from [scripts/FxxxLandRushSummary.json](scripts/FxxxLandRushSummary.json). This live updated data will be available from a specified server at a later date.
 
 Component                  | Address                                   
 :------------------------- |:------------------------------------------
@@ -45,7 +45,7 @@ The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rushes end at:
 
 ## Ropsten Testnet FXXX Land Rush
 
-Note that this following data is available in JSON format from [../scripts/FxxxLandRushSummary_Ropsten.json](../scripts/FxxxLandRushSummary_Ropsten.json). This live updated data will be available from a specified server at a later date.
+Note that this following data is available in JSON format from [scripts/FxxxLandRushSummary_Ropsten.json](scripts/FxxxLandRushSummary_Ropsten.json). This live updated data will be available from a specified server at a later date.
 
 Component                  | Address                                   
 :------------------------- |:------------------------------------------
