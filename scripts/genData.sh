@@ -12,21 +12,6 @@ geth --testnet attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > t
 loadScript("lookups.js");
 loadScript("deployment_Ropsten.js");
 
-addAddressNames("0x8cD8baa410E9172b949f2c4433D3b5905F8606fF", "GZEMultisig");
-addAddressNames(gzeAddress, "GZE");
-addAddressNames(bonusListAddress, "BonusList");
-addAddressNames(makerDAOEthUsdPriceFeedAdaptorAddress, "MakerDAOEthUsdPriceFeedAdaptor");
-addAddressNames(gzeEthPriceFeedAddress, "GzeEthPriceFeed");
-
-fxxxTokenAddresses.forEach(function(e) {
-  var c = eth.contract(fxxxTokenAbi).at(e);
-  addAddressNames(e, "Token '" + c.symbol() + "' '" + c.name() + "'");
-});
-
-fxxxLandRushAddresses.forEach(function(e) {
-  var c = eth.contract(fxxxLandRushAbi).at(e);
-  addAddressNames(e, "FxxxLandRush '" + c.name() + "'");
-});
 
 function generateSummaryJSON() {
   console.log("JSONSUMMARY: {");
@@ -85,11 +70,12 @@ function generateSummaryJSON() {
       "\"timestamp\":" + ts + ", \"timestampUTCString\": \"" + new Date(ts * 1000).toUTCString() + "\" }" + separator);
   }
   console.log("JSONSUMMARY:   ],");
+
   console.log("JSONSUMMARY:   \"numberOfTokens\": " + fxxxTokenAddresses.length + ",");
   console.log("JSONSUMMARY:   \"tokens\": [");
   for (var i = 0; i < fxxxTokenAddresses.length; i++) {
     var e = fxxxTokenAddresses[i];
-    var c = eth.contract(fxxxTokenAbi).at(e);
+    var fxxxToken = eth.contract(fxxxTokenAbi).at(e);
     var separator;
     if (i == fxxxTokenAddresses.length - 1) {
       separator = "";
@@ -99,19 +85,42 @@ function generateSummaryJSON() {
     console.log("JSONSUMMARY:     {");
     console.log("JSONSUMMARY:       \"address\": \"" + e + "\",");
     console.log("JSONSUMMARY:       \"nameAddress\": \"" + getAddressName(e) + "\",");
-    console.log("JSONSUMMARY:       \"symbol\": \"" + c.symbol() + "\",");
-    console.log("JSONSUMMARY:       \"name\": \"" + c.name() + "\",");
-    console.log("JSONSUMMARY:       \"minterAddress\": \"" + c.minter() + "\",");
-    console.log("JSONSUMMARY:       \"minterName\": \"" + getAddressName(c.minter()) + "\",");
-    console.log("JSONSUMMARY:       \"totalSupply\": " + c.totalSupply().shift(-18) + "");
+    console.log("JSONSUMMARY:       \"symbol\": \"" + fxxxToken.symbol() + "\",");
+    console.log("JSONSUMMARY:       \"name\": \"" + fxxxToken.name() + "\",");
+    console.log("JSONSUMMARY:       \"minterAddress\": \"" + fxxxToken.minter() + "\",");
+    console.log("JSONSUMMARY:       \"minterName\": \"" + getAddressName(fxxxToken.minter()) + "\",");
+    console.log("JSONSUMMARY:       \"totalSupply\": " + fxxxToken.totalSupply().shift(-18) + ",");
+    var fxxxTokenTransferEvents = fxxxToken.Transfer({}, { fromBlock: fxxxTokenFromBlock, toBlock: "latest" }).get();
+    console.log("JSONSUMMARY:       \"numberOfFxxxTokenTransferEvents\": " + fxxxTokenTransferEvents.length + ",");
+    console.log("JSONSUMMARY:       \"fxxxTokenTransferEvents\": [");
+    for (var i1 = 0; i1 < fxxxTokenTransferEvents.length; i1++) {
+      var e1 = fxxxTokenTransferEvents[fxxxTokenTransferEvents.length - 1 - i1];
+      var separator1;
+      if (i1 == fxxxTokenTransferEvents.length - 1) {
+        separator1 = "";
+      } else {
+        separator1 = ",";
+      }
+      var b1 = eth.getBlock(e1.blockNumber);
+      var ts1 = b1.timestamp;
+      console.log("JSONSUMMARY:         {");
+      console.log("JSONSUMMARY:           \"timestamp\":" + ts1 + ",");
+      console.log("JSONSUMMARY:           \"timestampUTCString\": \"" + new Date(ts1 * 1000).toUTCString() + "\",");
+      console.log("JSONSUMMARY:           \"from\": \"" + e1.args.from + "\",");
+      console.log("JSONSUMMARY:           \"to\": \"" + e1.args.to + "\",");
+      console.log("JSONSUMMARY:           \"tokens\": " + e1.args.tokens.shift(-18) + "");
+      console.log("JSONSUMMARY:         }" + separator1);
+    }
+    console.log("JSONSUMMARY:       ]");
     console.log("JSONSUMMARY:     }" + separator);
   }
   console.log("JSONSUMMARY:   ],");
+
   console.log("JSONSUMMARY:   \"numberOfFxxxLandRushes\": " + fxxxLandRushAddresses.length + ",");
   console.log("JSONSUMMARY:   \"fxxxLandRushes\": [");
   for (var i = 0; i < fxxxLandRushAddresses.length; i++) {
     var e = fxxxLandRushAddresses[i];
-    var c = eth.contract(fxxxLandRushAbi).at(e);
+    var fxxxLandRush = eth.contract(fxxxLandRushAbi).at(e);
     var separator;
     if (i == fxxxLandRushAddresses.length - 1) {
       separator = "";
@@ -121,34 +130,85 @@ function generateSummaryJSON() {
     console.log("JSONSUMMARY:     {");
     console.log("JSONSUMMARY:       \"address\": \"" + e + "\",");
     console.log("JSONSUMMARY:       \"nameAddress\": \"" + getAddressName(e) + "\",");
-    console.log("JSONSUMMARY:       \"name\": \"" + c.name() + "\",");
-    console.log("JSONSUMMARY:       \"parcelTokenAddress\": \"" + c.parcelToken() + "\",");
-    console.log("JSONSUMMARY:       \"parcelTokenName\": \"" + getAddressName(c.parcelToken()) + "\",");
-    console.log("JSONSUMMARY:       \"gzeTokenAddress\": \"" + c.gzeToken() + "\",");
-    console.log("JSONSUMMARY:       \"gzeTokenName\": \"" + getAddressName(c.gzeToken()) + "\",");
-    console.log("JSONSUMMARY:       \"ethUsdPriceFeedAddress\": \"" + c.ethUsdPriceFeed() + "\",");
-    console.log("JSONSUMMARY:       \"ethUsdPriceFeedName\": \"" + getAddressName(c.ethUsdPriceFeed()) + "\",");
-    console.log("JSONSUMMARY:       \"gzeEthPriceFeedAddress\": \"" + c.gzeEthPriceFeed() + "\",");
-    console.log("JSONSUMMARY:       \"gzeEthPriceFeedName\": \"" + getAddressName(c.gzeEthPriceFeed()) + "\",");
-    console.log("JSONSUMMARY:       \"bonusListAddress\": \"" + c.bonusList() + "\",");
-    console.log("JSONSUMMARY:       \"bonusListName\": \"" + getAddressName(c.bonusList()) + "\",");
-    console.log("JSONSUMMARY:       \"walletAddress\": \"" + c.wallet() + "\",");
-    console.log("JSONSUMMARY:       \"walletName\": \"" + getAddressName(c.wallet()) + "\",");
-    console.log("JSONSUMMARY:       \"startDate\": " + c.startDate() + ",");
-    console.log("JSONSUMMARY:       \"startDateString\": \"" + new Date(c.startDate() * 1000).toString() + "\",");
-    console.log("JSONSUMMARY:       \"startDateUTCString\": \"" + new Date(c.startDate() * 1000).toUTCString() + "\",");
-    console.log("JSONSUMMARY:       \"endDate\": " + c.endDate() + ",");
-    console.log("JSONSUMMARY:       \"endDateString\": \"" + new Date(c.endDate() * 1000).toString() + "\",");
-    console.log("JSONSUMMARY:       \"endDateUTCString\": \"" + new Date(c.endDate() * 1000).toUTCString() + "\",");
-    console.log("JSONSUMMARY:       \"maxParcels\": " + c.maxParcels() + ",");
-    console.log("JSONSUMMARY:       \"parcelUsd\": " + c.parcelUsd().shift(-18) + ",");
-    console.log("JSONSUMMARY:       \"usdLockAccountThreshold\": " + c.usdLockAccountThreshold().shift(-18) + ",");
-    console.log("JSONSUMMARY:       \"gzeBonusOffList\": " + c.gzeBonusOffList() + ",");
-    console.log("JSONSUMMARY:       \"gzeBonusOnList\": " + c.gzeBonusOnList() + ",");
-    console.log("JSONSUMMARY:       \"parcelsSold\": " + c.parcelsSold() + ",");
-    console.log("JSONSUMMARY:       \"contributedGze\": " + c.contributedGze().shift(-18) + ",");
-    console.log("JSONSUMMARY:       \"contributedEth\": " + c.contributedEth().shift(-18) + ",");
-    console.log("JSONSUMMARY:       \"finalised\": \"" + c.finalised() + "\"");
+    console.log("JSONSUMMARY:       \"name\": \"" + fxxxLandRush.name() + "\",");
+    console.log("JSONSUMMARY:       \"parcelTokenAddress\": \"" + fxxxLandRush.parcelToken() + "\",");
+    console.log("JSONSUMMARY:       \"parcelTokenName\": \"" + getAddressName(fxxxLandRush.parcelToken()) + "\",");
+    console.log("JSONSUMMARY:       \"gzeTokenAddress\": \"" + fxxxLandRush.gzeToken() + "\",");
+    console.log("JSONSUMMARY:       \"gzeTokenName\": \"" + getAddressName(fxxxLandRush.gzeToken()) + "\",");
+    console.log("JSONSUMMARY:       \"ethUsdPriceFeedAddress\": \"" + fxxxLandRush.ethUsdPriceFeed() + "\",");
+    console.log("JSONSUMMARY:       \"ethUsdPriceFeedName\": \"" + getAddressName(fxxxLandRush.ethUsdPriceFeed()) + "\",");
+    console.log("JSONSUMMARY:       \"gzeEthPriceFeedAddress\": \"" + fxxxLandRush.gzeEthPriceFeed() + "\",");
+    console.log("JSONSUMMARY:       \"gzeEthPriceFeedName\": \"" + getAddressName(fxxxLandRush.gzeEthPriceFeed()) + "\",");
+    console.log("JSONSUMMARY:       \"bonusListAddress\": \"" + fxxxLandRush.bonusList() + "\",");
+    console.log("JSONSUMMARY:       \"bonusListName\": \"" + getAddressName(fxxxLandRush.bonusList()) + "\",");
+    console.log("JSONSUMMARY:       \"walletAddress\": \"" + fxxxLandRush.wallet() + "\",");
+    console.log("JSONSUMMARY:       \"walletName\": \"" + getAddressName(fxxxLandRush.wallet()) + "\",");
+    console.log("JSONSUMMARY:       \"startDate\": " + fxxxLandRush.startDate() + ",");
+    console.log("JSONSUMMARY:       \"startDateString\": \"" + new Date(fxxxLandRush.startDate() * 1000).toString() + "\",");
+    console.log("JSONSUMMARY:       \"startDateUTCString\": \"" + new Date(fxxxLandRush.startDate() * 1000).toUTCString() + "\",");
+    console.log("JSONSUMMARY:       \"endDate\": " + fxxxLandRush.endDate() + ",");
+    console.log("JSONSUMMARY:       \"endDateString\": \"" + new Date(fxxxLandRush.endDate() * 1000).toString() + "\",");
+    console.log("JSONSUMMARY:       \"endDateUTCString\": \"" + new Date(fxxxLandRush.endDate() * 1000).toUTCString() + "\",");
+    console.log("JSONSUMMARY:       \"maxParcels\": " + fxxxLandRush.maxParcels() + ",");
+    console.log("JSONSUMMARY:       \"parcelUsd\": " + fxxxLandRush.parcelUsd().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"usdLockAccountThreshold\": " + fxxxLandRush.usdLockAccountThreshold().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"gzeBonusOffList\": " + fxxxLandRush.gzeBonusOffList() + ",");
+    console.log("JSONSUMMARY:       \"gzeBonusOnList\": " + fxxxLandRush.gzeBonusOnList() + ",");
+    console.log("JSONSUMMARY:       \"parcelsSold\": " + fxxxLandRush.parcelsSold() + ",");
+    console.log("JSONSUMMARY:       \"contributedGze\": " + fxxxLandRush.contributedGze().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"contributedEth\": " + fxxxLandRush.contributedEth().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"finalised\": \"" + fxxxLandRush.finalised() + "\",");
+
+    var ethUsd = fxxxLandRush.ethUsd();
+    console.log("JSONSUMMARY:       \"ethUsdRate\": " + ethUsd[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"ethUsdLive\": \"" + ethUsd[1] + "\",");
+    var gzeEth = fxxxLandRush.gzeEth();
+    console.log("JSONSUMMARY:       \"gzeEthRate\": " + gzeEth[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"gzeEthLive\": \"" + gzeEth[1] + "\",");
+    var gzeUsd = fxxxLandRush.gzeUsd();
+    console.log("JSONSUMMARY:       \"gzeUsdRate\": " + gzeUsd[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"gzeUsdLive\": \"" + gzeUsd[1] + "\",");
+    var parcelEth = fxxxLandRush.parcelEth();
+    console.log("JSONSUMMARY:       \"parcelEthRate\": " + parcelEth[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"parcelEthLive\": \"" + parcelEth[1] + "\",");
+    var parcelGzeWithoutBonus = fxxxLandRush.parcelGzeWithoutBonus();
+    console.log("JSONSUMMARY:       \"parcelGzeWithoutBonusRate\": " + parcelGzeWithoutBonus[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"parcelGzeWithoutBonusLive\": \"" + parcelGzeWithoutBonus[1] + "\",");
+    var parcelGzeWithBonusOffList = fxxxLandRush.parcelGzeWithBonusOffList();
+    console.log("JSONSUMMARY:       \"parcelGzeWithBonusOffListRate\": " + parcelGzeWithBonusOffList[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"parcelGzeWithBonusOffListLive\": \"" + parcelGzeWithBonusOffList[1] + "\",");
+    var parcelGzeWithBonusOnList = fxxxLandRush.parcelGzeWithBonusOnList();
+    console.log("JSONSUMMARY:       \"parcelGzeWithBonusOnListRate\": " + parcelGzeWithBonusOnList[0].shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"parcelGzeWithBonusOnListLive\": \"" + parcelGzeWithBonusOnList[1] + "\",");
+
+    var fxxxLandRushPurchasedEvents = fxxxLandRush.Purchased({}, { fromBlock: fxxxLandRushBlock, toBlock: "latest" }).get();
+    console.log("JSONSUMMARY:       \"numberOfFxxxLandRushPurchasedEvents\": " + fxxxLandRushPurchasedEvents.length + ",");
+    console.log("JSONSUMMARY:       \"fxxxLandRushPurchasedEvents\": [");
+    for (var i1 = 0; i1 < fxxxLandRushPurchasedEvents.length; i1++) {
+      var e1 = fxxxLandRushPurchasedEvents[fxxxLandRushPurchasedEvents.length - 1 - i1];
+      var separator1;
+      if (i1 == fxxxLandRushPurchasedEvents.length - 1) {
+        separator1 = "";
+      } else {
+        separator1 = ",";
+      }
+      var b1 = eth.getBlock(e1.blockNumber);
+      var ts1 = b1.timestamp;
+      console.log("JSONSUMMARY:         {");
+      console.log("JSONSUMMARY:           \"timestamp\":" + ts1 + ",");
+      console.log("JSONSUMMARY:           \"timestampUTCString\": \"" + new Date(ts1 * 1000).toUTCString() + "\",");
+      console.log("JSONSUMMARY:           \"addr\": \"" + e1.args.addr + "\",");
+      console.log("JSONSUMMARY:           \"parcels\": " + e1.args.parcels + ",");
+      console.log("JSONSUMMARY:           \"gzeToTransfer\": " + e1.args.gzeToTransfer.shift(-18) + ",");
+      console.log("JSONSUMMARY:           \"ethToTransfer\": " + e1.args.ethToTransfer.shift(-18) + ",");
+      console.log("JSONSUMMARY:           \"parcelsSold\": " + e1.args.parcelsSold + ",");
+      console.log("JSONSUMMARY:           \"contributedGze\": " + e1.args.contributedGze.shift(-18) + ",");
+      console.log("JSONSUMMARY:           \"contributedEth\": " + e1.args.contributedEth.shift(-18) + ",");
+      console.log("JSONSUMMARY:           \"lockAccount\": \"" + e1.args.lockAccount + "\"");
+      console.log("JSONSUMMARY:         }" + separator1);
+    }
+    console.log("JSONSUMMARY:       ]");
+
     console.log("JSONSUMMARY:     }" + separator);
   }
   console.log("JSONSUMMARY:   ]");
@@ -159,4 +219,4 @@ generateSummaryJSON();
 
 EOF
 
-mv tmp.json FxxxLandRushSummary.json
+mv tmp.json FxxxLandRushSummary_Ropsten.json
