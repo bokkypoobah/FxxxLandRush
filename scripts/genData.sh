@@ -90,6 +90,32 @@ function generateSummaryJSON() {
     console.log("JSONSUMMARY:       \"minterAddress\": \"" + fxxxToken.minter() + "\",");
     console.log("JSONSUMMARY:       \"minterName\": \"" + getAddressName(fxxxToken.minter()) + "\",");
     console.log("JSONSUMMARY:       \"totalSupply\": " + fxxxToken.totalSupply().shift(-18) + ",");
+
+    var fxxxTokenMintEvents = fxxxToken.Mint({}, { fromBlock: fxxxTokenFromBlock, toBlock: "latest" }).get();
+    console.log("JSONSUMMARY:       \"numberOfFxxxTokenMintEvents\": " + fxxxTokenMintEvents.length + ",");
+    console.log("JSONSUMMARY:       \"fxxxTokenMintEvents\": [");
+    for (var i1 = 0; i1 < fxxxTokenMintEvents.length; i1++) {
+      var e1 = fxxxTokenMintEvents[fxxxTokenMintEvents.length - 1 - i1];
+      var separator1;
+      if (i1 == fxxxTokenMintEvents.length - 1) {
+        separator1 = "";
+      } else {
+        separator1 = ",";
+      }
+      var b1 = eth.getBlock(e1.blockNumber);
+      var ts1 = b1.timestamp;
+      console.log("JSONSUMMARY:         {");
+      console.log("JSONSUMMARY:           \"txHash\": \"" + e1.transactionHash + "\",");
+      console.log("JSONSUMMARY:           \"timestamp\":" + ts1 + ",");
+      console.log("JSONSUMMARY:           \"timestampUTCString\": \"" + new Date(ts1 * 1000).toUTCString() + "\",");
+      console.log("JSONSUMMARY:           \"tokenOwner\": \"" + e1.args.tokenOwner + "\",");
+      console.log("JSONSUMMARY:           \"tokens\": " + e1.args.tokens.shift(-18) + ",");
+      console.log("JSONSUMMARY:           \"lockAccount\": \"" + e1.args.lockAccount + "\",");
+      console.log("JSONSUMMARY:         }" + separator1);
+    }
+    console.log("JSONSUMMARY:       ]");
+
+    /*
     var fxxxTokenTransferEvents = fxxxToken.Transfer({}, { fromBlock: fxxxTokenFromBlock, toBlock: "latest" }).get();
     console.log("JSONSUMMARY:       \"numberOfFxxxTokenTransferEvents\": " + fxxxTokenTransferEvents.length + ",");
     console.log("JSONSUMMARY:       \"fxxxTokenTransferEvents\": [");
@@ -112,6 +138,7 @@ function generateSummaryJSON() {
       console.log("JSONSUMMARY:         }" + separator1);
     }
     console.log("JSONSUMMARY:       ]");
+    */
     console.log("JSONSUMMARY:     }" + separator);
   }
   console.log("JSONSUMMARY:   ],");
@@ -195,6 +222,7 @@ function generateSummaryJSON() {
       var b1 = eth.getBlock(e1.blockNumber);
       var ts1 = b1.timestamp;
       console.log("JSONSUMMARY:         {");
+      console.log("JSONSUMMARY:           \"txHash\": \"" + e1.transactionHash + "\",");
       console.log("JSONSUMMARY:           \"timestamp\":" + ts1 + ",");
       console.log("JSONSUMMARY:           \"timestampUTCString\": \"" + new Date(ts1 * 1000).toUTCString() + "\",");
       console.log("JSONSUMMARY:           \"addr\": \"" + e1.args.addr + "\",");

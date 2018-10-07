@@ -1,8 +1,8 @@
 {
-  "blockNumber": 4187906,
-  "blockTimestamp": 1538924103,
-  "blockTimestampString": "Mon, 08 Oct 2018 01:55:03 AEDT",
-  "blockTimestampUTCString": "Sun, 07 Oct 2018 14:55:03 UTC",
+  "blockNumber": 4188717,
+  "blockTimestamp": 1538935211,
+  "blockTimestampString": "Mon, 08 Oct 2018 05:00:11 AEDT",
+  "blockTimestampUTCString": "Sun, 07 Oct 2018 18:00:11 UTC",
   "makerDAOEthUsdPriceFeedAdaptorAddress": "0x67C2E24f0EA4314Cc7D2a85e7809Dc2b43E6440A",
   "makerDAOEthUsdPriceFeedAdaptorName": "MakerDAOEthUsdPriceFeedAdaptor:0x67C2E24f0EA4314Cc7D2a85e7809Dc2b43E6440A",
   "gzeEthPriceFeedAddress": "0x62ca617DeEcCEA9D3Ebf1EA354Eba4300292071D",
@@ -30,28 +30,23 @@
       "minterAddress": "0x24cfa0bfc7c7e4892ca2ecd308b61ac7d3c76276",
       "minterName": "FxxxLandRush 'Fantasy Hub':0x24cfa0bfc7c7e4892ca2ecd308b61ac7d3c76276",
       "totalSupply": 1500,
-      "numberOfFxxxTokenTransferEvents": 3,
-      "fxxxTokenTransferEvents": [
+      "numberOfFxxxTokenMintEvents": 2,
+      "fxxxTokenMintEvents": [
         {
+          "txHash": "0x3c890743d3f2521efdb03e1b20b134255a9ebf13b13da91c85eab3f69981a944",
           "timestamp":1538923403,
           "timestampUTCString": "Sun, 07 Oct 2018 14:43:23 UTC",
-          "from": "0x0000000000000000000000000000000000000000",
-          "to": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
-          "tokens": 1500
+          "tokenOwner": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
+          "tokens": 1500,
+          "lockAccount": "false",
         },
         {
-          "timestamp":1538919445,
-          "timestampUTCString": "Sun, 07 Oct 2018 13:37:25 UTC",
-          "from": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
-          "to": "0x0000000000000000000000000000000000000000",
-          "tokens": 10500
-        },
-        {
+          "txHash": "0x95650a86fe8dc0f8331bf575680403e8c4688cfe4dc80b06cda4d095760995e7",
           "timestamp":1538793925,
           "timestampUTCString": "Sat, 06 Oct 2018 02:45:25 UTC",
-          "from": "0x0000000000000000000000000000000000000000",
-          "to": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
-          "tokens": 10500
+          "tokenOwner": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
+          "tokens": 10500,
+          "lockAccount": "true",
         }
       ]
     },
@@ -63,8 +58,8 @@
       "minterAddress": "0x3daf29fcb450cac2fd27c27334ccf156b60cfe5d",
       "minterName": "FxxxLandRush 'Fantasy Riot Kitty':0x3daf29fcb450cac2fd27c27334ccf156b60cfe5d",
       "totalSupply": 0,
-      "numberOfFxxxTokenTransferEvents": 0,
-      "fxxxTokenTransferEvents": [
+      "numberOfFxxxTokenMintEvents": 0,
+      "fxxxTokenMintEvents": [
       ]
     },
     {
@@ -75,8 +70,8 @@
       "minterAddress": "0x567cd0add4a652b32b0404950e62944263eb3d2c",
       "minterName": "FxxxLandRush 'Fantasy Dude Sweet':0x567cd0add4a652b32b0404950e62944263eb3d2c",
       "totalSupply": 0,
-      "numberOfFxxxTokenTransferEvents": 0,
-      "fxxxTokenTransferEvents": [
+      "numberOfFxxxTokenMintEvents": 0,
+      "fxxxTokenMintEvents": [
       ]
     },
     {
@@ -87,8 +82,8 @@
       "minterAddress": "0xc710292c90d9243d9f860832ea46977ac46e93a3",
       "minterName": "FxxxLandRush 'Fantasy Booty Sector':0xc710292c90d9243d9f860832ea46977ac46e93a3",
       "totalSupply": 0,
-      "numberOfFxxxTokenTransferEvents": 0,
-      "fxxxTokenTransferEvents": [
+      "numberOfFxxxTokenMintEvents": 0,
+      "fxxxTokenMintEvents": [
       ]
     }
   ],
@@ -142,6 +137,7 @@
       "numberOfFxxxLandRushPurchasedEvents": 1,
       "fxxxLandRushPurchasedEvents": [
         {
+          "txHash": "0x3c890743d3f2521efdb03e1b20b134255a9ebf13b13da91c85eab3f69981a944",
           "timestamp":1538923403,
           "timestampUTCString": "Sun, 07 Oct 2018 14:43:23 UTC",
           "addr": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
