@@ -157,7 +157,7 @@ var tx = bttsTokenFactory.deployBTTSTokenContract(symbol, name, decimals, initia
 tx;
 ```
 
-## FxxxLandRush Deployment (WIP)
+## FxxxLandRush Contracts
 
 Deployed Token Contracts:
 
@@ -220,4 +220,4 @@ fxxxlandrush;
 [MakerDAOPriceFeedAdaptor]: #makerdaopricefeedadaptor
 [GZE/ETH PriceFeed]: #gzeeth-pricefeed
 [Token]: #token-contracts
-[FxxxLandRush]: #fxxxlandrush
+[FxxxLandRush]: #fxxxlandrush-contracts
