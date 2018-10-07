@@ -134,7 +134,21 @@ function generateSummaryJSON() {
     console.log("JSONSUMMARY:       \"bonusListName\": \"" + getAddressName(c.bonusList()) + "\",");
     console.log("JSONSUMMARY:       \"walletAddress\": \"" + c.wallet() + "\",");
     console.log("JSONSUMMARY:       \"walletName\": \"" + getAddressName(c.wallet()) + "\",");
-    console.log("JSONSUMMARY:       \"parcelsSold\": " + c.parcelsSold().shift(-18) + "");
+    console.log("JSONSUMMARY:       \"startDate\": " + c.startDate() + ",");
+    console.log("JSONSUMMARY:       \"startDateString\": \"" + new Date(c.startDate() * 1000).toString() + "\",");
+    console.log("JSONSUMMARY:       \"startDateUTCString\": \"" + new Date(c.startDate() * 1000).toUTCString() + "\",");
+    console.log("JSONSUMMARY:       \"endDate\": " + c.endDate() + ",");
+    console.log("JSONSUMMARY:       \"endDateString\": \"" + new Date(c.endDate() * 1000).toString() + "\",");
+    console.log("JSONSUMMARY:       \"endDateUTCString\": \"" + new Date(c.endDate() * 1000).toUTCString() + "\",");
+    console.log("JSONSUMMARY:       \"maxParcels\": " + c.maxParcels() + ",");
+    console.log("JSONSUMMARY:       \"parcelUsd\": " + c.parcelUsd().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"usdLockAccountThreshold\": " + c.usdLockAccountThreshold().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"gzeBonusOffList\": " + c.gzeBonusOffList() + ",");
+    console.log("JSONSUMMARY:       \"gzeBonusOnList\": " + c.gzeBonusOnList() + ",");
+    console.log("JSONSUMMARY:       \"parcelsSold\": " + c.parcelsSold() + ",");
+    console.log("JSONSUMMARY:       \"contributedGze\": " + c.contributedGze().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"contributedEth\": " + c.contributedEth().shift(-18) + ",");
+    console.log("JSONSUMMARY:       \"finalised\": \"" + c.finalised() + "\"");
     console.log("JSONSUMMARY:     }" + separator);
   }
   console.log("JSONSUMMARY:   ]");
@@ -146,25 +160,3 @@ generateSummaryJSON();
 EOF
 
 mv tmp.json FxxxLandRushSummary.json
-
-exit;
-
-BTTSTokenInterface public parcelToken;
-BTTSTokenInterface public gzeToken;
-PriceFeedInterface public ethUsdPriceFeed;
-PriceFeedInterface public gzeEthPriceFeed;
-BonusListInterface public bonusList;
-
-address public wallet;
-uint public startDate;
-uint public endDate;
-uint public maxParcels;
-uint public parcelUsd;                  // USD per parcel, e.g., USD 1,500 * 10^18
-uint public usdLockAccountThreshold;    // e.g., USD 7,000 * 10^18
-uint public gzeBonusOffList;            // e.g., 20 = 20% bonus
-uint public gzeBonusOnList;             // e.g., 30 = 30% bonus
-
-uint public parcelsSold;
-uint public contributedGze;
-uint public contributedEth;
-bool public finalised;
