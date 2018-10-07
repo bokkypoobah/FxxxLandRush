@@ -8,9 +8,9 @@ if [ $number -gt 2 ]; then
   exit;
 fi
 
-geth attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > tmp.json
+geth --testnet attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > tmp.json
 loadScript("lookups.js");
-loadScript("deployment.js");
+loadScript("deployment_Ropsten.js");
 
 addAddressNames("0x8cD8baa410E9172b949f2c4433D3b5905F8606fF", "GZEMultisig");
 addAddressNames(gzeAddress, "GZE");
