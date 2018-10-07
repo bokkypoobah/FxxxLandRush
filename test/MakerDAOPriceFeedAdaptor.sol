@@ -27,10 +27,15 @@ contract MakerDAOPriceFeedInterface {
 // Pricefeed with interface compatible with MakerDAO's "pip" PriceFeed
 // ----------------------------------------------------------------------------
 contract MakerDAOPriceFeedAdaptor is PriceFeedInterface {
+    string private _name;
     MakerDAOPriceFeedInterface public makerDAOPriceFeed;
 
-    constructor(address _makerDAOPriceFeed) public {
+    constructor(string name, address _makerDAOPriceFeed) public {
+        _name = name;
         makerDAOPriceFeed = MakerDAOPriceFeedInterface(_makerDAOPriceFeed);
+    }
+    function name() public view returns (string) {
+        return _name;
     }
     function getRate() public view returns (uint _rate, bool _live) {
         bytes32 value;

@@ -203,7 +203,7 @@ while (txpool.status.pending > 0) {
 var makerDaoPriceFeedAdaptorContract = web3.eth.contract(makerDaoPriceFeedAdaptorAbi);
 var makerDaoPriceFeedAdaptorTx = null;
 var makerDaoPriceFeedAdaptorAddress = null;
-var makerDaoPriceFeedAdaptor = makerDaoPriceFeedAdaptorContract.new(makerDaoEthUsdPriceFeedAddress, {from: deployer, data: makerDaoPriceFeedAdaptorBin, gas: 5000000, gasPrice: defaultGasPrice},
+var makerDaoPriceFeedAdaptor = makerDaoPriceFeedAdaptorContract.new("ETH/USD PriceFeed", makerDaoEthUsdPriceFeedAddress, {from: deployer, data: makerDaoPriceFeedAdaptorBin, gas: 5000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {

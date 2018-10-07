@@ -451,6 +451,7 @@ function printEthUsdPriceFeedContractDetails() {
     var contract = eth.contract(ethUsdPriceFeedContractAbi).at(ethUsdPriceFeedContractAddress);
     // console.log("RESULT: ethUsdPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
     console.log("RESULT: ethUsdPriceFeed.makerDAOPriceFeed=" + getShortAddressName(contract.makerDAOPriceFeed()));
+    console.log("RESULT: ethUsdPriceFeed.name=" + contract.name());
     var rate = contract.getRate();
     console.log("RESULT: ethUsdPriceFeed.ethUsd=" + rate[0].shift(-18) + " " + rate[1]);
 
@@ -497,8 +498,8 @@ function printGzeEthPriceFeedContractDetails() {
     var contract = eth.contract(gzeEthPriceFeedContractAbi).at(gzeEthPriceFeedContractAddress);
     console.log("RESULT: gzeEthPriceFeed.owner/new=" + getShortAddressName(contract.owner()) + "/" + getShortAddressName(contract.newOwner()));
     console.log("RESULT: gzeEthPriceFeed.name=" + contract.name());
-    console.log("RESULT: gzeEthPriceFeed.rate=" + contract.rate().shift(-18));
-    console.log("RESULT: gzeEthPriceFeed.live=" + contract.live());
+    var rate = contract.getRate();
+    console.log("RESULT: gzeEthPriceFeed.gzeEth=" + rate[0].shift(-18) + " " + rate[1]);
 
     var i;
     var latestBlock = eth.blockNumber;

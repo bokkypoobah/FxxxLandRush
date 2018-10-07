@@ -80,6 +80,7 @@ contract Operated is Owned {
 // PriceFeed Interface - _live is true if the rate is valid, false if invalid
 // ----------------------------------------------------------------------------
 contract PriceFeedInterface {
+    function name() public view returns (string);
     function getRate() public view returns (uint _rate, bool _live);
 }
 
@@ -88,25 +89,28 @@ contract PriceFeedInterface {
 // Pricefeed from a single source
 // ----------------------------------------------------------------------------
 contract PriceFeed is PriceFeedInterface, Operated {
-    string public name;
-    uint public rate;
-    bool public live;
+    string private _name;
+    uint private _rate;
+    bool private _live;
 
     event SetRate(uint oldRate, bool oldLive, uint newRate, bool newLive);
 
-    constructor(string _name, uint _rate, bool _live) public {
+    constructor(string name, uint rate, bool live) public {
         initOperated(msg.sender);
-        name = _name;
-        rate = _rate;
-        live = _live;
-        emit SetRate(0, false, rate, live);
+        _name = name;
+        _rate = rate;
+        _live = live;
+        emit SetRate(0, false, _rate, _live);
     }
-    function setRate(uint _rate, bool _live) public onlyOperator {
-        emit SetRate(rate, live, _rate, _live);
-        rate = _rate;
-        live = _live;
+    function name() public view returns (string) {
+        return _name;
     }
-    function getRate() public view returns (uint _rate, bool _live) {
-        return (rate, live);
+    function setRate(uint rate, bool live) public onlyOperator {
+        emit SetRate(_rate, _live, rate, live);
+        _rate = rate;
+        _live = live;
+    }
+    function getRate() public view returns (uint rate, bool live) {
+        return (_rate, _live);
     }
 }
