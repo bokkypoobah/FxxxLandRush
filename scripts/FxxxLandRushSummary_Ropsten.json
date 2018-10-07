@@ -1,8 +1,8 @@
 {
-  "blockNumber": 4187901,
-  "blockTimestamp": 1538924038,
-  "blockTimestampString": "Mon, 08 Oct 2018 01:53:58 AEDT",
-  "blockTimestampUTCString": "Sun, 07 Oct 2018 14:53:58 UTC",
+  "blockNumber": 4187906,
+  "blockTimestamp": 1538924103,
+  "blockTimestampString": "Mon, 08 Oct 2018 01:55:03 AEDT",
+  "blockTimestampUTCString": "Sun, 07 Oct 2018 14:55:03 UTC",
   "makerDAOEthUsdPriceFeedAdaptorAddress": "0x67C2E24f0EA4314Cc7D2a85e7809Dc2b43E6440A",
   "makerDAOEthUsdPriceFeedAdaptorName": "MakerDAOEthUsdPriceFeedAdaptor:0x67C2E24f0EA4314Cc7D2a85e7809Dc2b43E6440A",
   "gzeEthPriceFeedAddress": "0x62ca617DeEcCEA9D3Ebf1EA354Eba4300292071D",
