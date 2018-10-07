@@ -2,6 +2,8 @@
 
 ## Mainnet FXXX Land Rush
 
+Note that this following data is available in JSON format from [../scripts/FxxxLandRushSummary.json](../scripts/FxxxLandRushSummary.json). This live updated data will be available from a specified server at a later date.
+
 Component                  | Address                                   
 :------------------------- |:------------------------------------------
 GZE GazeCoin Token         | 0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b [&#x1F517;](https://etherscan.io/token/0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b)
@@ -27,12 +29,12 @@ The **FxxxHub** land rush ends at:
 * Nov 16 2018 23:00 UTC
 * Nov 17 2018 10:00 AEST
 
-The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rush starts at:
+The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rushes start at:
 * Nov 19 2018 15:00 PST
 * Nov 19 2018 23:00 UTC
 * Nov 20 2018 10:00 AEST
 
-The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rush ends at:
+The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rushes end at:
 * Dec 08 2018 15:00 PST
 * Dec 08 2018 23:00 UTC
 * Dec 09 2018 10:00 AEST
@@ -42,6 +44,8 @@ The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rush ends at:
 <hr />
 
 ## Ropsten Testnet FXXX Land Rush
+
+Note that this following data is available in JSON format from [../scripts/FxxxLandRushSummary_Ropsten.json](../scripts/FxxxLandRushSummary_Ropsten.json). This live updated data will be available from a specified server at a later date.
 
 Component                  | Address                                   
 :------------------------- |:------------------------------------------
@@ -59,14 +63,14 @@ FxxxBooty Token            | 0xCF618D39C4e069dE2b6Ae9D9B65D7bB0b7a562AA [&#x1F51
 FxxxBooty FxxxLandRush     | 0xC710292C90d9243D9F860832ea46977AC46E93A3 [&#x1F517;](https://ropsten.etherscan.io/address/0xC710292C90d9243D9F860832ea46977AC46E93A3)
 Wallet                     | 0x74eD6Eb23c21403d7A00Bf388a2ec691b98BA8Ed [&#x1F517;](https://ropsten.etherscan.io/address/0x74eD6Eb23c21403d7A00Bf388a2ec691b98BA8Ed)
 
-The **FxxxHub**, **FxxxRk**, **FxxxDude** and **FxxxBooty** land rush started on Oct 08 2018
+The **FxxxHub**, **FxxxRk**, **FxxxDude** and **FxxxBooty** land rushes started on Oct 08 2018
 
 The **FxxxHub** land rush ends at:
 * Nov 16 2018 15:00 PST
 * Nov 16 2018 23:00 UTC
 * Nov 17 2018 10:00 AEST
 
-The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rush ends at:
+The **FxxxRk**, **FxxxDude** and **FxxxBooty** land rushes end at:
 * Dec 08 2018 15:00 PST
 * Dec 08 2018 23:00 UTC
 * Dec 09 2018 10:00 AEST
