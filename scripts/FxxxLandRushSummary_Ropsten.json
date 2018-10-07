@@ -38,7 +38,7 @@
           "timestampUTCString": "Sun, 07 Oct 2018 14:43:23 UTC",
           "tokenOwner": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
           "tokens": 1500,
-          "lockAccount": "false",
+          "lockAccount": "false"
         },
         {
           "txHash": "0x95650a86fe8dc0f8331bf575680403e8c4688cfe4dc80b06cda4d095760995e7",
@@ -46,7 +46,7 @@
           "timestampUTCString": "Sat, 06 Oct 2018 02:45:25 UTC",
           "tokenOwner": "0x49d8621f8862c423abba0dfae4916f838cd264f6",
           "tokens": 10500,
-          "lockAccount": "true",
+          "lockAccount": "true"
         }
       ]
     },

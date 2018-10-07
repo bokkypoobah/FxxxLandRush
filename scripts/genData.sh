@@ -110,7 +110,7 @@ function generateSummaryJSON() {
       console.log("JSONSUMMARY:           \"timestampUTCString\": \"" + new Date(ts1 * 1000).toUTCString() + "\",");
       console.log("JSONSUMMARY:           \"tokenOwner\": \"" + e1.args.tokenOwner + "\",");
       console.log("JSONSUMMARY:           \"tokens\": " + e1.args.tokens.shift(-18) + ",");
-      console.log("JSONSUMMARY:           \"lockAccount\": \"" + e1.args.lockAccount + "\",");
+      console.log("JSONSUMMARY:           \"lockAccount\": \"" + e1.args.lockAccount + "\"");
       console.log("JSONSUMMARY:         }" + separator1);
     }
     console.log("JSONSUMMARY:       ]");
