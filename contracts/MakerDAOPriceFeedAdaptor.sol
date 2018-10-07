@@ -7,7 +7,7 @@ pragma solidity ^0.4.25;
 //   https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B
 // to be a slightly more useable form
 //
-// Deployed to: 0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292
+// Deployed to: 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
 //
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
