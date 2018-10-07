@@ -4,7 +4,7 @@
 
 Component                  | Address                                   
 :------------------------- |:------------------------------------------
-GZE GazeCoin Token         | 0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b [&U+1F517](https://etherscan.io/token/0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b)
+GZE GazeCoin Token         | 0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b [&#x1F517;](https://etherscan.io/token/0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b)
 BonusList                  | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
 MakerDAOPriceFeedAdaptor   | 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
 GZE/ETH PriceFeed          | 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
