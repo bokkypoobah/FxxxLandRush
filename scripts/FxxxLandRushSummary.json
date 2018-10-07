@@ -1,3 +1,4 @@
+0x8cD8baa410E9172b949f2c4433D3b5905F8606fF => GZEMultisig
 0x4AC00f287f36A6Aad655281fE1cA6798C9cb727b => GZE
 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 => BonusList
 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02 => MakerDAOEthUsdPriceFeedAdaptor
@@ -11,12 +12,14 @@
 0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F => FxxxLandRush 'Fantasy Dude Sweet'
 0xf9A6d564217c44ab64E28C7F34CB8fE246f57539 => FxxxLandRush 'Fantasy Booty Sector'
 {
-  "blockNumber": 6470420,
-  "blockTimestamp": 1538916693,
-  "blockTimestampString": "Sun, 07 Oct 2018 23:51:33 AEDT",
-  "blockTimestampUTCString": "Sun, 07 Oct 2018 12:51:33 UTC",
+  "blockNumber": 6470483,
+  "blockTimestamp": 1538917594,
+  "blockTimestampString": "Mon, 08 Oct 2018 00:06:34 AEDT",
+  "blockTimestampUTCString": "Sun, 07 Oct 2018 13:06:34 UTC",
   "makerDAOEthUsdPriceFeedAdaptorAddress": "0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
   "makerDAOEthUsdPriceFeedAdaptorName": "MakerDAOEthUsdPriceFeedAdaptor:0xF31AA1dFbEd873Ab957896a0204a016F5E123e02",
+  "gzeEthPriceFeedAddress": "0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91",
+  "gzeEthPriceFeedName": "GzeEthPriceFeed:0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91",
   "bonusListAddress": "0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46",
   "bonusListName": "BonusList:0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46",
   "ethUsdRate": "222.575",
@@ -111,16 +114,116 @@
   ],
   "numberOfTokens": 4,
   "tokens": [
-    { "symbol": "FxxxHub", "name": "Fantasy Hub", "minterAddress": "0x3b0c1b99faafd625aacd70521d8da167807b3b82", "minterName": "FxxxLandRush 'Fantasy Hub':0x3b0c1b99faafd625aacd70521d8da167807b3b82", "totalSupply":0 },
-    { "symbol": "FxxxRk", "name": "Fantasy Riot Kitty", "minterAddress": "0x460e0e607ebd39c8927210a7f32ef7bd170f7d40", "minterName": "FxxxLandRush 'Fantasy Riot Kitty':0x460e0e607ebd39c8927210a7f32ef7bd170f7d40", "totalSupply":0 },
-    { "symbol": "FxxxDude", "name": "Fantasy Dude Sweet", "minterAddress": "0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f", "minterName": "FxxxLandRush 'Fantasy Dude Sweet':0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f", "totalSupply":0 },
-    { "symbol": "FxxxBooty", "name": "Fantasy Booty Sector", "minterAddress": "0xf9a6d564217c44ab64e28c7f34cb8fe246f57539", "minterName": "FxxxLandRush 'Fantasy Booty Sector':0xf9a6d564217c44ab64e28c7f34cb8fe246f57539", "totalSupply":0 }
+    {
+      "address": "0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da",
+      "nameAddress": "Token 'FxxxHub' 'Fantasy Hub':0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da",
+      "symbol": "FxxxHub",
+      "name": "Fantasy Hub",
+      "minterAddress": "0x3b0c1b99faafd625aacd70521d8da167807b3b82",
+      "minterName": "FxxxLandRush 'Fantasy Hub':0x3b0c1b99faafd625aacd70521d8da167807b3b82",
+      "totalSupply": 0
+    },
+    {
+      "address": "0xd73b9d06bffA9d8B6D2E5f03de578103531215fF",
+      "nameAddress": "Token 'FxxxRk' 'Fantasy Riot Kitty':0xd73b9d06bffA9d8B6D2E5f03de578103531215fF",
+      "symbol": "FxxxRk",
+      "name": "Fantasy Riot Kitty",
+      "minterAddress": "0x460e0e607ebd39c8927210a7f32ef7bd170f7d40",
+      "minterName": "FxxxLandRush 'Fantasy Riot Kitty':0x460e0e607ebd39c8927210a7f32ef7bd170f7d40",
+      "totalSupply": 0
+    },
+    {
+      "address": "0xc70ABb3546D0976d91D91AaD2773fAE69e106599",
+      "nameAddress": "Token 'FxxxDude' 'Fantasy Dude Sweet':0xc70ABb3546D0976d91D91AaD2773fAE69e106599",
+      "symbol": "FxxxDude",
+      "name": "Fantasy Dude Sweet",
+      "minterAddress": "0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f",
+      "minterName": "FxxxLandRush 'Fantasy Dude Sweet':0xbf68f58ce089b97b2f7146d2ec097f5af9ac217f",
+      "totalSupply": 0
+    },
+    {
+      "address": "0xBC844A541855Cb797163e7f4344616a97a89ccB2",
+      "nameAddress": "Token 'FxxxBooty' 'Fantasy Booty Sector':0xBC844A541855Cb797163e7f4344616a97a89ccB2",
+      "symbol": "FxxxBooty",
+      "name": "Fantasy Booty Sector",
+      "minterAddress": "0xf9a6d564217c44ab64e28c7f34cb8fe246f57539",
+      "minterName": "FxxxLandRush 'Fantasy Booty Sector':0xf9a6d564217c44ab64e28c7f34cb8fe246f57539",
+      "totalSupply": 0
+    }
   ],
   "numberOfFxxxLandRushes": 4,
-  "tokens": [
-    { "name": "Fantasy Hub" },
-    { "name": "Fantasy Riot Kitty" },
-    { "name": "Fantasy Dude Sweet" },
-    { "name": "Fantasy Booty Sector" }
+  "fxxxLandRushes": [
+    {
+      "address": "0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82",
+      "nameAddress": "FxxxLandRush 'Fantasy Hub':0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82",
+      "name": "Fantasy Hub",
+      "parcelTokenAddress": "0x5b98a13e7c6aef063551643b0171d5cd681bf4da",
+      "parcelTokenName": "Token 'FxxxHub' 'Fantasy Hub':0x5b98a13e7c6aef063551643b0171d5cd681bf4da",
+      "gzeTokenAddress": "0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "gzeTokenName": "GZE:0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "ethUsdPriceFeedAddress": "0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "ethUsdPriceFeedName": "MakerDAOEthUsdPriceFeedAdaptor:0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "gzeEthPriceFeedAddress": "0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "gzeEthPriceFeedName": "GzeEthPriceFeed:0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "bonusListAddress": "0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "bonusListName": "BonusList:0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "walletAddress": "0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "walletName": "GZEMultisig:0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "parcelsSold": 0
+    },
+    {
+      "address": "0x460E0e607eBD39C8927210A7f32ef7bD170F7d40",
+      "nameAddress": "FxxxLandRush 'Fantasy Riot Kitty':0x460E0e607eBD39C8927210A7f32ef7bD170F7d40",
+      "name": "Fantasy Riot Kitty",
+      "parcelTokenAddress": "0xd73b9d06bffa9d8b6d2e5f03de578103531215ff",
+      "parcelTokenName": "Token 'FxxxRk' 'Fantasy Riot Kitty':0xd73b9d06bffa9d8b6d2e5f03de578103531215ff",
+      "gzeTokenAddress": "0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "gzeTokenName": "GZE:0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "ethUsdPriceFeedAddress": "0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "ethUsdPriceFeedName": "MakerDAOEthUsdPriceFeedAdaptor:0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "gzeEthPriceFeedAddress": "0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "gzeEthPriceFeedName": "GzeEthPriceFeed:0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "bonusListAddress": "0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "bonusListName": "BonusList:0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "walletAddress": "0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "walletName": "GZEMultisig:0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "parcelsSold": 0
+    },
+    {
+      "address": "0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F",
+      "nameAddress": "FxxxLandRush 'Fantasy Dude Sweet':0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F",
+      "name": "Fantasy Dude Sweet",
+      "parcelTokenAddress": "0xc70abb3546d0976d91d91aad2773fae69e106599",
+      "parcelTokenName": "Token 'FxxxDude' 'Fantasy Dude Sweet':0xc70abb3546d0976d91d91aad2773fae69e106599",
+      "gzeTokenAddress": "0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "gzeTokenName": "GZE:0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "ethUsdPriceFeedAddress": "0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "ethUsdPriceFeedName": "MakerDAOEthUsdPriceFeedAdaptor:0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "gzeEthPriceFeedAddress": "0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "gzeEthPriceFeedName": "GzeEthPriceFeed:0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "bonusListAddress": "0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "bonusListName": "BonusList:0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "walletAddress": "0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "walletName": "GZEMultisig:0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "parcelsSold": 0
+    },
+    {
+      "address": "0xf9A6d564217c44ab64E28C7F34CB8fE246f57539",
+      "nameAddress": "FxxxLandRush 'Fantasy Booty Sector':0xf9A6d564217c44ab64E28C7F34CB8fE246f57539",
+      "name": "Fantasy Booty Sector",
+      "parcelTokenAddress": "0xbc844a541855cb797163e7f4344616a97a89ccb2",
+      "parcelTokenName": "Token 'FxxxBooty' 'Fantasy Booty Sector':0xbc844a541855cb797163e7f4344616a97a89ccb2",
+      "gzeTokenAddress": "0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "gzeTokenName": "GZE:0x4ac00f287f36a6aad655281fe1ca6798c9cb727b",
+      "ethUsdPriceFeedAddress": "0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "ethUsdPriceFeedName": "MakerDAOEthUsdPriceFeedAdaptor:0xf31aa1dfbed873ab957896a0204a016f5e123e02",
+      "gzeEthPriceFeedAddress": "0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "gzeEthPriceFeedName": "GzeEthPriceFeed:0xd649c9b68bb78e8fd25c0b7a9c22c42f57768c91",
+      "bonusListAddress": "0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "bonusListName": "BonusList:0x57d2f4b8f55a26dfe8aba3c9f1c73cadbbc55c46",
+      "walletAddress": "0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "walletName": "GZEMultisig:0x8cd8baa410e9172b949f2c4433d3b5905f8606ff",
+      "parcelsSold": 0
+    }
   ]
 }
