@@ -1,35 +1,20 @@
 # Mainnet Deployment
 
-## MakerDAOPriceFeedAdaptor
-
-Deployed [MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol](MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol) on Oct 03 2018 in tx [0xa589d028](https://etherscan.io/tx/0xa589d028962a7db12323a2decd01e1c98126fc68b63e565d9c3b13bd446c4782) to [0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code).
-
-View the MakerDAO ETH/USD rate in *uint* format at [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#readContract) and compare to the ETH/USD rate from [https://makerdao.com/feeds/](https://makerdao.com/feeds/).
-
-Deployment script:
-```javascript
-var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
-var gasPrice = web3.toWei(6, "gwei");
-var _makerDAOPriceFeed = "0x729D19f657BD0614b4985Cf1D82531c67569197B";
-var makerdaopricefeedadaptorContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"makerDAOPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_makerDAOPriceFeed","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
-var makerdaopricefeedadaptor = makerdaopricefeedadaptorContract.new(
-   _makerDAOPriceFeed,
-   {
-     from: deploymentAccount,
-     data: '0x608060405234801561001057600080fd5b506040516020806101ff833981016040525160008054600160a060020a03909216600160a060020a03199092169190911790556101ad806100526000396000f30060806040526004361061004b5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166307d134648114610050578063679aefce1461008e575b600080fd5b34801561005c57600080fd5b506100656100bc565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561009a57600080fd5b506100a36100d8565b6040805192835290151560208301528051918290030190f35b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60008054604080517f59e02dd700000000000000000000000000000000000000000000000000000000815281518493849373ffffffffffffffffffffffffffffffffffffffff909116926359e02dd7926004808301939282900301818787803b15801561014457600080fd5b505af1158015610158573d6000803e3d6000fd5b505050506040513d604081101561016e57600080fd5b50805160209091015190949093509150505600a165627a7a72305820028cbe24a14499ebea744dec82e0979de2bc85b7a567e11206f51371ea68dcb10029',
-     gas: '250000',
-     gasPrice: gasPrice
-   }, function (e, contract){
-    console.log(e, contract);
-    if (typeof contract.address !== 'undefined') {
-         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
-    }
-})
-```
+Component                | Address | Check
+:----------------------- |:------- |:------
+BonusList                | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 | * [x] Addresses loaded
+MakerDAOPriceFeedAdaptor | TBA                                        |
+GZE/ETH PriceFeed        | TBA                                        |
+FxxxHub Token            | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | * [ ] setMinter(FxxxLandRush)
+FxxxHub FxxxLandRush     | TBA                                        |
+FxxxRk Token             | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | * [ ] setMinter(FxxxLandRush)
+FxxxRk FxxxLandRush      | TBA                                        |
+FxxxDude Token           | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | * [ ] setMinter(FxxxLandRush)
+FxxxDude FxxxLandRush    | TBA                                        |
+FxxxBooty Token          | 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | * [ ] setMinter(FxxxLandRush)
+FxxxBooty FxxxLandRush   | TBA                                        |
 
 <br />
-
-<hr />
 
 ## BonusList
 
@@ -64,6 +49,37 @@ var gasPrice = web3.toWei(5, "gwei");
 var bonuslistContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"operators","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"bonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnershipImmediately","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"isInBonusList","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"addOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"}],"name":"removeOperator","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"accounts","type":"address[]"}],"name":"add","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"account","type":"address"},{"indexed":false,"name":"status","type":"bool"}],"name":"AccountListed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_operator","type":"address"}],"name":"OperatorRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"}]).at(bonuslistAddress);
 var tx = bonuslistContract.add(addresses, { from: deploymentAccount, gasPrice: gasPrice });
 tx;
+```
+
+<br />
+
+<hr />
+
+## MakerDAOPriceFeedAdaptor
+
+Deployed [MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol](MakerDAOPriceFeedAdaptor_deployed_to_0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292.sol) on Oct 03 2018 in tx [0xa589d028](https://etherscan.io/tx/0xa589d028962a7db12323a2decd01e1c98126fc68b63e565d9c3b13bd446c4782) to [0x12bc52A5a9cF8c1FfBAA2eAA82b75B3E79DfE292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#code).
+
+View the MakerDAO ETH/USD rate in *uint* format at [0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292](https://etherscan.io/address/0x12bc52a5a9cf8c1ffbaa2eaa82b75b3e79dfe292#readContract) and compare to the ETH/USD rate from [https://makerdao.com/feeds/](https://makerdao.com/feeds/).
+
+Deployment script:
+```javascript
+var deploymentAccount = "0x31445231eDE51Ea320e7A47CD4d0280966fb96D8";
+var gasPrice = web3.toWei(6, "gwei");
+var _makerDAOPriceFeed = "0x729D19f657BD0614b4985Cf1D82531c67569197B";
+var makerdaopricefeedadaptorContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"makerDAOPriceFeed","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getRate","outputs":[{"name":"_rate","type":"uint256"},{"name":"_live","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_makerDAOPriceFeed","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
+var makerdaopricefeedadaptor = makerdaopricefeedadaptorContract.new(
+   _makerDAOPriceFeed,
+   {
+     from: deploymentAccount,
+     data: '0x608060405234801561001057600080fd5b506040516020806101ff833981016040525160008054600160a060020a03909216600160a060020a03199092169190911790556101ad806100526000396000f30060806040526004361061004b5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166307d134648114610050578063679aefce1461008e575b600080fd5b34801561005c57600080fd5b506100656100bc565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561009a57600080fd5b506100a36100d8565b6040805192835290151560208301528051918290030190f35b60005473ffffffffffffffffffffffffffffffffffffffff1681565b60008054604080517f59e02dd700000000000000000000000000000000000000000000000000000000815281518493849373ffffffffffffffffffffffffffffffffffffffff909116926359e02dd7926004808301939282900301818787803b15801561014457600080fd5b505af1158015610158573d6000803e3d6000fd5b505050506040513d604081101561016e57600080fd5b50805160209091015190949093509150505600a165627a7a72305820028cbe24a14499ebea744dec82e0979de2bc85b7a567e11206f51371ea68dcb10029',
+     gas: '250000',
+     gasPrice: gasPrice
+   }, function (e, contract){
+    console.log(e, contract);
+    if (typeof contract.address !== 'undefined') {
+         console.log('Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
+    }
+})
 ```
 
 <br />
