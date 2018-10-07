@@ -45,6 +45,8 @@ See [deployment](deployment) for deployment details. See [scripts/genData.sh](sc
 
 ### Purchasing Contract And Token Contract
 
+See [Purchasing](Purchasing.md) for instructions to purchase parcels of land from the FxxxLandRush contract.
+
 FxxxLand purchasing contract and token contract for each zone:
 
 Token Symbol / Name                | Purchasing Contract / Token Contract Address                                            | Purchase From         | Purchase To
@@ -73,33 +75,6 @@ Contract                                | Address
 [MakerDAOETHUSDPriceFeedAdaptor:0xF31A] | 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02
 [GZEETHPriceFeed:0xD649]                | 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91
 [BonusList:0x57D2]                      | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46
-
-<br />
-
-<hr />
-
-## Purchasing Parcels
-
-In the example below, we will give the FxxxLandRush contract in a single sector the name *LandRush* and the address of *0xLandRush*. The token recording the purchased parcel will be given an address of *0xParcelToken*. The GZE token contract will be given the name *GZE*.
-
-### Purchasing Parcels With GZE - First Method
-
-A purchaser executes `GZE.approveAndCall(landRushAddress, tokens, "")` to purchase parcels.
-
-<br />
-
-### Purchasing Parcels With GZE - Second Method
-
-A purchaser:
-
-* Approves tokens to be received by the *LandRush* contract by executing `GZE.approve(0xLandRush, tokens)`
-* Purchases parcels by executing `LandRush.purchaseWithGze(tokens)`
-
-<br />
-
-### Purchasing Parcels With ETH
-
-A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
 
 <br />
 
