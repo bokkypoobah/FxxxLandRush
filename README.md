@@ -47,12 +47,12 @@ See [deployment](deployment) for deployment details. See [scripts/genData.sh](sc
 
 FxxxLand purchasing contract and token contract for each zone:
 
-Token Symbol / Name                | Purchasing Contract | Token Contract Address                     | Purchase From         | Purchase To
-:--------------------------------- | :------------------ |:------------------------------------------ |:--------------------- |:---------------------
-[FxxxHub] / Fantasy Hub            | TBA                 | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
-[FxxxRk] / Fantasy Riot Kitty      | TBA                 | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
-[FxxxDude] / Fantasy Dude Sweet    | TBA                 | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
-[FxxxBooty] / Fantasy Booty Sector | TBA                 | 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+Token Symbol / Name                | Purchasing Contract / Token Contract Address                                            | Purchase From         | Purchase To
+:--------------------------------- | :-------------------------------------------------------------------------------------- |:--------------------- |:---------------------
+[FxxxHub] / Fantasy Hub            | 0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82 / 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da | Oct 16 2018 15:00 PST | Nov 16 2018 15:00 PST
+[FxxxRk] / Fantasy Riot Kitty      | 0x460E0e607eBD39C8927210A7f32ef7bD170F7d40 / 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+[FxxxDude] / Fantasy Dude Sweet    | 0xbF68F58CE089b97b2F7146d2EC097F5Af9Ac217F / 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
+[FxxxBooty] / Fantasy Booty Sector | 0xf9A6d564217c44ab64E28C7F34CB8fE246f57539 / 0xBC844A541855Cb797163e7f4344616a97a89ccB2 | Nov 19 2018 15:00 PST | Dec 08 2018 15:00 PST
 
 
 Time Conversions:
