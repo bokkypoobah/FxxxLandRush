@@ -132,7 +132,7 @@ The amount of ETH (Ethers) to purchase a single parcel of land is determined by 
 * Click *Access*
 * Under *Read / Write Contract*, select **approveAndCall**
 * In the *spender* field, enter the desired **FxxxLandRush** address (see table above)
-* In the *tokens* field, enter the number of GZE tokens used to purchase one or more parcels of land. Refer to the *Cost* section above to determine the number of GZE tokens require to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land
+* In the *tokens* field, enter the number of GZE tokens used to purchase one or more parcels of land. Refer to the *Cost* section above to determine the number of GZE tokens required to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land, and any excess will be refunded.
 * Leave the *_data* field blank
 * Click *Write*
 * Select your desired method to access your wallet, and execute the transaction.
@@ -151,18 +151,9 @@ Purchase by executing `GZE.approveAndCall(landRushAddress, tokens, "")` in MyCry
 
 <br />
 
-### Purchasing Parcels With GZE - Second Method
-
-A purchaser:
-
-* Approves tokens to be received by the *LandRush* contract by executing `GZE.approve(0xLandRush, tokens)`
-* Purchases parcels by executing `LandRush.purchaseWithGze(tokens)`
-
-<br />
-
 ### Purchasing Parcels With ETH
 
-A purchaser sends ETH directly to the *LandRush* contract at *0xLandRush*
+Purchase using ETH by sending ETH directly to the *FxxxLandRush* contract address. Refer to the *Cost* section above to determine the number of ETH required to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land, and any execess will be refunded.
 
 <br />
 
