@@ -153,7 +153,7 @@ Purchase by executing `GZE.approveAndCall(landRushAddress, tokens, "")` in MyCry
 
 <kbd><img src="images/SampleRopstenFxxxLandRushTransaction.png" /></kbd>
 
-Sample Ropsten Testnet FxxxLandRush transaction.
+Sample Ropsten Testnet FxxxLandRush [transaction](https://ropsten.etherscan.io/tx/0x3c890743d3f2521efdb03e1b20b134255a9ebf13b13da91c85eab3f69981a944).
 
 <br />
 
