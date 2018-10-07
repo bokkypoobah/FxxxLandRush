@@ -151,6 +151,12 @@ Purchase by executing `GZE.approveAndCall(landRushAddress, tokens, "")` in MyCry
 
 <br />
 
+<kbd><img src="images/SampleRopstenFxxxLandRushTransaction.png" /></kbd>
+
+Sample Ropsten Testnet FxxxLandRush transaction.
+
+<br />
+
 ### Purchasing Parcels With ETH
 
 Purchase using ETH by sending ETH directly to the *FxxxLandRush* contract address. Refer to the *Cost* section above to determine the number of ETH required to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land, and any execess will be refunded.
