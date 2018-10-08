@@ -8,9 +8,9 @@ if [ $number -gt 2 ]; then
   exit;
 fi
 
-geth attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > tmp.json
+geth --testnet attach << EOF | grep "JSONSUMMARY:" | sed "s/JSONSUMMARY: //" > tmp.json
 loadScript("lookups.js");
-loadScript("deployment.js");
+loadScript("deployment_Ropsten.js");
 
 
 function generateSummaryJSON() {
@@ -247,4 +247,4 @@ generateSummaryJSON();
 
 EOF
 
-mv tmp.json FxxxLandRushSummary.json
+mv tmp.json FxxxLandRushSummary_Ropsten.json
