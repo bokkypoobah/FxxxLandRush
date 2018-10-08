@@ -66,12 +66,12 @@ Available Parcels:
 
 The presale parcels are available for purchase through these FxxxLandRush contracts.
 
-Zone      | Presale \# | Total \#
-:-------- |:---------- |:--------
-FxxxHub   | 141        | 689
-FxxxRk    | 38         | 200
-FxxxDude  | 12         | 125
-FxxxBooty | 16         | 79
+Zone      | Presale \# | Total \# | USD per Parcel
+:-------- |:---------- |:-------- |:--------------
+FxxxHub   | 141        | 689      | 1500
+FxxxRk    | 38         | 200      | 2500
+FxxxDude  | 12         | 125      | 25000
+FxxxBooty | 16         | 79       | 5000
 
 <br />
 
