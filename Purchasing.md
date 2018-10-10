@@ -11,7 +11,7 @@ BonusList                  | 0x57D2F4B8F55A26DfE8Aba3c9f1c73CADbBc55C46 [&#x1F51
 MakerDAOPriceFeedAdaptor   | 0xF31AA1dFbEd873Ab957896a0204a016F5E123e02 [&#x1F517;](https://etherscan.io/address/0xF31AA1dFbEd873Ab957896a0204a016F5E123e02)
 GZE/ETH PriceFeed          | 0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91 [&#x1F517;](https://etherscan.io/address/0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91)
 FxxxHub Token              | 0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da [&#x1F517;](https://etherscan.io/token/0x5B98a13e7c6Aef063551643B0171d5Cd681BF4da)
-FxxxHub FxxxLandRush       | 0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82 [&#x1F517;](https://etherscan.io/address/0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82#readContract)
+**FxxxHub FxxxLandRush**   | **0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82** [&#x1F517;](https://etherscan.io/address/0x3b0c1b99fAAfd625aACD70521d8Da167807B3b82#readContract)
 FxxxRk Token               | 0xd73b9d06bffA9d8B6D2E5f03de578103531215fF [&#x1F517;](https://etherscan.io/token/0xd73b9d06bffA9d8B6D2E5f03de578103531215fF)
 FxxxRk FxxxLandRush        | 0x460E0e607eBD39C8927210A7f32ef7bD170F7d40 [&#x1F517;](https://etherscan.io/address/0x460E0e607eBD39C8927210A7f32ef7bD170F7d40#readContract)
 FxxxDude Token             | 0xc70ABb3546D0976d91D91AaD2773fAE69e106599 [&#x1F517;](https://etherscan.io/token/0xc70ABb3546D0976d91D91AaD2773fAE69e106599)
@@ -132,7 +132,7 @@ The amount of ETH (Ethers) to purchase a single parcel of land is determined by 
 * Click *Access*
 * Under *Read / Write Contract*, select **approveAndCall**
 * In the *spender* field, enter the desired **FxxxLandRush** address (see table above)
-* In the *tokens* field, enter the number of GZE tokens used to purchase one or more parcels of land. Refer to the *Cost* section above to determine the number of GZE tokens required to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land, and any excess will be refunded.
+* In the *tokens* field, enter the number of GZE tokens used to purchase one or more parcels of land. Refer to the *Cost* section above to determine the number of GZE tokens required to purchase a single parcel of land. Multiples of this number can be specified to purchase multiple parcels of land. Add a few percent more on top of this number to cater for changes in the exchange rate. Only the correct amounts will be used to purchase the one (or multiple) parcels of land, and any excess will be refunded. GZE tokens have 18 decimal places, so if you want to to send 987,654.321 GZE, the number to enter in this field is 987654321000000000000000 .
 * Leave the *_data* field blank
 * Click *Write*
 * Select your desired method to access your wallet, and execute the transaction.
