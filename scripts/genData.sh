@@ -248,4 +248,12 @@ generateSummaryJSON();
 
 EOF
 
-mv tmp.json FxxxLandRushSummary.json
+file=tmp.json
+minimumsize=20000
+actualsize=$(wc -c <"$file")
+if [ $actualsize -ge $minimumsize ]; then
+  echo size is over $minimumsize bytes
+  mv tmp.json FxxxLandRushSummary.json
+else
+  echo size is under $minimumsize bytes
+fi
