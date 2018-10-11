@@ -52,7 +52,9 @@ function generateSummaryJSON() {
   }
   console.log("JSONSUMMARY:   ],");
 
-  var gzeEthPriceFeedSetRateEvents = gzeEthPriceFeed.SetRate({}, { fromBlock: gzeEthPriceFeedFromBlock, toBlock: "latest" }).get();
+  var toBlock = blockNumber;
+  var fromBlock = toBlock - (60 * 60 * 24 / 15);
+  var gzeEthPriceFeedSetRateEvents = gzeEthPriceFeed.SetRate({}, { fromBlock: fromBlock, toBlock: toBlock }).get();
   console.log("JSONSUMMARY:   \"numberOfGzeEthPriceFeedSetRateEvents\": " + gzeEthPriceFeedSetRateEvents.length + ",");
   console.log("JSONSUMMARY:   \"gzeEthPriceFeedSetRateEvents\": [");
   for (var i = 0; i < gzeEthPriceFeedSetRateEvents.length; i++) {
@@ -65,8 +67,7 @@ function generateSummaryJSON() {
     }
     var b = eth.getBlock(e.blockNumber);
     var ts = b.timestamp;
-    console.log("JSONSUMMARY:     { \"newRate\": \"" + e.args.newRate.shift(-18) + "\", \"newLive\": \"" + e.args.newLive + "\", " +
-      "\"oldRate\": \"" + e.args.oldRate.shift(-18) + "\", \"oldLive\": \"" + e.args.oldLive + "\", " +
+    console.log("JSONSUMMARY:     { \"rate\": \"" + e.args.newRate.shift(-18) + "\", \"live\": \"" + e.args.newLive + "\", " +
       "\"timestamp\":" + ts + ", \"timestampString\": \"" + new Date(ts * 1000).toString() + "\", " +
       "\"timestampUTCString\": \"" + new Date(ts * 1000).toUTCString() + "\" }" + separator);
   }
