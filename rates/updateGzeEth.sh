@@ -2,6 +2,9 @@
 # ----------------------------------------------------------------------------------------------
 # BokkyPooBah's Rate Updater
 #
+# Schedule with crontab, e.g., every 5 minutes
+#   */5 * * * * cd ~/FxxxLandRush/rates && ~/FxxxLandRush/rates/updateGzeEth.sh >> ~/updateGzeEthLog.txt
+#
 # Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 # ----------------------------------------------------------------------------------------------
 
@@ -41,7 +44,9 @@ var rateChangeLowerMax = new BigNumber("1").div(new BigNumber("1").add(rateChang
 console.log("rateChangeUpperMax=" + rateChangeUpperMax);
 console.log("rateChangeLowerMax=" + rateChangeLowerMax);
 
+// Gas price < 51 gwei
 if (gasPrice > 0 &&
+    gasPrice <= 51000000000 &&
     marketGzeEth > 0 &&
     (marketAndContractDiff > rateChangeUpperLimit || marketAndContractDiff < rateChangeLowerLimit) &&
     (marketAndContractDiff < rateChangeUpperMax && marketAndContractDiff > rateChangeLowerMax)) {
