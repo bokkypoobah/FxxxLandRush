@@ -127,7 +127,7 @@ var pricefeed = pricefeedContract.new(
 Rate update script:
 ```javascript
 var deploymentAccount = "0x49d8621f8862c423abba0dfae4916f838cd264f6";
-var pricefeedAddress = "0xD649c9b68BB78e8fd25c0B7a9c22c42f57768c91";
+var pricefeedAddress = "0x62ca617DeEcCEA9D3Ebf1EA354Eba4300292071D";
 var gasPrice = new BigNumber("1.21").shift(9);
 var rate = new BigNumber("0.00003866").shift(18);
 var live = true;
